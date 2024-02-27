@@ -1,0 +1,7 @@
+<ng2-flatpickr
+  class="date"
+  placeholder="mm/dd/yyyy"
+  [config]="options"
+  [setDate]="date"
+  (flatpickrClose)="blur.emit(); log()"
+></ng2-flatpickr>

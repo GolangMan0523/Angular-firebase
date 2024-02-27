@@ -1,0 +1,23 @@
+<div *ngIf="section==1">
+  <div class="section__inner">
+    <h1 class="section__title">Step 4 of 5 - Print forms</h1>
+    <img class="section__img" src="assets/print_form.png" alt="">
+    <div class="section__discription">You've made awesome progress – we are almost done! Now it's time to review and
+      print the filled-out forms 😊</div>
+    <div class="section__discription">In this step, we will help you get the application forms ready. This includes:
+    </div>
+    <div class="section__container">
+      <ul class="section__list">
+        <li>Review, download and print the filled out application forms and cover letter</li>
+        <li>Sign, date, and complete some manual parts</li>
+        <li>Go through a final check</li>
+      </ul>
+      <span>Let's get started!</span>
+    </div>
+    <div class="section__container-btn">
+      <a class="form__btn-back" (click)="us.section='homeprint';us.top();">
+        < Back </a>
+          <a class="form__btn-continue" (click)="us.section='reviewandprint';us.top();"> Continue ></a>
+    </div>
+  </div>
+</div>

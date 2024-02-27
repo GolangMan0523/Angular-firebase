@@ -1,0 +1,39 @@
+<div *ngIf="section==1">
+	<div class="section__inner">
+		<h1 class="section__title">Submit Application</h1>
+		<img class="submitapp__img" src="assets/submit.png" alt="">
+		<div class="section__container">
+			<span class="section__discription">Finally, it's time to organize all the forms and documents, and send them out 😇</span>
+			<span class="section__discription">In this section, we will walk you through how to organize and submit the application package. This includes:</span>
+			<div class="section__container">
+				<ul class="section__list">
+					<li>Pay USCIS filing fees</li>
+					<li>Organize and assemble the application package according to USCIS guidelines</li>
+					<li>Mail to the correct address</li>
+
+				</ul>
+				<span class="section__discription">Let's get started!</span>
+			</div>
+		</div>
+		<div class="section__container-btn">
+			<a class="form__btn-back" (click)="us.section='printforms';us.top();"> < Back </a>
+			<a class="form__btn-continue" (click)="section=2;us.top();"> Continue ></a>
+		</div>
+	</div>
+</div>
+<div *ngIf="section==2">
+	<div class="section__inner">
+		<h1 class="section__title">Instant Access
+		after Checkout</h1>
+		<img class="submitapp__img" src="assets/nextsteps.png" alt="">
+		<!-- <button class="section__btn" (click)="modal.show({component:'stripemodal'})" >Proceed in checkoud</button> -->
+		<stripe-buy-button
+        buy-button-id="buy_btn_1NPWZ3DBW6vzTeKzsM0SVS9n"
+        publishable-key="pk_live_51IRTF6DBW6vzTeKz7SJzo2ku8Lds2B6SUtszzntTuWzyt5x8xPpoOgYY49urR3vxn73FwUFbLlNjhgtpJftEJmyg00Lz8XrNDe"
+      ></stripe-buy-button>
+    <div class="section__container-btn">
+			<a class="form__btn-back" (click)="section=1;us.top();"> < Back </a>
+			<a class="form__btn-continue" (click)="us.section='whatsnext';us.top();"> Continue ></a>
+		</div>
+	</div>
+</div>

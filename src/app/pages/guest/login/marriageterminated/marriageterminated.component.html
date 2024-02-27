@@ -1,0 +1,14 @@
+<div class="marriage__inner">
+	<div class="marriage__inner">
+		<h1 class="marriage__title">Was that prior marriage terminated by the death of {{us.data.application.sponsorname + "'s"}} former spouse?or Green Card holder?</h1>
+		<span class="marriage__discription">ogether with the previous question, this determines if {{us.data.application.applicantperson_name}} is qualified to sponsor a marriage-based Green Card.</span>
+		<div class="marriage__cardholder">
+			<a class="marriage__link" (click)="us.auth='greenboardsupport'">Yes</a>
+			<a class="marriage__link" (click)="us.auth='price'">No</a>
+
+		</div>
+		<div class="container__btn">
+			<a class="marriage__btn" (click)="us.auth='marriage';us.top();"> < Back </a>
+		</div>
+	</div>
+</div>

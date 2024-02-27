@@ -1,0 +1,146 @@
+.section__inner{
+	max-width: 1200px;
+	width: 100%;
+	display: flex;
+	flex-direction: row-reverse;
+	justify-content: space-between;
+	padding: 35px;
+	border-top: 3px solid #ed9121;
+	background: #fff;
+	box-shadow: 0 0 25px rgb(0 0 0 / 25%);
+	.section__container-btn{
+		width: 100%;
+		padding-top: 25px;
+	}
+	.section__title{
+		color: #1972F5;
+		padding: 0 0 25px 0;
+	}
+	.form__btn-continue{
+		margin-left: 25px;
+		padding: 10px;
+		background: #1972F5;
+		border-radius: 5px;
+		text-decoration: none;
+		color: #fff;
+		cursor: pointer;
+	}
+
+	.form__btn-continue:hover{
+		background: #8290ff;
+		transition: 0.5s;
+	}
+}
+.form__btn-continue:hover{
+	background: #8290ff;
+}
+.form__top{
+	display: flex;
+	justify-content: space-between;
+	width: 100%;
+	max-width: 1000px;
+	height: 30px;
+	background: #1972F5;
+	color: #fff;
+	align-items: center;
+	padding-left: 20px;
+	padding-right: 20px;
+	margin-top: 20px;
+}
+.form-top__link{
+	cursor: pointer;
+}
+.form__section{
+	padding-top: 15px;
+}
+.form__section{
+	width: 100%;
+	max-width: 600px;
+	display: flex;
+	flex-direction: column;
+}
+.form__section span{
+	max-width: 200px;
+	width: 100%;
+
+}
+.form__title{
+	font-size: 25px;
+	font-weight: 600;
+	margin-top: 50px;
+	padding-bottom: 20px;
+}
+.form__container{
+	margin-top: 15px;
+	padding-bottom: 25px;
+}
+.form{
+	display: flex;
+	justify-content: space-between;
+	padding: 10px 20px 0 20px;
+
+}
+.form__link{
+	color: #1972F5;
+}
+input{
+	font-family: inherit; /* 1 */
+	font-size: 100%; /* 1 */
+	line-height: 1.15; /* 1 */
+	margin: 0; /* 2 */
+	padding: 10px;
+  text-transform: uppercase;
+}
+.form__sub-title{
+	padding-top: 25px;
+	font-weight: 600;
+}
+@media 	screen and (max-width: 767px) {
+	.section__inner{
+		max-width: 1200px;
+		width: 100%;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		padding: 25px;
+		border-top: 3px solid #ed9121;
+		background: #fff;
+		box-shadow: 0 0 10px rgba(0,0,0,0.5);
+		.section__title{
+			color: #1972F5;
+			text-align: center;
+		}
+		.section__container-btn{
+			width: 100%;
+			margin-top: 25px;
+		}
+	}
+	.form__top{
+		display: flex;
+		justify-content: space-between;
+		width: 100%;
+		height: 50px;
+		max-width: 1000px;
+		background: #1972F5;
+		color: #fff;
+		align-items: center;
+		padding-left: 20px;
+		padding-right: 20px;
+		margin-top: 20px;
+	}
+}
+
+
+.leftbar__manu-link{
+  cursor: pointer;
+  margin: 10px 0 0 0;
+}
+
+
+@media 	screen and (max-width: 780px) {
+  .summary__aside-menu{
+    display: none;
+
+  }
+}
+

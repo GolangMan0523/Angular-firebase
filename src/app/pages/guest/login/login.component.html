@@ -1,0 +1,22 @@
+<div class="auth-wrapper">
+	<div class="auth">
+		<greencardholder *ngIf="!us.auth"></greencardholder>
+		<cardholder *ngIf="us.auth == 'cardholder'"></cardholder>
+		<application *ngIf="us.auth == 'application'"></application>
+		<price *ngIf="us.auth == 'price'"></price>
+		<owner *ngIf="us.auth == 'owner'"></owner>
+		<physicaladdress *ngIf="us.auth == 'physicaladdress'"></physicaladdress>
+		<children *ngIf="us.auth == 'children'"></children>
+		<marriage *ngIf="us.auth == 'marriage'"></marriage>
+		<register *ngIf="us.auth == 'register'"></register>
+		<visa *ngIf="us.auth == 'visa'"></visa>
+		<greenboardsupport *ngIf="us.auth == 'greenboardsupport'"></greenboardsupport>
+		<marriageterminated *ngIf="us.auth == 'marriageterminated'"></marriageterminated>
+	</div>
+	<div class="footer">
+		<a target="_blank" class="footer__link" href="https://www.greencardhero.com/GreenCardHero-Spouse-Edition-EULA.html">EULA</a>
+		<span>|</span>
+		<a target="_blank" class="footer__link"href="https://greenbroad.atlassian.net/browse/GM-14">Privacy</a>
+		<span class="footer__discription">| Version 1.14.60 | ©2020 GreenBroad, LLC. All rights reserved</span>
+	</div>
+</div>

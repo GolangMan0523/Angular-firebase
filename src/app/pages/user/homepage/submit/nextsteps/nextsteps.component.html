@@ -1,0 +1,30 @@
+<div *ngIf="section==1">
+	<div class="section__inner">
+		<h1 class="section__title">What's Next?</h1>
+		<img class="section__img"  src="assets/steps.png" alt="">
+		<div class="section__discription">Congratulations on submitting the application 🎉 In the next section, we will explain in detail what happens next, all the way until you receive that lovely green card. This includes:</div>
+		<div class="section__container" >
+			<ul class="section__list">
+				<li>Timeline after submission</li>
+				<li>How to track your case status</li>
+				<li>Things to note while your application is pending</li>
+				<li>Prepare for the Green Card interview</li>
+				<li>Enter the U.S. and receive Green Card</li>
+				<li>Things to note after receiving Green Card</li>
+			</ul>
+			<span>Let's get started!</span>
+		</div>
+		<div class="section__container-btn">
+			<a class="form__btn-back" (click)="us.section='mail';us.top();"> < Back </a>
+			<a class="form__btn-continue" (click)="section=2;us.top();"> Continue ></a>
+		</div>
+	</div>
+</div>
+<div *ngIf="section==2">
+	<div class="section__inner">
+		<h1 class="section__title">Instant Access after Checkout</h1>
+		<button class="section__btn"> Proceed to Checkout</button>
+		<a class="section__link" (click)="modal.show({component: 'key'});" >Already purchased?</a>
+		<img class="section__img"  src="assets/nextsteps.png" alt="">
+	</div>
+</div>

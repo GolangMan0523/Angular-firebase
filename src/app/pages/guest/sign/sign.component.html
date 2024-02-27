@@ -1,0 +1,49 @@
+<div class="wrapper">
+  <div class="container">
+    <div class="container__inner">
+      <img class="welcome__img" src="assets/logo.svg" />
+      <h1 class="welcome__title">Welcome to GreenBroad</h1>
+      <span class="welcome__discription"
+        >Let's set up the application for you with a few simple questions:</span
+      >
+      <div class="welcome__inner">
+        <span class="welcome__question"
+          >What is the applicant’s first name?
+        </span>
+        <span class="welcome__sub-discription"
+          >The applicant is the person seeking a Green Card.</span
+        >
+        <input type="text" (ngModelChange)="test = $event" />
+      </div>
+      <div class="welcome__inner">
+        <span class="welcome__question"
+          >What is the sponsor’s first name?
+        </span>
+        <span class="welcome__sub-discription"
+          >The sponsor is the applicant's spouse and is a U.S. citizen or Green
+          Card holder.
+        </span>
+        <input type="text" />
+      </div>
+      <a class="welcome__btn" href="cardholder.html">Next</a>
+    </div>
+  </div>
+  <div class="footer">
+    <a
+      target="_blank"
+      class="footer__link"
+      href="https://www.greencardhero.com/GreenCardHero-Spouse-Edition-EULA.html"
+      >EULA</a
+    >
+    <span>|</span>
+    <a
+      target="_blank"
+      class="footer__link"
+      href="https://greenbroad.atlassian.net/browse/GM-14"
+      >Privacy</a
+    >
+    <span class="footer__discription"
+      >| Version 1.14.60 | ©2020 GreenBroad, LLC. All rights reserved</span
+    >
+  </div>
+</div>

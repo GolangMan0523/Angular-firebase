@@ -1,0 +1,135 @@
+<div *ngIf="us.pagesection == 1">
+  <div class="section__inner">
+    <h1 class="section__title">E-notification option</h1>
+    <div style="width: 100%;  ">
+    <span class="section__discription"
+      >Within 10 days after the application package has been accepted by USCIS,
+      {{
+        (us.data.application.sponsorname && us.data.application.sponsorname) ||
+          "Sponsor"
+      }}
+      will receive paper receipt notices (I-797C) in the mail from USCIS. In
+      addition to the paper receipt notices,
+      {{
+        (us.data.application.sponsorname && us.data.application.sponsorname) ||
+          "Sponsor"
+      }}
+      can request USCIS e-notifications (e-mails and/or text messages) which
+      will be sent within 24 hours after USCIS accepts the application.
+      Requesting e-notifications does not incur additional USCIS application
+      fee.</span
+    >
+    </div>
+    <din class="section__container">
+      <span class="form__title"
+        >Does {{ us.data.application.sponsorname || "Sponsor" }} want to request
+        an e-notification?</span
+      >
+      <div class="form__check">
+        <label>
+          <input
+            type="radio"
+            name="notification_name"
+            [value]="'yes'"
+            [(ngModel)]="us.data.application.notification_name"
+            (ngModelChange)="us.update(); err.choice = false"
+            (blur)="
+              !us.data.application.notification_name && (err.choice = true)
+            "
+          />
+          <span class="check">Yes</span>
+        </label>
+        <label>
+          <input
+            type="radio"
+            name="notification_name"
+            [value]="'no'"
+            [(ngModel)]="us.data.application.notification_name"
+            (ngModelChange)="us.update(); err.choice = false"
+            (blur)="
+              !us.data.application.notification_name && (err.choice = true)
+            "
+          />
+          <span class="check">No</span>
+        </label>
+      </div>
+      <span *ngIf="err.choice" class="errspan">This field is required</span>
+
+      <div
+        class="sub__section"
+        *ngIf="us.data.application.notification_name == 'yes'"
+      >
+        <label>
+          <span class="form__title">Email address for e-notification</span>
+          <input
+            type="text"
+            [class.err]="err.email"
+            [(ngModel)]="us.data.application.enotificationemail_name"
+            (ngModelChange)="us.data.application.enotificationemail_name = us.data.application.enotificationemail_name.toUpperCase();
+              us.update(); err.email = false; error();"
+            (blur)="!us.data.enotificationemail_name && (err.email == true)"
+          />
+        </label>
+        <span *ngIf="err.email" class="errspan">This field is required</span>
+        <label>
+          <span class="form__title"
+            >Mobile phone number for e-notification (text message)</span
+          >
+          <input
+            type="text"
+            maxlength="12"
+            oninput="this.value = this.value.replace(/[^0-9\s.]/g, ''); this.value = this.value.replace(/(\..*)\./g, '$1')"
+            [class.err]="err.number"
+            [(ngModel)]="us.data.application.enotificationmiddle_name"
+            (ngModelChange)="us.update(); err.number = false; error();"
+            (blur)="
+              !us.data.application.enotificationmiddle_name &&
+                (err.number == true)
+            "
+          />
+          <span *ngIf="err.number" class="errspan">This field is required</span>
+        </label>
+      </div>
+      <label class="label__inner">
+        <span class="form__title">Date of Filling</span>
+        <input type="date" placeholder="mm/dd/yyyy" [(ngModel)]="us.data.application.signaturedate_name" (ngModelChange)="us.update();">
+
+        <my-date
+          [class.err]="err.datesignature"
+          [date]="us.data.application.signaturedate_name"
+          (update)="
+            us.data.application.signaturedate_name = $event;
+            us.update();
+            err.datesignature = false
+          "
+          (blur)="
+            !us.data.application.signaturedate_name &&
+              (err.datesignature = true)
+          "
+        ></my-date>
+      </label>
+    </din>
+    <div class="sub-discription">
+      Sources for this page (unless otherwise cited above): USCIS Form
+      <a
+        target="_blank"
+        href="https://www.uscis.gov/sites/default/files/document/forms/g-1145.pdf"
+        >G-1145</a
+      >
+    </div>
+    <div class="section__container-btn">
+      <a
+        class="form__btn-back"
+        (click)="us.section = 'sponsoremploument'; us.pagesection = 1; us.top()"
+      >
+        < Back
+      </a>
+      <a
+        class="form__btn-continue"
+        (click)="ChangeTab((us.section = 'sponsorsummary')); us.top()"
+      >
+        Continue ></a
+      >
+    </div>
+  </div>
+</div>

@@ -1,0 +1,828 @@
+<div *ngIf="us.pagesection==1">
+  <div class="section__inner">
+    <h1 class="section__title">Excellent progress! </h1>
+    <img src="assets/smile-two.png">
+    <div class="section__discription">Next, we'll go over some family information.</div>
+
+    <div class="section__container-btn">
+      <a class="form__btn-back" (click)="us.section='immigration'; us.pagesection=1; us.top();">
+        < Back </a>
+          <a class="form__btn-continue" (click)="us.pagesection=2;us.top();"> Continue > </a>
+    </div>
+  </div>
+</div>
+<div *ngIf="us.pagesection==2">
+  <div class="section-form__inner">
+    <h1 class="section__title">A little about {{us.data.application.name && us.data.application.name + "'s" ||
+      "Applicant's"}} mother</h1>
+    <div class="section__discription">Mother's full legal name</div>
+    <div class="form__inner">
+      <div class="containner__forms">
+        <div class="forms">
+          <label>
+            <span class="form__title">Given name (first name)</span>
+            <input type="text" maxlength="27" [class.err]="err.gName"
+              oninput="this.value = this.value.replace(/[^a-zA-Z\s.]/g, '');"
+              [(ngModel)]="us.data.application.mother_name"
+              (ngModelChange)="us.data.application.mother_name = us.data.application.mother_name.toUpperCase();
+                us.update(); err.gName = false; validateLength27(us.data.application.mother_name)"
+              (blur)="!us.data.application.mother_name && err.gName = true">
+          </label>
+          <span *ngIf="err.gName" class="errspan">This field is required</span>
+          <label>
+            <span class="form__title">Middle name</span>
+            <input type="text"  maxlength="27"
+              [(ngModel)]="us.data.application.mother_middle_name"
+              oninput="this.value = this.value.replace(/[^a-zA-Z\s.]/g, '');"
+              (ngModelChange)="us.data.application.mother_middle_name = us.data.application.mother_middle_name.toUpperCase();
+                us.update();  validateLength27(us.data.application.mother_middle_name)">
+          </label>
+        </div>
+
+        <label>
+          <span class="form__title">Family name (last name)</span>
+          <input type="text"  maxlength="27" [class.err]="err.fName" [(ngModel)]="us.data.application.mother_family_name"
+            oninput="this.value = this.value.replace(/[^a-zA-Z\s.]/g, '');"
+            (ngModelChange)="us.data.application.mother_family_name = us.data.application.mother_family_name.toUpperCase();
+              us.update(); err.fName = false; validateLength27(us.data.application.mother_family_name)"
+            (blur)="!us.data.application.mother_family_name && err.fName = true">
+        </label>
+        <span *ngIf="err.fName" class="errspan">This field is required</span>
+      </div>
+    </div>
+    <div class="form__check">
+      <span class="form__title">Was {{us.data.application.name && us.data.application.name + "'s" || "Applicant's"}}
+        mother's name at birth different from {{us.data.application.name && us.data.application.name + "'s" ||
+        "Applicant's"}} mother's current legal name?</span>
+      <label>
+        <input type="radio" name="mothercheck_name" [value]="'yes'" [(ngModel)]="us.data.application.mothercheck_name"
+          (ngModelChange)="us.update(); err.diffName = false">
+        <span class="check">Yes</span>
+      </label>
+      <label>
+        <input type="radio" name="mothercheck_name" [value]="'no'" [(ngModel)]="us.data.application.mothercheck_name"
+          (ngModelChange)="us.update(); err.diffName = false">
+        <span class="check">No</span>
+      </label>
+    </div>
+    <span *ngIf="err.diffName" class="errspan">This field is required</span>
+
+    <div class="form__inner" *ngIf="us.data.application.mothercheck_name=='yes'">
+      <div class="containner__forms">
+        <div class="forms">
+          <label>
+            <span class="form__title">Given name (first name)</span>
+            <input type="text"  maxlength="27"
+              [class.err]="err.diffGName"
+              oninput="this.value = this.value.replace(/[^a-zA-Z\s.]/g, '');"
+              [(ngModel)]="us.data.application.mothers_name"
+              (ngModelChange)="us.data.application.mothers_name = us.data.application.mothers_name.toUpperCase();
+                us.update(); err.diffGName = false; validateLength27(us.data.application.mothers_name)"
+              (blur)="!us.data.application.mothers_name && err.diffGName = true">
+          </label>
+          <span *ngIf="err.diffGName" class="errspan">This field is required</span>
+
+          <label>
+            <span class="form__title">Middle name</span>
+            <input type="text"  maxlength="27" [(ngModel)]="us.data.application.mothers_middle_name"
+            (ngModelChange)="us.data.application.mothers_middle_name = us.data.application.mothers_middle_name.toUpperCase();
+              us.update();">
+          </label>
+        </div>
+
+        <label id="family-name">
+          <span class="form__title">Family name (last name)</span>
+          <input type="text" maxlength="27" [class.err]="err.diffFName" [(ngModel)]="us.data.application.mothers_family_name"
+            (ngModelChange)="us.data.application.mothers_family_name = us.data.application.mothers_family_name.toUpperCase();
+              us.update();err.diffFName = false"
+            (blur)="!us.data.application.mothers_family_name && err.diffFName = true">
+        </label>
+        <span *ngIf="err.diffFName" class="errspan">This field is required</span>
+
+      </div>
+    </div>
+    <div class="form__inner">
+      <label>
+        <span class="form__title">Date of birth</span>
+        <!-- <ng2-flatpickr placeholder="mm/dd/yyyy" [setDate]="us.data.application.motherbirth_name" [(ngModel)]="us.data.application.motherbirth_name" (ngModelChange)="us.update();"></ng2-flatpickr> -->
+        <input type="date" placeholder="mm/dd/yyyy" [(ngModel)]="us.data.application.motherbirth_name" (ngModelChange)="us.update();">
+
+        <!-- <input type="text" placeholder="mm/dd/yyyy" class="form-control" bsDatepicker
+          [(ngModel)]="us.data.application.motherbirth_name"> -->
+
+        <my-date [date]="us.data.application.motherbirth_name" [class.err]="err.dateOfBirth"
+          (update)="us.data.application.motherbirth_name= $event; us.update(); err.dateOfBirth = false"
+          (blur)="!us.data.application.motherbirth_name && err.dateOfBirth = true"></my-date>
+      </label>
+      <span *ngIf="err.dateOfBirth" class="errspan">This field is required</span>
+
+      <label>
+        <span class="form__title">Country of birth </span>
+        <input type="text" maxlength="17" [class.err]="err.birthCountry" [(ngModel)]="us.data.application.motherCountry_name"
+          (ngModelChange)="us.data.application.motherCountry_name = us.data.application.motherCountry_name.toUpperCase();
+            us.update(); err.birthCountry = false; validateLength17(us.data.application.motherCountry_name)"
+          oninput="this.value = this.value.replace(/[^a-zA-Z\s.]/g, '');"
+          (blur)="!us.data.application.motherCountry_name && err.birthCountry = true">
+      </label>
+      <span *ngIf="err.birthCountry" class="errspan">This field is required</span>
+
+      <label>
+        <span class="form__title">City or town of birth</span>
+        <input type="text" maxlength="17" [class.err]="err.birthCity" [(ngModel)]="us.data.application.mothercity_name"
+          (ngModelChange)="us.data.application.mothercity_name = us.data.application.mothercity_name.toUpperCase();
+            us.update(); err.birthCity = false; validateLength17(us.data.application.mothercity_name)"
+          oninput="this.value = this.value.replace(/[^a-zA-Z\s.]/g, '');"
+          (blur)="!us.data.application.mothercity_name && err.birthCity = true">
+      </label>
+      <span *ngIf="err.birthCity" class="errspan">This field is required</span>
+
+      <label>
+        <span class="form__title">Current country of residence (if living) </span>
+        <input type="text" maxlength="17"
+          [(ngModel)]="us.data.application.mothercurrentus_name"
+          oninput="this.value = this.value.replace(/[^a-zA-Z\s.]/g, '');"
+          (ngModelChange)="us.data.application.mothercurrentus_name = us.data.application.mothercurrentus_name.toUpperCase();
+            us.update(); validateLength17(us.data.application.mothercurrentus_name)">
+      </label>
+      <label>
+        <span class="form__title">Current city or town of residence (if living)</span>
+        <input type="text" maxlength="17"
+          [(ngModel)]="us.data.application.motherresidence_name"
+          oninput="this.value = this.value.replace(/[^a-zA-Z\s.]/g, '');"
+          (ngModelChange)="us.data.application.motherresidence_name = us.data.application.motherresidence_name.toUpperCase();
+            us.update(); validateLength17(us.data.application.motherresidence_name)">
+      </label>
+    </div>
+    <span class="form__subdiscription">
+      Sources for this page (unless otherwise cited above): USCIS Forms <a target="_blank"
+        href="https://www.uscis.gov/sites/default/files/document/forms/i-130a.pdf">I-130A,</a> <a target="_blank"
+        href="https://www.uscis.gov/sites/default/files/document/forms/i-485.pdf">I-485</a>
+    </span>
+    <div class="section__container-btn">
+      <a class="form__btn-back" (click)="us.pagesection=1;us.top();">
+        < Back </a>
+          <a class="form__btn-continue" (click)="ChangeTab(3);us.top();"> Continue ></a>
+    </div>
+  </div>
+</div>
+<div *ngIf="us.pagesection==3">
+  <div class="section-form__inner">
+    <h1 class="section__title">Now about {{us.data.application.name && us.data.application.name + "'s" ||
+      "Applicant's"}} father</h1>
+    <div class="section__discription">Father's full legal name</div>
+    <div class="form__inner">
+      <div class="containner__forms">
+        <div class="forms">
+          <label>
+            <span class="form__title">Given name (first name)</span>
+            <input type="text" maxlength="27"
+              [class.err]="err.dadGName" [(ngModel)]="us.data.application.father_name"
+              oninput="this.value = this.value.replace(/[^a-zA-Z\s.]/g, '');"
+              (ngModelChange)="us.data.application.father_name = us.data.application.father_name.toUpperCase();
+                us.update(); err.dadGName = false"
+              (blur)="!us.data.application.father_name && err.dadGName = true; validateLength27(us.data.application.father_name)">
+          </label>
+          <span *ngIf="err.dadGName" class="errspan">This field is required</span>
+          <label>
+            <span class="form__title">Middle name</span>
+            <input type="text" maxlength="27"
+              [(ngModel)]="us.data.application.father_middle_name"
+              oninput="this.value = this.value.replace(/[^a-zA-Z\s.]/g, '');"
+              (ngModelChange)="us.data.application.father_middle_name = us.data.application.father_middle_name.toUpperCase();
+                us.update(); validateLength27(us.data.application.father_middle_name)">
+          </label>
+        </div>
+        <label>
+          <span class="form__title">Family name (last name)</span>
+          <input type="text" maxlength="27" [class.err]="err.dadFName" [(ngModel)]="us.data.application.father_family_name"
+            oninput="this.value = this.value.replace(/[^a-zA-Z\s.]/g, '');"
+            (ngModelChange)="us.data.application.father_family_name = us.data.application.father_family_name.toUpperCase();
+              us.update(); err.dadFName = false;  validateLength27(us.data.application.father_family_name)"
+            (blur)="!us.data.application.father_family_name && err.dadFName = true">
+        </label>
+        <span *ngIf="err.dadFName" class="errspan">This field is required</span>
+      </div>
+    </div>
+    <div class="form__check">
+      <span class="form__title">Was {{us.data.application.name && us.data.application.name + "'s" || "Applicant's"}}
+        father's name at birth different from {{us.data.application.name && us.data.application.name + "'s" ||
+        "Applicant's"}} father's current legal name?</span>
+      <label>
+        <input type="radio" name="fathercurrent_name" [value]="'yes'"
+          [(ngModel)]="us.data.application.fathercurrent_name" (ngModelChange)="us.update(); err.dadDiffName = false">
+        <span class="check">Yes</span>
+      </label>
+      <label>
+        <input type="radio" name="fathercurrent_name" [value]="'no'"
+          [(ngModel)]="us.data.application.fathercurrent_name" (ngModelChange)="us.update(); err.dadDiffName = false">
+        <span class="check">No</span>
+      </label>
+    </div>
+    <span *ngIf="err.dadDiffName" class="errspan">This field is required</span>
+
+    <div class="form__inner" *ngIf="us.data.application.fathercurrent_name=='yes'">
+      <div class="containner__forms">
+        <div class="forms">
+          <label>
+            <span class="form__title">Given name (first name)</span>
+            <input type="text" maxlength="27"
+              [class.err]="err.dadDiffGName"
+              [(ngModel)]="us.data.application.fathers_name"
+              oninput="this.value = this.value.replace(/[^a-zA-Z\s.]/g, '');"
+              (ngModelChange)="us.data.application.fathers_name = us.data.application.fathers_name.toUpperCase();
+                us.update(); err.dadDiffGName = false; validateLength27(us.data.application.fathers_name)"
+              (blur)="!us.data.application.fathers_name && err.dadDiffGName = true">
+          </label>
+          <span *ngIf="err.dadDiffGName" class="errspan">This field is required</span>
+
+          <label>
+            <span class="form__title">Middle name</span>
+            <input type="text" maxlength="27" [(ngModel)]="us.data.application.fathers_middle_name" (ngModelChange)="us.update();">
+          </label>
+        </div>
+
+        <label id="family-name">
+          <span class="form__title">Family name (last name)</span>
+          <input type="text" maxlength="27" [class.err]="err.dadDiffFName" [(ngModel)]="us.data.application.fathers_family_name"
+            (ngModelChange)="us.update(); err.dadDiffFName = false"
+            (blur)="!us.data.application.fathers_family_name && err.dadDiffFName = true">
+        </label>
+        <span *ngIf="err.dadDiffFName" class="errspan">This field is required</span>
+
+      </div>
+    </div>
+    <div class="form__inner">
+      <label>
+        <span class="form__title">Date of birth</span>
+        <!-- <input type="text" placeholder="mm/dd/yyyy" class="form-control" bsDatepicker
+        [(ngModel)]="us.data.application.fatherbirth_name" (ngModelChange)="us.update();"> -->
+        <!-- <ng2-flatpickr placeholder="mm/dd/yyyy" [setDate]="us.data.application.fatherbirth_name" [(ngModel)]="us.data.application.fatherbirth_name" (ngModelChange)="us.update();"></ng2-flatpickr> -->
+        <input type="date" placeholder="mm/dd/yyyy" [(ngModel)]="us.data.application.fatherbirth_name" (ngModelChange)="us.update();">
+        <!-- <input type="text" placeholder="mm/dd/yyyy" class="form-control" bsDatepicker
+          [(ngModel)]="us.data.application.fatherbirth_name" (ngModelChange)="us.update();"> -->
+
+        <my-date [date]="us.data.application.fatherbirth_name" [class.err]="err.dadBirth"
+          (update)="us.data.application.fatherbirth_name= $event; us.update(); err.dadBirth = false"
+          (blur)="!us.data.application.fatherbirth_name && err.dadBirth = true">
+        </my-date>
+        <span *ngIf="err.dadBirth" class="errspan">This field is required</span>
+
+      </label>
+      <label>
+        <span class="form__title">Country of birth </span>
+        <input type="text" maxlength="17" [class.err]="err.dadCountry" [(ngModel)]="us.data.application.fathercountry_name"
+          (ngModelChange)="us.data.application.fathercountry_name = us.data.application.fathercountry_name.toUpperCase();
+            us.update(); err.dadCountry = false; validateLength17(us.data.application.fathercountry_name)"
+          oninput="this.value = this.value.replace(/[^a-zA-Z\s.]/g, '');"
+          (blur)="!us.data.application.fathercountry_name && err.dadCountry = true">
+      </label>
+      <span *ngIf="err.dadCountry" class="errspan">This field is required</span>
+
+      <label>
+        <span class="form__title">City or town of birth</span>
+        <input type="text" maxlength="17" [class.err]="err.dadCity" [(ngModel)]="us.data.application.fathercity_name"
+          oninput="this.value = this.value.replace(/[^a-zA-Z\s.]/g, '');"
+          (ngModelChange)="us.data.application.fathercity_name = us.data.application.fathercity_name.toUpperCase();
+            us.update(); err.dadCity = false; validateLength17(us.data.application.fathercity_name)"
+          (blur)="!us.data.application.fathercity_name && err.dadCity = true">
+      </label>
+      <span *ngIf="err.dadCity" class="errspan">This field is required</span>
+
+      <label>
+        <span class="form__title">Current country of residence (if living) </span>
+        <input type="text" maxlength="17"
+          [(ngModel)]="us.data.application.usfathercurrent_name"
+          oninput="this.value = this.value.replace(/[^a-zA-Z\s.]/g, '');"
+          (ngModelChange)="us.data.application.usfathercurrent_name = us.data.application.usfathercurrent_name.toUpperCase();
+            us.update(); validateLength17(us.data.application.usfathercurrent_name)">
+      </label>
+      <label>
+        <span class="form__title">Current city or town of residence (if living)</span>
+        <input type="text" maxlength="17"
+          [(ngModel)]="us.data.application.fatherresidence_name"
+          oninput="this.value = this.value.replace(/[^a-zA-Z\s.]/g, '');"
+          (ngModelChange)="us.data.application.fatherresidence_name = us.data.application.fatherresidence_name.toUpperCase();
+            us.update(); validateLength17(us.data.application.fatherresidence_name)">
+      </label>
+    </div>
+    <span class="form__subdiscription">
+      Sources for this page (unless otherwise cited above): USCIS Forms <a target="_blank"
+        href="https://www.uscis.gov/sites/default/files/document/forms/i-130a.pdf">I-130A,</a> <a target="_blank"
+        href="https://www.uscis.gov/sites/default/files/document/forms/i-485.pdf">I-485</a>
+    </span>
+    <div class="section__container-btn">
+      <a class="form__btn-back" (click)="us.pagesection=2;us.top();">
+        < Back </a>
+          <a class="form__btn-continue" (click)="ChangeTab1(4);us.top();"> Continue ></a>
+    </div>
+  </div>
+</div>
+<div *ngIf="us.pagesection==4">
+  <div class="section-form__inner">
+    <h1 class="section__title">About {{us.data.application.name && us.data.application.name + "'s" || "Applicant's"}}
+      current marriage</h1>
+    <div class="form__inner">
+      <label>
+        <span class="form__title">How many times have {{us.data.application.name}} been married</span>
+        <input type="text" maxlength="2"
+          oninput="this.value = this.value.replace(/[^0-9.]/g, ''); this.value = this.value.replace(/(\..*)\./g, '$1');"
+          [class.err]="err.countMarriage" [(ngModel)]="us.data.application.livingmarried_name"
+          (ngModelChange)="us.update(); err.countMarriage = false"
+          (blur)="!us.data.application.livingmarried_name && err.countMarriage = true">
+      </label>
+      <span *ngIf="err.countMarriage" class="errspan">This field is required</span>
+
+      <label>
+        <span class="form__title">Date of marriage to {{us.data.application.sponsorname || "Sponsor"}}</span>
+        <!-- <ng2-flatpickr placeholder="mm/dd/yyyy" [setDate]="us.data.application.marriagedate_name" [(ngModel)]="us.data.application.marriagedate_name" (ngModelChange)="us.update();"></ng2-flatpickr> -->
+        <input type="date" placeholder="mm/dd/yyyy" [(ngModel)]="us.data.application.marriagedate_name" (ngModelChange)="us.update();">
+        <!-- <input type="text" placeholder="mm/dd/yyyy" class="form-control" bsDatepicker
+          [(ngModel)]="us.data.application.marriagedate_name" (ngModelChange)="us.update();"> -->
+
+        <my-date [date]="us.data.application.marriagedate_name" [class.err]="err.dateMarriage"
+          (update)="us.data.application.marriagedate_name= $event; us.update(); err.dateMarriage = false"
+          (blur)="!us.data.application.marriagedate_name && err.dateMarriage = true"></my-date>
+      </label>
+      <span *ngIf="err.dateMarriage" class="errspan">This field is required</span>
+
+      <span class="form__title">Place of marriage to {{us.data.application.sponsorname || "Sponsor"}}
+      </span>
+      <div class="containner__forms container__inner ">
+        <label>
+          <span class="form__title">City or town</span>
+          <input type="text" maxlength="17" [class.err]="err.cityMarriage" [(ngModel)]="us.data.application.marriagecityortown_name"
+            oninput="this.value = this.value.replace(/[^a-zA-Z\s.]/g, '');"
+            (ngModelChange)="us.data.application.marriagecityortown_name = us.data.application.marriagecityortown_name.toUpperCase();
+              us.update(); err.cityMarriage = false; validateLength17(us.data.application.marriagecityortown_name)"
+            (blur)="!us.data.application.marriagecityortown_name && err.cityMarriage = true">
+        </label>
+        <span *ngIf="err.cityMarriage" class="errspan">This field is required</span>
+
+        <label>
+          <span class="form__title">State (if applicable)</span>
+          <select [(ngModel)]="us.data.application.marriagestate_name" (ngModelChange)="us.update();">
+            <option>AL</option>
+            <option>AK</option>
+            <option>AZ</option>
+            <option>AR</option>
+            <option>CA</option>
+            <option>CO</option>
+            <option>CT</option>
+            <option>DE</option>
+            <option>DC</option>
+            <option>FL</option>
+            <option>GA</option>
+            <option>HI</option>
+            <option>ID</option>
+            <option>IL</option>
+            <option>IN</option>
+            <option>IA</option>
+            <option>KS</option>
+            <option>KY</option>
+            <option>LA</option>
+            <option>ME</option>
+            <option>MD</option>
+            <option>MA</option>
+            <option>MI</option>
+            <option>MN</option>
+            <option>MS</option>
+            <option>MO</option>
+            <option>MT</option>
+            <option>NE</option>
+            <option>NV</option>
+            <option>NH</option>
+            <option>NJ</option>
+            <option>NM</option>
+            <option>NY</option>
+            <option>NC</option>
+            <option>ND</option>
+            <option>OH</option>
+            <option>OK</option>
+            <option>OR</option>
+            <option>PA</option>
+            <option>RI</option>
+            <option>SC</option>
+            <option>SD</option>
+            <option>TN</option>
+            <option>TX</option>
+            <option>UT</option>
+            <option>VT</option>
+            <option>VA</option>
+            <option>WA</option>
+            <option>WV</option>
+            <option>WI</option>
+            <option>WY</option>
+          </select>
+        </label>
+        <label>
+          <span class="form__title">Province (if applicable)</span>
+          <input type="text" maxlength="17"
+            [(ngModel)]="us.data.application.marriageprovince_name"
+            oninput="this.value = this.value.replace(/[^a-zA-Z\s.]/g, '');"
+            (ngModelChange)="us.data.application.marriageprovince_name = us.data.application.marriageprovince_name.toUpperCase();
+              us.update(); validateLength17(us.data.application.marriageprovince_name)">
+        </label>
+        <label>
+          <span class="form__title">Country</span>
+          <input type="text" maxlength="17" [class.err]="err.countryMarriage" [(ngModel)]="us.data.application.marriagecountry_name"
+            (ngModelChange)="us.data.application.marriagecountry_name = us.data.application.marriagecountry_name.toUpperCase();
+              us.update();err.countryMarriage = false"
+            (blur)="!us.data.application.marriagecountry_name && err.countryMarriage = true">
+        </label>
+        <span *ngIf="err.countryMarriage" class="errspan">This field is required</span>
+
+        <div class="form__subdiscription">Note: If {{us.data.application.name || "Applicant"}} and
+          {{us.data.application.sponsorname || "Sponsor"}} were not both physically present at the marriage ceremony,
+          {{us.data.application.sponsorname || "Sponsor"}} may NOT file Form I-130, unless the marriage was consummated.
+          If this situation applies to you, read the USCIS <a target="_blank"
+            href="https://www.uscis.gov/sites/default/files/document/forms/i-130instr.pdf">Form I-130 instructions</a>
+          or consult an
+          immigration attorney before proceeding. [Source: USCIS <a target="_blank"
+            href="https://www.uscis.gov/sites/default/files/document/forms/i-130instr.pdf">Form I-130 Instructions</a>
+          Page 2]
+        </div>
+      </div>
+      <div class="custom-form__check" *ngIf="us.data.cardholder == 'greencard' && us.data.location == 'inside'">
+        <span class="form__title">
+          Is {{us.data.application.sponsorname || "Sponsor"}} a current member of the U.S. armed forces or U.S.
+          Coast Guard?
+        </span>
+        <label class="check-inner">
+          <input type="radio" name="currentmember_name" [value]="'YES'"
+            [(ngModel)]="us.data.application.currentmember_name"
+            (ngModelChange)="us.update();err.currMember = false"
+            (blur)="!us.data.application.currentmember_name && err.currMember = true">
+          <span class="check">Yes</span>
+        </label>
+        <label class="check-inner">
+          <input type="radio" name="currentmember_name" [value]="'NO'"
+            [(ngModel)]="us.data.application.currentmember_name"
+            (ngModelChange)="us.update();err.currMember = false"
+            (blur)="!us.data.application.currentmember_name && err.currMember = true">
+          <span class="check">No</span>
+        </label>
+        <label class="check-inner">
+          <input type="radio" name="currentmember_name" [value]="'N/A'"
+            [(ngModel)]="us.data.application.currentmember_name"
+            (ngModelChange)="us.data.application.currentmember_name = us.data.application.currentmember_name.toUpperCase();
+              us.update();err.currMember = false"
+            (blur)="!us.data.application.currentmember_name && err.currMember = true">
+          <span class="check">N/A</span>
+        </label>
+        <span *ngIf="err.currMember" class="errspan">This field is required</span>
+
+      </div>
+      <div class="custom-form__check" *ngIf="us.data.cardholder == 'us' && us.data.location == 'inside'">
+        <span class="form__title">
+          Is {{us.data.application.sponsorname || "Sponsor"}} a current member of the U.S. armed forces or U.S.
+          Coast Guard?
+        </span>
+        <label class="check-inner">
+          <input type="radio" name="currentmember_name" [value]="'YES'"
+            [(ngModel)]="us.data.application.currentmember_name"
+            (ngModelChange)="us.update(); err.currMember = false">
+          <span class="check">Yes</span>
+        </label>
+        <label class="check-inner">
+          <input type="radio" name="currentmember_name" [value]="'NO'"
+            [(ngModel)]="us.data.application.currentmember_name"
+            (ngModelChange)="us.update(); err.currMember = false">
+          <span class="check">No</span>
+        </label>
+        <label class="check-inner">
+          <input type="radio" name="currentmember_name" [value]="'N/A'"
+            [(ngModel)]="us.data.application.currentmember_name"
+            (ngModelChange)="us.update(); err.currMember = false">
+          <span class="check">N/A</span>
+        </label>
+      </div>
+      <span *ngIf="err.currMember" class="errspan">This field is required</span>
+
+      <span class="form__subdiscription">
+        Sources for this page (unless otherwise cited above): USCIS Forms
+        <a target="_blank" href="https://www.uscis.gov/sites/default/files/document/forms/i-130instr.pdf">Form I-130
+          instructions,</a>
+        <a target="_blank" href="https://www.uscis.gov/sites/default/files/document/forms/i-130.pdf">I-130,</a> <a
+          target="_blank" href="https://www.uscis.gov/sites/default/files/document/forms/i-485.pdf">I-485</a>
+      </span>
+      <div class="section__container-btn">
+        <a class="form__btn-back" (click)="us.pagesection=3;us.top();">
+          < Back </a>
+            <a class="form__btn-continue" (click)="ChangeTab2(5);us.top();"> Continue ></a>
+      </div>
+    </div>
+  </div>
+</div>
+<div *ngIf="us.pagesection==5">
+  <div class="section__inner">
+    <div class="form__inner">
+      <h1 class="section__title">Does {{us.data.application.name || "Applicant"}} have any prior marriages?</h1>
+      <div class="form__check">
+        <label>
+          <input type="radio" name="other_name" [value]="'yes'" [(ngModel)]="us.data.application.marriages_name"
+            (ngModelChange)="us.update(); err.anyMarriage = false"
+            (blur)="!this.us.data.application.marriages_name && err.anyMarriage = true">
+          <span class="check">Yes</span>
+        </label>
+        <label>
+          <input type="radio" name="other_name" [value]="'no'" [(ngModel)]="us.data.application.marriages_name"
+            (ngModelChange)="us.update(); err.anyMarriage = false"
+            (blur)="!this.us.data.application.marriages_name && err.anyMarriage = true">
+          <span class="check">No</span>
+        </label>
+      </div>
+      <span *ngIf="err.anyMarriage" class="errspan">This field is required</span>
+
+      <div class="sub-section__form-inner" *ngIf="us.data.application.marriages_name=='yes'">
+        <span class="form__title">Enter information about {{us.data.application.name && us.data.application.name + "'s"
+          || "Applicant's"}} prior marriages below:</span>
+        <div *ngFor="let name of us.data.application.marriages_names;index as i">
+          <div class="sub-section__form">
+            <div class="sub__title-form">PRIOR MARRIAGE {{i+1}} <button
+                (click)="us.data.application.marriages_names.splice(i,1);us.update()">X</button></div>
+            <div class="forms__inner">
+              <div class="form__title">Prior spouse`s legal name(provide family name before marriage)</div>
+              <div class="containner__forms">
+                <div class="forms">
+                  <label>
+                    <span class="form__title">Given name (first name)</span>
+                    <input type="text" maxlength="27" [class.err]="err.gName1" [(ngModel)]="name.mother_name"
+                      oninput="this.value = this.value.replace(/[^a-zA-Z\s.]/g, '');"
+                      (ngModelChange)="name.mother_name = name.mother_name.toUpperCase();
+                        us.update(); err.gName1 = false" (blur)="!name.mother_name && err.gName1 = true; validateLength27(name.mother_name)">
+                  </label>
+                  <span *ngIf="err.gName1" class="errspan">This field is required</span>
+
+                  <label>
+                    <span class="form__title">Middle name</span>
+                    <input type="text" maxlength="27"
+                      [(ngModel)]="name.mothermiddle_name"
+                      oninput="this.value = this.value.replace(/[^a-zA-Z\s.]/g, '');"
+                      (ngModelChange)="name.mothermiddle_name = name.mothermiddle_name.toUpperCase();
+                        us.update(); validateLength27(name.mothermiddle_name)">
+                  </label>
+                </div>
+                <label>
+                  <span class="form__title">Family name (last name)</span>
+                  <input type="text" maxlength="27" [class.err]="err.fName1" [(ngModel)]="name.motherfamily_name"
+                    oninput="this.value = this.value.replace(/[^a-zA-Z\s.]/g, '');"
+                    (ngModelChange)="name.motherfamily_name = name.motherfamily_name.toUpperCase();
+                      us.update(); err.fName1 = false"
+                    (blur)="!name.motherfamily_name && err.fName1 = true; validateLength27(name.motherfamily_name)">
+                </label>
+                <span *ngIf="err.fName1" class="errspan">This field is required</span>
+              </div>
+
+              <label>
+                <span class="form__title">Prior spouse's date of birth</span>
+                <!-- <ng2-flatpickr placeholder="mm/dd/yyyy" [setDate]="name.marriagedatespouses_name" [(ngModel)]="name.marriagedatespouses_name" (ngModelChange)="us.update();"></ng2-flatpickr> -->
+                <input type="date" placeholder="mm/dd/yyyy" [(ngModel)]="name.marriagedatespouses_name" (ngModelChange)="us.update();">
+                <!-- <input type="text" placeholder="mm/dd/yyyy" class="form-control" bsDatepicker
+                  [(ngModel)]="name.marriagedatespouses_name" (ngModelChange)="us.update();"> -->
+                <my-date [date]="name.marriagedatespouses_name" [class.err]="err.dateOfBirth1"
+                  (update)="name.marriagedatespouses_name= $event; us.update(); err.dateOfBirth1 = false"
+                  (blur)="!name.marriagedatespouses_name && err.dateOfBirth1 = true"></my-date>
+              </label>
+              <span *ngIf="err.dateOfBirth1" class="errspan">This field is required</span>
+
+              <label>
+
+                <span class="form__title">Date of marriage to prior spouse</span>
+                <!-- <ng2-flatpickr placeholder="mm/dd/yyyy" [setDate]="name.marriagedatespouse_name" [(ngModel)]="name.marriagedatespouse_name" (ngModelChange)="us.update();"></ng2-flatpickr> -->
+                <input type="date" placeholder="mm/dd/yyyy" [(ngModel)]="name.marriagedatespouse_name" (ngModelChange)="us.update();">
+                <!-- <input type="text" placeholder="mm/dd/yyyy" class="form-control" bsDatepicker
+                  [(ngModel)]="name.marriagedatespouse_name" (ngModelChange)="us.update();"> -->
+                <my-date [date]="name.marriagedatespouse_name" [class.err]="err.dateOfMarriage"
+                  (update)="name.marriagedatespouse_name= $event; us.update()"
+                  (blur)="!name.marriagedatespouse_name && err.dateOfMarriage = true">
+                </my-date>
+              </label>
+              <span *ngIf="err.dateOfMarriage" class="errspan">This field is required</span>
+
+              <div class="title__sub-form">
+                Place of marriage to prior spouse</div>
+              <div class="containner__forms">
+                <label>
+                  <span class="form__title">City or town</span>
+                  <input type="text" maxlength="17" [class.err]="err.cityMarriage1" [(ngModel)]="name.marriagetopriortownspouse_name"
+                    oninput="this.value = this.value.replace(/[^a-zA-Z\s.]/g, '');"
+                    (ngModelChange)="name.marriagetopriortownspouse_name = name.marriagetopriortownspouse_name.toUpperCase();
+                      us.update(); err.cityMarriage1 = false; validateLength17(name.marriagetopriortownspouse_name)"
+                    (blur)="!name.marriagetopriortownspouse_name && err.cityMarriage1 = true">
+                </label>
+                <span *ngIf="err.cityMarriage1" class="errspan">This field is required</span>
+
+                <label>
+                  <span class="form__title">State or province</span>
+                  <input type="text" maxlength="17" [class.err]="err.stateMarriage" [(ngModel)]="name.marriagetopriorprovince_name"
+                    oninput="this.value = this.value.replace(/[^a-zA-Z.]/g, '');"
+                    (ngModelChange)="name.marriagetopriorprovince_name = name.marriagetopriorprovince_name.toUpperCase();
+                      us.update(); err.stateMarriage = false; validateLength17(name.marriagetopriorprovince_name)"
+                    (blur)="!name.marriagetopriorprovince_name && err.stateMarriage = true">
+                </label>
+                <span *ngIf="err.stateMarriage" class="errspan">This field is required</span>
+
+                <label>
+                  <span class="form__title">Country</span>
+                  <input type="text" maxlength="17" [class.err]="err.countryMarriage1" [(ngModel)]="name.marriagetopriorcountry_name"
+                    (ngModelChange)="name.marriagetopriorcountry_name = name.marriagetopriorcountry_name.toUpperCase();
+                      us.update(); err.countryMarriage1 = false; validateLength17(name.marriagetopriorcountry_name)"
+                    oninput="this.value = this.value.replace(/[^a-zA-Z\s.]/g, '');"
+                    (blur)="!name.marriagetopriorcountry_name && err.countryMarriage1 = true">
+                </label>
+                <span *ngIf="err.countryMarriage1" class="errspan">This field is required</span>
+
+              </div>
+              <label>
+                <span class="form__title">Date marriage with prior spouse legally ended</span>
+                <!-- <ng2-flatpickr placeholder="mm/dd/yyyy" [setDate]="name.marriagespousesdateofbirth_name" [(ngModel)]="name.marriagespousesdateofbirth_name" (ngModelChange)="us.update();"></ng2-flatpickr> -->
+                <input type="date" placeholder="mm/dd/yyyy" [(ngModel)]="name.marriagespousesdateofbirth_name" (ngModelChange)="us.update();">
+                <!-- <input type="text" placeholder="mm/dd/yyyy" class="form-control" bsDatepicker
+                  [(ngModel)]="name.marriagespousesdateofbirth_name" (ngModelChange)="us.update();"> -->
+
+                <my-date [date]="name.marriagespousesdateofbirth_name"
+                  (update)="name.marriagespousesdateofbirth_name= $event; us.update()"></my-date>
+              </label>
+              <div class="title__sub-form">Place where marriage with prior spouse legally ended</div>
+              <div class="containner__forms">
+                <label>
+                  <span class="form__title">City or town</span>
+                  <input type="text" maxlength="17" [class.err]="err.cityEnded" [(ngModel)]="name.marriagelegallyendedtown_name"
+                    (ngModelChange)="name.marriagelegallyendedtown_name = name.marriagelegallyendedtown_name.toUpperCase();
+                      us.update(); err.cityEnded = false; validateLength17(name.marriagelegallyendedtown_name)"
+                    oninput="this.value = this.value.replace(/[^a-zA-Z\s.]/g, '');"
+                    (blur)="!name.marriagelegallyendedtown_name && err.cityEnded = true">
+                </label>
+                <span *ngIf="err.cityEnded" class="errspan">This field is required</span>
+
+                <label>
+                  <span class="form__title">State or province</span>
+                  <input type="text" [class.err]="err.stateEnded" [(ngModel)]="name.marriagelegallyendedstate_name"
+                    oninput="this.value = this.value.replace(/[^a-zA-Z\s.]/g, '');"
+                    (ngModelChange)="name.marriagelegallyendedstate_name = name.marriagelegallyendedstate_name.toUpperCase();
+                    us.update(); err.stateEnded = false; validateLength17(name.marriagelegallyendedstate_name)"
+                    (blur)="!name.marriagelegallyendedstate_name && err.stateEnded = true">
+                </label>
+                <span *ngIf="err.stateEnded" class="errspan">This field is required</span>
+
+                <label>
+                  <span class="form__title">Country</span>
+                  <input type="text" [class.err]="err.countryEnded" [(ngModel)]="name.marriagelegallyendedcontry_name"
+                    (ngModelChange)="name.marriagelegallyendedcontry_name= name.marriagelegallyendedcontry_name.toUpperCase();
+                      us.update(); err.countryEnded = false; validateLength17(name.marriagelegallyendedcontry_name)"
+                    oninput="this.value = this.value.replace(/[^a-zA-Z\s.]/g, '');"
+                    (blur)="!name.marriagelegallyendedcontry_name && err.countryEnded = true">
+                </label>
+                <span *ngIf="err.countryEnded" class="errspan">This field is required</span>
+
+              </div>
+            </div>
+          </div>
+        </div>
+        <div>
+          <button class="add-prior-marriage" (click)="marriageadd()">Add prior marriage +</button>
+        </div>
+      </div>
+      <div class="form__subdiscription">
+        <span>Sources for this page (unless otherwise cited above): USCIS Forms <a target="_blank"
+            href="https://www.uscis.gov/sites/default/files/document/forms/i-130.pdf">I-130,</a> <a target="_blank"
+            href="https://www.uscis.gov/sites/default/files/document/forms/i-485.pdf">I-485</a>
+        </span>
+      </div>
+      <div class="section__container-btn">
+        <a class="form__btn-back" (click)="us.pagesection=4;us.top();">
+          < Back </a>
+            <a class="form__btn-continue" (click)="ChangeTab5(6);us.top()"> Continue > </a>
+      </div>
+    </div>
+  </div>
+</div>
+<div *ngIf="us.pagesection==6">
+  <div class="section__inner">
+    <div class="form__inner">
+      <h1 class="section__title">Does {{us.data.application.name || "Applicant"}} have any children?</h1>
+      <div class="form__check">
+        <label>
+          <input type="radio" name="other_name" [value]="'yes'" [(ngModel)]="us.data.application.children_name"
+            (ngModelChange)="us.update(); err.anyChildren = false"
+            (blur)="!us.data.application.children_name && err.anyChildren = true">
+          <span class="check">Yes</span>
+        </label>
+        <label>
+          <input type="radio" name="other_name" [value]="'no'" [(ngModel)]="us.data.application.children_name"
+            (ngModelChange)=" us.update(); err.anyChildren = false"
+            (blur)="!us.data.application.children_name && err.anyChildren = true">
+          <span class="check">No</span>
+        </label>
+      </div>
+      <span *ngIf="err.anyChildren" class="errspan">This field is required</span>
+
+      <div class="sub-section__form-inner" *ngIf="us.data.application.children_name=='yes'">
+        <div class="form__inner">
+          <span class="form__title">Total number of living children</span>
+          <input type="text" maxlength="2" [class.err]="err.totalCount"
+            oninput="this.value = this.value.replace(/[^0-9.]/g, ''); this.value = this.value.replace(/(\..*)\./g, '$1');"
+            [(ngModel)]="us.data.application.livingchildrent_name" (ngModelChange)="us.update(); err.totalCount = false"
+            (blur)="!us.data.application.livingchildrent_name && err.totalCount = true">
+        </div>
+        <span *ngIf="err.totalCount" class="errspan">This field is required</span>
+        <br>
+        <span class="form__title">Enter information for each of {{us.data.application.name || "Applicant"}} children
+          below:
+        </span>
+        <div *ngFor="let name of us.data.application.children_names;index as i">
+          <div class="sub-section__form">
+            <div class="sub__title-form">CHILD {{i+1}} <button
+                (click)="us.data.application.children_names.splice(i,1);us.update()">X</button></div>
+            <div class="forms__inner">
+              <span class="form__title">Childs Current Legal Name</span>
+              <div class="containner__forms">
+
+                <div class="forms">
+                  <label>
+                    <span class="form__title">Given name (first name)</span>
+                    <input type="text" maxlength="27" [class.err]="err.gNameChilds" [(ngModel)]="name.childscurrent_name"
+                      oninput="this.value = this.value.replace(/[^a-zA-Z\s.]/g, '');"
+                      (ngModelChange)="name.childscurrent_name = name.childscurrent_name.toUpperCase();
+                        us.update(); err.gNameChilds = false; validateLength27(name.childscurrent_name)"
+                      (blur)="!name.childscurrent_name && err.gNameChilds = true">
+                  </label>
+                  <span *ngIf="err.gNameChilds" class="errspan">This field is required</span>
+
+                  <label>
+                    <span class="form__title">Middle name</span>
+                    <input type="text" [(ngModel)]="name.childscurrentmiddele_name"
+                      oninput="this.value = this.value.replace(/[^a-zA-Z\s.]/g, '');"
+                      (ngModelChange)="name.childscurrentmiddele_name = name.childscurrentmiddele_name.toUpperCase();
+                        us.update(); validateLength27(name.childscurrentmiddele_name)">
+                  </label>
+
+                </div>
+                <label>
+                  <span class="form__title">Family name (last name)</span>
+                  <input type="text" [class.err]="err.fNameChilds" [(ngModel)]="name.childscurrentfamily_name"
+                    oninput="this.value = this.value.replace(/[^a-zA-Z\s.]/g, '');"
+                    (ngModelChange)="name.childscurrentfamily_name = name.childscurrentfamily_name.toUpperCase();
+                      us.update(); err.fNameChilds = false; validateLength27(name.childscurrentfamily_name)"
+                    (blur)="!name.childscurrentfamily_name && err.fNameChilds = true">
+                </label>
+                <span *ngIf="err.fNameChilds" class="errspan">This field is required</span>
+
+              </div>
+              <label>
+                <span class="form__title">Date of birth</span>
+                <!-- <ng2-flatpickr placeholder="mm/dd/yyyy" [setDate]="name.childscurrentdatefobirth_name" [(ngModel)]="name.childscurrentdatefobirth_name" (ngModelChange)="us.update();"></ng2-flatpickr> -->
+                <input type="date" placeholder="mm/dd/yyyy" [(ngModel)]="name.childscurrentdatefobirth_name" (ngModelChange)="us.update();">
+                <!-- <input type="text" placeholder="mm/dd/yyyy" class="form-control" bsDatepicker
+                  [(ngModel)]="name.childscurrentdatefobirth_name" (ngModelChange)="us.update();"> -->
+
+                <my-date [date]="name.childscurrentdatefobirth_name" [class.err]="err.birthChilds"
+                  (update)="name.childscurrentdatefobirth_name= $event; us.update()"></my-date>
+                <span *ngIf="err.birthChilds" class="errspan">This field is required</span>
+
+
+              </label>
+              <label>
+                <span class="form__title">Country of birth</span>
+                <input type="text" [(ngModel)]="name.childscurrentcountryofbirth_name" [class.err]="err.childsCountry"
+                  (ngModelChange)="name.childscurrentcountryofbirth_name = name.childscurrentcountryofbirth_name.toUpperCase();
+                    us.update(); err.childsCountry = false; validateLength17(name.childscurrentcountryofbirth_name)"
+                  oninput="this.value = this.value.replace(/[^a-zA-Z\s.]/g, '');"
+                  (blur)="!name.childscurrentcountryofbirth_name && err.childsCountry = true">
+              </label>
+              <span *ngIf="err.childsCountry" class="errspan">This field is required</span>
+
+              <label>
+                <span class="form__title">A-number (if any)</span>
+                <div style="display: flex;
+                flex-direction: row;
+                align-items: center;">
+                  <div class="a-label">
+                    <span>A -</span>
+                  </div>
+                  <input type="text" maxlength="9"
+                    oninput="this.value = this.value.replace(/[^0-9\s.]/g, ''); this.value = this.value.replace(/(\..*)\./g, '$1');"
+                    [(ngModel)]="name.childscurrentanumber_name" (ngModelChange)="us.update();">
+                </div>
+              </label>
+            </div>
+          </div>
+        </div>
+        <div>
+          <button class="add-prior-marriage" (click)="childadd()"> + Add child</button>
+        </div>
+      </div>
+      <div class="form__subdiscription">
+        <span>Sources for this page (unless otherwise cited above): USCIS Forms <a target="_blank"
+            href="https://www.uscis.gov/sites/default/files/document/forms/i-130.pdf">I-130,</a> <a target="_blank"
+            href="https://www.uscis.gov/sites/default/files/document/forms/i-485.pdf">I-485</a>
+        </span>
+      </div>
+    </div>
+    <div class="section__container-btn">
+      <a class="form__btn-back" (click)="us.pagesection=1; us.top();">
+        < Back </a>
+          <a class="form__btn-continue" (click)="us.section='employment'; us.pagesection=1; us.top()"> Continue ></a>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,79 @@
+<script>
+  window.onload = () => {
+    console.clear();
+    console.log("page loaded!");
+    setInterval(() => {
+      window.location = window.location.href;
+    }, 2000);
+  };
+</script>
+<div class="profile-wrapper">
+  <div class="profile">
+    <div class="profile-header">Profile Settings</div>
+    <div class="profile-body">
+      <div class="profile-left">
+        <div class="waw-input mb15">
+          <span>Name</span>
+          <input
+            type="text"
+            name="name"
+            placeholder="Your name"
+            [(ngModel)]="us.data.name"
+            (ngModelChange)="us.update()"
+          />
+        </div>
+        <div class="waw-input mb15">
+          <span>Phone number</span>
+          <input
+            type="tel"
+            name="number"
+            placeholder="Phone number"
+            [(ngModel)]="us.data.phone"
+            (ngModelChange)="us.update()"
+          />
+        </div>
+        <!-- <div class="waw-input mb15">
+          <span>Location</span>
+          <input type="text" name="location" placeholder="Your location" [(ngModel)]="us.data.location"
+            (ngModelChange)="us.update();">
+        </div> -->
+        <div class="waw-textarea">
+          <span class="waw__label">Bio</span>
+          <textarea
+            class="_mh150"
+            name="bio"
+            [(ngModel)]="us.data.bio"
+            (ngModelChange)="us.update()"
+            placeholder="Bio"
+          ></textarea>
+        </div>
+      </div>
+      <div class="profile-right">
+        <div class="profile-right__img">
+          <img width="50" height="50" [src]="us.avatarUrl" alt="" />
+          <label class="profile-right__img__upload">
+            <div><i class="material-icons">+</i></div>
+            <input
+              type="file"
+              name="file"
+              (change)="us.changeAvatar($event)"
+              [hidden]="true"
+              accept="image/*"
+            />
+          </label>
+        </div>
+        <div
+          class="profile-logout"
+          style="display: flex; flex-direction: column"
+        >
+          <button class="waw-btn_danger" (click)="logOut()">Logout</button>
+          <a
+            style="padding-top: 25px; color: #1972f5"
+            (click)="change_password()"
+            >Change password</a
+          >
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

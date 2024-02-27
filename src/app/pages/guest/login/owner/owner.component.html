@@ -1,0 +1,11 @@
+<div class="owner__inner">
+	<h1 class="owner__title">Has {{us.data.application.sponsorname + "'s"}} been a U.S. Green Card holder for at least five years?</h1>
+	<span class="owner__discription">This determines if {{us.data.application.sponsorname}} is qualified to sponsor a marriage-based Green Card.</span>
+	<div class="owner__cardholder" >
+		<a class="owner__link" (click)="us.auth='price'">Yes</a>
+		<a class="owner__link" (click)="us.auth='marriage'">No</a>
+	</div>
+	<div class="container__btn">
+		<a class="owner__btn" (click)="us.auth='children';us.top();"> < Back </a>
+	</div>
+</div>

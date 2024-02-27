@@ -1,0 +1,16 @@
+<div class="auth-wrapper">
+	<div class="auth">
+		<div class="auth-title">Reset Password</div>
+		<form class="auth-form" (ngSubmit)="reset()">
+			<div class="waw-input mb15">
+				<span>Email:</span>
+				<input (keydown.enter)="reset()" type="text" placeholder="Email" name="email" [(ngModel)]="user.email">
+			</div>
+			<div class="auth-form__btn"><button class="waw-btn _primary" type="submit">Continue</button></div>
+		</form>
+		<div class="auth-link">
+			<a routerLink="/login">Login</a>
+			<a routerLink="/sign">Sign up</a>
+		</div>
+	</div>
+</div>

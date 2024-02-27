@@ -1,0 +1,163 @@
+<div *ngIf="section==1">
+	<div class="section__inner">
+		<h1 class="section__title">Print Forms</h1>
+		<img class="print__img" src="assets/print_form.png" alt="">
+		<span class="section__discription">Provide Applicant's full legal name as shown on Applicant's birth certificate or legal change of name document. Do not provide a nickname.</span>
+		<div class="section__container-btn">
+			<a class="form__btn-back" (click)="us.section='collectdocuments';us.top();"> < Back </a>
+			<a class="form__btn-continue" (click)="section=2;us.top();"> Continue ></a>
+		</div>
+	</div>
+</div>
+<div *ngIf="section==2">
+	<div class="section__inner">
+		<div class="section__sub-inner">
+			<h1 class="section__title">Review and print</h1>
+			<span class="section__discription">
+				Here we are! Below you will find:
+			</span>
+			<ul class="section__list">
+				<li class="list__item">
+					All USCIS forms needed for Submission 1, already filled in based on information you provided. (Note that the forms are not considered complete until you <a href="">sign, date and complete some manual parts</a> in the next section.)</li>
+					<li class="list__item">
+						A cover letter for organizing the Submission 1 application package
+					</li>
+					<div class="sub__section-btn" (click)="subsectionprint=!subsectionprint" (clickOutside)="subsectionprint=null"><span class="sub__section-icon" [class._active]="subsectionprint">&#8250;</span>What is a cover letter?</div>
+					<div class="sub-sub__section-inner" *ngIf="subsectionprint">
+						<p>A cover letter is essentially a table of contents of all the forms and documents contained within an application. A cover letter helps you organize your papers, and also helps USCIS agents during their review.</p>
+
+						<p>Below you can download a cover letter created based on your input in the Applicant Info and Sponsor Info steps, and in the previous Collect Documents section.</p>
+
+						<p>Later in the Submit Application section, we will walk you through how to assemble the application package using the cover letter.</p>
+					</div>
+				</ul>
+				<span class="section__discription">
+					Now, please do the following:
+				</span>
+				<ol class="section__list">
+					<li class="list__item">Review each application form carefully and confirm that the information contained is complete, true and correct.
+						<div class="sub__section-btn" (click)="subsectionprinttwo=!subsectionprinttwo" (clickOutside)="subsectionprinttwo=null"><span class="sub__section-icon" [class._active]="subsectionprinttwo">&#8250;</span>How to edit my form entries?</div>
+						<div class="sub-sub__section-inner" *ngIf="subsectionprinttwo">
+							<p><span class="heading">Option 1:</span> Edit your answers in the Applicant Info or Sponsor Info steps, and the forms will be automatically updated here.
+							</p>
+							<p><span class="heading">Option 2:</span> If Option 1 does not fix the issue, then you can edit form entries directly when you open a form in the Greenbroad PDF Viewer. Only use this option if Option 1 does not work, and read the warning message below.
+							</p>
+							<p><span class="heading">Warning:</span> Changing your form entries can potentially change your application eligibility, required forms, required supporting documents, filing fees, filing method, and more. Make sure you do the following:
+							</p>
+							<ul>
+								<li>
+									<p>If changing form entries using Option 1, make sure to browse through the entire Greenbroad software afterwards for updated instructions.</p>
+								</li>
+								<li>
+									<p>If changing form entries using Option 2, Greenbroad cannot update instructions after you make changes. It is your responsibility to review the relevant USCIS instructions on your own to make sure you are filing correctly.</p>
+								</li>
+							</ul>
+						</div>
+						<li class="list__item">Review the USCIS instructions for each application form and confirm that all requirements are met correctly.
+						</li>
+						<li class="list__item">Review each cover letter and confirm that all the application forms and documents you intend to submit to USCIS for Submission 1 are correctly listed on the cover letter. Note: All documents from the previous Collect Documents section are included in the cover letter, unless the document is marked as "Skipped" or "N/A" by you. So make sure you have marked each item correctly.
+							<div class="sub__section-btn" (click)="subsectionprintthree=!subsectionprintthree" (clickOutside)="subsectionprintthree=null"><span class="sub__section-icon" [class._active]="subsectionprintthree">&#8250;</span>How to edit my cover letter?</div>
+							<div class="sub-sub__section-inner" *ngIf="subsectionprintthree">
+								<p>Edit your entries in the previous Collect Documents section, and the cover letter will be automatically updated here.</p>
+							</div>
+						</li>
+						<li class="list__item">When you are happy with the application forms and cover letter(s), download and print them out, single-sided 😃
+						</li>
+					</ol>
+					<span class="section__discription">
+						Frequently asked questions:
+					</span>
+					<ul section__list>
+						<li class="list__item">
+							<p>How to print out the forms from a different computer? — You can follow this detailed guide on how to do that.</p>
+						</li>
+						<li class="list__item">
+							<p>Should I print the forms and supporting documents single-sided or double-sided? — According to USCIS, the forms should be printed single-sided. Copies of your supporting documents should also be single-sided.</p>
+						</li>
+						<li class="list__item">
+							<p>Can I generate the forms and cover letters again after making changes? — Yes, of course. You can download and print as many times as you need, and this page updates automatically when you make new changes. Just download the forms and cover letters again to see the changes 👍</p>
+						</li>
+						<li class="list__item">
+							<p>Is it OK if my forms do not have a barcode at the bottom? — Yes, it is OK not to have that barcode on your forms. According to USCIS: "Depending on which internet browser you use, the barcode may not be visible when you open the form. We will process all forms with or without a barcode at the bottom of the page."</p>
+						</li>
+					</ul>
+				</div>
+				<div class="section__sub-sub-inner">
+					<h1 class="section__title">Instant Download of All Forms and Cover Letters</h1>
+					<div class="section__sub-cintainer">
+						<div class="form__title">In case you are wondering:</div>
+						<p>
+							You can download and print as many times as you need, and this page updates automatically when you make new changes 👍
+						</p>
+					</div>
+					<!-- <button class="sub-sub-inner__btn" (click)="modal.show({component:'stripemodal'})">Proceed to Checkout</button> -->
+					<stripe-buy-button
+					buy-button-id="buy_btn_1NPWZ3DBW6vzTeKzsM0SVS9n"
+					publishable-key="pk_live_51IRTF6DBW6vzTeKz7SJzo2ku8Lds2B6SUtszzntTuWzyt5x8xPpoOgYY49urR3vxn73FwUFbLlNjhgtpJftEJmyg00Lz8XrNDe"
+				  ></stripe-buy-button>
+				</div>
+				<div class="section__container-btn">
+					<a class="form__btn-back" (click)="section=1;us.top();"> < Back </a>
+					<a class="form__btn-continue" (click)="section=3;us.top();"> Continue ></a>
+				</div>
+			</div>
+		</div>
+		<div *ngIf="section==3">
+			<div class="section__inner">
+				<div class="section__sub-inner">
+					<h1 class="section__title">Sign, date, etc.</h1>
+					<span class="section__discription">
+						<p>On the printed application forms, please carefully read and complete the following important parts. These parts include signatures, dates, contact information, important statements, declarations, certifications, and contracts with the U.S. government that are required before the application forms can be complete.</p>
+
+						<p>Make sure to use a pen with black ink, as this helps USCIS scan your forms correctly.</p>
+
+						<p><span class="heading">IMPORTANT:</span> Make sure Forms I-130 and I-130A have been generated for you on the previous page. If it's not the case, contact us before proceeding. USCIS may reject your application if it does not include these forms.</p>
+					</span>
+					<p>* Greenbroad, LLC is not an interpreter nor a preparer for these application forms. If you did not use an interpreter or a preparer, fill those parts out with "N/A". If you used an interpreter or a preparer, follow the USCIS form instructions to fill out the interpreter and preparer parts.</p>
+
+					<p>* Each application form must be properly signed. USCIS will not accept a stamped or typewritten name in place of a signature. A legal guardian may also sign for a mentally incompetent person.</p>
+					<div class="sub__section-btn" (click)="subsectionprintfour=!subsectionprintfour" (clickOutside)="subsectionprintfour=null"><span class="sub__section-icon" [class._active]="subsectionprintfour">&#8250;</span>Sources for this page (unless otherwise cited above)</div>
+					<div class="sub-sub__section-inner" *ngIf="subsectionprintfour">
+						USCIS Forms <a href="https://www.uscis.gov/sites/default/files/document/forms/i-130.pdf">I-130</a> ,<a href="https://www.uscis.gov/sites/default/files/document/forms/i-864-pc.pdf">I-864</a>, <a href="https://www.uscis.gov/sites/default/files/document/forms/i-485-pc.pdf">I-485</a>, <a href="https://www.uscis.gov/sites/default/files/document/forms/i-131.pdf">I-131</a>, <a href="https://www.uscis.gov/sites/default/files/document/forms/i-765.pdf">I-765</a>and Greenboard suggestion
+					</div>
+					<div class="section__container-btn">
+						<a class="form__btn-back" (click)="section=2;us.top();"> < Back </a>
+						<a class="form__btn-continue" (click)="section=4;us.top();"> Continue ></a>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div *ngIf="section==4">
+			<div class="section__inner">
+				<div class="section__sub-inner">
+					<h1 class="section__title">Final check</h1>
+					<span class="section__discription">
+						<p>Since this software is a self-help tool to be used at your specific direction (Greenbroad, LLC is not a law firm and does not have special knowledge of immigration law and procedure), it is your responsibility to make sure your application is filed correctly. Do not proceed to the next step until you are confident with the following statements:</p>
+					</span>
+					<span class="form__title">Do both Applicant and Sponsor agree with all of the following statements?
+					</span>
+					<span class="section__discription">
+						<ol class="section__list">
+							<li class="list__item">Applicant and Sponsor have read and understood the relevant USCIS and Department of State Green Card application instructions, application form instructions and other official instructions published by the U.S. government.</li>
+							<li class="list__item">Based on the official U.S. government instructions mentioned above, Applicant and Sponsor have decided that they have completed the correct application forms, supporting documents and cover letter(s).</li>
+							<li class="list__item">Applicant and Sponsor have reviewed all the information contained in, and to be submitted with, the documents generated by this software for errors and omissions. All the information within the generated documents is as Applicant and Sponsor intended.</li>
+						</ol>
+					</span>
+					<span class="section__discription">
+						Greenbroad Suggestion: As an optional step, if you want to double ensure accuracy, you can take your completed application to an immigration lawyer for a thorough review. Many lawyers provide remote services if you do not want to visit their office. An application review usually takes about 2 - 2.5 hours (1 hour for the lawyer to review the forms and documents on his/her own, and another 1 to 1.5 hours to meet with the applicant and sponsor remotely or in person). It usually costs around $500. In contrast, hiring a lawyer to do the whole application for you can take two months and cost $4,000 and up.
+						If you need a lawyer recommendation, just contact us 😊
+					</span>
+
+					<span class="section__discription">
+						That's great! USCIS recommends that you print or save a copy of your completed application to review in the future and for your records.
+					</span>
+					<div class="sub-discription">Sources for this page (unless otherwise cited above): Greenbroad suggestion only, not from US</div>
+				</div>
+				<div class="section__container-btn">
+					<a class="form__btn-back" (click)="section=2;us.top();"> < Back </a>
+					<a class="form__btn-continue" (click)="us.section='submitapplication';us.top();"> Continue ></a>
+				</div>
+			</div>
+		</div>
+
+

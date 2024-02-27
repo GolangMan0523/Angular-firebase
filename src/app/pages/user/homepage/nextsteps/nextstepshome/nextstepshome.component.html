@@ -1,0 +1,28 @@
+<div *ngIf="section==1">
+	<div class="section__inner">
+		<h1 class="section__title">Step 5 of 5 - Next Steps</h1>
+		<img class="section__img"  src="assets/steps.png" alt="">
+
+		<div class="section__discription">Congratulations on completing Submission 2 🎉 Now, we will explain in detail what happens next, all the way until you receive that lovely green card. This includes:</div>
+		<div class="section__container" >
+			<ul class="section__list">
+				<li>Timeline after Submission 2</li>
+				<li>How to track your case status</li>
+				<li>Things to note while Submission 2 is pending</li>
+				<li>Prepare for the Green Card interview</li>
+				<li>Enter the U.S. and receive Green Card</li>
+				<li>Things to note after receiving Green Card</li>
+			</ul>
+			<span>Let's get started!</span> 
+		</div>
+
+		<div class="section__container-btn">
+			<a class="form__btn-back" (click)="section=1;us.top();"> < Back </a>
+			<a class="form__btn-continue" (click)="us.section= 'timeline';us.top();"> Continue ></a>
+		</div>
+
+
+		
+	</div>
+
+</div>

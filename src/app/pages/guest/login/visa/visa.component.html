@@ -1,0 +1,11 @@
+<div class="visa__inner">
+	<h1 class="visa__title">Did {{us.data.application.name}} enter the U.S. on a K-1 fiancé(e) visa?</h1>
+	<span class="physicaladdress__discription">The application process is different if {{us.data.application.name}} used a fiancé(e) visa.</span>
+	<div class="visa__cardholder">
+		<a class="visa__link" (click)="us.auth='greenboardsupport'; us.data.visa ='inside'; us.update()">Yes</a>
+		<a class="visa__link" (click)="us.auth='price'; us.data.price ='inside'; us.update()">No</a>
+	</div>
+	<div class="container__btn">
+		<a class="visa__btn" (click)="us.auth='physicaladdress';us.top();"> < Back </a>
+	</div>
+</div>

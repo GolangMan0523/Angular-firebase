@@ -1,0 +1,170 @@
+.section__inner {
+  max-width: 1200px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 35px;
+  border-top: 3px solid #ed9121;
+  background: #fff;
+  box-shadow: 0 0 25px rgb(0 0 0 / 25%);
+
+  .done__img {
+    width: 100%;
+    height: 350px;
+    max-width: 350px;
+  }
+
+  .section__title {
+    color: #1972F5;
+    padding: 0 0 25px 0;
+  }
+
+
+  .section__discription {
+    padding-top: 25px;
+    color: rgba(0, 0, 0, .5);
+
+  }
+
+  .section__container {
+    width: 100%;
+    flex-direction: column;
+    display: flex;
+  }
+
+  .sub-discription {
+    padding: 50px;
+    color: rgba(0, 0, 0, .5);
+  }
+
+  .section__container-btn {
+    padding-top: 50px;
+    width: 100%;
+  }
+
+  .form__btn-continue {
+    margin-left: 25px;
+    padding: 10px;
+    background: #1972F5;
+    border-radius: 5px;
+    text-decoration: none;
+    color: #fff;
+    cursor: pointer;
+  }
+
+  .form__btn-continue:hover {
+    background: #8290ff;
+    transition: 0.5s;
+
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .section__inner {
+    max-width: 1200px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 25px;
+    border-top: 3px solid #ed9121;
+    background: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+
+    .section__title {
+      color: #1972F5;
+      text-align: center;
+    }
+
+  }
+
+}
+
+input {
+  font-family: inherit;
+  /* 1 */
+  font-size: 100%;
+  /* 1 */
+  line-height: 1.15;
+  /* 1 */
+  margin: 0;
+  /* 2 */
+  padding: 10px;
+  text-transform: uppercase;
+}
+
+
+.form__check {
+  display: flex;
+  flex-direction: column;
+  padding-top: 25px;
+}
+
+.form__check {
+  padding-bottom: 20px;
+}
+
+.form__title {
+  padding: 15px 0 7px 0;
+  font-weight: 600;
+}
+
+textarea {
+  width: 100%;
+}
+
+.feedback-btn {
+  padding: 10px;
+  background: #1972F5;
+  border-radius: 5px;
+  text-decoration: none;
+  color: #fff;
+  cursor: pointer;
+  border: none;
+  outline: none;
+
+
+}
+
+.feedback-btn:hover {
+  padding: 10px;
+  background: #4d61fc85;
+  border-radius: 5px;
+  text-decoration: none;
+  color: #fff;
+  cursor: pointer;
+
+}
+
+
+.ratized {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 600px;
+}
+
+.ratized input[type="radio"] {
+  position: fixed;
+  top: 0;
+  right: 100%;
+}
+
+
+.ratized label {
+  font-size: 3.8em;
+  cursor: pointer;
+}
+
+.ratized input[type="radio"]:checked~input+label {
+  background: none;
+  color: #aaa;
+}
+
+.ratized input+label {
+  color: #ed9121;
+  display: contents;
+}

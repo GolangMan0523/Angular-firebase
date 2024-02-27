@@ -1,0 +1,11 @@
+<div class="cardholder__inner">
+	<h1 class="cardholder__title">Is {{us.data.application.sponsorname}} a U.S. citizen or a Green Card holder?</h1>
+	<span class="cardholder__discription">The application process differs depending on {{us.data.application.sponsorname + "'s"}} citizenship status. We will help you select the right process for your case.</span>
+	<div class="container__cardholder">
+		<a class="cardholder__link" (click)="us.auth='application'; us.data.cardholder='us'; us.update()">U.S.Citizen</a>
+		<a class="cardholder__link" (click)="us.auth='application'; us.data.cardholder='greencard'; us.update()">Green Card Holder</a>
+	</div>
+	<div class="container__btn">
+		<a class="cardholder__btn" (click)="us.auth='';us.top();"> < Back </a>
+	</div>
+</div>

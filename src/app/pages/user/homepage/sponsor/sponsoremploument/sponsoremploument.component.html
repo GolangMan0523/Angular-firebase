@@ -1,0 +1,423 @@
+<div *ngIf="us.pagesection == 1">
+  <div class="section__inner">
+    <h1 class="section__title">We're almost done!</h1>
+    <img src="assets/smile-four.png" />
+    <div class="section__discription">
+      Now, let's go over
+      {{
+      (us.data.application.sponsorname &&
+      us.data.application.sponsorname + "'s") ||
+      "Sponsor's"
+      }}
+      employment history.
+    </div>
+    <div class="section__container-btn">
+      <a class="form__btn-back" (click)="us.section = 'sponsorfamily'; us.pagesection = 2; us.top()">
+        < Back </a>
+          <a class="form__btn-continue" (click)="us.pagesection = 2; us.top()">
+            Continue ></a>
+    </div>
+  </div>
+</div>
+<div *ngIf="us.pagesection == 2">
+  <div class="section-form__inner">
+    <h1 class="section__title">
+      {{
+      (us.data.application.sponsorname &&
+      us.data.application.sponsorname + "'s") ||
+      "Sponsor's"
+      }}
+      employment history for the last five years
+    </h1>
+    <span class="section__discription">Provide
+      {{
+      (us.data.application.sponsorname &&
+      us.data.application.sponsorname + "'s") ||
+      "Sponsor's"
+      }}
+      employments both inside and outside the U.S. for the last five years, and
+      include
+      {{
+      (us.data.application.sponsorname &&
+      us.data.application.sponsorname + "'s") ||
+      "Sponsor's"
+      }}
+      current employment (if applicable).</span>
+    <div class="form__inner">
+      <div class="checkbox__inner">
+        <input type="checkbox" name="employmenthistory_name" [(ngModel)]="us.data.application.employmenthistory_name"
+          (ngModelChange)="us.update()" />
+        <span>{{ us.data.application.sponsorname || "Sponsor" }} was not employed
+          in the last five years.</span>
+      </div>
+      <div *ngIf="!us.data.application.employmenthistory_name">
+        <div *ngFor="
+            let name of us.data.application.sponsoremploymentfiveyears_names;
+            index as i
+          ">
+          <div class="add-form__inner">
+            <div class="container__title">
+              <div class="sub__title">EMPLOYER {{ i + 1 }}</div>
+              <button class="" (click)="
+                  us.data.application.sponsoremploymentfiveyears_names.splice(
+                    i,
+                    1
+                  );
+                  us.update()
+                ">
+                X
+              </button>
+            </div>
+            <div class="container__forms">
+              <label>
+                <span class="form__title">Name of employer/company</span>
+                <input type="text"
+                  maxlength="27"
+                  oninput="this.value = this.value.replace(/[^a-zA-Z\s]/g, '');"
+                  [class.err]="err.companyName"
+                  [(ngModel)]="name.admissiontown_name"
+                  (ngModelChange)="name.admissiontown_name = name.admissiontown_name.toUpperCase();
+                    us.update(); err.companyName = false; validateLength27(name.admissiontown_name)"
+                  (blur)="!name.admissiontown_name && (err.companyName = true)" />
+                  <span *ngIf="err.companyName" class="errspan">This field is required</span>
+
+              </label>
+
+              <label>
+                <span class="form__title">Employer address</span>
+                <div class="custom-inner">
+                  <span class="form__title">Type of address</span>
+                  <select [(ngModel)]="name.adaddressemployer_name"
+                    (ngModelChange)="us.update(); err.typeAddress = false" [class.err]="err.typeAddress" (blur)="
+                      !name.adaddressemployer_name && (err.typeAddress = true)
+                    ">
+                    <option value="USA">U.S.address</option>
+                    <option value="Foreign address">Foreign address</option>
+                  </select>
+                  <span *ngIf="err.typeAddress" class="errspan">This field is required</span>
+                </div>
+
+                <label>
+                  <span class="form__title">Street number and name</span>
+                  <input type="text"
+                    maxlength="25"
+                    oninput="this.value = this.value.replace(/[^a-zA-Z0-9\s]/g, '');"
+                    [class.err]="err.streetName"
+                    [(ngModel)]="name.togetheremployer_name"
+                    (ngModelChange)="name.togetheremployer_name = name.togetheremployer_name.toUpperCase();
+                      us.update(); err.streetName = false; validateLength25(name.togetheremployer_name)"
+                    (blur)="
+                      !name.togetheremployer_name && (err.streetName = true)
+                    " />
+                    <span *ngIf="err.streetName" class="errspan">This field is required</span>
+                </label>
+
+
+                <div>
+                  <div class="double__form">
+                    <span class="form__title">Apt./Ste./Flr. Number (if any)</span>
+                    <div>
+                      <select name="" id="" [(ngModel)]="name.employersponsor_name" (ngModelChange)="us.update()">
+                        <option value="Apt">Apt.</option>
+                        <option value="Ste">Ste.</option>
+                        <option value="Flr">Flr.</option>
+                      </select>
+                      <input type="text" maxlength="4" placeholder=""
+                        [(ngModel)]="name.sponsorphysicalusstetogether_name" (ngModelChange)="us.update()" />
+                    </div>
+                  </div>
+                  <div class="form">
+                    <label>
+                      <span class="form__title">City or town</span>
+                      <input type="text"
+                        maxlength="17"
+                        oninput="this.value = this.value.replace(/[^a-zA-Z\s]/g, '');"
+                        [class.err]="err.cityOrTown"
+                        [(ngModel)]="name.employertogether_name"
+                        (ngModelChange)="name.employertogether_name = name.employertogether_name.toUpperCase();
+                          us.update(); err.cityOrTown = false; validateLength17(name.employertogether_name)"
+                        (blur)="
+                          !name.employertogether_name && (err.cityOrTown = true)
+                        " />
+                        <span *ngIf="err.cityOrTown" class="errspan">This field is required</span>
+                    </label>
+
+                    <div>
+                      <label *ngIf="name.adaddressemployer_name == 'USA'">
+                        <span class="form__title">State</span>
+                        <select [class.err]="err.state" [(ngModel)]="name.togetherinceemployer_name"
+                          (ngModelChange)="us.update(); err.state = false" name="" id="" (blur)="
+                            !name.togetherinceemployer_name &&
+                              (err.state = true)
+                          ">
+                          <option>AK</option>
+                          <option>AZ</option>
+                          <option>AR</option>
+                          <option>CA</option>
+                          <option>CO</option>
+                          <option>CT</option>
+                          <option>DE</option>
+                          <option>DC</option>
+                          <option>FL</option>
+                          <option>GA</option>
+                          <option>HI</option>
+                          <option>ID</option>
+                          <option>IL</option>
+                          <option>IN</option>
+                          <option>IA</option>
+                          <option>KS</option>
+                          <option>KY</option>
+                          <option>LA</option>
+                          <option>ME</option>
+                          <option>MD</option>
+                          <option>MA</option>
+                          <option>MI</option>
+                          <option>MN</option>
+                          <option>MS</option>
+                          <option>MO</option>
+                          <option>MT</option>
+                          <option>NE</option>
+                          <option>NV</option>
+                          <option>NH</option>
+                          <option>NJ</option>
+                          <option>NM</option>
+                          <option>NY</option>
+                          <option>NC</option>
+                          <option>ND</option>
+                          <option>OH</option>
+                          <option>OK</option>
+                          <option>OR</option>
+                          <option>PA</option>
+                          <option>RI</option>
+                          <option>SC</option>
+                          <option>SD</option>
+                          <option>TN</option>
+                          <option>TX</option>
+                          <option>UT</option>
+                          <option>VT</option>
+                          <option>VA</option>
+                          <option>WA</option>
+                          <option>WV</option>
+                          <option>WI</option>
+                          <option>WY</option>
+                        </select>
+                      </label>
+                      <span *ngIf="err.state" class="errspan">This field is required</span>
+                      <label *ngIf="name.adaddressemployer_name == 'USA'">
+                        <span class="form__title">ZIP code</span>
+                        <input type="text" maxlength="5"
+                          oninput="this.value = this.value.replace(/[^0-9.]/g, ''); this.value = this.value.replace(/(\..*)\./g, '$1')"
+                          [(ngModel)]="name.togetherlcodeemployer_name" [class.err]="err.zip"
+                          (ngModelChange)="us.update(); err.zip = false" (blur)="
+                          !name.togetherlcodeemployer_name && (err.zip = true)
+                        " />
+                        <span *ngIf="err.zip" class="errspan">This field is required</span>
+                      </label>
+
+                    </div>
+                  </div>
+                </div>
+                <div>
+                  <label *ngIf="name.adaddressemployer_name == 'Foreign address'">
+                    <span class="form__title">Province</span>
+                    <input type="text"
+                      maxlength="8"
+                      oninput="this.value = this.value.replace(/[^a-zA-Z\s]/g, '');"
+                      [class.err]="err.province"
+                      [(ngModel)]="name.employerprovinceplace_name"
+                      (ngModelChange)="name.employerprovinceplace_name = name.employerprovinceplace_name.toUpperCase();
+                        us.update(); err.province = false; validateLength8(name.employerprovinceplace_name)"
+                      (blur)="
+                        !name.employerprovinceplace_name &&
+                          (err.province = true)
+                      " />
+                      <span *ngIf="err.province" class="errspan">This field is required</span>
+                  </label>
+
+
+                  <label *ngIf="name.adaddressemployer_name == 'Foreign address'">
+                    <span class="form__title">Postal code</span>
+                    <input type="text"
+                      oninput="this.value = this.value.replace(/[^a-zA-Z0-9.]/g, '');"
+                      [class.err]="err.postalCode" maxlength="17"
+                      [(ngModel)]="name.employerpostalcodeplace_name"
+                      (ngModelChange)="name.employerpostalcodeplace_name = name.employerpostalcodeplace_name.toUpperCase();
+                        us.update(); err.postalCode = false; validateLength17(name.employerpostalcodeplace_name)"
+                      (blur)="
+                        !name.employerpostalcodeplace_name &&
+                          (err.postalCode = true)
+                      " />
+                      <span *ngIf="err.postalCode" class="errspan">This field is required</span>
+                  </label>
+
+
+                  <label *ngIf="name.adaddressemployer_name == 'Foreign address'">
+                    <span class="form__title">Country</span>
+                    <input type="text"
+                      maxlength="17"
+                      oninput="this.value = this.value.replace(/[^a-zA-Z\s]/g, '');"
+                      [class.err]="err.countryName"
+                      [(ngModel)]="name.employercountry_name"
+                      (ngModelChange)="name.employercountry_name = name.employercountry_name.toUpperCase();
+                        us.update(); err.countryName = false; validateLength17(name.employercountry_name)"
+                      (blur)="
+                        !name.employercountry_name && (err.countryName = true)
+                      " />
+                      <span *ngIf="err.countryName" class="errspan">This field is required</span>
+                  </label>
+
+                </div>
+              </label>
+              <label>
+                <span class="form__title">{{
+                  (us.data.application.sponsorname &&
+                  us.data.application.sponsorname + "'s") ||
+                  "Sponsor's"
+                  }}
+                  occupation</span>
+                <input type="text"
+                  maxlength="27"
+                  oninput="this.value = this.value.replace(/[^a-zA-Z\s]/g, '');"
+                  [class.err]="err.occupation"
+                  [(ngModel)]="name.admissionoccupation_name"
+                  (ngModelChange)="us.update(); err.occupation = false; validateLength27(name.admissionoccupation_name)"
+                  (blur)="
+                    !name.admissionoccupation_name && (err.occupation = true)
+                  " />
+              </label>
+              <label>
+                <span class="form__title">Employment start date</span>
+                <!-- <ng2-flatpickr placeholder="mm/dd/yyyy" [config]="pickerOptions" [setDate]="name.employmentstart_name"
+                  [(ngModel)]="name.employmentstart_name" (ngModelChange)="us.update();"></ng2-flatpickr> -->
+                <input type="date" placeholder="mm/dd/yyyy" [(ngModel)]="name.employmentstart_name" (ngModelChange)="us.update();">
+                <my-date [class.err]="err.emplStartDate" [date]="name.employmentstart_name" (update)="
+                    name.employmentstart_name = $event;
+                    us.update();
+                    err.emplStartDate = false
+                  " (blur)="
+                    !name.employmentstart_name && (err.emplStartDate = true)
+                  ">
+                </my-date>
+                <span *ngIf="err.emplStartDate" class="errspan">This field is required</span>
+              </label>
+
+
+              <div class="form__title">Employment end date</div>
+              <div class="sub-checkbox__inner">
+                <input type="checkbox" name="d" [(ngModel)]="name.d" (ngModelChange)="us.update()" />
+                <span>This is current employment</span>
+              </div>
+
+              <div *ngIf="!name.d">
+                <label>
+                  <!-- <ng2-flatpickr placeholder="mm/dd/yyyy" [config]="pickerOptions" [setDate]="name.admissiontownnn_name"
+                  [(ngModel)]="name.admissiontownnn_name" (ngModelChange)="us.update();"></ng2-flatpickr> -->
+                  <input type="date" placeholder="mm/dd/yyyy" [(ngModel)]="name.admissiontownnn_name" (ngModelChange)="us.update();">
+                  <my-date [date]="name.admissiontownnn_name" (update)="
+                      name.admissiontownnn_name = $event;
+                      us.update();
+                      err.emplEndDate = false
+                    " [class.err]="err.emplEndDate" (blur)="
+                      !name.admissiontownnn_name && (err.emplEndDate = true)
+                    ">
+                  </my-date>
+                  <span *ngIf="err.emplEndDate" class="errspan">This field is required</span>
+                </label>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div>
+          <button class="employmente__btn" (click)="employmenteadd()">
+            + Add employment
+          </button>
+        </div>
+      </div>
+      <div *ngIf="us.data.application.employmenthistory_name">
+        <label>
+          <span class="form__title">Since when has
+            {{ us.data.application.sponsorname || "Sponsor" }} been
+            unemployed?</span>
+
+          <my-date [date]="us.data.application.employmentbeenunemployed_name" [class.err]="err.sinceUnemployed"
+            (update)="
+              us.data.application.employmentbeenunemployed_name = $event;
+              us.update();
+              err.sinceUnemployed = false
+            " (blur)="
+              !us.data.application.employmentbeenunemployed_name &&
+                (err.sinceUnemployed = true)
+            "></my-date>
+        </label>
+        <span *ngIf="err.sinceUnemployed" class="errspan">This field is required</span>
+      </div>
+    </div>
+    <div class="form__subdiscription">
+      Sources for this page (unless otherwise cited above): USCIS Forms
+      <a target="_blank" href="https://www.uscis.gov/sites/default/files/document/forms/i-130.pdf">I-130</a>,<a
+        target="_blank" href="https://www.uscis.gov/sites/default/files/document/forms/i-864.pdf">I-864</a>,
+    </div>
+    <div class="section__container-btn">
+      <a class="form__btn-back" (click)="us.pagesection = 1">
+        < Back </a>
+          <a class="form__btn-continue" (click)="ChangeTab2(3)"> Continue ></a>
+    </div>
+  </div>
+</div>
+<div *ngIf="us.pagesection == 3">
+  <div class="section-form__inner">
+    <h1 class="section__title">
+      Is {{ us.data.application.sponsorname || "Sponsor" }} currently retired?
+    </h1>
+    <div class="form__check">
+      <label>
+        <input type="radio" name="sponsor gainlawful_name" [value]="'yes'"
+          [(ngModel)]="us.data.application.sponsoradministration_name"
+          (ngModelChange)="us.update(); err.choice1 = false" (blur)="
+            !us.data.application.sponsoradministration_name &&
+              (err.choice1 = true)
+          " />
+        <span class="check">Yes</span>
+      </label>
+      <label>
+        <input type="radio" name="sponsor gainlawful_name" [value]="'no'"
+          [(ngModel)]="us.data.application.sponsoradministration_name"
+          (ngModelChange)="us.update(); err.choice1 = false" (blur)="
+            !us.data.application.sponsoradministration_name &&
+              (err.choice1 = true)
+          " />
+        <span class="check">No</span>
+      </label>
+    </div>
+    <span *ngIf="err.choice1" class="errspan">This field is required</span>
+
+    <div class="form__inner" *ngIf="us.data.application.sponsoradministration_name == 'yes'">
+      <label for="">
+        <span class="form__title">On what date did
+          {{ us.data.application.sponsorname || "Sponsor" }} retire?</span>
+        <!-- <ng2-flatpickr placeholder="mm/dd/yyyy" [config]="pickerOptions"
+          [setDate]="us.data.application.citidatedid_name" [(ngModel)]="us.data.application.citidatedid_name"
+          (ngModelChange)="us.update();"></ng2-flatpickr> -->
+        <input type="date" placeholder="mm/dd/yyyy" [(ngModel)]="us.data.application.citidatedid_name" (ngModelChange)="us.update();">
+        <my-date [date]="us.data.application.citidatedid_name" [class.err]="err.dateRetire" (update)="
+            us.data.application.citidatedid_name = $event;
+            us.update();
+            err.dateRetire = false
+          " (blur)="
+            !us.data.application.citidatedid_name && (err.dateRetire = true)
+          "></my-date>
+        <span *ngIf="err.dateRetire" class="errspan">This field is required</span>
+      </label>
+    </div>
+    <span class="form__subdiscription">
+      Sources for this page (unless otherwise cited above): USCIS Forms
+      <a target="_blank" href="https://www.uscis.gov/sites/default/files/document/forms/i-864.pdf">I-864</a>,
+    </span>
+    <div class="section__container-btn">
+      <a class="form__btn-back" (click)="us.pagesection = 2; us.top()">
+        < Back </a>
+          <a class="form__btn-continue" (click)="us.section = 'enotification'; us.pagesection = 1; us.top()">Continue >
+          </a>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,301 @@
+<div *ngIf="section==1">
+	<div class="section__inner">
+		<div class="inner">
+			<h1 class="section__title">Proof of U.S. citizenship</h1>
+			<div class="proof__discription">Affidavit of Support (Form I-864) requires the following supporting
+				documents.</div>
+        <div style="padding: 15px 0 0 0;">
+        <span style="font-weight: 600;">NOTE:</span> <span> You only need to provide ONE of the documents listed below.</span></div>
+			<div class="sub__section-btn" (click)="proofus=!proofus" (clickOutside)="proofus=null">
+				<div class="sub__section-icon" [class._active]="proofus">&#8250;</div>What if you were born in the U.S.
+				and an official document is not available?
+			</div>
+			<div class="sub-sub__section-inner" *ngIf="proofus">
+				<p>In this situation, submit a statement from the appropriate civil authority certifying that the
+					document or documents are not available. You must also submit secondary evidence, which may include
+					one or more of the following records listed below.</p>
+				<ul class="proofus__list">
+					<li> <span>Religious record:</span> A copy of a document bearing the seal of the religious
+						organization showing that the baptism, dedication, or comparable rite occurred within two months
+						after birth, and showing the date and place of the child's birth, date of the religious
+						ceremony, and the names of the child's parents.</li>
+					<li><span>School record:</span> A letter from the authority (preferably the first school attended)
+						showing the date of admission to the school, the child's date of birth or age at that time,
+						place of birth, and names of the parents.</li>
+					<li> <span>Census record:</span> State or Federal census records showing the names, place of birth,
+						date of birth, or the age of the person listed.</li>
+					<li>If records like those described above are not available, then you may submit two or more written
+						statements from individuals who were living at the time and who have personal knowledge of the
+						event you are trying to prove, such as the date and place of birth, marriage, or death. The
+						individuals making the written statements do not have to be U.S. citizens. Each written
+						statement must contain the following information regarding the individual making the written
+						statement: his or her full name, address, date and place of birth, full information concerning
+						the event, and complete details explaining how the individual acquired personal knowledge of the
+						event. Finally, each individual's written statement must include the following declaration, “I
+						declare (or certify, verify, or state) under penalty of perjury under the laws of the United
+						States of America that the foregoing is true and correct. Executed on [date], [signature].”</li>
+					<li> <span>For parent-child relationships only:</span> If other forms of evidence have proven
+						inconclusive, the petitioner may submit on a voluntary basis other evidence of a birth parent
+						and birth child relationship to include deoxyribonucleic acid (DNA) testing. DNA test results
+						will only be accepted by USCIS from parentage-testing laboratories accredited by the American
+						Association of Blood Banks (AABB). A list of laboratories can be viewed at aabb.org.</li>
+				</ul>
+				<div class="sub__discription">Source: <a style="color:#4D61FC;"
+						href="https://www.uscis.gov/sites/default/files/document/forms/i-130instr.pdf">USCIS Form I-130
+						Instructions Pages 6, 8 & 9</a> </div>
+			</div>
+		</div>
+		<div class="form__inner">
+			<span class="forms__title">Provide ONE of the following documents for your application (you can provide more
+				than one, but only one is required):</span>
+			<div class="sub__form" *ngIf="!us.data.docsus.proofus.unitedstates">
+				<span class="title__form">A copy of {{us.data.application.sponsorname && us.data.application.sponsorname
+					+ "'s" || "Sponsor's"}} birth certificate, issued by a civil registrar, vital statistics office, or
+					other civil authority showing that {{us.data.application.sponsorname &&
+					us.data.application.sponsorname
+					|| "Sponsor"}} was born in the United States </span>
+				<div class="form-btn__container">
+					<button (click)="us.data.docsus.proofus.unitedstates='complete';us.update();">Complete</button>
+					<label for="">
+						<input type="checkbox" (click)="us.data.docsus.proofus.unitedstates='skip';us.update();">
+						<span class="check__title">Skip</span>
+					</label>
+				</div>
+			</div>
+			<div class="sub__form" *ngIf="!us.data.docsus.proofus.naturalizationservice">
+				<span class="title__form">A copy of {{us.data.application.sponsorname && us.data.application.sponsorname
+					+ "'s" || "Sponsor's"}} naturalization certificate issued by USCIS or the former Immigration and
+					Naturalization Service (INS)</span>
+				<div class="form-btn__container">
+					<button
+						(click)="us.data.docsus.proofus.naturalizationservice='complete';us.update();">Complete</button>
+					<label for="">
+						<input type="checkbox"
+							(click)="us.data.docsus.proofus.naturalizationservice='skip';us.update();">
+						<span class="check__title">Skip</span>
+					</label>
+				</div>
+			</div>
+			<div class="sub__form" *ngIf="!us.data.docsus.proofus.immigration">
+				<span class="title__form">A copy of {{us.data.application.sponsorname && us.data.application.sponsorname
+					+ "'s" || "Sponsor's"}} certificate of citizenship issued by USCIS or the former Immigration and
+					Naturalization Service (INS) </span>
+				<div class="form-btn__container">
+					<button (click)="us.data.docsus.proofus.immigration='complete';us.update();">Complete</button>
+					<label for="">
+						<input type="checkbox" (click)="us.data.docsus.proofus.immigration='skip';us.update();">
+						<span class="check__title">Skip</span>
+					</label>
+				</div>
+			</div>
+			<div class="sub__form" *ngIf="!us.data.docsus.proofus.crba">
+				<span class="title__form">A copy of {{us.data.application.sponsorname && us.data.application.sponsorname
+					|| "Sponsor"}}'s Form FS-240, Consular Report of Birth Abroad (CRBA), issued
+					by a U.S. Embassy or U.S. Consulate
+				</span>
+				<div class="form-btn__container">
+					<button (click)="us.data.docsus.proofus.crba='complete';us.update();">Complete</button>
+					<label for="">
+						<input type="checkbox" (click)="us.data.docsus.proofus.crba='skip';us.update();">
+						<span class="check__title">Skip</span>
+					</label>
+				</div>
+			</div>
+			<div class="sub__form" *ngIf="us.data.docsus.proofus.passport">
+				<span class="title__form">A copy of {{us.data.application.sponsorname && us.data.application.sponsorname
+					+ "'s" || "Sponsor's"}} unexpired U.S. passport</span>
+				<div class="form-btn__container">
+					<button (click)="us.data.docsus.proofus.passport='complete';us.update();">Complete</button>
+					<label for="">
+						<input type="checkbox" (click)="us.data.docsus.proofus.passport='skip';us.update();">
+						<span class="check__title">Skip</span>
+					</label>
+				</div>
+			</div>
+			<div class="sub__form" *ngIf="us.data.docsus.proofus.validpassport">
+				<span class="title__form">An original statement from a U.S. consular officer verifying that
+					{{us.data.application.sponsorname || "Sponsor"}} is a U.S. citizen with a valid passport</span>
+				<div class="form-btn__container">
+					<button (click)="us.data.docsus.proofus.validpassport='complete';us.update();">Complete</button>
+					<label for="">
+						<input type="checkbox" (click)="us.data.docsus.proofus.validpassport='skip';us.update();">
+						<span class="check__title">Skip</span>
+					</label>
+				</div>
+			</div>
+			<div class="sub__form" *ngIf="!us.data.docsus.proofus.passporacopu">
+				<span class="title__form">A copy of {{us.data.application.sponsorname && us.data.application.sponsorname
+					+ "'s" || "Sponsor's"}} unexpired U.S. passport</span>
+				<div class="form-btn__container">
+					<button (click)="us.data.docsus.proofus.passporacopu='complete';us.update();">Complete</button>
+					<label for="">
+						<input type="checkbox" (click)="us.data.docsus.proofus.passporacopu='skip';us.update();">
+						<span class="check__title">Skip</span>
+					</label>
+				</div>
+			</div>
+			<div class="sub__form" *ngIf="!us.data.docsus.proofus.validpass">
+				<span class="title__form">An original statement from a U.S. consular officer verifying that
+					{{us.data.application.sponsorname && us.data.application.sponsorname
+					|| "Sponsor"}} is a U.S. citizen with a valid passport</span>
+				<div class="form-btn__container">
+					<button (click)="us.data.docsus.proofus.validpass='complete';us.update();">Complete</button>
+					<label for="">
+						<input type="checkbox" (click)="us.data.docsus.proofus.validpass='skip';us.update();">
+						<span class="check__title">Skip</span>
+					</label>
+				</div>
+			</div>
+			<div class="addpassport">
+				<button class="followingdocuments__btn" (click)="modal.show({component: 'addphoto'});"> + Add New Item </button>
+			</div>
+		</div>
+		<div class="form__inner" *ngIf="us.data.docsus.proofus.unitedstates">
+			<div class="sub__form">
+				<span class="title__form">A copy of {{us.data.application.sponsorname && us.data.application.sponsorname
+					+ "'s" || "Sponsor's"}} birth certificate, issued by a civil registrar, vital statistics office, or
+					other civil authority showing that {{us.data.application.sponsorname &&
+					us.data.application.sponsorname
+					|| "Sponsor"}} was born in the United States </span>
+				<div class="form-btn__container" *ngIf="us.data.docsus.proofus.unitedstates=='complete'">
+					<button (click)="us.data.docsus.proofus.unitedstates='';us.update();">Undo</button>
+					<span>Completed</span>
+				</div>
+				<div class="form__btn" *ngIf="us.data.docsus.proofus.unitedstates=='skip'">
+					<input type="checkbox" (click)="us.data.docsus.proofus.unitedstates='';us.update();">
+					<span class="check__title" (click)="us.data.docsus.proofus.unitedstates='';us.update();">Skip</span>
+				</div>
+			</div>
+		</div>
+		<div class="form__inner" *ngIf="us.data.docsus.proofus.naturalizationservice">
+			<div class="sub__form">
+				<span class="title__form">A copy of {{us.data.application.sponsorname && us.data.application.sponsorname
+					+ "'s" || "Sponsor's"}} naturalization certificate issued by USCIS or the former Immigration and
+					Naturalization Service (INS)</span>
+				<div class="form-btn__container" *ngIf="us.data.docsus.proofus.naturalizationservice=='complete'">
+					<button (click)="us.data.docsus.proofus.naturalizationservice='';us.update();">Undo</button>
+					<span>Completed</span>
+				</div>
+				<div class="form__btn" *ngIf="us.data.docsus.proofus.naturalizationservice=='skip'">
+					<input type="checkbox" (click)="us.data.docsus.proofus.naturalizationservice='';us.update();">
+					<span class="check__title"
+						(click)="us.data.docsus.proofus.naturalizationservice='';us.update();">Skip</span>
+				</div>
+			</div>
+		</div>
+		<div class="form__inner" *ngIf="us.data.docsus.proofus.immigration">
+			<div class="sub__form">
+				<span class="title__form">A copy of {{us.data.application.sponsorname && us.data.application.sponsorname
+					+ "'s" || "Sponsor's"}} certificate of citizenship issued by USCIS or the former Immigration and
+					Naturalization Service (INS) </span>
+				<div class="form-btn__container" *ngIf="us.data.docsus.proofus.immigration=='complete'">
+					<button (click)="us.data.docsus.proofus.immigration='';us.update();">Undo</button>
+					<span>Completed</span>
+				</div>
+				<div class="form__btn" *ngIf="us.data.docsus.proofus.immigration=='skip'">
+					<input type="checkbox" (click)="us.data.docsus.proofus.immigration='';us.update();">
+					<span class="check__title" (click)="us.data.docsus.proofus.immigration='';us.update();">Skip</span>
+				</div>
+			</div>
+		</div>
+		<div class="form__inner" *ngIf="us.data.docsus.proofus.crba">
+			<div class="sub__form">
+				<span class="title__form">A copy of {{us.data.application.sponsorname && us.data.application.sponsorname
+					|| "Sponsor"}}'s Form FS-240, Consular Report of Birth Abroad (CRBA), issued
+					by a U.S. Embassy or U.S. Consulate
+				</span>
+				<div class="form-btn__container" *ngIf="us.data.docsus.proofus.crba=='complete'">
+					<button (click)="us.data.docsus.proofus.crba='';us.update();">Undo</button>
+					<span>Completed</span>
+				</div>
+				<div class="form__btn" *ngIf="us.data.docsus.proofus.crba=='skip'">
+					<input type="checkbox" (click)="us.data.docsus.proofus.crba='';us.update();">
+					<span class="check__title" (click)="us.data.docsus.proofus.crba='';us.update();">Skip</span>
+				</div>
+			</div>
+		</div>
+		<div class="form__inner" *ngIf="us.data.docsus.proofus.passport">
+			<div class="sub__form">
+				<span class="title__form">A copy of {{us.data.application.sponsorname && us.data.application.sponsorname
+					+ "'s" || "Sponsor's"}} unexpired U.S. passport</span>
+				<div class="form-btn__container" *ngIf="us.data.docsus.proofus.passport=='complete'">
+					<button (click)="us.data.docsus.proofus.passport='';us.update();">Undo</button>
+					<span>Completed</span>
+				</div>
+				<div class="form__btn" *ngIf="us.data.docsus.proofus.passport=='skip'">
+					<input type="checkbox" (click)="us.data.docsus.proofus.passport='';us.update();">
+					<span class="check__title" (click)="us.data.docsus.proofus.passport='';us.update();">Skip</span>
+				</div>
+			</div>
+		</div>
+		<div class="form__inner" *ngIf="us.data.docsus.proofus.validpassport">
+			<div class="sub__form">
+				<span class="title__form">An original statement from a U.S. consular officer verifying that
+					{{us.data.application.sponsorname || "Sponsor"}} is a U.S. citizen with a valid passport</span>
+				<div class="form-btn__container" *ngIf="us.data.docsus.proofus.validpassport=='complete'">
+					<button (click)="us.data.docsus.proofus.validpassport='';us.update();">Undo</button>
+					<span>Completed</span>
+				</div>
+				<div class="form__btn" *ngIf="us.data.docsus.proofus.validpassport=='skip'">
+					<input type="checkbox" (click)="us.data.docsus.proofus.validpassport='';us.update();">
+					<span class="check__title"
+						(click)="us.data.docsus.proofus.validpassport='';us.update();">Skip</span>
+				</div>
+			</div>
+		</div>
+		<div class="form__inner" *ngIf="us.data.docsus.proofus.passporacopu">
+			<div class="sub__form">
+				<span class="title__form">A copy of {{us.data.application.sponsorname && us.data.application.sponsorname
+					+ "'s" || "Sponsor's"}} unexpired U.S. passport</span>
+				<div class="form-btn__container" *ngIf="us.data.docsus.proofus.passporacopu=='complete'">
+					<button (click)="us.data.docsus.proofus.passporacopu='';us.update();">Undo</button>
+					<span>Completed</span>
+				</div>
+				<div class="form__btn" *ngIf="us.data.docsus.proofus.passporacopu=='skip'">
+					<input type="checkbox" (click)="us.data.docsus.proofus.passporacopu='';us.update();">
+					<span class="check__title" (click)="us.data.docsus.proofus.passporacopu='';us.update();">Skip</span>
+				</div>
+			</div>
+		</div>
+		<div class="form__inner" *ngIf="us.data.docsus.proofus.validpass">
+			<div class="sub__form">
+				<span class="title__form">An original statement from a U.S. consular officer verifying that
+					{{us.data.application.sponsorname && us.data.application.sponsorname
+					|| "Sponsor"}} is a U.S. citizen with a valid passport</span>
+				<div class="form-btn__container" *ngIf="us.data.docsus.proofus.validpass=='complete'">
+					<button (click)="us.data.docsus.proofus.validpass='';us.update();">Undo</button>
+					<span>Completed</span>
+				</div>
+				<div class="form__btn" *ngIf="us.data.docsus.proofus.validpass=='skip'">
+					<input type="checkbox" (click)="us.data.docsus.proofus.validpass='';us.update();">
+					<span class="check__title" (click)="us.data.docsus.proofus.validpass='';us.update();">Skip</span>
+				</div>
+			</div>
+		</div>
+		<div class="form__inner">
+			<div *ngFor="let name of us.data.application.addpass_names; index as i">
+			  <div class="sub__form">
+				<span class="title__form">{{name}}</span>
+				<div class="form-btn__container">
+				  <button (click)="us.data.docsus.proofus.validpass='complete';us.update();">Complete</button>
+				  <label for="">
+					<button class="add-delete-btn"
+					  (click)="us.data.application.addpass_names.splice(i,1);us.update();">Delete</button>
+				  </label>
+				</div>
+			  </div>
+			</div>
+		  </div>
+		<div class="sub-section__inner">
+			<span class="proof__discription">Sources for this page (unless otherwise cited above): USCIS Form
+				Instructions for <a style="color:#4D61FC ;"
+					href="https://www.uscis.gov/sites/default/files/document/forms/i-130instr.pdf">I-130</a>, page
+				6</span>
+			<div class="section__container-btn">
+				<a class="form__btn-back" (click)="us.section='marriagedocuments';us.top();">
+					< Back </a>
+						<a class="form__btn-continue" (click)="us.section='passport';us.top();"> Continue ></a>
+			</div>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,637 @@
+<div class="wrapper">
+  <div class="fomrs__inner">
+    <aside class="leftbar" *ngIf="us.tab == 'application'">
+      <div
+        class="leftbar__title"
+        (click)="us.section = 'home'"
+        [class.active]="us.section == 'home'"
+      >
+        Applicant info
+      </div>
+      <div class="leftbar__inner">
+        <nav class="leftbar__manu">
+          <div
+            class="leftbar__manu-link"
+            (click)="us.section = 'personal'; us.pagesection = 1"
+            [class.active]="us.section == 'personal'"
+          >
+            Personal info
+          </div>
+          <div
+            class="leftbar__manu-link"
+            (click)="us.section = 'immigration'; us.pagesection = 1"
+            [class.active]="us.section == 'immigration'"
+          >
+            Immigration info
+          </div>
+          <div
+            class="leftbar__manu-link"
+            (click)="us.section = 'family'"
+            [class.active]="us.section == 'family'"
+          >
+            Family
+          </div>
+          <div
+            class="leftbar__manu-link"
+            (click)="us.section = 'employment'; us.pagesection = 1"
+            [class.active]="us.section == 'employment'"
+          >
+            Employment
+          </div>
+          <div
+            class="leftbar__manu-link"
+            (click)="us.section = 'placeslived'; us.pagesection = 1"
+            [class.active]="us.section == 'placeslived'"
+          >
+            Places lived
+          </div>
+
+          <!-- us inside -->
+
+          <div
+            class="leftbar__manu-link"
+            (click)="us.section = 'public'; us.pagesection = 1"
+            *ngIf="us.data.cardholder == 'us' && us.data.location == 'inside'"
+            [class.active]="us.section == 'public'"
+          >
+            Public charge
+          </div>
+          <div
+            class="leftbar__manu-link"
+            (click)="us.section = 'otherhistory'; us.pagesection = 1"
+            *ngIf="us.data.cardholder == 'us' && us.data.location == 'inside'"
+            [class.active]="us.section == 'otherhistory'"
+          >
+            Other history
+          </div>
+          <div
+            class="leftbar__manu-link"
+            (click)="us.section = 'authorizations'; us.pagesection = 1"
+            *ngIf="us.data.cardholder == 'us' && us.data.location == 'inside'"
+            [class.active]="us.section == 'authorizations'"
+          >
+            Authorizations
+          </div>
+          <div
+            class="leftbar__manu-link"
+            (click)="us.section = 'appenotification'; us.pagesection = 1"
+            *ngIf="us.data.cardholder == 'us' && us.data.location == 'inside'"
+            [class.active]="us.section == 'appenotification'"
+          >
+            E-Notification
+          </div>
+
+          <!-- greencard inside -->
+
+          <!-- <div class="leftbar__manu-link" (click)="us.section='selfinfo'" *ngIf="us.data.cardholder == 'greencard' && us.data.location == 'inside'"  [class.active]="us.section=='selfinfo'">Self-sufficiency info</div> -->
+          <div
+            class="leftbar__manu-link"
+            (click)="us.section = 'otherhistory'; us.pagesection = 1"
+            *ngIf="
+              us.data.cardholder == 'greencard' && us.data.location == 'inside'
+            "
+            [class.active]="us.section == 'otherhistory'"
+          >
+            Other history
+          </div>
+          <div
+            class="leftbar__manu-link"
+            (click)="us.section = 'authorizations'; us.pagesection = 1"
+            *ngIf="
+              us.data.cardholder == 'greencard' && us.data.location == 'inside'
+            "
+            [class.active]="us.section == 'authorizations'"
+          >
+            Authorizations
+          </div>
+          <div
+            class="leftbar__manu-link"
+            (click)="us.section = 'appenotification'"
+            *ngIf="
+              us.data.cardholder == 'greencard' && us.data.location == 'inside'
+            "
+            [class.active]="us.section == 'appenotification'"
+          >
+            E-Notification
+          </div>
+          <div
+            class="leftbar__manu-link"
+            (click)="us.section = 'summary'; us.pagesection = 1"
+            [class.active]="us.section == 'summary'"
+          >
+            ★ SUMMARY
+          </div>
+        </nav>
+      </div>
+    </aside>
+    <aside class="leftbar" *ngIf="us.tab == 'sponsor'">
+      <div
+        class="leftbar__title"
+        (click)="us.section = 'home'"
+        [class.active]="us.section == 'home'"
+      >
+        Sponsor info
+      </div>
+      <div class="leftbar-sponsor__inner">
+        <nav class="leftbar__manu">
+          <div
+            class="leftbar__manu-link"
+            (click)="us.section = 'personalinfo'; us.pagesection = 1"
+            [class.active]="us.section == 'personalinfo'"
+          >
+            Personal info
+          </div>
+          <div
+            class="leftbar__manu-link"
+            (click)="us.section = 'sponsorplaceslived'; us.pagesection = 1"
+            [class.active]="us.section == 'sponsorplaceslived'"
+          >
+            Places lived
+          </div>
+          <div
+            class="leftbar__manu-link"
+            (click)="us.section = 'financical'; us.pagesection = 1"
+            [class.active]="us.section == 'financical'"
+          >
+            Financial support
+          </div>
+          <div
+            class="leftbar__manu-link"
+            (click)="us.section = 'sponsorimmigration'; us.pagesection = 1"
+            [class.active]="us.section == 'sponsorimmigration'"
+          >
+            Immigration info
+          </div>
+          <div
+            class="leftbar__manu-link"
+            (click)="us.section = 'sponsorfamily'; us.pagesection = 1"
+            [class.active]="us.section == 'sponsorfamily'"
+          >
+            Family
+          </div>
+          <div
+            class="leftbar__manu-link"
+            (click)="us.section = 'sponsoremploument'; us.pagesection = 1"
+            [class.active]="us.section == 'sponsoremploument'"
+          >
+            Employment
+          </div>
+          <div
+            class="leftbar__manu-link"
+            (click)="us.section = 'enotification'; us.pagesection = 1"
+            [class.active]="us.section == 'enotification'"
+          >
+            E-Notification
+          </div>
+          <div
+            class="leftbar__manu-link"
+            (click)="us.section = 'sponsorsummary'"
+            [class.active]="us.section == 'sponsorsummary'"
+          >
+            ★ SUMMARY
+          </div>
+        </nav>
+      </div>
+    </aside>
+    <aside class="leftbar" *ngIf="us.tab == 'collectdocuments'">
+      <div
+        class="leftbar__title"
+        (click)="us.section = 'home'"
+        [class.active]="us.section == 'home'"
+      >
+        Collect documents
+      </div>
+      <div class="leftbar__inner">
+        <nav class="leftbar__manu">
+          <div
+            class="leftbar__manu-link"
+            (click)="us.section = 'marriagedocuments'; us.pagesection = 1"
+            [class.active]="us.section == 'marriagedocuments'"
+          >
+            Marriage documents
+          </div>
+          <div
+            class="leftbar__manu-link"
+            (click)="us.section = 'profofus'; us.pagesection = 1"
+            [class.active]="us.section == 'profofus'"
+          >
+            Proof of U.S. citizenship
+          </div>
+          <div
+            class="leftbar__manu-link"
+            (click)="us.section = 'passport'; us.pagesection = 1"
+            [class.active]="us.section == 'passport'"
+          >
+            Passport-style photos
+          </div>
+          <div
+            class="leftbar__manu-link"
+            (click)="us.section = 'identification'; us.pagesection = 1"
+            [class.active]="us.section == 'identification'"
+          >
+            Identification Documents
+          </div>
+          <div
+            class="leftbar__manu-link"
+            (click)="us.section = 'proofofbona'; us.pagesection = 1"
+            [class.active]="us.section == 'proofofbona'"
+          >
+            Proof of bona fide marriage
+          </div>
+          <div
+            class="leftbar__manu-link"
+            (click)="us.section = 'proofoimmigration'; us.pagesection = 1"
+            [class.active]="us.section == 'proofoimmigration'"
+          >
+            Proof of immigration status
+          </div>
+          <div
+            class="leftbar__manu-link"
+            (click)="us.section = 'proofofinancial'; us.pagesection = 1"
+            [class.active]="us.section == 'proofofinancial'"
+          >
+            Proof of financial support
+          </div>
+          <!-- <div class="leftbar__manu-link" (click)="us.section='proofoself'" [class.active]="us.section=='proofoself'">
+            Proof of self-sufficiency</div> -->
+          <div
+            class="leftbar__manu-link"
+            (click)="us.section = 'medical'; us.pagesection = 1"
+            [class.active]="us.section == 'medical'"
+          >
+            Medical examination
+          </div>
+          <div
+            class="leftbar__manu-link"
+            (click)="us.section = 'birthcertificate'; us.pagesection = 1"
+            [class.active]="us.section == 'birthcertificate'"
+          >
+            Birth certificate
+          </div>
+        </nav>
+      </div>
+    </aside>
+    <aside class="leftbar" *ngIf="us.tab == 'printform'">
+      <div
+        class="leftbar__title"
+        (click)="us.section = 'home'"
+        [class.active]="us.section == 'home'"
+      >
+        Print form
+      </div>
+      <div class="leftbar-submissiontwo__inner">
+        <nav class="leftbar__manu">
+          <div
+            class="leftbar__manu-link"
+            (click)="us.section = 'reviewandprint'; us.pagesection = 1"
+            [class.active]="us.section == 'reviewandprint'"
+          >
+            Review and print
+          </div>
+          <div
+            class="leftbar__manu-link"
+            (click)="us.section = 'signdateets'; us.pagesection = 1"
+            [class.active]="us.section == 'signdateets'"
+          >
+            Sign,date,etc
+          </div>
+          <div
+            class="leftbar__manu-link"
+            (click)="us.section = 'finalcheck'; us.pagesection = 1"
+            [class.active]="us.section == 'finalcheck'"
+          >
+            Final Check
+          </div>
+        </nav>
+      </div>
+    </aside>
+    <aside class="leftbar" *ngIf="us.tab == 'submit'">
+      <div
+        class="leftbar__title"
+        (click)="us.section = 'home'"
+        [class.active]="us.section == 'home'"
+      >
+        Submit
+      </div>
+      <div class="leftbar-submissiontwo__inner">
+        <nav class="leftbar__manu">
+          <div
+            class="leftbar__manu-link"
+            (click)="us.section = 'uscisfiling'; us.pagesection = 1"
+            [class.active]="us.section == 'uscisfiling'"
+          >
+            USCIS filing fees
+          </div>
+          <div
+            class="leftbar__manu-link"
+            (click)="us.section = 'organizeapp'; us.pagesection = 1"
+            [class.active]="us.section == 'organizeapp'"
+          >
+            Organize application
+          </div>
+          <div
+            class="leftbar__manu-link"
+            (click)="us.section = 'mail'; us.pagesection = 1"
+            [class.active]="us.section == 'mail'"
+          >
+            Mail
+          </div>
+          <div
+            class="leftbar__manu-link"
+            (click)="us.section = 'nextsteps'; us.pagesection = 1"
+            [class.active]="us.section == 'nextsteps'"
+          >
+            Next Steps
+          </div>
+          <div
+            class="leftbar__manu-link"
+            (click)="us.section = 'done'; us.pagesection = 1"
+            [class.active]="us.section == 'done'"
+          >
+            Done
+          </div>
+        </nav>
+      </div>
+    </aside>
+    <aside class="leftbar" *ngIf="us.tab == 'submissionone'">
+      <div
+        class="leftbar__title"
+        (click)="us.section = 'submissionhome'; us.pagesection = 1"
+        [class.active]="us.section == 'submissionhome'"
+      >
+        Submission 1
+      </div>
+      <div class="leftbar-submissionone__inner">
+        <nav class="leftbar__manu">
+          <div
+            class="leftbar__manu-link"
+            (click)="us.section = 'collectdocuments'; us.pagesection = 1"
+            [class.active]="us.section == 'collectdocuments'"
+          >
+            Collect Documents
+          </div>
+          <div
+            class="leftbar__manu-link"
+            (click)="us.section = 'printforms'; us.pagesection = 1"
+            [class.active]="us.section == 'printforms'"
+          >
+            Print Forms
+          </div>
+          <div
+            class="leftbar__manu-link"
+            (click)="us.section = 'submitapplication'; us.pagesection = 1"
+            [class.active]="us.section == 'submitapplication'"
+          >
+            Submit Application
+          </div>
+          <div
+            class="leftbar__manu-link"
+            (click)="us.section = 'whatsnext'; us.pagesection = 1"
+            [class.active]="us.section == 'whatsnext'"
+          >
+            What's Next?
+          </div>
+        </nav>
+      </div>
+    </aside>
+    <aside class="leftbar" *ngIf="us.tab == 'submissiontwo'">
+      <div
+        class="leftbar__title"
+        (click)="us.section = 'submissiontwohome'; us.pagesection = 1"
+        [class.active]="us.section == 'submissiontwohome'"
+      >
+        Submission 2
+      </div>
+      <div class="leftbar-submissiontwo__inner">
+        <nav class="leftbar__manu">
+          <div
+            class="leftbar__manu-link"
+            (click)="us.section = 'collectdocument'"
+            [class.active]="us.section == 'collectdocument'"
+          >
+            Collect Documents
+          </div>
+          <div
+            class="leftbar__manu-link"
+            (click)="us.section = 'printi864'; us.pagesection = 1"
+            [class.active]="us.section == 'printi864'"
+          >
+            Print I-864
+          </div>
+          <div
+            class="leftbar__manu-link"
+            (click)="us.section = 'submitapp'; us.pagesection = 1"
+            [class.active]="us.section == 'submitapp'"
+          >
+            Submit Application
+          </div>
+        </nav>
+      </div>
+    </aside>
+    <aside class="leftbar" *ngIf="us.tab == 'nextsteps'">
+      <div
+        class="leftbar__title"
+        (click)="us.section = 'nextstepshome'; us.pagesection = 1"
+        [class.active]="us.section == 'nextstepshome'"
+      >
+        Next Steps
+      </div>
+      <div class="leftbar-nextsteps__inner">
+        <nav class="leftbar__manu">
+          <div
+            class="leftbar__manu-link"
+            (click)="us.section = 'timeline'; us.pagesection = 1"
+            [class.active]="us.section == 'timeline'"
+          >
+            Timeline After Submission 2
+          </div>
+          <div
+            class="leftbar__manu-link"
+            (click)="us.section = 'trackapplication'; us.pagesection = 1"
+            [class.active]="us.section == 'trackapplication'"
+          >
+            Track Application Status
+          </div>
+          <div
+            class="leftbar__manu-link"
+            (click)="us.section = 'greencard'; us.pagesection = 1"
+            [class.active]="us.section == 'greencard'"
+          >
+            Green Card Interview Prep
+          </div>
+          <div
+            class="leftbar__manu-link"
+            (click)="us.section = 'unitedstates'; us.pagesection = 1"
+            [class.active]="us.section == 'unitedstates'"
+          >
+            Enter the United States
+          </div>
+          <div
+            class="leftbar__manu-link"
+            (click)="us.section = 'afterreceiving'; us.pagesection = 1"
+            [class.active]="us.section == 'afterreceiving'"
+          >
+            After Receiving Green Card
+          </div>
+          <div
+            class="leftbar__manu-link"
+            (click)="us.section = 'done'; us.pagesection = 1"
+            [class.active]="us.section == 'done'"
+          >
+            Done!
+          </div>
+        </nav>
+      </div>
+    </aside>
+    <div class="main-inner">
+      <div class="ods-box">
+        <div *ngIf="us.tab == 'application'">
+          <application-home *ngIf="us.section == 'home'"></application-home>
+          <application-personal
+            *ngIf="us.section == 'personal'"
+          ></application-personal>
+          <application-immigration
+            *ngIf="us.section == 'immigration'"
+          ></application-immigration>
+          <application-family
+            *ngIf="us.section == 'family'"
+          ></application-family>
+          <application-summary
+            *ngIf="us.section == 'summary'"
+          ></application-summary>
+          <application-placeslived
+            *ngIf="us.section == 'placeslived'"
+          ></application-placeslived>
+          <application-employment
+            *ngIf="us.section == 'employment'"
+          ></application-employment>
+          <public *ngIf="us.section == 'public'"></public>
+          <otherhistory *ngIf="us.section == 'otherhistory'"></otherhistory>
+          <selfinfo *ngIf="us.section == 'selfinfo'"></selfinfo>
+          <authorizations
+            *ngIf="us.section == 'authorizations'"
+          ></authorizations>
+          <appenotification
+            *ngIf="us.section == 'appenotification'"
+          ></appenotification>
+        </div>
+        <div *ngIf="us.tab == 'sponsor'">
+          <sponsor-home *ngIf="us.section == 'home'"></sponsor-home>
+          <sponsor-enotification
+            *ngIf="us.section == 'enotification'"
+          ></sponsor-enotification>
+          <sponsor-financical
+            *ngIf="us.section == 'financical'"
+          ></sponsor-financical>
+          <personalinfo *ngIf="us.section == 'personalinfo'"></personalinfo>
+          <sponsorsummary
+            *ngIf="us.section == 'sponsorsummary'"
+          ></sponsorsummary>
+          <sponsoremploument
+            *ngIf="us.section == 'sponsoremploument'"
+          ></sponsoremploument>
+          <sponsorfamily *ngIf="us.section == 'sponsorfamily'"></sponsorfamily>
+          <sponsorimmigration
+            *ngIf="us.section == 'sponsorimmigration'"
+          ></sponsorimmigration>
+          <sponsorplaceslived
+            *ngIf="us.section == 'sponsorplaceslived'"
+          ></sponsorplaceslived>
+        </div>
+        <div *ngIf="us.tab == 'collectdocuments'">
+          <homecollect *ngIf="us.section == 'home'"></homecollect>
+          <marriagedocuments
+            *ngIf="us.section == 'marriagedocuments'"
+          ></marriagedocuments>
+          <identification
+            *ngIf="us.section == 'identification'"
+          ></identification>
+          <birthcertificate
+            *ngIf="us.section == 'birthcertificate'"
+          ></birthcertificate>
+          <passport *ngIf="us.section == 'passport'"></passport>
+          <profofus *ngIf="us.section == 'profofus'"></profofus>
+          <proofofbona *ngIf="us.section == 'proofofbona'"></proofofbona>
+          <proofofinancial
+            *ngIf="us.section == 'proofofinancial'"
+          ></proofofinancial>
+          <proofoimmigration
+            *ngIf="us.section == 'proofoimmigration'"
+          ></proofoimmigration>
+          <proofoself *ngIf="us.section == 'proofoself'"></proofoself>
+          <medical *ngIf="us.section == 'medical'"></medical>
+        </div>
+        <div *ngIf="us.tab == 'printform'">
+          <homeprint *ngIf="us.section == 'home'"></homeprint>
+          <finalcheck *ngIf="us.section == 'finalcheck'"></finalcheck>
+          <reviewandprint
+            *ngIf="us.section == 'reviewandprint'"
+          ></reviewandprint>
+          <signdateets *ngIf="us.section == 'signdateets'"></signdateets>
+        </div>
+        <div *ngIf="us.tab == 'submit'">
+          <home *ngIf="us.section == 'home'"></home>
+          <organizeapp *ngIf="us.section == 'organizeapp'"></organizeapp>
+          <nextsteps *ngIf="us.section == 'nextsteps'"></nextsteps>
+          <mail *ngIf="us.section == 'mail'"></mail>
+          <uscisfiling *ngIf="us.section == 'uscisfiling'"></uscisfiling>
+          <done *ngIf="us.section == 'done'"></done>
+        </div>
+        <div *ngIf="us.tab == 'submissionone'">
+          <submissionhome
+            *ngIf="us.section == 'submissionhome'"
+          ></submissionhome>
+          <collectdocuments
+            *ngIf="us.section == 'collectdocuments'"
+          ></collectdocuments>
+          <printforms *ngIf="us.section == 'printforms'"></printforms>
+          <submitapplication
+            *ngIf="us.section == 'submitapplication'"
+          ></submitapplication>
+          <whatsnext *ngIf="us.section == 'whatsnext'"></whatsnext>
+        </div>
+        <div *ngIf="us.tab == 'submissiontwo'">
+          <submissiontwohome
+            *ngIf="us.section == 'submissiontwohome'"
+          ></submissiontwohome>
+          <collectdocument
+            *ngIf="us.section == 'collectdocument'"
+          ></collectdocument>
+          <printi864 *ngIf="us.section == 'printi864'"></printi864>
+          <submitapp *ngIf="us.section == 'submitapp'"></submitapp>
+        </div>
+        <div *ngIf="us.tab == 'nextsteps'">
+          <nextstepshome *ngIf="us.section == 'nextstepshome'"></nextstepshome>
+          <timeline *ngIf="us.section == 'timeline'"></timeline>
+          <trackapplication
+            *ngIf="us.section == 'trackapplication'"
+          ></trackapplication>
+          <greencard *ngIf="us.section == 'greencard'"></greencard>
+          <unitedstates *ngIf="us.section == 'unitedstates'"></unitedstates>
+          <afterreceiving
+            *ngIf="us.section == 'afterreceiving'"
+          ></afterreceiving>
+          <done *ngIf="us.section == 'done'"></done>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer">
+    <a
+      target="_blank"
+      class="footer__link"
+      href="https://greenbroad.co/end-user-agreement/"
+      >EULA</a
+    >
+    <span>|</span>
+    <a
+      target="_blank"
+      class="footer__link"
+      href="https://greenbroad.co/privacy-policy/"
+      >Privacy</a
+    >
+    <span class="footer__discription"
+      >| Version 1.14.60 | ©2020 GreenBroad, LLC. All rights reserved</span
+    >
+  </div>
+</div>

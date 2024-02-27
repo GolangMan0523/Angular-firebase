@@ -1,0 +1,122 @@
+<div *ngIf="us.pagesection == 1">
+  <div class="section__inner">
+    <h1 class="section__title">E-notification option</h1>
+    <span class="section__discription"
+      >Within 10 days after the application package has been accepted by USCIS,
+      {{ us.data.application.name || "Applicant" }} will receive paper receipt
+      notices (I-797C) in the mail from USCIS. In addition to the paper receipt
+      notices, {{ us.data.application.name || "Applicant" }} can request USCIS
+      e-notifications (e-mails and/or text messages) which will be sent within
+      24 hours after USCIS accepts the application. Requesting e-notifications
+      does not incur additional USCIS application fee.</span
+    >
+
+    <div class="form__check">
+      <div class="form__title">
+        Does {{ us.data.application.name || "Applicant" }} want to request an
+        e-notification?
+      </div>
+      <label>
+        <input
+          type="radio"
+          [class.err]="err.choice"
+          name="wanttorequestenot_name"
+          [value]="'yes'"
+          [(ngModel)]="us.data.application.wanttorequestenot_name"
+          (ngModelChange)="us.update(); err.choice = false"
+          (blur)="
+            !us.data.application.wanttorequestenot_name && (err.choice = true)
+          "
+        />
+        <span class="check">Yes</span>
+      </label>
+      <label>
+        <input
+          type="radio"
+          [class.err]="err.choice"
+          name="wanttorequestenot_name"
+          [value]="'no'"
+          [(ngModel)]="us.data.application.wanttorequestenot_name"
+          (ngModelChange)="us.update(); err.choice = false"
+          (blur)="
+            !us.data.application.wanttorequestenot_name && (err.choice = true)
+          "
+        />
+        <span class="check">No</span>
+      </label>
+    </div>
+    <span *ngIf="err.choice" class="errspan">This field is required</span>
+
+    <div *ngIf="us.data.application.wanttorequestenot_name == 'yes'">
+      <label class="label__inner">
+        <span class="form__title">Email address for e-notification</span>
+        <input
+          type="text"
+          [class.err]="err.email"
+          [(ngModel)]="us.data.application.register_name"
+          (ngModelChange)="us.update(); err.email = false"
+          (blur)="!us.data.application.register_name && (err.email = true)"
+        />
+      </label>
+      <span *ngIf="err.email" class="errspan">This field is required</span>
+
+      <label class="label__inner">
+        <span class="form__title"
+          >Mobile phone number for e-notification (text message)</span
+        >
+        <input
+          type="text"
+          [class.err]="err.number"
+          maxlength="15"
+          oninput="this.value = this.value.replace(/[^0-9\s.]/g, ''); this.value = this.value.replace(/(\..*)\./g, '$1');"
+          [(ngModel)]="us.data.application.textmessagenot_name"
+          (ngModelChange)="us.update(); err.number = false; validateLength15(us.data.application.textmessagenot_name)"
+          (blur)="
+            !us.data.application.textmessagenot_name && (err.number = true)
+          "
+        />
+      </label>
+      <span *ngIf="err.number" class="errspan">This field is required</span>
+    </div>
+    <label class="label__inner">
+      <span class="form__title">Date of Filling</span>
+      <input type="date" placeholder="mm/dd/yyyy" [(ngModel)]="us.data.application.appsignaturedate_name" (ngModelChange)="us.update();">
+
+      <my-date
+        [class.err]="err.appdatesignature"
+        [date]="us.data.application.appsignaturedate_name"
+        (update)="
+          us.data.application.appsignaturedate_name = $event;
+          us.update();
+          err.appdatesignature = false
+        "
+        (blur)="
+          !us.data.application.appsignaturedate_name &&
+            (err.appdatesignature = true)
+        "
+      ></my-date>
+      <span *ngIf="err.appdatesignature" class="errspan"
+        >This field is required</span
+      >
+    </label>
+    <div class="sub__discription">
+      Sources for this page (unless otherwise cited above): USCIS Form
+      <a
+        target="_blank"
+        href="https://www.uscis.gov/sites/default/files/document/forms/g-1145.pdf"
+        >G-1145</a
+      >
+    </div>
+    <div class="section__container-btn">
+      <a
+        class="form__btn-back"
+        (click)="us.section = 'authorizations'; us.top()"
+      >
+        < Back
+      </a>
+      <a class="form__btn-continue" (click)="us.section = 'summary'; us.top()">
+        Continue ></a
+      >
+    </div>
+  </div>
+</div>

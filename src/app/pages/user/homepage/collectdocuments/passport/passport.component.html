@@ -1,0 +1,209 @@
+<div *ngIf="section==1">
+	<div class="section__inner">
+		<div class="inner">
+			<h1 class="section__title">Passport-style photos</h1>
+			<span class="sub__title">For Forms I-130, I-485, and (Forms I-131 and I-765 if applicable)</span>
+
+			<div class="proof__discription">
+				The application requires passport-style photos of both {{us.data.application.name || "Applicant"}} and
+				{{us.data.application.sponsorname || "Sponsor"}}, taken within 30 days of filing the application.</div>
+			<div class="proof__discription">
+				On the back of each photo, lightly print the person's name and A-Number (if any) using a pencil or felt
+				pen.
+			</div>
+			<div class="sub__section-btn" (click)="passportstyle=!passportstyle" (clickOutside)="passportstyle=null">
+				<div class="sub__section-icon" [class._active]="passportstyle">&#8250;</div>Photo requirements
+			</div>
+			<div class="sub-sub__section-inner" *ngIf="passportstyle">
+				<p>The photos must have a white to off-white background, be printed on thin paper with a glossy finish,
+					and be unmounted and unretouched.</p>
+
+				<p>The two recent identical color passport-style photos must be 2 by 2 inches. The photos must be in
+					color with full face, frontal view on a white to off-white background. Head height should measure 1
+					to 1 3/8 inches from top of hair to bottom of chin, and eye height is between 1 1/8 to 1 3/8 inches
+					from bottom of photo. Your head must be bare unless you are wearing headwear as required by a
+					religious denomination of which you are a member. Visit  <a target="_blank" style="color: #4D61FC;" href="https://travel.state.gov/content/travel/en/us-visas/visa-information-resources/photos/photo-examples.html">the Department Of State website</a>  for photo
+					examples.</p>
+
+				<p>Because of the current USCIS scanning process, if a digital photo is submitted, it must be produced
+					from a high-resolution camera that has at least 3.5 mega pixels of resolution.</p>
+
+
+				<div class="sub__discription">Source: <a href="https://www.uscis.gov/sites/default/files/document/forms/i-130instr.pdf">USCIS Form I-130 Instructions Page 6</a>, <a
+						href="https://www.uscis.gov/sites/default/files/document/forms/i-485instr.pdf">USCIS Form I-485 Instructions Page 7</a>, <a href="https://www.uscis.gov/sites/default/files/document/forms/i-485instr.pdf">USCIS Form I-131 Instructions Page
+						11</a>, <a href="https://www.uscis.gov/sites/default/files/document/forms/i-765instr.pdf">USCIS Form I-765 Instructions Page 26</a></div>
+			</div>
+			<div class="sub__section-btn" (click)="greenbroadexclusive=!greenbroadexclusive"
+				(clickOutside)="greenbroadexclusive=null">
+				<div class="sub__section-icon" [class._active]="greenbroadexclusive">&#8250;</div>Greenbroad Exclusive
+				Money Saving Tip
+			</div>
+			<div class="sub-sub__section-inner" *ngIf="greenbroadexclusive">
+				<p>If you need multiple copies of the passport-style photos, it can be much cheaper to take the photos
+					by yourselves and then print them out at a photo printing kiosk. Just make sure the photos you take
+					meet the passport-style photo requirements.</p>
+
+				<p>Tools for taking passport-style photos:</p>
+				<ul>
+					<li>The <a  target="_blank" style="color: #4D61FC;" href="https://travel.state.gov/content/travel/en/passports/how-apply/photos.html">Photo Tool</a>  provided by the U.S. Department of State can crop your photo to the right size.
+					</li>
+					<li>There are also passport photo tools on iPhone and Android.</li>
+				</ul>
+				<div class="sub__discription">Source: Greenbroad suggestion, not from USCIS.</div>
+			</div>
+		</div>
+		<div class="form__inner">
+			<span class="forms__title">Provide the following documents, if applicable:</span>
+			<div class="sub__form" *ngIf="!us.data.docspassport.passportstyle.form">
+				<span class="title__form"><span
+						style="color: #fff; padding: 2px 10px; background-color: aqua; border-radius: 5px;">{{us.data.application.sponsorname
+						|| "Sponsor"}}</span> Two identical passport-style
+					photos of {{us.data.application.sponsorname || "Sponsor"}} for Form I-130 </span>
+				<div class="form-btn__container">
+					<button (click)="us.data.docspassport.passportstyle.form='completed';us.update();">Complete</button>
+					<label for="">
+						<span class="check__title">Required</span>
+					</label>
+				</div>
+			</div>
+			<div class="sub__form" *ngIf="!us.data.docspassport.passportstyle.photos">
+				<span class="title__form"><span
+						style="color: #fff; padding: 2px 10px; background-color: #4D61FC; border-radius: 5px;">{{us.data.application.name
+						|| "Applicant"}}</span> Two identical passport-style
+					photos of {{us.data.application.name || "Applicant"}} for Form I-130</span>
+				<div class="form-btn__container">
+					<button
+						(click)="us.data.docspassport.passportstyle.photos='completed';us.update();">Complete</button>
+					<label for="">
+						<span class="check__title">Required</span>
+					</label>
+				</div>
+			</div>
+			<div class="sub__form" *ngIf="!us.data.docspassport.passportstyle.identical">
+				<span class="title__form"><span
+						style="color: #fff; padding: 2px 10px; background-color: #4D61FC; border-radius: 5px;">{{us.data.application.name
+						|| "Applicant"}}</span> Two identical passport-style
+					photos of {{us.data.application.name || "Applicant"}} for Form I-485</span>
+				<div class="form-btn__container">
+					<button
+						(click)="us.data.docspassport.passportstyle.identical='completed';us.update();">Complete</button>
+					<label for="">
+						<span class="check__title">Required</span>
+					</label>
+				</div>
+			</div>
+			<div class="sub__form" *ngIf="!us.data.docspassport.passportstyle.applicable">
+				<span class="title__form"><span
+						style="color: #fff; padding: 2px 10px; background-color: #4D61FC; border-radius: 5px;">{{us.data.application.name
+						|| "Applicant"}}</span> Two identical passport-style
+						photos of {{us.data.application.name || "Applicant"}} for Form I-131</span>
+				<div class="form-btn__container">
+					<button (click)="us.data.docspassport.passportstyle='completed';us.update();">Complete</button>
+					<label for="">
+						<span class="check__title">Required</span>
+					</label>
+				</div>
+			</div>
+			<div class="sub__form" *ngIf="!us.data.docspassport.passportstyle.plans">
+				<span class="title__form"><span
+						style="color: #fff; padding: 2px 10px; background-color: #4D61FC; border-radius: 5px;">{{us.data.application.name
+						|| "Applicant"}}</span> Two identical passport-style
+						photos of {{us.data.application.name || "Applicant"}} for Form I-765</span>
+				<div class="form-btn__container">
+					<button
+						(click)="us.data.docspassport.passportstyle.plans='completed';us.update();">Complete</button>
+						<label for="">
+							<span class="check__title">Required</span>
+						</label>
+				</div>
+			</div>
+		</div>
+		<div class="form__inner" *ngIf="us.data.docspassport.passportstyle.form">
+			<div class="sub__form">
+				<span class="title__form"><span
+						style="color: #fff; padding: 2px 10px; background-color: aqua; border-radius: 5px;">{{us.data.application.sponsorname
+						|| "Sponsor"}}</span> Two identical passport-style
+					photos of {{us.data.application.sponsorname || "Sponsor"}} for Form I-130 </span>
+				<div class="form-btn__container">
+					<button (click)="us.data.docspassport.passportstyle='';us.update();">Undo</button>
+					<span>Completed</span>
+				</div>
+			</div>
+		</div>
+		<div class="form__inner">
+			<div class="sub__form" *ngIf="us.data.docspassport.passportstyle.photos">
+				<span class="title__form"><span
+						style="color: #fff; padding: 2px 10px; background-color: #4D61FC; border-radius: 5px;">{{us.data.application.name
+						|| "Applicant"}}</span> Two identical passport-style
+					photos of {{us.data.application.name || "Applicant"}} for Form I-130</span>
+				<div class="form-btn__container">
+					<button (click)="us.data.docspassport.passportstyle.photos='';us.update();">Undo</button>
+					<span>Completed</span>
+				</div>
+			</div>
+		</div>
+		<div class="form__inner" *ngIf="us.data.docspassport.passportstyle.identical">
+			<div class="sub__form">
+				<span class="title__form"><span
+						style="color: #fff; padding: 2px 10px; background-color: #4D61FC; border-radius: 5px;">{{us.data.application.name
+						|| "Applicant"}}</span> Two identical passport-style
+					photos of {{us.data.application.name || "Applicant"}} for Form I-485 </span>
+				<div class="form-btn__container">
+					<button (click)="us.data.docspassport.passportstyle.identical='';us.update();">Undo</button>
+					<span>Completed</span>
+				</div>
+			</div>
+		</div>
+		<div class="form__inner" *ngIf="us.data.docspassport.passportstyle.applicable">
+			<div class="sub__form">
+				<span class="title__form"><span
+						style="color: #fff; padding: 2px 10px; background-color: #4D61FC; border-radius: 5px;">{{us.data.application.name
+						|| "Applicant"}}</span> Two identical passport-style
+						photos of {{us.data.application.name || "Applicant"}} for Form I-131</span>
+				<div class="form-btn__container" *ngIf="us.data.docspassport.passportstyle.applicable=='completed'">
+					<button (click)="us.data.docspassport.passportstyle.applicable='';us.update();">Undo</button>
+					<span>Completed</span>
+				</div>
+				<div class="form__btn" *ngIf="us.data.docspassport.passportstyle.applicable=='na'">
+					<input type="checkbox" (click)="us.data.docspassport.passportstyle.applicable='';us.update();">
+					<label for="">
+						<span class="check__title">Required</span>
+					</label>
+				</div>
+			</div>
+		</div>
+
+		<div class="form__inner" *ngIf="us.data.docspassport.passportstyle.plans">
+			<div class="sub__form">
+				<span class="title__form"><span
+						style="color: #fff; padding: 2px 10px; background-color: #4D61FC; border-radius: 5px;">{{us.data.application.name
+						|| "Applicant"}}</span> Two identical passport-style
+						photos of {{us.data.application.name || "Applicant"}} for Form I-765</span>
+				<div class="form-btn__container" *ngIf="us.data.docspassport.passportstyle.plans=='completed'">
+					<button (click)="us.data.docspassport.passportstyle.plans='';us.update();">Undo</button>
+					<span>Completed</span>
+				</div>
+				<div class="form__btn" *ngIf="us.data.docspassport.passportstyle.plans=='na'">
+					<input type="checkbox" (click)="us.data.docspassport.passportstyle.plans='';us.update();">
+					<label for="">
+						<span class="check__title">Required</span>
+					</label>
+				</div>
+			</div>
+		</div>
+		<div class="sub__inner">
+			<div class="sub__discription">Sources for this page (unless otherwise cited above): USCIS Form Instructions
+				for
+				<a target="_blank" href="https://www.uscis.gov/sites/default/files/document/forms/i-130instr.pdf">I-130</a>, <a target="_blank"
+					href="https://www.uscis.gov/sites/default/files/document/forms/i-485instr.pdf">I-485</a>, <a target="_blank"
+					href="https://www.uscis.gov/sites/default/files/document/forms/i-131instr.pdf">I-131</a>, <a target="_blank"
+					href="https://www.uscis.gov/sites/default/files/document/forms/i-765instr.pdf">I-765</a>
+			</div>
+			<div class="section__container-btn">
+				<a class="form__btn-back" (click)="us.section='profofus';us.top();">
+					< Back </a>
+						<a class="form__btn-continue" (click)="us.section='identification';us.top();"> Continue ></a>
+			</div>
+		</div>
+	</div>
+</div>

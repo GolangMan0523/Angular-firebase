@@ -1,0 +1,1231 @@
+<div *ngIf="us.pagesection == 1">
+  <div class="section__inner">
+    <h1 class="section__title">The hard part is over!</h1>
+    <img src="assets/up.png" />
+    <div class="section__discription">
+      Now, let's work through some immigration history.
+    </div>
+    <div class="section__container-btn">
+      <a
+        class="form__btn-back"
+        (click)="us.section = 'financical'; us.pagesection = 1; us.top()"
+      >
+        < Back
+      </a>
+      <a class="form__btn-continue" (click)="us.pagesection = 2; us.top()">
+        Continue ></a
+      >
+    </div>
+  </div>
+</div>
+<div *ngIf="us.data.cardholder !== 'us' && us.data.location == 'inside'">
+  <div *ngIf="us.pagesection == 2">
+    <div class="section-form__inner">
+      <h1 class="section__title">
+        About
+        {{
+          (us.data.application.sponsorname &&
+            us.data.application.sponsorname + "'s") ||
+            "Sponsor's"
+        }}
+        U.S. Permanent Resident Status
+      </h1>
+      <div class="form__check">
+        <span class="form__title"
+          >Has {{ us.data.application.sponsorname || "Sponsor" }} obtained a
+          Certificate of Naturalization or a Certificate of Citizenship?</span
+        >
+        <label>
+          <input
+            type="radio"
+            name="sponsorobtained_name"
+            [value]="'yes'"
+            [class.err]="err.certificateAvailable"
+            [(ngModel)]="us.data.application.sponsorobtained_name"
+            (ngModelChange)="us.update()"
+          />
+          <span class="check">Yes</span>
+        </label>
+
+        <label>
+          <input
+            type="radio"
+            name="sponsorobtained_name"
+            [value]="'no'"
+            [(ngModel)]="us.data.application.sponsorobtained_name"
+            (ngModelChange)="us.update()"
+          />
+          <span class="check">No</span>
+        </label>
+      </div>
+      <div
+        class="form__inner"
+        *ngIf="us.data.application.sponsorobtained_name == 'yes'"
+      >
+        <span class="form__title">About the certificate</span>
+        <div class="container__forms">
+          <label>
+            <span class="form__title">Certificate number</span>
+            <input
+              type="text"
+              [(ngModel)]="us.data.application.certificatenumber_name"
+              (ngModelChange)="us.data.application.certificatenumber_name = us.data.application.certificatenumber_name.toUpperCase();
+                us.update()"
+            />
+          </label>
+          <label>
+            <span class="form__title">Place of issuance</span>
+            <input
+              type="text"
+              [(ngModel)]="us.data.application.certificateissuance_name"
+              (ngModelChange)="us.data.application.certificateissuance_name = us.data.application.certificateissuance_name.toUpperCase();
+                us.update()"
+            />
+          </label>
+          <label>
+            <span class="form__title">Date of issuance</span>
+            <!-- <ng2-flatpickr placeholder="mm/dd/yyyy" [config]="pickerOptions" [setDate]="us.data.application.certificateissuancedate_name" [(ngModel)]="us.data.application.certificateissuancedate_name" (ngModelChange)="us.update();"></ng2-flatpickr> -->
+            <input type="date" placeholder="mm/dd/yyyy" [(ngModel)]="us.data.application.certificateissuancedate_name" (ngModelChange)="us.update();">
+            <!--
+          <input type="text" placeholder="mm/dd/yyyy" class="form-control" bsDatepicker
+          [(ngModel)]="us.data.application.certificateissuancedate_name" (ngModelChange)="us.update();"> -->
+
+            <my-date
+              [date]="us.data.application.certificateissuancedate_name"
+              (update)="
+                us.data.application.certificateissuancedate_name = $event;
+                us.update()
+              "
+            ></my-date>
+          </label>
+        </div>
+      </div>
+      <div class="form__inner">
+        <label>
+          <span class="form__title"
+            >{{
+              (us.data.application.sponsorname &&
+                us.data.application.sponsorname + "'s") ||
+                "Sponsor's"
+            }}
+            class of admission</span
+          >
+          <input
+            type="text"
+            [(ngModel)]="us.data.application.classadmission_name"
+            (ngModelChange)="us.update()"
+          />
+        </label>
+      </div>
+      <div class="form__inner">
+        <label>
+          <span class="form__title"
+            >{{
+              (us.data.application.sponsorname &&
+                us.data.application.sponsorname + "'s") ||
+                "Sponsor's"
+            }}
+            Date of admission</span
+          >
+          <!-- <ng2-flatpickr placeholder="mm/dd/yyyy" [config]="pickerOptions" [setDate]="us.data.application.admissiondate_name" [(ngModel)]="us.data.application.admissiondate_name" (ngModelChange)="us.update();" ></ng2-flatpickr> -->
+          <!-- <input type="date" placeholder="mm/dd/yyyy" [(ngModel)]="us.data.application.admissiondate_name" (ngModelChange)="us.update();"> -->
+
+          <!-- <input type="text" placeholder="mm/dd/yyyy" class="form-control" bsDatepicker
+        [(ngModel)]="us.data.application.admissiondate_name" (ngModelChange)="us.update();"> -->
+
+          <my-date
+            [date]="us.data.application.admissiondate_name"
+            (update)="
+              us.data.application.admissiondate_name = $event; us.update()
+            "
+          ></my-date>
+        </label>
+      </div>
+      <div class="form__inner">
+        <span class="form__title"
+          >{{
+            (us.data.application.sponsorname &&
+              us.data.application.sponsorname + "'s") ||
+              "Sponsor's"
+          }}
+          Place of Admission</span
+        >
+        <div class="container__forms">
+          <label>
+            <span class="form__title">City or Town</span>
+            <input
+              type="text"
+              maxlength="17"
+              oninput="this.value = this.value.replace(/[^a-zA-Z\s]/g, '');"
+              [(ngModel)]="us.data.application.admissiontown_name"
+              (ngModelChange)="us.update(); validateLength17(us.data.application.admissiontown_name)"
+            />
+          </label>
+          <label>
+            <span class="form__title">State</span>
+            <select
+              name=""
+              [(ngModel)]="us.data.application.admissionstate_name"
+              (ngModelChange)="us.update()"
+            >
+              <option>AL</option>
+              <option>AK</option>
+              <option>AZ</option>
+              <option>AR</option>
+              <option>CA</option>
+              <option>CO</option>
+              <option>CT</option>
+              <option>DE</option>
+              <option>DC</option>
+              <option>FL</option>
+              <option>GA</option>
+              <option>HI</option>
+              <option>ID</option>
+              <option>IL</option>
+              <option>IN</option>
+              <option>IA</option>
+              <option>KS</option>
+              <option>KY</option>
+              <option>LA</option>
+              <option>ME</option>
+              <option>MD</option>
+              <option>MA</option>
+              <option>MI</option>
+              <option>MN</option>
+              <option>MS</option>
+              <option>MO</option>
+              <option>MT</option>
+              <option>NE</option>
+              <option>NV</option>
+              <option>NH</option>
+              <option>NJ</option>
+              <option>NM</option>
+              <option>NY</option>
+              <option>NC</option>
+              <option>ND</option>
+              <option>OH</option>
+              <option>OK</option>
+              <option>OR</option>
+              <option>PA</option>
+              <option>RI</option>
+              <option>SC</option>
+              <option>SD</option>
+              <option>TN</option>
+              <option>TX</option>
+              <option>UT</option>
+              <option>VT</option>
+              <option>VA</option>
+              <option>WA</option>
+              <option>WV</option>
+              <option>WI</option>
+              <option>WY</option>
+            </select>
+          </label>
+        </div>
+      </div>
+      <div class="form__check">
+        <span class="form__title"
+          >Did {{ us.data.application.sponsorname || "Sponsor" }} gain lawful
+          permanent resident status through marriage to a U.S. citizen or lawful
+          permanent resident?
+        </span>
+        <label>
+          <input
+            type="radio"
+            name="sponsor gainlawful_name"
+            [value]="'yes'"
+            [(ngModel)]="us.data.application.sponsoradministration_name"
+            (ngModelChange)="us.update()"
+          />
+          <span class="check">Yes</span>
+        </label>
+        <label>
+          <input
+            type="radio"
+            name="sponsor gainlawful_name"
+            [value]="'no'"
+            [(ngModel)]="us.data.application.sponsoradministration_name"
+            (ngModelChange)="us.update()"
+          />
+          <span class="check">No</span>
+        </label>
+      </div>
+      <div class="form__check">
+        <span class="form__title"
+          >Did {{ us.data.application.sponsorname || "Sponsor" }} gain lawful
+          permanent resident status or citizenship through adoption?
+        </span>
+        <label>
+          <input
+            type="radio"
+            name="sponsor gainlawfulperemanent_name"
+            [value]="'yes'"
+            [(ngModel)]="us.data.application.ussponsoradministration_name"
+            (ngModelChange)="us.update()"
+          />
+          <span class="check">Yes</span>
+        </label>
+        <label>
+          <input
+            type="radio"
+            name="sponsor gainlawfulperemanent_name"
+            [value]="'no'"
+            [(ngModel)]="us.data.application.ussponsoradministration_name"
+            (ngModelChange)="us.update()"
+          />
+          <span class="check">No</span>
+        </label>
+      </div>
+      <div class="form__inner">
+        <label>
+          <span class="form__title"
+            >{{
+              (us.data.application.sponsorname &&
+                us.data.application.sponsorname + "'s") ||
+                "Sponsor's"
+            }}
+            alien registration number (A-number) (if any)</span
+          >
+          <input
+            type="text"
+            maxlength="9"
+            oninput="this.value = this.value.replace(/[^0-9\s.]/g, ''); this.value = this.value.replace(/(\..*)\./g, '$1')"
+            [(ngModel)]="us.data.application.anumbersponsor_name"
+            (ngModelChange)="us.update()"
+          />
+        </label>
+      </div>
+      <div class="form__inner">
+        <label>
+          <span class="form__title"
+            >{{
+              (us.data.application.sponsorname &&
+                us.data.application.sponsorname + "'s") ||
+                "Sponsor's"
+            }}
+            USCIS Online Account Number (if any)</span
+          >
+          <input
+            type="text"
+            maxlength="12"
+            oninput="this.value = this.value.replace(/[^0-9\s.]/g, ''); this.value = this.value.replace(/(\..*)\./g, '$1')"
+            [(ngModel)]="us.data.application.anumbersponsoraccount_name"
+            (ngModelChange)="us.update()"
+          />
+        </label>
+      </div>
+      <span class="form__subdiscription">
+        Sources for this page (unless otherwise cited above): USCIS Forms
+        <a
+          target="_blank"
+          href="https://www.uscis.gov/sites/default/files/document/forms/i-130.pdf"
+          >I-130</a
+        >,
+      </span>
+      <div class="section__container-btn">
+        <a class="form__btn-back" (click)="us.pagesection = 2; us.top()">
+          < Back
+        </a>
+        <a class="form__btn-continue" (click)="us.pagesection = 3; us.top()">
+          Continue >
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+<div *ngIf="us.data.cardholder == 'us' && us.data.location == 'inside'">
+  <div *ngIf="us.pagesection == 2">
+    <div class="section-form__inner">
+      <h1 class="section__title">
+        About
+        {{
+          (us.data.application.sponsorname &&
+            us.data.application.sponsorname + "'s") ||
+            "Sponsor's"
+        }}
+        U.S. citizenship
+      </h1>
+      <div class="form__check">
+        <div class="form__check">
+          <span class="form__title"
+            >{{
+              (us.data.application.sponsorname &&
+                us.data.application.sponsorname + "'s") ||
+                "Sponsor's"
+            }}
+            U.S. citizenship was acquired through
+          </span>
+          <label>
+            <input
+              type="radio"
+              name="states"
+              [value]="'Birth in the United States'"
+              [(ngModel)]="us.data.application.sponsoradministrationcheck_name"
+              (ngModelChange)="us.update(); err.certificateAvailable = false"
+              (blur)="
+                !us.data.application.sponsoradministrationcheck_name &&
+                  (err.certificateAvailable = true)
+              "
+            />
+            <span class="check">Birth in the United States</span>
+          </label>
+          <label>
+            <input
+              type="radio"
+              name="naturalization"
+              [value]="'Naturalization'"
+              [(ngModel)]="us.data.application.sponsoradministrationcheck_name"
+              (ngModelChange)="us.update(); err.certificateAvailable = false"
+              (blur)="
+                !us.data.application.sponsoradministrationcheck_name &&
+                  (err.certificateAvailable = true)
+              "
+            />
+            <span class="check">Naturalization</span>
+          </label>
+          <label>
+            <input
+              type="radio"
+              name="narents"
+              [value]="'Parents'"
+              [(ngModel)]="us.data.application.sponsoradministrationcheck_name"
+              (ngModelChange)="us.update(); err.certificateAvailable = false"
+              (blur)="
+                !us.data.application.sponsoradministrationcheck_name &&
+                  (err.certificateAvailable = true)
+              "
+            />
+            <span class="check">Parents</span>
+          </label>
+        </div>
+        <span *ngIf="err.certificateAvailable" class="errspan"
+          >This field is required</span
+        >
+
+        <span class="form__title"
+          >Has {{ us.data.application.sponsorname || "Sponsor" }} obtained a
+          Certificate of Naturalization or a Certificate of Citizenship?</span
+        >
+        <label>
+          <input
+            type="radio"
+            name="sponsorobtained_name"
+            [value]="'yes'"
+            [(ngModel)]="us.data.application.sponsorobtained_name"
+            (ngModelChange)="us.update(); err.choice = false"
+            (blur)="
+              !us.data.application.sponsorobtained_name && (err.choice = true)
+            "
+          />
+          <span class="check">Yes</span>
+        </label>
+        <label>
+          <input
+            type="radio"
+            name="sponsorobtained_name"
+            [value]="'no'"
+            [(ngModel)]="us.data.application.sponsorobtained_name"
+            (ngModelChange)="us.update(); err.choice = false"
+            (blur)="
+              !us.data.application.sponsorobtained_name && (err.choice = true)
+            "
+          />
+          <span class="check">No</span>
+        </label>
+      </div>
+      <span *ngIf="err.choice" class="errspan">This field is required</span>
+
+      <div
+        class="form__inner"
+        *ngIf="us.data.application.sponsorobtained_name == 'yes'"
+      >
+        <span class="form__title">About the certificate</span>
+        <div class="container__forms">
+          <label>
+            <span class="form__title">Certificate number</span>
+            <input
+              type="text"
+              [class.err]="err.certifNumber"
+              [(ngModel)]="us.data.application.certificatenumber_name"
+              (ngModelChange)="us.data.application.certificatenumber_name = us.data.application.certificatenumber_name.toUpperCase();
+                us.update(); err.certifNumber = false"
+              (blur)="
+                !us.data.application.certificatenumber_name &&
+                  (err.certifNumber = true)
+              "
+            />
+          </label>
+          <span *ngIf="err.certifNumber" class="errspan"
+            >This field is required</span
+          >
+
+          <label>
+            <span class="form__title">Place of issuance</span>
+            <input
+              type="text"
+              [class.err]="err.issuancePlace"
+              [(ngModel)]="us.data.application.certificateissuance_name"
+              (ngModelChange)="us.data.application.certificateissuance_name = us.data.application.certificateissuance_name.toUpperCase();
+                us.update(); err.issuancePlace = false"
+              (blur)="
+                !us.data.application.certificateissuance_name &&
+                  (err.issuancePlace = true)
+              "
+            />
+          </label>
+          <span *ngIf="err.issuancePlace" class="errspan"
+            >This field is required</span
+          >
+
+          <label>
+            <span class="form__title">Date of issuance</span>
+            <!-- <ng2-flatpickr placeholder="mm/dd/yyyy" [config]="pickerOptions" [setDate]="us.data.application.certificateissuancedate_name" [(ngModel)]="us.data.application.certificateissuancedate_name" (ngModelChange)="us.update();"></ng2-flatpickr> -->
+            <input type="date" placeholder="mm/dd/yyyy" [(ngModel)]="us.data.application.certificateissuancedate_name" (ngModelChange)="us.update();">
+            <!--
+          <input type="text" placeholder="mm/dd/yyyy" class="form-control" bsDatepicker
+          [(ngModel)]="us.data.application.certificateissuancedate_name" (ngModelChange)="us.update();"> -->
+
+            <my-date
+              [date]="us.data.application.certificateissuancedate_name"
+              [class.err]="err.issuanDate"
+              (update)="
+                us.data.application.certificateissuancedate_name = $event;
+                us.update();
+                err.issuanDate = false
+              "
+              (blur)="
+                !us.data.application.certificateissuancedate_name &&
+                  (err.issuanDate = true)
+              "
+            ></my-date>
+          </label>
+          <span *ngIf="err.issuanDate" class="errspan"
+            >This field is required</span
+          >
+        </div>
+      </div>
+      <div class="form__check">
+        <span class="form__title"
+          >Did {{ us.data.application.sponsorname || "Sponsor" }} gain lawful
+          permanent resident status or citizenship through adoption?
+        </span>
+        <label>
+          <input
+            type="radio"
+            name="sponsor gainlawfulperemanent_name"
+            [value]="'yes'"
+            [(ngModel)]="us.data.application.ussponsoradministration_name"
+            (ngModelChange)="us.update(); err.choice1 = false"
+          />
+          <span class="check">Yes</span>
+        </label>
+        <label>
+          <input
+            type="radio"
+            name="sponsor gainlawfulperemanent_name"
+            [value]="'no'"
+            [(ngModel)]="us.data.application.ussponsoradministration_name"
+            (ngModelChange)="us.update(); err.choice1 = false"
+            (blur)="
+              !us.data.application.ussponsoradministration_name &&
+                (err.choice1 = true)
+            "
+          />
+          <span class="check">No</span>
+        </label>
+      </div>
+      <span *ngIf="err.choice1" class="errspan">This field is required</span>
+
+      <div class="form__inner">
+        <label>
+          <span class="form__title"
+            >{{
+              (us.data.application.sponsorname &&
+                us.data.application.sponsorname + "'s") ||
+                "Sponsor's"
+            }}
+            alien registration number (A-number) (if any)</span
+          >
+          <input
+            type="text"
+            maxlength="9"
+            oninput="this.value = this.value.replace(/[^0-9\s.]/g, ''); this.value = this.value.replace(/(\..*)\./g, '$1')"
+            [(ngModel)]="us.data.application.anumbersponsor_name"
+            (ngModelChange)="us.update()"
+          />
+        </label>
+      </div>
+      <div class="form__inner">
+        <label>
+          <span class="form__title"
+            >{{
+              (us.data.application.sponsorname &&
+                us.data.application.sponsorname + "'s") ||
+                "Sponsor's"
+            }}
+            USCIS Online Account Number (if any)</span
+          >
+          <input
+            type="text"
+            maxlength="12"
+            oninput="this.value = this.value.replace(/[^0-9\s.]/g, ''); this.value = this.value.replace(/(\..*)\./g, '$1')"
+            [(ngModel)]="us.data.application.anumbersponsoraccount_name"
+            (ngModelChange)="us.update()"
+          />
+        </label>
+      </div>
+      <span class="form__subdiscription">
+        Sources for this page (unless otherwise cited above): USCIS Forms
+        <a
+          target="_blank"
+          href="https://www.uscis.gov/sites/default/files/document/forms/i-130.pdf"
+          >I-130</a
+        >,
+      </span>
+      <div class="section__container-btn">
+        <a class="form__btn-back" (click)="us.pagesection = 1; us.top()">
+          < Back
+        </a>
+        <a class="form__btn-continue" (click)="ChangeTab2(3); us.top()">
+          Continue >
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+<div *ngIf="us.pagesection == 3">
+  <div class="section-form__inner">
+    <h1 class="section__title">
+      About
+      {{
+        (us.data.application.name && us.data.application.name + "'s") ||
+          "Applicant's"
+      }}
+      Green Card application
+    </h1>
+    <div class="form__inner">
+      <span
+        *ngIf="us.data.cardholder == 'us' && us.data.location == 'inside'"
+        class="form__title"
+      >
+        At which U.S Citizenship and Immigration Services (USCIS) office will
+        {{ us.data.application.name || "Applicant" }} apply for the Green Card
+        (officially called "apply for adjustment of status to that of a lawful
+        permanent resident")?
+      </span>
+      <div
+        class="sub__section-btn"
+        (click)="subsection = !subsection"
+        (clickOutside)="subsection = null"
+      >
+        <span class="sub__section-icon" [class._active]="subsection"
+          >&#8250;</span
+        >
+        How to find my USCIS office?
+      </div>
+      <div class="sub-sub__section-inner" *ngIf="subsection">
+        <p>
+          Use the location of the USCIS field office that serves your area. You
+          can find it using the USCIS Field Office Locator, which is at the
+          bottom of
+          <a
+            style="color: #1972f5"
+            target="_blank"
+            href="https://www.uscis.gov/about-us/find-a-uscis-office/field-offices"
+            >this USCIS page.</a
+          >
+        </p>
+      </div>
+
+      <span
+        *ngIf="us.data.cardholder !== 'us' && us.data.location == 'inside'"
+        class="form__title"
+        >At which U.S. Embassy or U.S. Consulate will
+        {{ us.data.application.name || "Applicant" }} apply for Green Card
+        (officially called "apply for an immigrant visa abroad")?
+      </span>
+      <div class="container__forms">
+        <label>
+          <span class="form__title">City/town</span>
+          <input
+            type="text"
+            maxlength="17"
+            oninput="this.value = this.value.replace(/[^a-zA-Z\s]/g, '');"
+            [class.err]="err.cityName"
+            [(ngModel)]="us.data.application.admissiontown_name"
+            (ngModelChange)="us.update(); err.cityName = false; validateLength17(us.data.application.admissiontown_name)"
+            (blur)="
+              !us.data.application.admissiontown_name && err.cityName = true
+            "
+          />
+        </label>
+        <span *ngIf="err.cityName" class="errspan">This field is required</span>
+
+        <label
+          *ngIf="us.data.cardholder !== 'us' && us.data.location == 'inside'"
+        >
+          <span class="form__title">Province</span>
+          <input
+            type="text"
+            [(ngModel)]="us.data.provinceadmission_name"
+            (ngModelChange)="us.update()"
+          />
+        </label>
+
+        <label>
+          <span class="form__title">State</span>
+          <select
+            name=""
+            id=""
+            [class.err]="err.stateName"
+            [(ngModel)]="us.data.application.applicationstate_name"
+            (ngModelChange)="us.update(); err.stateName = false"
+            (blur)="
+              !us.data.application.applicationstate_name &&
+                err.stateName = true
+            "
+          >
+            <option>AL</option>
+            <option>AK</option>
+            <option>AZ</option>
+            <option>AR</option>
+            <option>CA</option>
+            <option>CO</option>
+            <option>CT</option>
+            <option>DE</option>
+            <option>DC</option>
+            <option>FL</option>
+            <option>GA</option>
+            <option>HI</option>
+            <option>ID</option>
+            <option>IL</option>
+            <option>IN</option>
+            <option>IA</option>
+            <option>KS</option>
+            <option>KY</option>
+            <option>LA</option>
+            <option>ME</option>
+            <option>MD</option>
+            <option>MA</option>
+            <option>MI</option>
+            <option>MN</option>
+            <option>MS</option>
+            <option>MO</option>
+            <option>MT</option>
+            <option>NE</option>
+            <option>NV</option>
+            <option>NH</option>
+            <option>NJ</option>
+            <option>NM</option>
+            <option>NY</option>
+            <option>NC</option>
+            <option>ND</option>
+            <option>OH</option>
+            <option>OK</option>
+            <option>OR</option>
+            <option>PA</option>
+            <option>RI</option>
+            <option>SC</option>
+            <option>SD</option>
+            <option>TN</option>
+            <option>TX</option>
+            <option>UT</option>
+            <option>VT</option>
+            <option>VA</option>
+            <option>WA</option>
+            <option>WV</option>
+            <option>WI</option>
+            <option>WY</option>
+          </select>
+        </label>
+        <span *ngIf="err.stateName" class="errspan"
+          >This field is required</span
+        >
+      </div>
+    </div>
+    <div class="form__check">
+      <span class="form__title"
+        >To
+        {{
+          (us.data.application.sponsorname &&
+            us.data.application.sponsorname + "'s") ||
+            "Sponsor's"
+        }}
+        knowledge, has anyone else other than
+        {{ us.data.application.sponsorname || "Sponsor" }} ever filed a petition
+        for {{ us.data.application.name || "Applicant" }}?</span
+      >
+      <label>
+        <input
+          type="radio"
+          name=" sponsorapp_name"
+          [value]="'yes'"
+          [(ngModel)]="us.data.application.sponsorapp_name"
+          (ngModelChange)="us.update(); err.choice2 = false"
+          (blur)="!us.data.application.sponsorapp_name && (err.choice2 = true)"
+        />
+        <span class="check">Yes</span>
+      </label>
+      <label>
+        <input
+          type="radio"
+          name="gsponsorapp_name"
+          [value]="'no'"
+          [(ngModel)]="us.data.application.sponsorapp_name"
+          (ngModelChange)="us.update(); err.choice2 = false"
+          (blur)="!us.data.application.sponsorapp_name && (err.choice2 = true)"
+        />
+        <span class="check">No</span>
+      </label>
+      <label>
+        <input
+          type="radio"
+          name="gsponsorapp_name"
+          [value]="'Unknown'"
+          [(ngModel)]="us.data.application.sponsorapp_name"
+          (ngModelChange)="us.update(); err.choice2 = false"
+          (blur)="!us.data.application.sponsorapp_name && (err.choice2 = true)"
+        />
+        <span class="check">Unknown</span>
+      </label>
+    </div>
+    <span *ngIf="err.choice2" class="errspan">This field is required</span>
+
+    <span class="form__subdiscription">
+      Sources for this page (unless otherwise cited above): USCIS Forms
+      <a
+        target="_blank"
+        href="https://www.uscis.gov/sites/default/files/document/forms/i-130.pdf"
+        >I-130</a
+      >,
+    </span>
+    <div class="section__container-btn">
+      <a class="form__btn-back" (click)="us.pagesection = 2; us.top()">
+        < Back
+      </a>
+      <a class="form__btn-continue" (click)="ChangeTab3(4); us.top()">
+        Continue >
+      </a>
+    </div>
+  </div>
+</div>
+<div *ngIf="us.pagesection == 4">
+  <div class="section-form__inner">
+    <h1 class="section__title">
+      Has {{ us.data.application.sponsorname || "Sponsor" }} ever previously
+      filed a petition for {{ us.data.application.name || "Applicant" }} or any
+      other alien?
+    </h1>
+    <div class="form__check">
+      <label>
+        <input
+          type="radio"
+          name="sponsoreverpreviously_name"
+          [value]="'yes'"
+          [(ngModel)]="us.data.application.sponsoreverpreviously_name"
+          (ngModelChange)="us.update(); err.choice3 = false"
+          (blur)="
+            !us.data.application.sponsoreverpreviously_name &&
+              (err.choice3 = true)
+          "
+        />
+        <span class="check">Yes</span>
+      </label>
+      <label>
+        <input
+          type="radio"
+          name="sponsoreverpreviously_name"
+          [value]="'no'"
+          [(ngModel)]="us.data.application.sponsoreverpreviously_name"
+          (ngModelChange)="us.update(); err.choice3 = false"
+          (blur)="
+            !us.data.application.sponsoreverpreviously_name &&
+              (err.choice3 = true)
+          "
+        />
+        <span class="check">No</span>
+      </label>
+    </div>
+    <span *ngIf="err.choice3" class="errspan">This field is required</span>
+
+    <div *ngIf="us.data.application.sponsoreverpreviously_name == 'yes'">
+      <div
+        class="ngfor-inner"
+        *ngFor="
+          let name of us.data.application.sponsoralienprevious_names;
+          index as i
+        "
+      >
+        <div class="sub-inner">
+          <div class="container__title">
+            <div class="sub__title">PREVIOUS PETITION {{ i + 1 }}</div>
+            <button
+              class=""
+              (click)="
+                us.data.application.sponsoralienprevious_names.splice(i, 1);
+                us.update()
+              "
+            >
+              X
+            </button>
+          </div>
+          <div class="sub-form__inner">
+            <div class="section__discription">Alien full legal name</div>
+            <div class="form__inner">
+              <div class="containner__forms">
+                <div class="forms">
+                  <label>
+                    <span class="form__title">Given name (first name)</span>
+                    <input
+                      type="text"
+                      maxlength="27"
+                      oninput="this.value = this.value.replace(/[^a-zA-Z\s]/g, '');"
+                      [class.err]="err.gName"
+                      [(ngModel)]="name.alien_name"
+                      (ngModelChange)="us.update(); err.gName = false; validateLength27(name.alien_name)"
+                      (blur)="!name.alien_name && (err.gName = true)"
+                    />
+                  </label>
+                  <span *ngIf="err.gName" class="errspan"
+                    >This field is required</span
+                  >
+
+                  <label>
+                    <span class="form__title">Middle name</span>
+                    <input
+                      type="text"
+                      maxlength="27"
+                      oninput="this.value = this.value.replace(/[^a-zA-Z\s]/g, '');"
+                      [(ngModel)]="name.alienmiddle_name"
+                      (ngModelChange)="us.update(); validateLength27(name.alienmiddle_name)"
+                    />
+                  </label>
+                </div>
+
+                <label>
+                  <span class="form__title">Family name (last name)</span>
+                  <input
+                    type="text"
+                    maxlength="27"
+                    oninput="this.value = this.value.replace(/[^a-zA-Z\s]/g, '');"
+                    [class.err]="err.fName"
+                    [(ngModel)]="name.familyalien_name"
+                    (ngModelChange)="us.update(); err.fName = false; validateLength27(name.familyalien_name)"
+                    (blur)="!name.familyalien_name && (err.fName = true)"
+                  />
+                </label>
+                <span *ngIf="err.fName" class="errspan"
+                  >This field is required</span
+                >
+              </div>
+              <div class="section__discription">Place of filing</div>
+              <label>
+                <span class="form__title">City or town</span>
+                <input
+                  type="text"
+                  maxlength="17"
+                  oninput="this.value = this.value.replace(/[^a-zA-Z\s]/g, '');"
+                  [class.err]="err.cityName1"
+                  [(ngModel)]="name.aliencitygreen_name"
+                  (ngModelChange)="us.update(); err.cityName1 = false; validateLength17(name.aliencitygreen_name)"
+                  (blur)="!name.aliencitygreen_name && (err.cityName1 = true)"
+                />
+              </label>
+              <span *ngIf="err.cityName1" class="errspan"
+                >This field is required</span
+              >
+
+              <label>
+                <span class="form__title">State</span>
+                <select
+                  [class.err]="err.state1"
+                  [(ngModel)]="name.alienstate_name"
+                  (ngModelChange)="us.update(); err.state1 = false"
+                  name=""
+                  id=""
+                  (blur)="!name.alienstate_name && (err.state1 = true)"
+                >
+                  <option>AL</option>
+                  <option>AK</option>
+                  <option>AZ</option>
+                  <option>AR</option>
+                  <option>CA</option>
+                  <option>CO</option>
+                  <option>CT</option>
+                  <option>DE</option>
+                  <option>DC</option>
+                  <option>FL</option>
+                  <option>GA</option>
+                  <option>HI</option>
+                  <option>ID</option>
+                  <option>IL</option>
+                  <option>IN</option>
+                  <option>IA</option>
+                  <option>KS</option>
+                  <option>KY</option>
+                  <option>LA</option>
+                  <option>ME</option>
+                  <option>MD</option>
+                  <option>MA</option>
+                  <option>MI</option>
+                  <option>MN</option>
+                  <option>MS</option>
+                  <option>MO</option>
+                  <option>MT</option>
+                  <option>NE</option>
+                  <option>NV</option>
+                  <option>NH</option>
+                  <option>NJ</option>
+                  <option>NM</option>
+                  <option>NY</option>
+                  <option>NC</option>
+                  <option>ND</option>
+                  <option>OH</option>
+                  <option>OK</option>
+                  <option>OR</option>
+                  <option>PA</option>
+                  <option>RI</option>
+                  <option>SC</option>
+                  <option>SD</option>
+                  <option>TN</option>
+                  <option>TX</option>
+                  <option>UT</option>
+                  <option>VT</option>
+                  <option>VA</option>
+                  <option>WA</option>
+                  <option>WV</option>
+                  <option>WI</option>
+                  <option>WY</option>
+                </select>
+              </label>
+              <span *ngIf="err.state1" class="errspan"
+                >This field is required</span
+              >
+            </div>
+            <div class="form__inner">
+              <label>
+                <span class="form__title">Date filed</span>
+                <!--
+								<ng2-flatpickr placeholder="mm/dd/yyyy" [config]="pickerOptions" [setDate]="name.greenaliencity_name" [(ngModel)]="name.greenaliencity_name" (ngModelChange)="us.update();"></ng2-flatpickr> -->
+                <input type="date" placeholder="mm/dd/yyyy" [(ngModel)]="name.greenaliencity_name" (ngModelChange)="us.update();">
+
+                <!-- <input type="text" placeholder="mm/dd/yyyy" class="form-control" bsDatepicker
+                [(ngModel)]="name.greenaliencity_name" (ngModelChange)="us.update();"> -->
+
+                <my-date
+                  [class.err]="err.dateName"
+                  [date]="name.greenaliencity_name"
+                  (update)="
+                    name.greenaliencity_name = $event;
+                    us.update();
+                    err.dateName = false
+                  "
+                  (blur)="!name.greenaliencity_name && (err.dateName = true)"
+                >
+                </my-date>
+                <span *ngIf="err.dateName" class="errspan"
+                  >This field is required</span
+                >
+              </label>
+              <label>
+                <span class="form__title">Result</span>
+                <input
+                  type="text"
+                  maxlength="17"
+                  oninput="this.value = this.value.replace(/[^a-zA-Z\s]/g, '');"
+                  [class.err]="err.resultName"
+                  [(ngModel)]="name.aliengreen_name"
+                  (ngModelChange)="us.update(); err.resultName = false; validateLength17(name.aliengreen_name)"
+                  (blur)="!name.aliengreen_name && (err.resultName = true)"
+                />
+              </label>
+              <span *ngIf="err.resultName" class="errspan"
+                >This field is required</span
+              >
+
+              <span class="form__subdiscription">
+                <span>For example: approved, denied, withdrawn</span>
+              </span>
+            </div>
+          </div>
+        </div>
+        <div>
+          <button class="relativeadd__btn" (click)="previousadd()">
+            + Add previous petition
+          </button>
+        </div>
+      </div>
+    </div>
+    <span class="form__subdiscription">
+      Sources for this page (unless otherwise cited above): USCIS Forms
+      <a
+        target="_blank"
+        href="https://www.uscis.gov/sites/default/files/document/forms/i-130.pdf"
+        >I-130</a
+      >,
+    </span>
+    <div class="section__container-btn">
+      <a class="form__btn-back" (click)="us.pagesection = 3; us.top()">
+        < Back
+      </a>
+      <a class="form__btn-continue" (click)="ChangeTab4(5); us.top()">
+        Continue >
+      </a>
+    </div>
+  </div>
+</div>
+<div *ngIf="us.pagesection == 5">
+  <div class="section-form__inner">
+    <h1 class="section__title">
+      Is {{ us.data.application.sponsorname || "Sponsor" }} also submitting
+      separate petitions for other relatives?
+    </h1>
+    <div class="form__check">
+      <label>
+        <input
+          type="radio"
+          name="sponsoralsosubmitting_name"
+          [value]="'yes'"
+          [(ngModel)]="us.data.application.sponsoralsosubmitting_name"
+          (ngModelChange)="us.update(); err.choice4 = false"
+          (blur)="
+            !us.data.application.sponsoralsosubmitting_name &&
+              (err.choice4 = true)
+          "
+        />
+        <span class="check">Yes</span>
+      </label>
+      <label>
+        <input
+          type="radio"
+          name="sponsoralsosubmitting_name"
+          [value]="'no'"
+          [(ngModel)]="us.data.application.sponsoralsosubmitting_name"
+          (ngModelChange)="us.update(); err.choice4 = false"
+          (blur)="
+            !us.data.application.sponsoralsosubmitting_name &&
+              (err.choice4 = true)
+          "
+        />
+        <span class="check">No</span>
+      </label>
+    </div>
+    <span *ngIf="err.choice4" class="errspan">This field is required</span>
+
+    <div *ngIf="us.data.application.sponsoralsosubmitting_name == 'yes'">
+      <div
+        *ngFor="
+          let name of us.data.application.sponsorrelative_names;
+          index as i
+        "
+      >
+        <div class="sub-inner">
+          <div class="container__title">
+            <div class="sub__title">RELATIVE {{ i + 1 }}</div>
+            <button
+              class=""
+              (click)="
+                us.data.application.sponsorrelative_names.splice(i, 1);
+                us.update()
+              "
+            >
+              X
+            </button>
+          </div>
+          <div class="sub-form__inner">
+            <div class="section__discription">Relative full legal name</div>
+            <div class="form__inner">
+              <div class="containner__forms">
+                <div class="forms">
+                  <label>
+                    <span class="form__title">Given name (first name)</span>
+                    <input
+                      type="text"
+                      maxlength="27"
+                      oninput="this.value = this.value.replace(/[^a-zA-Z\s]/g, '');"
+                      [(ngModel)]="name.smother_name"
+                      [class.err]="err.gName1"
+                      (ngModelChange)="us.update(); err.gName1 = false; validateLength27(name.smother_name)"
+                      (blur)="!name.smother_name && (err.gName1 = true)"
+                    />
+                  </label>
+                  <span *ngIf="err.gName1" class="errspan"
+                    >This field is required</span
+                  >
+
+                  <label>
+                    <span class="form__title">Middle name</span>
+                    <input
+                      type="text"
+                      maxlength="27"
+                      oninput="this.value = this.value.replace(/[^a-zA-Z\s]/g, '');"
+                      [(ngModel)]="name.mother_smiddle_name"
+                      (ngModelChange)="us.update(); validateLength27(name.mother_smiddle_name)"
+                    />
+                  </label>
+                </div>
+
+                <label>
+                  <span class="form__title">Family name (last name)</span>
+                  <input
+                    type="text"
+                    maxlength="27"
+                    oninput="this.value = this.value.replace(/[^a-zA-Z\s]/g, '');"
+                    [(ngModel)]="name.smother_family_name"
+                    [class.err]="err.fName1"
+                    (ngModelChange)="us.update(); err.fName1 = false; validateLength27(name.smother_family_name)"
+                    (blur)="!name.smother_family_name && (err.fName1 = true)"
+                  />
+                </label>
+                <span *ngIf="err.fName1" class="errspan"
+                  >This field is required</span
+                >
+              </div>
+              <label>
+                <span class="form__title">Relationship</span>
+                <input
+                  type="text"
+                  maxlength="17"
+                  oninput="this.value = this.value.replace(/[^a-zA-Z\s]/g, '');"
+                  [(ngModel)]="name.srelationship_name"
+                  [class.err]="err.relationships"
+                  (ngModelChange)="us.update(); err.relationships = false; validateLength17(name.srelationship_name)"
+                  (blur)="
+                    !name.srelationship_name && (err.relationships = true)
+                  "
+                />
+              </label>
+              <span *ngIf="err.relationships" class="errspan"
+                >This field is required</span
+              >
+            </div>
+          </div>
+        </div>
+        <div>
+          <button class="relativeadd__btn" (click)="relativeadd()">
+            + Add Another Relative
+          </button>
+        </div>
+      </div>
+    </div>
+    <span class="form__subdiscription">
+      Sources for this page (unless otherwise cited above): USCIS Forms
+      <a
+        target="_blank"
+        href="https://www.uscis.gov/sites/default/files/document/forms/i-130.pdf"
+        >I-130</a
+      >,
+    </span>
+    <div class="section__container-btn">
+      <a class="form__btn-back" (click)="us.pagesection = 4; us.top()">
+        < Back
+      </a>
+      <a
+        class="form__btn-continue"
+        (click)="us.section = 'sponsorfamily'; us.pagesection = 1; us.top()"
+      >
+        Continue >
+      </a>
+    </div>
+  </div>
+</div>

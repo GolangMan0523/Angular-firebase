@@ -1,0 +1,4192 @@
+<div class="form" #form>
+  <div class="form-inner">
+    <!-- <div *ngIf="us._users[_id]">{{us._users[_id]|json}}</div>
+    <div *ngIf="us._users[_id]?._users[_id]">{{us._users[_id]?.email}}</div> -->
+    <div class="print__wrapper">
+      <div *ngIf="us._users[_id]?.data.application.name">
+        <h2 class="print__title">Applicant info</h2>
+        <h2 class="print__title">Personal info</h2>
+        <h2>
+          <span style="background: #ffff00; padding: 10px">
+            What's
+            {{
+              (us._users[_id]?.data.application.name &&
+                us._users[_id]?.data.application.name + "'s") ||
+                "Applicant's"
+            }}
+            full legal name?</span
+          >
+        </h2>
+        <div *ngIf="us._users[_id]?.data.application.name">
+          <h2>Given name (first name)</h2>
+          <div *ngIf="us._users[_id]">
+            {{ us._users[_id]?.data.application.name.toUpperCase() }}
+          </div>
+        </div>
+      </div>
+      <div *ngIf="us._users[_id]?.data.application.middle_name">
+        <h2>Middle name</h2>
+        <div *ngIf="us._users[_id]">
+          {{ us._users[_id]?.data.application.middle_name.toUpperCase() }}
+        </div>
+      </div>
+      <div *ngIf="us._users[_id]?.data.application.family_name">
+        <h2>Family name (last name)</h2>
+        <div *ngIf="us._users[_id]">
+          {{ us._users[_id]?.data.application.family_name.toUpperCase() }}
+        </div>
+      </div>
+      <h2 class="section__title">
+        <span style="background: #ffff00; padding: 10px"
+          >Has {{ us._users[_id]?.data.application.name || "Applicant" }} ever
+          used names other than "{{
+            us._users[_id]?.data.application.name || "Applicant"
+          }}" since birth?</span
+        >
+      </h2>
+      <div *ngFor="let name of us._users[_id]?.data.application.other_names">
+        <div *ngIf="name.subfirstname_name">
+          <h2 class="form__title">Given name (first name)</h2>
+          <div>{{ name.subfirstname_name.toUpperCase() }}</div>
+        </div>
+        <div *ngIf="name.submiddlename_name">
+          <h2 class="form__title">Middle name</h2>
+          <div>{{ name.submiddlename_name.toUpperCase() }}</div>
+        </div>
+        <div *ngIf="name.sublastname_name">
+          <h2 class="form__title">Family name (last name)</h2>
+          <div>{{ name.sublastname_name.toUpperCase() }}</div>
+        </div>
+      </div>
+      <h2 class="section__title">
+        <span style="background: #ffff00; padding: 10px"
+          >Does
+          {{
+            (us._users[_id]?.data.application.name &&
+              us._users[_id]?.data.application.name + "'s") ||
+              "Applicant's"
+          }}
+          native written language use Roman letters?</span
+        >
+      </h2>
+      <div *ngIf="us._users[_id]?.data.application.examplelanguages_name">
+        <div>{{ us._users[_id]?.data.application.examplelanguages_name }}</div>
+      </div>
+      <div
+        *ngIf="us._users[_id]?.data.application.examplelanguages_name == 'yes'"
+      >
+        <div *ngIf="us._users[_id]?.data.application.subfirstnames_name">
+          <h2 class="form__title">Given name (first name)</h2>
+          <div>{{ us._users[_id]?.data.application.subfirstnames_name }}</div>
+        </div>
+        <div *ngIf="us._users[_id]?.data.application.subsubmiddlenames_name">
+          <h2>Middle name</h2>
+          <div>
+            {{ us._users[_id]?.data.application.subsubmiddlenames_name }}
+          </div>
+        </div>
+        <div *ngIf="us._users[_id]?.data.application.subsublastnames_name">
+          <h2>Family name (last name)</h2>
+          <div>{{ us._users[_id]?.data.application.subsublastnames_name }}</div>
+        </div>
+      </div>
+      <h2>
+        <span style="background: #ffff00; padding: 10px"
+          >Some basic info about
+          {{ us._users[_id]?.data.application.name || "Applicant" }}</span
+        >
+      </h2>
+      <div *ngIf="us._users[_id]?.data.application.basicinfo_name">
+        <h2>Sex</h2>
+        <div>{{ us._users[_id]?.data.application.basicinfo_name }}</div>
+      </div>
+      <div *ngIf="us._users[_id]?.data.application.country_names">
+        <h2>Country of citizenship or nationality</h2>
+        <div
+          *ngFor="let name of us._users[_id]?.data.application.country_names"
+        >
+          {{ name.country_name }}
+        </div>
+      </div>
+      <div *ngIf="us._users[_id]?.data.application.citizenship_name">
+        <h2>Date of birth</h2>
+        <div>
+          {{
+            us._users[_id]?.data.application.citizenship_name
+              | date : "M/d/yyyy"
+          }}
+        </div>
+      </div>
+      <div *ngIf="us._users[_id]?.data.application.dateofbirth_name">
+        <h2>
+          Has {{ us._users[_id]?.data.application.name || "Applicant" }} ever
+          used any other date of birth?
+        </h2>
+        <div>{{ us._users[_id]?.data.application.dateofbirth_name | date : "M/d/yyyy" }}</div>
+      </div>
+      <div
+        *ngFor="
+          let name of us._users[_id]?.data.application
+            .appdateofbirthrepeat_names;
+          index as i
+        "
+      >
+        <div *ngIf="name.appdateofbirth_name">
+          <h2>Enter other birth date(s) used</h2>
+          <div>{{ name.appdateofbirth_name | date : "M/d/yyyy" }}</div>
+        </div>
+      </div>
+      <div *ngIf="us._users[_id]?.data.application.birth_name">
+        <h2>Country of birth</h2>
+        <div>{{ us._users[_id]?.data.application.birth_name.toUpperCase() }}</div>
+      </div>
+      <div *ngIf="us._users[_id]?.data.application.state_name">
+        <h2>State or province of birth</h2>
+        <div>{{ us._users[_id]?.data.application.state_name.toUpperCase() }}</div>
+      </div>
+      <div *ngIf="us._users[_id]?.data.application.city_name">
+        <h2>City or town of birth</h2>
+        <div>{{ us._users[_id]?.data.application.city_name.toUpperCase() }}</div>
+      </div>
+      <div *ngIf="us._users[_id]?.data.application.administration_name">
+        <h2>
+          Has the Social Security Administration (SSA) ever officially issued a
+          Social Security card to
+          {{ us._users[_id]?.data.application.name.toUpperCase() || "Applicant" }}?
+        </h2>
+        <div>{{ us._users[_id]?.data.application.administration_name }}</div>
+      </div>
+      <h2>Applicant's U.S. social security number</h2>
+      <div *ngIf="us._users[_id]?.data.application.securitynumberone_name">
+        <span>{{
+          us._users[_id]?.data.application.securitynumberone_name
+        }}</span>
+        <span>{{
+          us._users[_id]?.data.application.securitynumbertwo_name
+        }}</span>
+        <span>{{
+          us._users[_id]?.data.application.securitynumberthree_name
+        }}</span>
+      </div>
+      <div *ngIf="us._users[_id]?.data.application.phonenumber_name">
+        <h2>Daytime phone number</h2>
+        <span>{{ us._users[_id]?.data.application.phonenumber_name }}</span>
+      </div>
+      <div *ngIf="us._users[_id]?.data.application.mobile_name">
+        <h2>Mobile phone number (if any)</h2>
+        <span>{{ us._users[_id]?.data.application.mobile_name }}</span>
+      </div>
+      <div *ngIf="us._users[_id]?.data.application.register_name">
+        <h2>Email address (if any)</h2>
+        <span>{{ us._users[_id]?.data.application.register_name.toUpperCase() }}</span>
+      </div>
+      <h2>
+        <span style="background: #ffff00; padding: 10px"
+          >{{
+            (us._users[_id]?.data.application.name.toUpperCase() &&
+              us._users[_id]?.data.application.name.toUpperCase() + "'s") ||
+              "Applicant's"
+          }}
+          biographic info</span
+        >
+      </h2>
+      <div *ngIf="us._users[_id]?.data.application.ethnicity_name">
+        <h2>Hispanic or Latino</h2>
+        <span>{{ us._users[_id]?.data.application.ethnicity_name.toUpperCase() }}</span>
+      </div>
+      <div *ngIf="us._users[_id]?.data.application.rasewhite_name">
+        <h2>Race (select all applicable boxes)</h2>
+        <h2>White</h2>
+        <div>{{ us._users[_id]?.data.application.rasewhite_name }}</div>
+      </div>
+      <div *ngIf="us._users[_id]?.data.application.raseasian_name">
+        <h2>Race (select all applicable boxes)</h2>
+        <h2>Asian</h2>
+        <div>{{ us._users[_id]?.data.application.raseasian_name }}</div>
+      </div>
+      <div *ngIf="us._users[_id]?.data.application.raseblack_name">
+        <h2>Race (select all applicable boxes)</h2>
+        <h2>Black or African American</h2>
+        <div>{{ us._users[_id]?.data.application.raseblack_name }}</div>
+      </div>
+      <div *ngIf="us._users[_id]?.data.application.rasenative_name">
+        <h2>Race (select all applicable boxes)</h2>
+        <h2>American Indian or Alaska Native</h2>
+        <div>{{ us._users[_id]?.data.application.rasenative_name }}</div>
+      </div>
+      <div *ngIf="us._users[_id]?.data.application.rasehawaiian_name">
+        <h2>Race (select all applicable boxes)</h2>
+        <h2>Native Hawaiian or Other Pacific Islander</h2>
+        <div>{{ us._users[_id]?.data.application.rasehawaiian_name }}</div>
+      </div>
+      <div *ngIf="us._users[_id]?.data.application.eyecolor_name">
+        <h2>Eye color</h2>
+        <div>{{ us._users[_id]?.data.application.eyecolor_name.toUpperCase() }}</div>
+      </div>
+      <div *ngIf="us._users[_id]?.data.application.colorhair_name">
+        <h2>Hair color</h2>
+        <div>{{ us._users[_id]?.data.application.colorhair_name }}</div>
+      </div>
+      <div *ngIf="us._users[_id]?.data.application.uspounds_name">
+        <h2>Weight</h2>
+        <div>
+          <span>{{ us._users[_id]?.data.application.uspounds_name }}</span>
+          <span>{{ us._users[_id]?.data.application.uspoundsa_name }}</span>
+          <span>{{ us._users[_id]?.data.application.uspoundss_name }}</span>
+        </div>
+      </div>
+      <div *ngIf="us._users[_id]?.data.application.usfeet_name">
+        <h2>Height</h2>
+        <h2>Feet</h2>
+        <div>{{ us._users[_id]?.data.application.usfeet_name }}</div>
+      </div>
+      <div *ngIf="us._users[_id]?.data.application.usinches_name">
+        <h2>Inches</h2>
+        <div>{{ us._users[_id]?.data.application.usinches_name }}</div>
+      </div>
+
+      <h2 class="print__title">Immigration info</h2>
+      <h2>
+        <span style="background: #ffff00; padding: 10px"
+          >About
+          {{
+            (us._users[_id]?.data.application.name &&
+              us._users[_id]?.data.application.name + "'s") ||
+              "Applicant's"
+          }}
+          last arrival into the U.S.</span
+        >
+      </h2>
+      <div *ngIf="us._users[_id]?.data.application.passportused_name">
+        <h2>Passport used at last arrival</h2>
+        <h2>
+          At last arrival,
+          {{ us._users[_id]?.data.application.name || "Applicant" }} used a
+          travel document instead of a passport.
+        </h2>
+        <div>{{ us._users[_id]?.data.application.passportused_name.toUpperCase() }}</div>
+      </div>
+      <div *ngIf="us._users[_id]?.data.application.travelpassportnumberus_name">
+        <h2>Travel document number</h2>
+        <span>{{
+          us._users[_id]?.data.application.travelpassportnumberus_name
+        }}</span>
+      </div>
+      <div *ngIf="us._users[_id]?.data.application.traveluscountry_name">
+        <h2>Country of issuance</h2>
+        <span>{{ us._users[_id]?.data.application.traveluscountry_name }}</span>
+      </div>
+      <div *ngIf="us._users[_id]?.data.application.traveluscountry_name">
+        <h2>Travel document expiration date</h2>
+        <span>{{
+          us._users[_id]?.data.application.travelexpirationdateus_name
+        }}</span>
+      </div>
+      <div *ngIf="us._users[_id]?.data.application.travelvisanumberus_name">
+        <h2>Nonimmigrant visa number from this travel document (if any)</h2>
+        <span>{{
+          us._users[_id]?.data.application.travelvisanumberus_name
+        }}</span>
+      </div>
+      <div *ngIf="us._users[_id]?.data.application.passportnumberus_name">
+        <h2>Passport number</h2>
+        <span>{{
+          us._users[_id]?.data.application.passportnumberus_name.toUpper
+        }}</span>
+      </div>
+      <div *ngIf="us._users[_id]?.data.application.uscountry_name">
+        <h2>Country of issuance</h2>
+        <span>{{ us._users[_id]?.data.application.uscountry_name }}</span>
+      </div>
+      <div *ngIf="us._users[_id]?.data.application.expirationdateus_name">
+        <h2>Passport expiration date</h2>
+        <span>{{
+          us._users[_id]?.data.application.expirationdateus_name | date : "M/d/yyyy"
+        }}</span>
+      </div>
+      <div *ngIf="us._users[_id]?.data.application.visanumberus_name">
+        <h2>Nonimmigrant visa number from this passport (if any)</h2>
+        <span>{{ us._users[_id]?.data.application.visanumberus_name }}</span>
+      </div>
+      <div *ngIf="us._users[_id]?.data.application.abovepassport_name">
+        <h2>
+          Is the above passport
+          {{
+            (us._users[_id]?.data.application.name &&
+              us._users[_id]?.data.application.name + "'s") ||
+              "Applicant's"
+          }}
+          most recently issued passport?
+        </h2>
+        <span>{{ us._users[_id]?.data.application.abovepassport_name }}</span>
+      </div>
+      <h2>
+        About
+        {{
+          (us._users[_id]?.data.application.name &&
+            us._users[_id]?.data.application.name + "'s") ||
+            "Applicant's"
+        }}
+        most recently issued passport
+      </h2>
+      <div *ngIf="us._users[_id]?.data.application.abovepassport_name">
+        <h2>Passport number</h2>
+        <span>{{
+          us._users[_id]?.data.application.uspassportnumber_name
+        }}</span>
+      </div>
+      <div *ngIf="us._users[_id]?.data.application.abovepassport_name">
+        <h2>Country of issuance</h2>
+        <span>{{
+          us._users[_id]?.data.application.uscountryofissuance_name
+        }}</span>
+      </div>
+      <div *ngIf="us._users[_id]?.data.application.usexpirationdate_name">
+        <h2>Passport expiration date</h2>
+        <span>{{
+          us._users[_id]?.data.application.usexpirationdate_name | date : "M/d/yyyy"
+        }}</span>
+      </div>
+      <h2>Place of last arrival</h2>
+      <div *ngIf="us._users[_id]?.data.application.uscityoftawn_name">
+        <h2>City or town</h2>
+        <span>{{ us._users[_id]?.data.application.uscityoftawn_name }}</span>
+      </div>
+      <div *ngIf="us._users[_id]?.data.application.usstate_name">
+        <h2>State</h2>
+        <span>{{ us._users[_id]?.data.application.usstate_name }}</span>
+      </div>
+      <div *ngIf="us._users[_id]?.data.application.uslastarrivaldate_name">
+        <h2>Date of last arrival</h2>
+        <span>{{
+          us._users[_id]?.data.application.uslastarrivaldate_name | date : "M/d/yyyy"
+        }}</span>
+      </div>
+      <div *ngIf="us._users[_id]?.data.application.usportofentry_name">
+        <h2>
+          When {{ us._users[_id]?.data.application.name || "Applicant" }} last
+          arrived in the U.S., was
+          {{ us._users[_id]?.data.application.name || "Applicant" }} inspected
+          at a port of entry?
+        </h2>
+        <h2>{{ us._users[_id]?.data.application.usportofentry_name }}</h2>
+      </div>
+
+      <div *ngIf="us._users[_id]?.data.application.usportofentry_name">
+        <h2>
+          When {{ us._users[_id]?.data.application.name || "Applicant" }} last
+          arrived in the U.S., was
+          {{ us._users[_id]?.data.application.name || "Applicant" }} inspected
+          at a port of entry?
+        </h2>
+        <h2>{{ us._users[_id]?.data.application.usportofentry_name }}</h2>
+      </div>
+
+      <div
+        *ngIf="us._users[_id]?.data.application.usarrivedinthe_name == 'yes'"
+      >
+        <h2>
+          When {{ us._users[_id]?.data.application.name || "Applicant" }} last
+          arrived in the U.S.,
+          {{ us._users[_id]?.data.application.name || "Applicant" }} was
+          admitted into the U.S
+        </h2>
+        <h2>
+          When {{ us._users[_id]?.data.application.name || "Applicant" }} last
+          arrived in the U.S.,
+          {{ us._users[_id]?.data.application.name || "Applicant" }} was
+          admitted as a:
+        </h2>
+        <h3>{{ us._users[_id]?.data.application.arrivedintheus_name }}</h3>
+      </div>
+
+      <div *ngIf="us._users[_id]?.data.application.usarrivedinthe_name == 'no'">
+        <h2>
+          When {{ us._users[_id]?.data.application.name || "Applicant" }} last
+          arrived in the U.S.,
+          {{ us._users[_id]?.data.application.name || "Applicant" }} was paroled
+          into the U.S
+        </h2>
+
+        <h2>
+          When {{ us._users[_id]?.data.application.name || "Applicant" }} last
+          arrived in the U.S.,
+          {{ us._users[_id]?.data.application.name || "Applicant" }} was paroled
+          as a:
+        </h2>
+        <h3>{{ us._users[_id]?.data.application.wasparoled_name }}</h3>
+      </div>
+
+      <div
+        *ngIf="us._users[_id]?.data.application.usarrivedinthe_name == 'three'"
+      >
+        <h2>None of the above</h2>
+      </div>
+
+      <div *ngIf="us._users[_id]?.data.application.formrecordnumber_name">
+        <h2>Form I-94 Arrival-Departure Record Number</h2>
+        <span>{{
+          us._users[_id]?.data.application.formrecordnumber_name
+        }}</span>
+      </div>
+
+      <div *ngIf="us._users[_id]?.data.application.formrecordnumber_name">
+        <h2>
+          {{
+            (us._users[_id]?.data.application.name &&
+              us._users[_id]?.data.application.name + "'s") ||
+              "Applicant's"
+          }}
+          I-94 expiration date is "D/S", which stands for Duration of Status.
+        </h2>
+        <h2>{{ us._users[_id]?.data.application.formstatus_name }}</h2>
+      </div>
+
+      <div *ngIf="us._users[_id]?.data.application.form94_name">
+        <h2>Expiration Date of Authorized Stay Shown on Form I-94</h2>
+        <div>{{ us._users[_id]?.data.application.form94_name | date : "M/d/yyyy" }}</div>
+      </div>
+
+      <h2>
+        Enter
+        {{
+          (us._users[_id]?.data.application.name &&
+            us._users[_id]?.data.application.name + "'s") ||
+            "Applicant's"
+        }}
+        name exactly as it appears on the Form I-94 (if any)
+      </h2>
+
+      <div *ngIf="us._users[_id]?.data.application.form94given_name">
+        <h2>Given name (first name)</h2>
+        <span>{{ us._users[_id]?.data.application.form94given_name }}</span>
+      </div>
+
+      <div *ngIf="us._users[_id]?.data.application.form94middle_name">
+        <h2>Middle name</h2>
+        <span>{{ us._users[_id]?.data.application.form94middle_name }}</span>
+      </div>
+
+      <div *ngIf="us._users[_id]?.data.application.form94family_name">
+        <h2>Family name (last name)</h2>
+        <span>{{ us._users[_id]?.data.application.form94family_name }}</span>
+      </div>
+
+      <div *ngIf="us._users[_id]?.data.application.form94middleform_name">
+        <h2>Immigration status on Form I-94</h2>
+        <span>{{
+          us._users[_id]?.data.application.form94middleform_name
+        }}</span>
+      </div>
+
+      <div *ngIf="us._users[_id]?.data.application.uslastarrivalll_name">
+        <h2>
+          Has
+          {{
+            (us._users[_id]?.data.application.name &&
+              us._users[_id]?.data.application.name + "'s") ||
+              "Applicant's"
+          }}
+          immigration status changed since the last arrival?
+        </h2>
+        <span>{{ us._users[_id]?.data.application.uslastarrivalll_name }}</span>
+      </div>
+
+      <div *ngIf="us._users[_id]?.data.application.form94middleqqq_name">
+        <h2>
+          Select
+          {{
+            (us._users[_id]?.data.application.name &&
+              us._users[_id]?.data.application.name + "'s") ||
+              "Applicant's"
+          }}
+          current immigration status
+        </h2>
+        <span>{{ us._users[_id]?.data.application.form94middleqqq_name }}</span>
+      </div>
+
+      <h2>
+        <span style="background: #ffff00; padding: 10px"
+          >About
+          {{
+            (us._users[_id]?.data.application.name &&
+              us._users[_id]?.data.application.name + "'s") ||
+              "Applicant's"
+          }}
+          record numbers</span
+        >
+      </h2>
+
+      <div *ngIf="us._users[_id]?.data.application.usregistrationnumber_name">
+        <h2>
+          {{
+            (us._users[_id]?.data.application.name &&
+              us._users[_id]?.data.application.name + "'s") ||
+              "Applicant's"
+          }}
+          Alien registration number (A-number) (if any)
+        </h2>
+        <span>{{
+          us._users[_id]?.data.application.usregistrationnumber_name
+        }}</span>
+      </div>
+
+      <div *ngIf="us._users[_id]?.data.application.usedanyothernumber_name">
+        <h2>Provide any other A-Numbers you have EVER used.</h2>
+        <span>{{
+          us._users[_id]?.data.application.usedanyothernumber_name
+        }}</span>
+      </div>
+
+      <div
+        *ngIf="
+          us._users[_id]?.data.application.usedanyothernumber_name == 'yes'
+        "
+      >
+        <h2>
+          Has {{ us._users[_id]?.data.application.name || "Applicant" }} ever
+          used any other A-Number before
+        </h2>
+
+        <div
+          *ngFor="
+            let name of us._users[_id]?.data.application.anumber_names;
+            index as i
+          "
+        >
+          <h2>Enter other A-Number(s) used</h2>
+          <span>{{ name.usenternumber_name }}</span>
+        </div>
+      </div>
+
+      <div *ngIf="us._users[_id]?.data.application.filedapetition_name">
+        <h2>
+          {{
+            (us._users[_id]?.data.application.name &&
+              us._users[_id]?.data.application.name + "'s") ||
+              "Applicant's"
+          }}
+          USCIS Online Account Number (if any)
+        </h2>
+        <span>{{ us._users[_id]?.data.application.filedapetition_name }}</span>
+      </div>
+
+      <div *ngIf="us._users[_id]?.data.application.usvisitor_name">
+        <h2>
+          {{
+            (us._users[_id]?.data.application.name &&
+              us._users[_id]?.data.application.name + "'s") ||
+              "Applicant's"
+          }}
+          Student and Exchange Visitor Information System (SEVIS) Number (if
+          any)
+        </h2>
+        <span>{{ us._users[_id]?.data.application.usvisitor_name }}</span>
+      </div>
+
+      <div *ngIf="us._users[_id]?.data.application.usfiledapetition_name">
+        <h2>
+          To
+          {{
+            (us._users[_id]?.data.application.name &&
+              us._users[_id]?.data.application.name + "'s") ||
+              "Applicant's"
+          }}
+          knowledge, has anyone other than
+          {{ us._users[_id]?.data.application.sponsorname || "Sponsor" }} ever
+          filed a petition for
+          {{ us._users[_id]?.data.application.name || "Applicant" }}?
+        </h2>
+        <span>{{
+          us._users[_id]?.data.application.usfiledapetition_name
+        }}</span>
+      </div>
+
+      <div *ngIf="us._users[_id]?.data.application.residencerequirement_name">
+        <h2>
+          <span style="background: #ffff00; padding: 10px"
+            >Has {{ us._users[_id]?.data.application.name || "Applicant" }} ever
+            been a J nonimmigrant exchange visitor who was subject to the
+            two-year foreign residence requirement?</span
+          >
+        </h2>
+        <span>{{
+          us._users[_id]?.data.application.residencerequirement_name
+        }}</span>
+      </div>
+
+      <div *ngIf="us._users[_id]?.data.application.theforeign_name">
+        <h2>
+          Has
+          {{ us._users[_id]?.data.application.name || "Applicant" }} complied
+          with the foreign residence requirement?
+        </h2>
+        <span>{{ us._users[_id]?.data.application.theforeign_name }}</span>
+      </div>
+
+      <div *ngIf="us._users[_id]?.data.application.departmentus_name">
+        <h2>
+          Has {{ us._users[_id]?.data.application.name || "Applicant" }} been
+          granted a waiver or has Department of State issued a favorable waiver
+          recommendation letter for
+          {{ us._users[_id]?.data.application.name || "Applicant" }}?
+        </h2>
+        <span>{{ us._users[_id]?.data.application.departmentus_name }}</span>
+      </div>
+
+      <div *ngIf="us._users[_id]?.data.application.recommendationletter_name">
+        <h2>
+          In the space below, provide an explanation regarding
+          {{
+            (us._users[_id]?.data.application.name &&
+              us._users[_id]?.data.application.name + "'s") ||
+              "Applicant's"
+          }}
+          compliance with the foreign residence requirement and the
+          waiver/favorable waiver recommendation letter
+          {{ us._users[_id]?.data.application.name || "Applicant" }} has
+          obtained:
+        </h2>
+        <span>{{
+          us._users[_id]?.data.application.recommendationletter_name
+        }}</span>
+      </div>
+
+      <div *ngIf="us._users[_id]?.data.application.recommendationletter_name">
+        <h2>
+          In the space below, provide an explanation regarding the
+          waiver/favorable waiver recommendation letter
+          {{ us._users[_id]?.data.application.name || "Applicant" }} has
+          obtained:
+        </h2>
+        <span>{{
+          us._users[_id]?.data.application.recommendationletter_name
+        }}</span>
+      </div>
+
+      <div *ngIf="us._users[_id]?.data.application.circumstancesus_name">
+        <h2>
+          If you answered "No", but are unsure of your answer, provide an
+          explanation of the events and circumstances in the space below:
+        </h2>
+        <span>{{ us._users[_id]?.data.application.circumstancesus_name }}</span>
+      </div>
+
+      <div *ngIf="us._users[_id]?.data.application.circumstancesus_name">
+        <h2>
+          In the space below, provide an explanation regarding
+          {{
+            (us._users[_id]?.data.application.name &&
+              us._users[_id]?.data.application.name + "'s") ||
+              "Applicant's"
+          }}
+          compliance with the foreign residence requirement and the
+          waiver/favorable waiver recommendation letter
+          {{ us._users[_id]?.data.application.name || "Applicant" }} has
+          obtained:
+        </h2>
+        <span>{{ us._users[_id]?.data.application.circumstancesus_name }}</span>
+      </div>
+
+      <h2>
+        <span style="background: #ffff00; padding: 10px"
+          >Does any of the following apply to
+          {{ us._users[_id]?.data.application.name || "Applicant" }}?</span
+        >
+      </h2>
+
+      <div
+        *ngIf="
+          us._users[_id]?.data.cardholder == 'greencard' &&
+          us._users[_id]?.data.location == 'inside'
+        "
+      >
+        <div
+          *ngIf="us._users[_id]?.data.application.injudicialproceedings_name"
+        >
+          <h2>
+            Was {{ us._users[_id]?.data.application.name || "Applicant" }} ever
+            in, or is currently in, immigration proceedings (for example:
+            exclusion, deportation, removal, rescission, or other judicial
+            proceedings)?
+          </h2>
+          <span>{{
+            us._users[_id]?.data.application.injudicialproceedings_name
+          }}</span>
+        </div>
+      </div>
+
+      <div
+        *ngIf="
+          us._users[_id]?.data.cardholder == 'greencard' &&
+          us._users[_id]?.data.location == 'outside'
+        "
+      >
+        <div *ngIf="us._users[_id]?.data.application.before_name">
+          <h2>
+            Was {{ us._users[_id]?.data.application.name || "Applicant" }} ever
+            in, or is currently in, immigration proceedings (for example:
+            exclusion, deportation, removal, rescission, or other judicial
+            proceedings)?
+          </h2>
+          <span>{{ us._users[_id]?.data.application.before_name }}</span>
+        </div>
+      </div>
+
+      <div
+        *ngIf="
+          us._users[_id]?.data.cardholder == 'us' &&
+          us._users[_id]?.data.location == 'inside'
+        "
+      >
+        <div *ngIf="us._users[_id]?.data.application.judicialproceedings_name">
+          <h2>
+            Was {{ us._users[_id]?.data.application.name || "Applicant" }} ever
+            in, or is currently in, immigration proceedings (for example:
+            exclusion, deportation, removal, rescission, or other judicial
+            proceedings)?
+          </h2>
+          <span>{{
+            us._users[_id]?.data.application.judicialproceedings_name
+          }}</span>
+        </div>
+      </div>
+
+      <div *ngIf="us._users[_id]?.data.application.embassyus_name">
+        <h2>
+          Has {{ us._users[_id]?.data.application.name || "Applicant" }} ever
+          applied for an immigrant visa to obtain permanent resident status at a
+          U.S. Embassy or U.S. Consulate abroad?
+        </h2>
+        <span>{{ us._users[_id]?.data.application.embassyus_name }}</span>
+      </div>
+
+      <div *ngIf="us._users[_id]?.data.application.natostatus_name">
+        <h2>
+          Does {{ us._users[_id]?.data.application.name || "Applicant" }} have
+          A, G, E or NATO nonimmigrant status, or an occupation that would
+          entitle {{ us._users[_id]?.data.application.name || "Applicant" }} to
+          such status, and as a result hold certain diplomatic rights,
+          privileges, exemptions, and immunities?
+        </h2>
+        <span>{{ us._users[_id]?.data.application.natostatus_name }}</span>
+      </div>
+
+      <h2>
+        <span style="background: #ffff00; padding: 10px"
+          >Does any of the following statements apply to
+          {{ us._users[_id]?.data.application.name || "Applicant" }}?</span
+        >
+      </h2>
+      <h2>
+        These statements are called "Form I-485 Bars to Adjustment". If one or
+        more of them apply to
+        {{ us._users[_id]?.data.application.name || "Applicant" }},
+        {{ us._users[_id]?.data.application.name || "Applicant" }} is generally
+        ineligible to adjust to the green card status. So please review them
+        carefully:
+      </h2>
+
+      <div *ngIf="us._users[_id]?.data.application.immigrationofficerqw_name">
+        <h2>
+          {{ us._users[_id]?.data.application.name || "Applicant" }} last
+          entered the United States without being admitted or paroled after
+          inspection by an immigration officer.
+        </h2>
+        <span>{{
+          us._users[_id]?.data.application.immigrationofficerqw_name
+        }}</span>
+      </div>
+
+      <div *ngIf="us._users[_id]?.data.application.immigrationofficerwe_name">
+        <h2>
+          {{ us._users[_id]?.data.application.name || "Applicant" }} last
+          entered the United States as a nonimmigrant crewman.
+        </h2>
+        <span>{{
+          us._users[_id]?.data.application.immigrationofficerwe_name
+        }}</span>
+      </div>
+
+      <div *ngIf="us._users[_id]?.data.application.immigrationofficerer_name">
+        <h2>
+          {{ us._users[_id]?.data.application.name || "Applicant" }} is now
+          employed or has ever been employed in the United States without
+          authorization.
+        </h2>
+        <span>{{
+          us._users[_id]?.data.application.immigrationofficerer_name
+        }}</span>
+      </div>
+
+      <div *ngIf="us._users[_id]?.data.application.immigrationofficerrt_name">
+        <h2>
+          {{ us._users[_id]?.data.application.name || "Applicant" }} is not in
+          lawful immigration status on the date of filing
+          {{
+            (us._users[_id]?.data.application.name &&
+              us._users[_id]?.data.application.name + "'s") ||
+              "Applicant's"
+          }}
+          application for adjustment of status.
+        </h2>
+        <span>{{
+          us._users[_id]?.data.application.immigrationofficerrt_name
+        }}</span>
+      </div>
+
+      <div *ngIf="us._users[_id]?.data.application.immigrationofficerty_name">
+        <h2>
+          {{ us._users[_id]?.data.application.name || "Applicant" }} has ever
+          failed to continuously maintain a lawful status since entry into the
+          United States, unless
+          {{
+            (us._users[_id]?.data.application.name &&
+              us._users[_id]?.data.application.name + "'s") ||
+              "Applicant's"
+          }}
+          failure to maintain status was through no fault of
+          {{
+            (us._users[_id]?.data.application.name &&
+              us._users[_id]?.data.application.name + "'s") ||
+              "Applicant's"
+          }}
+          own or for technical reasons.
+        </h2>
+        <span>{{
+          us._users[_id]?.data.application.immigrationofficerty_name
+        }}</span>
+      </div>
+
+      <div *ngIf="us._users[_id]?.data.application.nonimmigrantcrewman_name">
+        <h2>
+          {{ us._users[_id]?.data.application.name || "Applicant" }} was last
+          admitted to the United States in transit without a visa.
+        </h2>
+        <span>{{
+          us._users[_id]?.data.application.nonimmigrantcrewman_name
+        }}</span>
+      </div>
+      <div *ngIf="us._users[_id]?.data.application.unitedstatesvisa_name">
+        <h2>
+          {{ us._users[_id]?.data.application.name || "Applicant" }} was last
+          admitted to the United States as a nonimmigrant visitor without a
+          visa, under the Guam and Commonwealth of the Northern Mariana Islands
+          Visa Waiver Program, and
+          {{ us._users[_id]?.data.application.name || "Applicant" }},
+          {{ us._users[_id]?.data.application.name || "Applicant" }} is not a
+          Canadian citizen.
+        </h2>
+        <span>{{
+          us._users[_id]?.data.application.unitedstatesvisa_name
+        }}</span>
+      </div>
+      <div *ngIf="us._users[_id]?.data.application.applicationstatusq_name">
+        <h2>
+          {{ us._users[_id]?.data.application.name || "Applicant" }} was last
+          admitted to the United States as a nonimmigrant visitor without a visa
+          under the Visa Waiver Program.
+        </h2>
+        <span>{{
+          us._users[_id]?.data.application.applicationstatusq_name
+        }}</span>
+      </div>
+      <div *ngIf="us._users[_id]?.data.application.applicationstatusw_name">
+        <h2>
+          {{ us._users[_id]?.data.application.name || "Applicant" }} s seeking
+          employment-based adjustment of status, and
+          {{ us._users[_id]?.data.application.name || "Applicant" }} is not
+          maintaining a lawful nonimmigrant status on the date of filing
+          {{
+            (us._users[_id]?.data.application.name &&
+              us._users[_id]?.data.application.name + "'s") ||
+              "Applicant's"
+          }}
+          application for adjustment of status.
+        </h2>
+        <span>{{
+          us._users[_id]?.data.application.applicationstatusw_name
+        }}</span>
+      </div>
+      <div *ngIf="us._users[_id]?.data.application.applicationstatuse_name">
+        <h2>
+          {{ us._users[_id]?.data.application.name || "Applicant" }} has ever
+          violated the terms of
+          {{
+            (us._users[_id]?.data.application.name &&
+              us._users[_id]?.data.application.name + "'s") ||
+              "Applicant's"
+          }}
+          nonimmigrant status.
+        </h2>
+        <span>{{
+          us._users[_id]?.data.application.applicationstatuse_name
+        }}</span>
+      </div>
+      <div *ngIf="us._users[_id]?.data.application.above_name">
+        <h2>None of the above</h2>
+        <span>{{ us._users[_id]?.data.application.above_name }}</span>
+      </div>
+      <div *ngIf="us._users[_id]?.data.application.graybox_name">
+        <h2>
+          Is {{ us._users[_id]?.data.application.name || "Applicant" }} applying
+          for adjustment based on the Immigration and Nationality Act (INA)
+          section 245(i)?
+        </h2>
+        <span>{{ us._users[_id]?.data.application.graybox_name }}</span>
+      </div>
+      <h2 class="print__title">Family</h2>
+      <h2>
+        <span style="background: #ffff00; padding: 10px"
+          >A little about
+          {{
+            (us._users[_id]?.data.application.name &&
+              us._users[_id]?.data.application.name + "'s") ||
+              "Applicant's"
+          }}
+          mother</span
+        >
+      </h2>
+      <div *ngIf="us._users[_id]?.data.application.mother_name">
+        <h2>Given name (first name)</h2>
+        <span>{{ us._users[_id]?.data.application.mother_name }}</span>
+      </div>
+      <div *ngIf="us._users[_id]?.data.application.mother_middle_name">
+        <h2>Middle name</h2>
+        <h2>{{ us._users[_id]?.data.application.mother_middle_name }}</h2>
+      </div>
+      <div *ngIf="us._users[_id]?.data.application.mother_family_name">
+        <h2>Family name (last name)</h2>
+        <span>{{ us._users[_id]?.data.application.mother_family_name }}</span>
+      </div>
+      <div *ngIf="us._users[_id]?.data.application.mothercheck_name">
+        <h2>
+          Was
+          {{
+            (us._users[_id]?.data.application.name &&
+              us._users[_id]?.data.application.name + "'s") ||
+              "Applicant's"
+          }}
+          mother's name at birth different from
+          {{
+            (us._users[_id]?.data.application.name &&
+              us._users[_id]?.data.application.name + "'s") ||
+              "Applicant's"
+          }}
+          mother's current legal name?
+        </h2>
+        <span>{{ us._users[_id]?.data.application.mothercheck_name }}</span>
+      </div>
+      <div *ngIf="us._users[_id]?.data.application.mothers_name">
+        <h2>Given name (first name)</h2>
+        <span>{{ us._users[_id]?.data.application.mothers_name }}</span>
+      </div>
+
+      <div *ngIf="us._users[_id]?.data.application.mothers_middle_name">
+        <h2>Middle name</h2>
+        <span>{{ us._users[_id]?.data.application.mothers_middle_name }}</span>
+      </div>
+      <div *ngIf="us._users[_id]?.data.application.mothers_family_name">
+        <h2>Family name (last name)</h2>
+        <span>{{ us._users[_id]?.data.application.mothers_family_name }}</span>
+      </div>
+      <div *ngIf="us._users[_id]?.data.application.motherbirth_name">
+        <h2>Date of birth</h2>
+        <span>{{ us._users[_id]?.data.application.motherbirth_name | date : "M/d/yyyy" }}</span>
+      </div>
+
+      <div *ngIf="us._users[_id]?.data.application.mothercity_name">
+        <h2>City or town of birth</h2>
+        <span>{{ us._users[_id]?.data.application.mothercity_name }}</span>
+      </div>
+      <div *ngIf="us._users[_id]?.data.application.motherCountry_name">
+        <h2>Country of birth</h2>
+        <span>{{ us._users[_id]?.data.application.motherCountry_name }}</span>
+      </div>
+      <div *ngIf="us._users[_id]?.data.application.mothercurrentus_name">
+        <h2>Current country of residence (if living)</h2>
+        <span>{{ us._users[_id]?.data.application.mothercurrentus_name }}</span>
+      </div>
+      <div *ngIf="us._users[_id]?.data.application.motherresidence_name">
+        <h2>Current city or town of residence (if living)</h2>
+        <span>{{ us._users[_id]?.data.application.motherresidence_name }}</span>
+      </div>
+      <h2>
+        <span style="background: #ffff00; padding: 10px"
+          >Now about
+          {{
+            (us._users[_id]?.data.application.name &&
+              us._users[_id]?.data.application.name + "'s") ||
+              "Applicant's"
+          }}
+          father
+        </span>
+      </h2>
+
+      <h2>Father's full legal name</h2>
+
+      <div *ngIf="us._users[_id]?.data.application.father_name">
+        <h2>Given name (first name)</h2>
+        <span>{{ us._users[_id]?.data.application.father_name }}</span>
+      </div>
+      <div *ngIf="us._users[_id]?.data.application.father_middle_name">
+        <h2>Middle name</h2>
+        <span>{{ us._users[_id]?.data.application.father_middle_name }}</span>
+      </div>
+      <div *ngIf="us._users[_id]?.data.application.father_family_name">
+        <h2>Family name (last name)</h2>
+        <span>{{ us._users[_id]?.data.application.father_family_name }}</span>
+      </div>
+      <div *ngIf="us._users[_id]?.data.application.fathercurrent_name">
+        <h2>
+          Was
+          {{
+            (us._users[_id]?.data.application.name &&
+              us._users[_id]?.data.application.name + "'s") ||
+              "Applicant's"
+          }}
+          father's name at birth different from
+          {{
+            (us._users[_id]?.data.application.name &&
+              us._users[_id]?.data.application.name + "'s") ||
+              "Applicant's"
+          }}
+          father's current legal name?
+        </h2>
+        <span>{{ us._users[_id]?.data.application.fathercurrent_name }}</span>
+      </div>
+      <div *ngIf="us._users[_id]?.data.application.fathers_name">
+        <h2>Given name (first name)</h2>
+        <span>{{ us._users[_id]?.data.application.fathers_name }}</span>
+      </div>
+
+      <div *ngIf="us._users[_id]?.data.application.fathers_middle_name">
+        <h2>Middle name</h2>
+        <span>{{ us._users[_id]?.data.application.fathers_middle_name }}</span>
+      </div>
+
+      <div *ngIf="us._users[_id]?.data.application.fathers_family_name">
+        <h2>Family name (last name)</h2>
+        <span>{{ us._users[_id]?.data.application.fathers_family_name }}</span>
+      </div>
+
+      <div *ngIf="us._users[_id]?.data.application.fatherbirth_name">
+        <h2>Date of birth</h2>
+        <span>{{ us._users[_id]?.data.application.fatherbirth_name | date : "M/d/yyyy" }}</span>
+      </div>
+
+      <div *ngIf="us._users[_id]?.data.application.fathercountry_name">
+        <h2>Country of birth</h2>
+        <span>{{ us._users[_id]?.data.application.fathercountry_name }}</span>
+      </div>
+
+      <div *ngIf="us._users[_id]?.data.application.fathercity_name">
+        <h2>City or town of birth</h2>
+        <span>{{ us._users[_id]?.data.application.fathercity_name }}</span>
+      </div>
+
+      <div *ngIf="us._users[_id]?.data.application.usfathercurrent_name">
+        <h2>Current country of residence (if living)</h2>
+        <span>{{ us._users[_id]?.data.application.usfathercurrent_name }}</span>
+      </div>
+
+      <div *ngIf="us._users[_id]?.data.application.fatherresidence_name">
+        <h2>Current city or town of residence (if living)</h2>
+        <span>{{ us._users[_id]?.data.application.fatherresidence_name }}</span>
+      </div>
+
+      <h2>
+        <span style="background: #ffff00; padding: 10px"
+          >About
+          {{
+            (us._users[_id]?.data.application.name &&
+              us._users[_id]?.data.application.name + "'s") ||
+              "Applicant's"
+          }}
+          current marriage</span
+        >
+      </h2>
+
+      <div *ngIf="us._users[_id]?.data.application.livingmarried_name">
+        <h2>
+          How many times have {{ us._users[_id]?.data.application.name }} been
+          married
+        </h2>
+        <span>{{ us._users[_id]?.data.application.livingmarried_name }}</span>
+      </div>
+
+      <div *ngIf="us._users[_id]?.data.application.marriagedate_name">
+        <h2>
+          Date of marriage to
+          {{ us._users[_id]?.data.application.sponsorname || "Sponsor" }}
+        </h2>
+        <span>{{ us._users[_id]?.data.application.marriagedate_name | date : "M/d/yyyy" }}</span>
+      </div>
+
+      <div *ngIf="us._users[_id]?.data.application.marriagecityortown_name">
+        <h2>
+          Place of marriage to
+          {{ us._users[_id]?.data.application.sponsorname || "Sponsor" }}
+        </h2>
+        <h2>City or town</h2>
+        <span>{{
+          us._users[_id]?.data.application.marriagecityortown_name
+        }}</span>
+      </div>
+
+      <div *ngIf="us._users[_id]?.data.application.fatherresidence_name">
+        <h2>State (if applicable)</h2>
+        <span>{{ us._users[_id]?.data.application.marriagestate_name }}</span>
+      </div>
+
+      <div *ngIf="us._users[_id]?.data.application.fatherresidence_name">
+        <h2>Province (if applicable)</h2>
+        <span>{{
+          us._users[_id]?.data.application.marriageprovince_name
+        }}</span>
+      </div>
+
+      <div *ngIf="us._users[_id]?.data.application.fatherresidence_name">
+        <h2>Country</h2>
+        <span>{{ us._users[_id]?.data.application.marriagecountry_name }}</span>
+      </div>
+
+      <div *ngIf="us._users[_id]?.data.application.fatherresidence_name">
+        <h2>
+          Is chuks
+          {{ us._users[_id]?.data.application.sponsorname || "Sponsor" }} a
+          current member of the U.S. armed forces or U.S. Coast Guard?
+        </h2>
+        <span>{{ us._users[_id]?.data.application.currentmember_name }}</span>
+      </div>
+
+      <h2>
+        <span style="background: #ffff00; padding: 10px"
+          >Does {{ us._users[_id]?.data.application.name || "Applicant" }} have
+          any prior marriages?</span
+        >
+      </h2>
+      <div>{{ us._users[_id]?.data.application.marriages_name }}</div>
+
+      <div
+        *ngFor="
+          let name of us._users[_id]?.data.application.marriages_names;
+          index as i
+        "
+      >
+        <h2>Prior spouse`s legal name(provide family name before marriage)</h2>
+
+        <div *ngIf="name.mother_name">
+          <h2>Given name (first name)</h2>
+          <span>{{ name.mother_name }}</span>
+        </div>
+
+        <div *ngIf="name.mothermiddle_name">
+          <h2>Middle name</h2>
+          <span>{{ name.mothermiddle_name }}</span>
+        </div>
+
+        <div *ngIf="name.motherfamily_name">
+          <h2>Family name (last name)</h2>
+          <span>{{ name.motherfamily_name }}</span>
+        </div>
+
+        <div *ngIf="name.marriagedatespouse_name">
+          <h2>Prior spouse's date of birth</h2>
+          <span>{{ name.marriagedatespouse_name | date : "M/d/yyyy" }}</span>
+        </div>
+
+        <div *ngIf="name.marriagedatespouse_name">
+          <h2>Date of marriage to prior spouse</h2>
+          <span>{{ name.marriagedatespouse_name | date : "M/d/yyyy" }}</span>
+        </div>
+
+        <div *ngIf="name.marriagetopriortownspouse_name">
+          <h2>Place of marriage to prior spouse</h2>
+          <h2>City or town</h2>
+          <span>{{ name.marriagetopriortownspouse_name }}</span>
+        </div>
+
+        <div *ngIf="name.marriagetopriorprovince_name">
+          <h2>State or province</h2>
+          <span>{{ name.marriagetopriorprovince_name }}</span>
+        </div>
+
+        <div *ngIf="name.marriagetopriorcountry_name">
+          <h2>Country</h2>
+          <span>{{ name.marriagetopriorcountry_name }}</span>
+        </div>
+
+        <div *ngIf="name.marriagespousesdateofbirth_name">
+          <h2>Date marriage with prior spouse legally ended</h2>
+          <span>{{ name.marriagespousesdateofbirth_name | date : "M/d/yyyy" }}</span>
+        </div>
+
+        <div *ngIf="name.marriagelegallyendedtown_name">
+          <h2>Place where marriage with prior spouse legally ended</h2>
+          <h2>City or town</h2>
+          <span>{{ name.marriagelegallyendedtown_name }}</span>
+        </div>
+
+        <div *ngIf="name.marriagelegallyendedstate_name">
+          <h2>State or province</h2>
+          <span>{{ name.marriagelegallyendedstate_name }}</span>
+        </div>
+
+        <div *ngIf="name.marriagelegallyendedcontry_name">
+          <h2>Country</h2>
+          <span>{{ name.marriagelegallyendedcontry_name }}</span>
+        </div>
+      </div>
+
+      <div *ngIf="us._users[_id]?.data.application.children_name">
+        <h2>
+          <span style="background: #ffff00; padding: 10px"
+            >Does
+            {{ us._users[_id]?.data.application.name || "Applicant" }} have any
+            children?</span
+          >
+        </h2>
+        <span>{{ us._users[_id]?.data.application.children_name }}</span>
+      </div>
+      <div *ngIf="us._users[_id]?.data.application.livingchildrent_name">
+        <h2>Total number of living children</h2>
+        <span>{{ us._users[_id]?.data.application.livingchildrent_name }}</span>
+      </div>
+      <div
+        *ngFor="
+          let name of us._users[_id]?.data.application.children_names;
+          index as i
+        "
+      >
+        <div *ngIf="name.childscurrent_name">
+          <h2>
+            Enter information for each of
+            {{ us._users[_id]?.data.application.name || "Applicant" }} children
+            below:
+          </h2>
+          <h2>Childs Current Legal Name</h2>
+          <h2>Given name (first name)</h2>
+          <span>{{ name.childscurrent_name }}</span>
+        </div>
+
+        <div *ngIf="name.childscurrentmiddele_name">
+          <h2>Middle name</h2>
+          <span>{{ name.childscurrentmiddele_name }}</span>
+        </div>
+
+        <div *ngIf="name.childscurrentfamily_name">
+          <h2>Family name (last name)</h2>
+          <span>{{ name.childscurrentfamily_name }}</span>
+        </div>
+
+        <div *ngIf="name.childscurrentdatefobirth_name">
+          <h2>Date of birth</h2>
+          <span>{{ name.childscurrentdatefobirth_name | date : "M/d/yyyy" }}</span>
+        </div>
+
+        <div *ngIf="name.childscurrentcountryofbirth_name">
+          <h2>Country of birth</h2>
+          <span>{{ name.childscurrentcountryofbirth_name }}</span>
+        </div>
+
+        <div *ngIf="name.childscurrentanumber_name">
+          <h2>A-number (if any)</h2>
+          <span>{{ name.childscurrentanumber_name }}</span>
+        </div>
+      </div>
+
+      <h2 class="print__title">Employment</h2>
+
+      <h2>
+        <span style="background: #ffff00; padding: 10px"
+          >{{
+            (us._users[_id]?.data.application.name &&
+              us._users[_id]?.data.application.name + "'s") ||
+              "Applicant's"
+          }}
+          employment history for the last five years</span
+        >
+      </h2>
+
+      <h2>
+        Provide
+        {{
+          (us._users[_id]?.data.application.name &&
+            us._users[_id]?.data.application.name + "'s") ||
+            "Applicant's"
+        }}
+        employments both inside and outside the U.S. for the last five years,
+        and include
+        {{
+          (us._users[_id]?.data.application.name &&
+            us._users[_id]?.data.application.name + "'s") ||
+            "Applicant's"
+        }}
+        current employment (if applicable)
+      </h2>
+
+      <div
+        *ngFor="
+          let name of us._users[_id]?.data.application.employerone_names;
+          index as i
+        "
+      >
+        <div *ngIf="name.employer_name">
+          <h2>Name of employer or company</h2>
+          <span>{{ name.employer_name.toUpperCase() }}</span>
+        </div>
+
+        <div *ngIf="name.addressemployment_name">
+          <h2>Address of employer or company</h2>
+          <h2>Type of address</h2>
+          <span>{{ name.addressemployment_name.toUpperCase() }}</span>
+        </div>
+
+        <div *ngIf="name.empmailingnumber_name">
+          <h2>Street number and name</h2>
+          <span>{{ name.empmailingnumber_name.toUpperCase() }}</span>
+        </div>
+
+        <div *ngIf="name.ssste_name">
+          <h2>Apt./Ste./Flr. Number (if any)</h2>
+          <span>{{ name.asfnumberusss_name.toUpperCase() }}</span>
+          <span>{{ name.ssste_name.toUpperCase() }}</span>
+        </div>
+        <div *ngIf="name.previousfuturecityemployment_name">
+          <h2>City or town</h2>
+          <span>{{
+            name.previousfuturecityemployment_name.toUpperCase()
+          }}</span>
+        </div>
+
+        <div *ngIf="name.previousfuturestateemployment_name">
+          <h2>State</h2>
+          <span>{{
+            name.previousfuturestateemployment_name.toUpperCase()
+          }}</span>
+        </div>
+        <div *ngIf="name.employmentzip_name">
+          <h2>ZIP code</h2>
+          <span>{{ name.employmentzip_name.toUpperCase() }}</span>
+        </div>
+        <div *ngIf="name.employmentstate_name">
+          <h2>Province</h2>
+          <span>{{ name.employmentstate_name.toUpperCase() }}</span>
+        </div>
+        <div *ngIf="name.employmentpostal_name">
+          <h2>Postal code</h2>
+          <span>{{ name.employmentpostal_name.toUpperCase() }}</span>
+        </div>
+        <div *ngIf="name.countryemployment_name">
+          <h2>Country</h2>
+          <span>{{ name.countryemployment_name.toUpperCase() }}</span>
+        </div>
+        <div *ngIf="name.occupationus_name">
+          <h2>
+            {{
+              (us._users[_id]?.data.application.name &&
+                us._users[_id]?.data.application.name + "'s") ||
+                "Applicant's"
+            }}
+            Occupation
+          </h2>
+          <span>{{ name.occupationus_name.toUpperCase() }}</span>
+        </div>
+        <div *ngIf="name.employment_name">
+          <h2>Employment start date</h2>
+          <span>{{ name.employment_name | date : "M/d/yyyy" }}</span>
+        </div>
+        <!-- <div *ngIf="us._users[_id]?.data.application.thisiscurrentemployment_name">
+          <h2>Employment end date</h2>
+          <span>{{us._users[_id]?.data.application.thisiscurrentemployment_name}}</span>
+        </div> -->
+        <div *ngIf="name.currentemployment_name">
+          <h2>Employment end date</h2>
+          <span>{{ name.currentemployment_name | date : "M/d/yyyy" }}</span>
+        </div>
+      </div>
+
+      <h2>
+        <span style="background: #ffff00; padding: 10px"
+          >Has
+          {{
+            (us._users[_id]?.data.application.name &&
+              us._users[_id]?.data.application.name) ||
+              "Applicant"
+          }}
+          ever had employment outside of the U.S.?</span
+        >
+      </h2>
+      <div *ngIf="us._users[_id]?.data.application.employmentabroadus_name">
+        <h2>
+          Has
+          {{
+            (us._users[_id]?.data.application.name &&
+              us._users[_id]?.data.application.name) ||
+              "Applicant"
+          }}
+          ever had employment outside of the U.S.?
+        </h2>
+        <span>{{
+          us._users[_id]?.data.application.employmentabroadus_name
+        }}</span>
+      </div>
+
+      <h2>LAST EMPLOYMENT ABROAD</h2>
+      <div *ngIf="us._users[_id]?.data.application.employerorcompanyus_name">
+        <h2>Name of employer or company</h2>
+        <span>{{
+          us._users[_id]?.data.application.employerorcompanyus_name
+        }}</span>
+      </div>
+
+      <div *ngIf="us._users[_id]?.data.application.addresscompanyus_name">
+        <h2>Address of employer or company</h2>
+        <h2>Type of address</h2>
+        <span>{{
+          us._users[_id]?.data.application.addresscompanyus_name
+        }}</span>
+      </div>
+
+      <div *ngIf="us._users[_id]?.data.application.usstreetcompany_name">
+        <h2>Street number and name</h2>
+        <span>{{ us._users[_id]?.data.application.usstreetcompany_name }}</span>
+      </div>
+
+      <div *ngIf="us._users[_id]?.data.application.asfnumberus_name">
+        <h2>Apt./Ste./Flr. Number (if any)</h2>
+        <span>{{ us._users[_id]?.data.application.asfnumberus_name }}</span>
+        <span>{{ us._users[_id]?.data.application.ste_name }}</span>
+      </div>
+
+      <div *ngIf="us._users[_id]?.data.application.cccountry_name">
+        <h2>Country</h2>
+        <span>{{ us._users[_id]?.data.application.cccountry_name }}</span>
+      </div>
+
+      <div *ngIf="us._users[_id]?.data.application.townus_name">
+        <h2>City or town</h2>
+        <span>{{ us._users[_id]?.data.application.townus_name }}</span>
+      </div>
+
+      <div *ngIf="us._users[_id]?.data.application.usprovince_name">
+        <h2>Province</h2>
+        <span>{{ us._users[_id]?.data.application.usprovince_name }}</span>
+      </div>
+
+      <div *ngIf="us._users[_id]?.data.application.postalcodeus_name">
+        <h2>Postal code</h2>
+        <span>{{ us._users[_id]?.data.application.postalcodeus_name }}</span>
+      </div>
+
+      <div *ngIf="us._users[_id]?.data.application.occupationus_name">
+        <h2>
+          {{
+            (us._users[_id]?.data.application.name &&
+              us._users[_id]?.data.application.name + "'s") ||
+              "Applicant's"
+          }}
+          Occupation
+        </h2>
+        <span>{{ us._users[_id]?.data.application.occupationus_name }}</span>
+      </div>
+
+      <div *ngIf="us._users[_id]?.data.application.startemploymentus_name">
+        <h2>Employment start date</h2>
+        <span>{{
+          us._users[_id]?.data.application.startemploymentus_name | date : "M/d/yyyy"
+        }}</span>
+      </div>
+
+      <div *ngIf="us._users[_id]?.data.application.endemploymentus_name">
+        <h2>Employment end date</h2>
+        <span>{{ us._users[_id]?.data.application.endemploymentus_name | date : "M/d/yyyy" }}</span>
+      </div>
+
+      <h2 class="print__title">Places Lived</h2>
+
+      <h2>
+        <span style="background: #ffff00; padding: 10px"
+          >About
+          {{
+            (us._users[_id]?.data.application.name &&
+              us._users[_id]?.data.application.name + "'s") ||
+              "Applicant's"
+          }}
+          mailing address inside the U.S.</span
+        >
+      </h2>
+      <h2>
+        Enter
+        {{
+          (us._users[_id]?.data.application.name &&
+            us._users[_id]?.data.application.name + "'s") ||
+            "Applicant's"
+        }}
+        mailing address inside the U.S.:
+      </h2>
+
+      <div *ngIf="us._users[_id]?.data.application.mailing_name">
+        <h2>In care of name (if any)</h2>
+        <span>{{ us._users[_id]?.data.application.mailing_name }}</span>
+      </div>
+
+      <div *ngIf="us._users[_id]?.data.application.mailingaddress_name">
+        <h2>Type of address</h2>
+        <span>{{ us._users[_id]?.data.application.mailingaddress_name }}</span>
+      </div>
+
+      <div *ngIf="us._users[_id]?.data.application.mailingnumber_name">
+        <h2>Street number and name</h2>
+        <span>{{ us._users[_id]?.data.application.mailingnumber_name }}</span>
+      </div>
+
+      <div *ngIf="us._users[_id]?.data.application.selectste_name">
+        <h2>Apt./Ste./Flr. Number (if any)</h2>
+        <span>{{ us._users[_id]?.data.application.selectste_name }}</span>
+      </div>
+
+      <div *ngIf="us._users[_id]?.data.application.mailingcity_name">
+        <h2>City or town</h2>
+        <span>{{ us._users[_id]?.data.application.mailingcity_name }}</span>
+      </div>
+
+      <div *ngIf="us._users[_id]?.data.application.insidemailingprovince_name">
+        <h2>State</h2>
+        <span>{{
+          us._users[_id]?.data.application.insidemailingprovince_name
+        }}</span>
+      </div>
+
+      <div *ngIf="us._users[_id]?.data.application.mailingpostalcode_name">
+        <h2>Zip code</h2>
+        <span>{{
+          us._users[_id]?.data.application.mailingpostalcode_name
+        }}</span>
+      </div>
+
+      <div *ngIf="us._users[_id]?.data.application.mailingcity_name">
+        <h2>City or town</h2>
+        <span>{{ us._users[_id]?.data.application.mailingcity_name }}</span>
+      </div>
+
+      <div *ngIf="us._users[_id]?.data.application.mailingprovince_name">
+        <h2>Province</h2>
+        <span>{{ us._users[_id]?.data.application.mailingprovince_name }}</span>
+      </div>
+
+      <div *ngIf="us._users[_id]?.data.application.mailingpostalcode_name">
+        <h2>Postal code</h2>
+        <span>{{
+          us._users[_id]?.data.application.mailingpostalcode_name
+        }}</span>
+      </div>
+
+      <div *ngIf="us._users[_id]?.data.application.mailingcountry_name">
+        <h2>Country</h2>
+        <span>{{ us._users[_id]?.data.application.mailingcountry_name }}</span>
+      </div>
+
+      <div *ngIf="us._users[_id]?.data.application.mailingaddressus_name">
+        <h2>
+          <span style="background: #ffff00; padding: 10px"
+            >About
+            {{
+              (us._users[_id]?.data.application.name &&
+                us._users[_id]?.data.application.name + "'s") ||
+                "Applicant's"
+            }}
+            physical address inside the U.S.</span
+          >
+        </h2>
+        <h2>
+          Is
+          {{
+            (us._users[_id]?.data.application.name &&
+              us._users[_id]?.data.application.name + "'s") ||
+              "Applicant's"
+          }}
+          physical address inside the U.S. the same as
+          {{
+            (us._users[_id]?.data.application.name &&
+              us._users[_id]?.data.application.name + "'s") ||
+              "Applicant's"
+          }}
+          mailing address?
+        </h2>
+        <h2>{{ us._users[_id]?.data.application.mailingaddressus_name }}</h2>
+      </div>
+
+      <div
+        *ngIf="us._users[_id]?.data.application.currentphysicaladdressus_name"
+      >
+        <h2>Move in date of the current physical address</h2>
+        <span>{{
+          us._users[_id]?.data.application.currentphysicaladdressus_name | date : "M/d/yyyy"
+        }}</span>
+      </div>
+
+      <div *ngIf="us._users[_id]?.data.application.insideusaddress_name">
+        <h2>
+          Enter
+          {{
+            (us._users[_id]?.data.application.name &&
+              us._users[_id]?.data.application.name + "'s") ||
+              "Applicant's"
+          }}
+          physical address inside the U.S.
+        </h2>
+        <h2>Type of address</h2>
+        <span>{{ us._users[_id]?.data.application.insideusaddress_name }}</span>
+      </div>
+
+      <div *ngIf="us._users[_id]?.data.application.insideusnumber_name">
+        <h2>Street number and name</h2>
+        <span>{{ us._users[_id]?.data.application.insideusnumber_name }}</span>
+      </div>
+
+      <div *ngIf="us._users[_id]?.data.application.insideusifany_name">
+        <h2>Apt./Ste./Flr. Number (if any)</h2>
+        <span>{{ us._users[_id]?.data.application.insideusifany_name }}</span>
+        <span>{{ us._users[_id]?.data.application.usifanyselest_name }}</span>
+      </div>
+      <h2>City or town</h2>
+      <!-- <span>{{City or town}}</span>  -->
+
+      <!-- !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! -->
+
+      <div *ngIf="us._users[_id]?.data.application.insideusstate_name">
+        <h2>State</h2>
+        <div>{{ us._users[_id]?.data.application.insideusstate_name }}</div>
+      </div>
+
+      <div *ngIf="us._users[_id]?.data.application.insideuscode_name">
+        <h2>ZIP code</h2>
+        <span>{{ us._users[_id]?.data.application.insideuscode_name }}</span>
+      </div>
+
+      <div *ngIf="us._users[_id]?.data.application.insideusdate_name">
+        <h2>Move in date</h2>
+        <span>{{ us._users[_id]?.data.application.insideusdate_name | date : "M/d/yyyy" }}</span>
+      </div>
+
+      <div *ngIf="us._users[_id]?.data.application.insideusstate_name">
+        <h2>
+          What was
+          {{
+            (us._users[_id]?.data.application.name &&
+              us._users[_id]?.data.application.name + "'s") ||
+              "Applicant's"
+          }}
+          most recent address outside the U.S. where
+          {{
+            (us._users[_id]?.data.application.name &&
+              us._users[_id]?.data.application.name) ||
+              "Applicant"
+          }}
+          lived for more than one year?
+        </h2>
+        <h2>Type of address</h2>
+        <span>{{ us._users[_id]?.data.application.recent_name }}</span>
+      </div>
+
+      <div *ngIf="us._users[_id]?.data.application.recentstreet_name">
+        <h2>Street number and name</h2>
+        <span>{{ us._users[_id]?.data.application.recentstreet_name }}</span>
+      </div>
+
+      <div *ngIf="us._users[_id]?.data.application.recentapt_name">
+        <h2>Apt./Ste./Flr. Number (if any)</h2>
+        <span>{{ us._users[_id]?.data.application.recentapt_name }}</span>
+        <span>{{ us._users[_id]?.data.application.recentste_name }}</span>
+      </div>
+
+      <div *ngIf="us._users[_id]?.data.application.recentcity_name">
+        <h2>City or town</h2>
+        <span>{{ us._users[_id]?.data.application.recentcity_name }}</span>
+      </div>
+
+      <div *ngIf="us._users[_id]?.data.application.livedus_name">
+        <h2>State</h2>
+        <span>{{ us._users[_id]?.data.application.livedus_name }}</span>
+      </div>
+
+      <div *ngIf="us._users[_id]?.data.application.recentpostal_name">
+        <h2>Zip code</h2>
+        <span>{{ us._users[_id]?.data.application.recentpostal_name }}</span>
+      </div>
+
+      <div *ngIf="us._users[_id]?.data.application.recentcity_name">
+        <h2>City or town</h2>
+        <span>{{ us._users[_id]?.data.application.recentcity_name }}</span>
+      </div>
+
+      <div *ngIf="us._users[_id]?.data.application.recentprovince_name">
+        <h2>Province</h2>
+        <span>{{ us._users[_id]?.data.application.recentprovince_name }}</span>
+      </div>
+
+      <div *ngIf="us._users[_id]?.data.application.recentpostal_name">
+        <h2>Postal code</h2>
+        <span>{{ us._users[_id]?.data.application.recentpostal_name }}</span>
+      </div>
+
+      <div *ngIf="us._users[_id]?.data.application.recentcountry_name">
+        <h2>Country</h2>
+        <span>{{ us._users[_id]?.data.application.recentcountry_name }}</span>
+      </div>
+
+      <div *ngIf="us._users[_id]?.data.application.recenmoveint_name">
+        <h2>Move in date</h2>
+        <span>{{ us._users[_id]?.data.application.recenmoveint_name | date : "M/d/yyyy" }}</span>
+      </div>
+
+      <div *ngIf="us._users[_id]?.data.application.recentmoveout_name">
+        <h2>Move out date</h2>
+        <span>{{ us._users[_id]?.data.application.recentmoveout_name | date : "M/d/yyyy" }}</span>
+      </div>
+
+      <div>
+        <h2>
+          <span style="background: #ffff00; padding: 10px"
+            >{{
+              (us._users[_id]?.data.application.name &&
+                us._users[_id]?.data.application.name + "'s") ||
+                "Applicant's"
+            }}
+            previous physical addresses for the last five years
+          </span>
+        </h2>
+        <h2>
+          Provide physical addresses for everywhere
+          {{ us._users[_id]?.data.application.name || "Applicant" }} has lived
+          during the last five years, whether inside or outside the United
+          States.
+        </h2>
+        <h2>
+          {{ us._users[_id]?.data.application.urrentaddressfiveyears_name }}
+        </h2>
+      </div>
+
+      <div
+        *ngFor="
+          let name of us._users[_id]?.data.application.typeofaddress_names;
+          index as i
+        "
+      >
+        <h3 style="font-size: 23px; margin-top: 35px">
+          PREVIOUS PHYSICAL ADDRESS {{ i + 1 }}
+        </h3>
+        <div *ngIf="name.previousaddress_name">
+          <h2>Type of address</h2>
+          <span>{{ name.previousaddress_name }}</span>
+        </div>
+
+        <div *ngIf="name.usplaces_name">
+          <h2>Street number and name</h2>
+          <span>{{ name.usplaces_name }}</span>
+        </div>
+
+        <div *ngIf="name.stedf_name">
+          <h2>Apt./Ste./Flr. Number (if any)</h2>
+          <span>{{ name.numberaptste_name }}</span>
+          <span>{{ name.stedf_name }}</span>
+        </div>
+
+        <div *ngIf="name.previousfuturecityq_name">
+          <h2>City or town</h2>
+          <span>{{ name.previousfuturecityq_name }}</span>
+        </div>
+
+        <div *ngIf="name.prweviousfuturestate_name">
+          <h2>State</h2>
+          <span>{{ name.prweviousfuturestate_name }}</span>
+        </div>
+
+        <div *ngIf="name.previousfuturewzyzip_name">
+          <h2>Zip code</h2>
+          <span>{{ name.previousfuturewzyzip_name }}</span>
+        </div>
+
+        <div *ngIf="name.futurfuturestate_name">
+          <h2>Province</h2>
+          <span>{{ name.futurfuturestate_name }}</span>
+        </div>
+
+        <div *ngIf="name.futurepreviousfutu_name">
+          <h2>Postal code</h2>
+          <span>{{ name.futurepreviousfutu_name }}</span>
+        </div>
+
+        <div *ngIf="name.recenstcountryfuture_name">
+          <h2>Country</h2>
+          <span>{{ name.recenstcountryfuture_name }}</span>
+        </div>
+
+        <div *ngIf="name.previousmovein_name">
+          <h2>Move in date</h2>
+          <span>{{ name.previousmovein_name | date : "M/d/yyyy" }}</span>
+        </div>
+
+        <div *ngIf="name.previousmoveout_name">
+          <h2>Move out date</h2>
+          <span>{{ name.previousmoveout_name | date : "M/d/yyyy" }}</span>
+        </div>
+      </div>
+
+      <div *ngIf="us._users[_id]?.data.application.usoneyearaddress_name">
+        <h2>
+          What was
+          {{
+            (us._users[_id]?.data.application.name &&
+              us._users[_id]?.data.application.name + "'s") ||
+              "Applicant's"
+          }}
+          most recent address outside the U.S. where
+          {{
+            (us._users[_id]?.data.application.name &&
+              us._users[_id]?.data.application.name) ||
+              "Applicant"
+          }}
+          lived for more than one year?
+        </h2>
+        <h2>Type of address</h2>
+        <span>{{
+          us._users[_id]?.data.application.usoneyearaddress_name
+        }}</span>
+      </div>
+
+      <div *ngIf="us._users[_id]?.data.application.usoneyearnumber_name">
+        <h2>Street number and name</h2>
+        <span>{{ us._users[_id]?.data.application.usoneyearnumber_name }}</span>
+      </div>
+
+      <div *ngIf="us._users[_id]?.data.application.usoneyearany_name">
+        <h2>Apt./Ste./Flr. Number (if any)</h2>
+        <span>{{ us._users[_id]?.data.application.usoneyearany_name }}</span>
+        <span>{{ us._users[_id]?.data.application.usoneyearflr_name }}</span>
+      </div>
+
+      <div *ngIf="us._users[_id]?.data.application.usoneyearcity_name">
+        <h2>City or town</h2>
+        <span>{{ us._users[_id]?.data.application.usoneyearcity_name }}</span>
+      </div>
+
+      <div *ngIf="us._users[_id]?.data.application.usoneyearprovince_name">
+        <h2>Province</h2>
+        <span>{{
+          us._users[_id]?.data.application.usoneyearprovince_name
+        }}</span>
+      </div>
+
+      <div *ngIf="us._users[_id]?.data.application.usoneyearcode_name">
+        <h2>Postal code</h2>
+        <span>{{ us._users[_id]?.data.application.usoneyearcode_name }}</span>
+      </div>
+
+      <div *ngIf="us._users[_id]?.data.application.usoneyearcountry_name">
+        <h2>Country</h2>
+        <span>{{
+          us._users[_id]?.data.application.usoneyearcountry_name
+        }}</span>
+      </div>
+
+      <div *ngIf="us._users[_id]?.data.application.usoneyearindate_name">
+        <h2>Move in date</h2>
+        <span>{{ us._users[_id]?.data.application.usoneyearindate_name | date : "M/d/yyyy" }}</span>
+      </div>
+
+      <div *ngIf="us._users[_id]?.data.application.usoneyearoutdate_name">
+        <h2>Move out date</h2>
+        <span>{{
+          us._users[_id]?.data.application.usoneyearoutdate_name | date : "M/d/yyyy"
+        }}</span>
+      </div>
+
+      <h2 class="print__title">Public Charge Ground of Inadmissibility</h2>
+
+      <h1>
+        Is
+        {{
+          (us._users[_id]?.data.application.name &&
+            us._users[_id]?.data.application.name) ||
+            "Applicant"
+        }}
+        subject to the public charge ground of inadmissibility under INA section
+        212(a)(4)?
+      </h1>
+
+      <div *ngIf="us._users[_id]?.data.application.publiccheck_name">
+        <span>{{ us._users[_id]?.data.application.publiccheck_name }}</span>
+      </div>
+
+      <div *ngIf="us._users[_id]?.data.application.inadmissibility_name">
+        <h2>
+          What is the size of
+          {{
+            (us._users[_id]?.data.application.name &&
+              us._users[_id]?.data.application.name + "'s") ||
+              "Applicant's"
+          }}
+          household?
+        </h2>
+        <span>{{ us._users[_id]?.data.application.sizeee_name }}</span>
+      </div>
+
+      <div *ngIf="us._users[_id]?.data.application.inadmissibility_name">
+        <h2>
+          Indicate
+          {{
+            (us._users[_id]?.data.application.name &&
+              us._users[_id]?.data.application.name + "'s") ||
+              "Applicant's"
+          }}
+          annual household income.
+        </h2>
+        <span>{{ us._users[_id]?.data.application.inadmissibility_name }}</span>
+      </div>
+
+      <div *ngIf="us._users[_id]?.data.application.inadmissibilityis_name">
+        <h2>
+          Identify the total value of
+          {{
+            (us._users[_id]?.data.application.name &&
+              us._users[_id]?.data.application.name + "'s") ||
+              "Applicant's"
+          }}
+          household assets.
+        </h2>
+        <span>{{
+          us._users[_id]?.data.application.inadmissibilityis_name
+        }}</span>
+      </div>
+
+      <div *ngIf="us._users[_id]?.data.application.isinadmissibility_name">
+        <h2>
+          Identify the total value of
+          {{
+            (us._users[_id]?.data.application.name &&
+              us._users[_id]?.data.application.name + "'s") ||
+              "Applicant's"
+          }}
+          household liabilities (including both secured and unsecured
+          liabilities).
+        </h2>
+        <span>{{
+          us._users[_id]?.data.application.isinadmissibility_name
+        }}</span>
+      </div>
+
+      <div *ngIf="us._users[_id]?.data.application.inadmissibilitysa_name">
+        <h2>
+          What is the highest degree or level of school
+          {{
+            (us._users[_id]?.data.application.name &&
+              us._users[_id]?.data.application.name) ||
+              "Applicant"
+          }}
+          has completed?
+        </h2>
+        <span>{{
+          us._users[_id]?.data.application.inadmissibilitysa_name
+        }}</span>
+      </div>
+
+      <h2>
+        List
+        {{
+          (us._users[_id]?.data.application.name &&
+            us._users[_id]?.data.application.name + "'s") ||
+            "Applicant's"
+        }}
+        certifications, licenses, skills obtained through work experience, and
+        educational certificates.
+      </h2>
+      <div
+        *ngFor="let name of us._users[_id]?.data.application.certificates_names"
+      >
+        <div>
+          <span>{{ name.certificates_name }}</span>
+        </div>
+      </div>
+
+      <div *ngIf="us._users[_id]?.data.application.publicheck_name">
+        <h2>
+          Has "{{ us._users[_id]?.data.application.name || "Applicant" }} ever
+          received Supplemental Security Income (SSI), Temporary Assistance for
+          Needy Families (TANF), or State, Tribal, territorial, or local, cash
+          benefit programs for income maintenance (often called “General
+          Assistance” in the State context, but which also exist under other
+          names)?
+        </h2>
+        <span>{{ us._users[_id]?.data.application.publicheck_name }}</span>
+      </div>
+
+      <div *ngIf="us._users[_id]?.data.application.publi_name">
+        <h2>
+          Has {{ us._users[_id]?.data.application.name || "Applicant" }} ever
+          received long-term institutionalization at government expense?
+        </h2>
+        <span>{{ us._users[_id]?.data.application.publi_name }}</span>
+      </div>
+      <h2 class="print__title">Other History</h2>
+
+      <div *ngIf="us._users[_id]?.data.application.anymilitaryservice_name">
+        <h2>
+          About organizations that
+          {{ us._users[_id]?.data.application.name || "Applicant" }} has been
+          part of
+        </h2>
+        <h2>
+          Has {{ us._users[_id]?.data.application.name || "Applicant" }} EVER
+          been a member of, involved in, or in any way associated with any
+          organization, association, fund, foundation, party, club, society, or
+          similar group in the United States or in any other location in the
+          world including any military service?
+        </h2>
+        <span>{{
+          us._users[_id]?.data.application.anymilitaryservice_name
+        }}</span>
+      </div>
+
+      <div
+        *ngFor="
+          let name of us._users[_id]?.data.application.theseorganizations_names;
+          index as i
+        "
+      >
+        <div *ngIf="name.nameorganization_name">
+          <h2>Enter information about these organizations:</h2>
+          <h2>Name of organization</h2>
+          <span>{{ name.nameorganization_name }}</span>
+        </div>
+
+        <div *ngIf="name.locationcityortawn_name">
+          <h2>Location</h2>
+          <h2>City or town</h2>
+          <span>{{ name.locationcityortawn_name }}</span>
+        </div>
+
+        <div *ngIf="name.locationstateor_name">
+          <h2>State or province</h2>
+          <span>{{ name.locationstateor_name }}</span>
+        </div>
+
+        <div *ngIf="name.locationcountryus_name">
+          <h2>Country</h2>
+          <span>{{ name.locationcountryus_name }}</span>
+        </div>
+
+        <div *ngIf="name.natureofdroup_name">
+          <h2>Nature of group</h2>
+          <span>{{ name.natureofdroup_name }}</span>
+        </div>
+
+        <div *ngIf="name.certificationifanyus_name">
+          <h2>Membership or involvement start date</h2>
+          <span>{{ name.certificationifanyus_name | date : "M/d/yyyy" }}</span>
+        </div>
+
+        <div *ngIf="us._users[_id]?.data.application.involvementend_name">
+          <h2>This is current employment</h2>
+          <span>{{
+            us._users[_id]?.data.application.involvementend_name
+          }}</span>
+        </div>
+
+        <div *ngIf="name.certificationifany_name">
+          <h2>Membership or involvement end date</h2>
+          <span>{{ name.certificationifany_name | date : "M/d/yyyy" }}</span>
+        </div>
+      </div>
+
+      <div *ngIf="us._users[_id]?.data.application.orimpairments_name">
+        <h2>
+          <span style="background: #ffff00; padding: 10px"
+            >Does
+            {{ us._users[_id]?.data.application.name || "Applicant" }} want to
+            request an accommodation because of
+            {{
+              (us._users[_id]?.data.application.name &&
+                us._users[_id]?.data.application.name + "'s") ||
+                "Applicant's"
+            }}
+            disabilities and/or impairments?</span
+          >
+        </h2>
+        <h2>{{ us._users[_id]?.data.application.orimpairments_name }}</h2>
+      </div>
+
+      <div *ngIf="us._users[_id]?.data.application.ofhearing_name">
+        <h2>
+          What disability(ies)/impairment(s) applies to
+          {{
+            (us._users[_id]?.data.application.name &&
+              us._users[_id]?.data.application.name) ||
+              "Applicant"
+          }}?
+        </h2>
+        <span>{{ us._users[_id]?.data.application.ofhearing_name }}</span>
+      </div>
+
+      <div *ngIf="us._users[_id]?.data.application.ofhearing_name">
+        <h2>Deaf or hard of hearing</h2>
+        <span>{{ us._users[_id]?.data.application.ofhearing_name }}</span>
+      </div>
+
+      <div *ngIf="us._users[_id]?.data.application.lowvision_name">
+        <h2>Blind or has low vision</h2>
+        <span>{{ us._users[_id]?.data.application.lowvision_name }}</span>
+      </div>
+
+      <div
+        *ngIf="us._users[_id]?.data.application.anothertypeofdisability_name"
+      >
+        <h2>Another type of disability and/or impairment</h2>
+        <span>{{
+          us._users[_id]?.data.application.anothertypeofdisability_name
+        }}</span>
+      </div>
+      <div *ngIf="us._users[_id]?.data.application.torequestext_name">
+        <h2>What accommodation to request?</h2>
+        <span>{{ us._users[_id]?.data.application.torequestext_name }}</span>
+      </div>
+      <div *ngIf="us._users[_id]?.data.application.accommodationtorequest_name">
+        <h2>What accommodation to request?</h2>
+        <span>{{
+          us._users[_id]?.data.application.accommodationtorequest_name
+        }}</span>
+      </div>
+      <div *ngIf="us._users[_id]?.data.application.ofthedisabilityand_name">
+        <h2>Describe the nature of the disability and/or impairment</h2>
+        <span>{{
+          us._users[_id]?.data.application.ofthedisabilityand_name
+        }}</span>
+      </div>
+      <div *ngIf="us._users[_id]?.data.application.whataccommodation_name">
+        <h2>What accommodation to request?</h2>
+        <span>{{
+          us._users[_id]?.data.application.whataccommodation_name
+        }}</span>
+      </div>
+      <h2>Immigration History</h2>
+      <div
+        *ngIf="
+          us._users[_id]?.data.application.answertoanyoftheabovequestions_name
+        "
+      >
+        <h2>
+          <span style="background: #ffff00; padding: 10px"
+            >Part 1 of 7 - Immigration History</span
+          >
+        </h2>
+        <h3>Is the answer to any of the above questions "Yes"?</h3>
+        <span>{{
+          us._users[_id]?.data.application.answertoanyoftheabovequestions_name
+        }}</span>
+      </div>
+      <div
+        *ngIf="us._users[_id]?.data.application.toanyoftheabovequestions_name"
+      >
+        <h2>
+          <span style="background: #ffff00; padding: 10px">
+            Part 2 of 7 - Criminal Acts and Violations</span
+          >
+        </h2>
+        <h3>Is the answer to any of the above questions "Yes"?</h3>
+        <span>{{
+          us._users[_id]?.data.application.toanyoftheabovequestions_name
+        }}</span>
+      </div>
+      <div
+        *ngIf="us._users[_id]?.data.application.toanyoftheabovequestionsss_name"
+      >
+        <h2>
+          <span style="background: #ffff00; padding: 10px">
+            Part 3 of 7 - Security and Related</span
+          >
+        </h2>
+        <h3>Is the answer to any of the above questions "Yes"?</h3>
+        <span>{{
+          us._users[_id]?.data.application.toanyoftheabovequestionsss_name
+        }}</span>
+      </div>
+      <div
+        *ngIf="us._users[_id]?.data.application.toanyoftheabovequestionsq_name"
+      >
+        <h2>
+          <span style="background: #ffff00; padding: 10px"
+            >Part 4 of 7 - Public Assistance</span
+          >
+        </h2>
+        <h3>Is the answer to any of the above questions "Yes"?</h3>
+        <span>{{
+          us._users[_id]?.data.application.toanyoftheabovequestionsq_name
+        }}</span>
+      </div>
+      <div
+        *ngIf="
+          us._users[_id]?.data.application.answertoanyoftheabovequestions_name
+        "
+      >
+        <h2>
+          <span style="background: #ffff00; padding: 10px"
+            >Part 5 of 7 - Illegal Entries and Other Immigration
+            Violations</span
+          >
+        </h2>
+        <h3>Is the answer to any of the above questions "Yes"?</h3>
+        <span>{{
+          us._users[_id]?.data.application.answertoanyoftheabovequestions_name
+        }}</span>
+      </div>
+      <div *ngIf="us._users[_id]?.data.application.aheabovequestions_name">
+        <h2>
+          <span style="background: #ffff00; padding: 10px">
+            Part 6 of 7 - Removal, Unlawful Presence, or Illegal Reentry After
+            Previous Immigration Violations</span
+          >
+        </h2>
+        <h3>Is the answer to any of the above questions "Yes"?</h3>
+        <span>{{
+          us._users[_id]?.data.application.aheabovequestions_name
+        }}</span>
+      </div>
+      <div
+        *ngIf="us._users[_id]?.data.application.rtoanyoftheabovequestions_name"
+      >
+        <h2>
+          <span style="background: #ffff00; padding: 10px"
+            >Part 7 of 7 - Removal, Unlawful Presence, or Illegal Reentry After
+            Previous Immigration Violations</span
+          >
+        </h2>
+        <h3>Is the answer to any of the above questions "Yes"?</h3>
+        <span>{{
+          us._users[_id]?.data.application.rtoanyoftheabovequestions_name
+        }}</span>
+      </div>
+      <h2 class="print__title">Authorizations</h2>
+      <div *ngIf="us._users[_id]?.data.application.applyforanemployment_name">
+        <h2>
+          Apply for an Employment Authorization Document for working in the U.S.
+        </h2>
+        <h2>
+          Does {{ us._users[_id]?.data.application.name || "Applicant" }} want
+          to apply for an Employment Authorization Document?
+        </h2>
+        <span>{{
+          us._users[_id]?.data.application.applyforanemployment_name
+        }}</span>
+      </div>
+      <div *ngIf="us._users[_id]?.data.application.socialsecuritycard_name">
+        <h2>
+          Does {{ us._users[_id]?.data.application.name || "Applicant" }} want
+          the Social Security Administration (SSA) to issue
+          {{ us._users[_id]?.data.application.name || "Applicant" }} a Social
+          Security card?
+        </h2>
+        <span>{{
+          us._users[_id]?.data.application.socialsecuritycard_name
+        }}</span>
+      </div>
+
+      <div *ngIf="us._users[_id]?.data.application.consentfordisclosure_name">
+        <h2>
+          Consent for Disclosure: Does
+          {{ us._users[_id]?.data.application.name || "Applicant" }} authorize
+          disclosure of information from this application to the SSA as required
+          for the purpose of assigning
+          {{ us._users[_id]?.data.application.name || "Applicant" }} an SSN and
+          issuing {{ us._users[_id]?.data.application.name || "Applicant" }} a
+          Social Security card?
+        </h2>
+        <span>{{
+          us._users[_id]?.data.application.consentfordisclosure_name
+        }}</span>
+      </div>
+
+      <div *ngIf="us._users[_id]?.data.application.applicationforus_name">
+        <h2>
+          Has
+          {{ us._users[_id]?.data.application.name || "Applicant" }} previously
+          filed<a href="https://www.greenbroad.com/s/i-765-home"
+            >Form I-765, Application For Employment Authorization?</a
+          >
+        </h2>
+        <span>{{
+          us._users[_id]?.data.application.applicationforus_name
+        }}</span>
+      </div>
+
+      <div *ngIf="us._users[_id]?.data.application.wanttoapplyforan_name">
+        <h2>
+          Does {{ us._users[_id]?.data.application.name || "Applicant" }} want
+          to apply for an Advance Parole Document?
+        </h2>
+        <span>{{
+          us._users[_id]?.data.application.wanttoapplyforan_name
+        }}</span>
+      </div>
+
+      <div *ngIf="us._users[_id]?.data.application.sntendeddeparture_name">
+        <h2>Date of intended departure</h2>
+        <span>{{
+          us._users[_id]?.data.application.sntendeddeparture_name
+        }}</span>
+      </div>
+
+      <div *ngIf="us._users[_id]?.data.application.xpectedlengthoftrip_name">
+        <h2>Expected Length of Trip</h2>
+        <span>{{
+          us._users[_id]?.data.application.xpectedlengthoftrip_name
+        }}</span>
+      </div>
+
+      <div *ngIf="us._users[_id]?.data.application.intendtotraveloutside_name">
+        <h2>
+          Does {{ us._users[_id]?.data.application.name || "Applicant" }} intend
+          to travel outside the U.S. more than once using this document?
+        </h2>
+        <span>{{
+          us._users[_id]?.data.application.intendtotraveloutside_name
+        }}</span>
+      </div>
+
+      <div *ngIf="us._users[_id]?.data.application.areentrypermitor_name">
+        <h2>
+          Has {{ us._users[_id]?.data.application.name || "Applicant" }} ever
+          before been issued a reentry permit or Refugee Travel Document?
+        </h2>
+        <span>{{
+          us._users[_id]?.data.application.areentrypermitor_name
+        }}</span>
+      </div>
+
+      <div *ngIf="us._users[_id]?.data.application.wanttorequestenot_name">
+        <h2 class="print__title">E-Notification</h2>
+        <h2>
+          Does {{ us._users[_id]?.data.application.name || "Applicant" }} want
+          to request an e-notification?
+        </h2>
+        <span>{{
+          us._users[_id]?.data.application.wanttorequestenot_name
+        }}</span>
+      </div>
+
+      <div *ngIf="us._users[_id]?.data.application.emailaddressenot_name">
+        <h2>Email address for e-notification</h2>
+        <span>{{
+          us._users[_id]?.data.application.emailaddressenot_name
+        }}</span>
+      </div>
+      <div *ngIf="us._users[_id]?.data.application.textmessagenot_name">
+        <h2>Mobile phone number for e-notification (text message)</h2>
+        <span>{{ us._users[_id]?.data.application.textmessagenot_name }}</span>
+      </div>
+
+      <div *ngIf="us._users[_id]?.data.application.appsignaturedate_name">
+        <h2>Date of Filling</h2>
+        <span>{{
+          us._users[_id]?.data.application.appsignaturedate_name | date : "M/d/yyyy"
+        }}</span>
+      </div>
+
+      <h2 class="print__title">Sponsor Info</h2>
+      <h2 class="print__title">Personal Info</h2>
+
+      <div *ngIf="us._users[_id]?.data.application.sponsorname">
+        <h2>
+          What's
+          {{ us._users[_id]?.data.application.sponsorname || "Sponsor" }} full
+          legal name?
+        </h2>
+        <h2>Given name (first name)</h2>
+        <span>{{ us._users[_id]?.data.application.sponsorname }}</span>
+      </div>
+
+      <div *ngIf="us._users[_id]?.data.application.sponsormiddle_name">
+        <h2>Middle name</h2>
+        <span>{{ us._users[_id]?.data.application.sponsormiddle_name }}</span>
+      </div>
+      <div *ngIf="us._users[_id]?.data.application.sponsorfamily_name">
+        <h2>Family name (last name)</h2>
+        <span>{{ us._users[_id]?.data.application.sponsorfamily_name }}</span>
+      </div>
+
+      <div *ngIf="us._users[_id]?.data.application.sponsorother_name">
+        <h2>
+          <span style="background: #ffff00; padding: 10px">
+            Has
+            {{ us._users[_id]?.data.application.sponsorname || "Sponsor" }} ever
+            used names other than "{{
+              us._users[_id]?.data.application.sponsorname || "Sponsor"
+            }}" ?</span
+          >
+        </h2>
+        <h2>
+          Provide all other names
+          {{ us._users[_id]?.data.application.sponsorname || "Sponsor" }} has
+          ever used, including the family name at birth, names by previous
+          marriages, maiden name, other legal names, nicknames, aliases, and
+          assumed names.
+        </h2>
+        <span>{{ us._users[_id]?.data.application.sponsorother_name }}</span>
+      </div>
+
+      <div
+        *ngFor="
+          let name of us._users[_id]?.data.application.sponsorform_names;
+          index as i
+        "
+      >
+        <div *ngIf="name.sponsorsubfirstname_name">
+          <h2>Enter other names used below:</h2>
+          <h2>Given name (first name)</h2>
+          <span>{{ name.sponsorsubfirstname_name }}</span>
+        </div>
+
+        <div *ngIf="name.sponsorsubmiddlename_name">
+          <h2>Middle name</h2>
+          <span>{{ name.sponsorsubmiddlename_name }}</span>
+        </div>
+
+        <div *ngIf="name.sponsorsublastname_name">
+          <h2>Family name (last name)</h2>
+          <span>{{ name.sponsorsublastname_name }}</span>
+        </div>
+      </div>
+      <div *ngIf="us._users[_id]?.data.application.sponsorbasicinfo_name">
+        <h2>
+          <span style="background: #ffff00; padding: 10px"
+            >Some basic info about
+            {{
+              (us._users[_id]?.data.application.sponsorname &&
+                us._users[_id]?.data.application.sponsorname) ||
+                "Sponsor"
+            }}</span
+          >
+        </h2>
+        <h2>Sex</h2>
+        <span>{{
+          us._users[_id]?.data.application.sponsorbasicinfo_name
+        }}</span>
+      </div>
+
+      <div *ngIf="us._users[_id]?.data.application.insaidedateofbirrth_name">
+        <h2>Date of birth</h2>
+        <span>{{
+          us._users[_id]?.data.application.insaidedateofbirrth_name | date : "M/d/yyyy"
+        }}</span>
+      </div>
+
+      <div *ngIf="us._users[_id]?.data.application.ofinsidesponsorbirth_name">
+        <h2>Place of birth</h2>
+        <h2>Country of birth</h2>
+        <span>{{
+          us._users[_id]?.data.application.ofinsidesponsorbirth_name
+        }}</span>
+      </div>
+
+      <div *ngIf="us._users[_id]?.data.application.insideorprovince_name">
+        <h2>State or province of birth</h2>
+        <span>{{
+          us._users[_id]?.data.application.insideorprovince_name
+        }}</span>
+      </div>
+
+      <div *ngIf="us._users[_id]?.data.application.cityinside_name">
+        <h2>City/town/village of birth</h2>
+        <span>{{ us._users[_id]?.data.application.cityinside_name }}</span>
+      </div>
+
+      <div
+        *ngIf="us._users[_id]?.data.application.sponsorsecuritynumberone_name"
+      >
+        <h2>
+          {{
+            (us._users[_id]?.data.application.sponsorname &&
+              us._users[_id]?.data.application.sponsorname) ||
+              "Sponsor"
+          }}
+          U.S. social security number
+        </h2>
+        <span>{{
+          us._users[_id]?.data.application.sponsorsecuritynumberone_name
+        }}</span>
+        <span>{{
+          us._users[_id]?.data.application.sponsorsecuritynumbertwo_name
+        }}</span>
+        <span>{{
+          us._users[_id]?.data.application.sponsorsecuritynumberthree_name
+        }}</span>
+      </div>
+
+      <div *ngIf="us._users[_id]?.data.application.sponsoradministration_name">
+        <h2>
+          Is
+          {{
+            (us._users[_id]?.data.application.sponsorname &&
+              us._users[_id]?.data.application.sponsorname) ||
+              "Sponsor"
+          }}
+          currently on active duty in the U.S. Armed Forces or U.S. Coast Guard?
+        </h2>
+        <span>{{
+          us._users[_id]?.data.application.sponsoradministration_name
+        }}</span>
+      </div>
+
+      <div *ngIf="us._users[_id]?.data.application.phonenumbersponsor_name">
+        <h2>Contact Information</h2>
+
+        <h2>Daytime phone number</h2>
+        <span>{{
+          us._users[_id]?.data.application.phonenumbersponsor_name
+        }}</span>
+      </div>
+
+      <div *ngIf="us._users[_id]?.data.application.insponsormobile_name">
+        <h2>Mobile phone number (if any)</h2>
+        <span>{{ us._users[_id]?.data.application.insponsormobile_name }}</span>
+      </div>
+
+      <div *ngIf="us._users[_id]?.data.application.insponsoremail_name">
+        <h2>Email address (if any)</h2>
+        <span>{{ us._users[_id]?.data.application.insponsoremail_name.toUppCase() }}</span>
+      </div>
+
+      <h2>
+        <span style="background: #ffff00; padding: 10px"
+          >{{
+            (us._users[_id]?.data.application.sponsorname &&
+              us._users[_id]?.data.application.sponsorname + "'s") ||
+              "Sponsor's"
+          }}
+          Biographic info</span
+        >
+      </h2>
+      <h2>Ethnicity</h2>
+
+      <div *ngIf="us._users[_id]?.data.application.latino_name">
+        <h2>Hispanic or Latino</h2>
+        <span>{{ us._users[_id]?.data.application.latino_name.toUpperCase() }}</span>
+      </div>
+      <div *ngIf="us._users[_id]?.data.application.white_name">
+        <h2>Race (select all applicable boxes)</h2>
+        <h2>White</h2>
+        <span>{{ us._users[_id]?.data.application.white_name.toUpperCase() }}</span>
+      </div>
+
+      <div *ngIf="us._users[_id]?.data.application.asian_name">
+        <h2>Asian</h2>
+        <span>{{ us._users[_id]?.data.application.asian_name }}</span>
+      </div>
+
+      <div *ngIf="us._users[_id]?.data.application.africanamerican_name">
+        <h2>Black or African American</h2>
+        <span>{{ us._users[_id]?.data.application.africanamerican_name }}</span>
+      </div>
+
+      <div *ngIf="us._users[_id]?.data.application.alaskanative_name">
+        <h2>American Indian or Alaska Native</h2>
+        <span>{{ us._users[_id]?.data.application.alaskanative_name }}</span>
+      </div>
+
+      <div *ngIf="us._users[_id]?.data.application.hawaiianor_name">
+        <h2>Native Hawaiian or Other Pacific Islander</h2>
+        <span>{{ us._users[_id]?.data.application.hawaiianor_name }}</span>
+      </div>
+
+      <div *ngIf="us._users[_id]?.data.application.eye_name">
+        <h2>Eye color</h2>
+        <span>{{ us._users[_id]?.data.application.eye_name.toUperCase() }}</span>
+      </div>
+
+      <div *ngIf="us._users[_id]?.data.application.hair_name">
+        <h2>Hair color</h2>
+        <span>{{ us._users[_id]?.data.application.hair_name.toUperCase() }}</span>
+      </div>
+
+      <div *ngIf="us._users[_id]?.data.application.sponsoruspounds_name">
+        <h2>Weight</h2>
+        <span>{{ us._users[_id]?.data.application.sponsoruspounds_name }}</span>
+        <span>{{
+          us._users[_id]?.data.application.sponsoruspoundsa_name
+        }}</span>
+        <span>{{
+          us._users[_id]?.data.application.sponsoruspoundss_name
+        }}</span>
+      </div>
+
+      <div *ngIf="us._users[_id]?.data.application.sponsorusfeet_name">
+        <h2>Height</h2>
+        <h2>Feet</h2>
+        <span>{{ us._users[_id]?.data.application.sponsorusfeet_name }}</span>
+      </div>
+
+      <div *ngIf="us._users[_id]?.data.application.sponsorusinches_name">
+        <h2>Inches</h2>
+        <span>{{ us._users[_id]?.data.application.sponsorusinches_name }}</span>
+      </div>
+
+      <h2 class="print__title">Places Lived</h2>
+
+      <h2>
+        <span style="background: #ffff00; padding: 10px"
+          >About
+          {{
+            (us._users[_id]?.data.application.sponsorname &&
+              us._users[_id]?.data.application.sponsorname + "'s") ||
+              "Sponsor's"
+          }}
+          mailing address</span
+        >
+      </h2>
+
+      <h2>
+        Enter
+        {{
+          (us._users[_id]?.data.application.sponsorname &&
+            us._users[_id]?.data.application.sponsorname + "'s") ||
+            "Sponsor's"
+        }}
+        mailing address:
+      </h2>
+
+      <div *ngIf="us._users[_id]?.data.application.insponsorincare_name">
+        <h2>In care of name</h2>
+        <span>{{ us._users[_id]?.data.application.insponsorincare_name }}</span>
+      </div>
+
+      <div *ngIf="us._users[_id]?.data.application.sponsortypeaddress_name">
+        <h2>Type of address</h2>
+        <span>{{
+          us._users[_id]?.data.application.sponsortypeaddress_name
+        }}</span>
+      </div>
+
+      <div
+        *ngIf="us._users[_id]?.data.application.inphysicalstreetsponsor_name"
+      >
+        <h2>Street number and name</h2>
+        <span>{{
+          us._users[_id]?.data.application.inphysicalstreetsponsor_name
+        }}</span>
+      </div>
+
+      <div *ngIf="us._users[_id]?.data.application.physicalusaptsponsor_name">
+        <h2>Apt./Ste./Flr. Number (if any)</h2>
+        <span>{{
+          us._users[_id]?.data.application.physicalusaptsponsor_name
+        }}</span>
+      </div>
+
+      <div *ngIf="us._users[_id]?.data.application.physicalcitysponsorus_name">
+        <h2>City or town</h2>
+        <span>{{
+          us._users[_id]?.data.application.physicalcitysponsorus_name
+        }}</span>
+      </div>
+
+      <div
+        *ngIf="
+          us._users[_id]?.data.application.physicalusprovincesponsorin_name
+        "
+      >
+        <h2>State</h2>
+        <span>{{
+          us._users[_id]?.data.application.physicalusprovincesponsorin_name
+        }}</span>
+      </div>
+
+      <div *ngIf="us._users[_id]?.data.application.usinsidezipcode_name">
+        <h2>ZIP code</h2>
+        <span>{{ us._users[_id]?.data.application.usinsidezipcode_name }}</span>
+      </div>
+
+      <div *ngIf="us._users[_id]?.data.application.provinceusinside_name">
+        <h2>Province</h2>
+        <span>{{
+          us._users[_id]?.data.application.provinceusinside_name
+        }}</span>
+      </div>
+
+      <div *ngIf="us._users[_id]?.data.application.postalcodeinsideus_name">
+        <h2>Postal code</h2>
+        <span>{{
+          us._users[_id]?.data.application.postalcodeinsideus_name
+        }}</span>
+      </div>
+
+      <div *ngIf="us._users[_id]?.data.application.insidecountrysponsorus_name">
+        <h2>Country</h2>
+        <span>{{
+          us._users[_id]?.data.application.insidecountrysponsorus_name
+        }}</span>
+      </div>
+
+      <div *ngIf="us._users[_id]?.data.application.sponsorphysicaladdress_name">
+        <h2>
+          <span style="background: #ffff00; padding: 10px"
+            >About
+            {{
+              (us._users[_id]?.data.application.sponsorname &&
+                us._users[_id]?.data.application.sponsorname + "'s") ||
+                "Sponsor's"
+            }}
+            Physical Address & Place of Residence</span
+          >
+        </h2>
+
+        <h2>
+          Is
+          {{
+            (us._users[_id]?.data.application.sponsorname &&
+              us._users[_id]?.data.application.sponsorname + "'s") ||
+              "Sponsor's"
+          }}
+          physical address the same as
+          {{
+            (us._users[_id]?.data.application.sponsorname &&
+              us._users[_id]?.data.application.sponsorname + "'s") ||
+              "Sponsor's"
+          }}
+          mailing address?
+        </h2>
+        <span>{{
+          us._users[_id]?.data.application.sponsorphysicaladdress_name
+        }}</span>
+      </div>
+
+      <div *ngIf="us._users[_id]?.data.application.currentphysicaladdress_name">
+        <h2>Move in date of the current physical address</h2>
+        <span>{{
+          us._users[_id]?.data.application.currentphysicaladdress_name | date : "M/d/yyyy"
+        }}</span>
+      </div>
+
+      <div *ngIf="us._users[_id]?.data.application.physicaladdresssponsor_name">
+        <h2>Type of address</h2>
+        <span>{{
+          us._users[_id]?.data.application.physicaladdresssponsor_name
+        }}</span>
+      </div>
+
+      <div *ngIf="us._users[_id]?.data.application.streetsponsorandname_name">
+        <h2>Street number and name</h2>
+        <span>{{
+          us._users[_id]?.data.application.streetsponsorandname_name
+        }}</span>
+      </div>
+
+      <div *ngIf="us._users[_id]?.data.application.physicalaptsponsor_name">
+        <h2>Apt./Ste./Flr. Number (if any)</h2>
+        <span>{{
+          us._users[_id]?.data.application.physicalaptsponsor_name
+        }}</span>
+        <span>{{
+          us._users[_id]?.data.application.physicalstesponsore_name
+        }}</span>
+      </div>
+      <div *ngIf="us._users[_id]?.data.application.placemailingcity_name">
+        <h2>City or town</h2>
+        <span>{{
+          us._users[_id]?.data.application.placemailingcity_name
+        }}</span>
+      </div>
+
+      <div
+        *ngIf="us._users[_id]?.data.application.usmailingprovinceinside_name"
+      >
+        <h2>State</h2>
+        <span>{{
+          us._users[_id]?.data.application.usmailingprovinceinside_name
+        }}</span>
+      </div>
+
+      <div *ngIf="us._users[_id]?.data.application.mailingpostalcodezipin_name">
+        <h2>Zip code</h2>
+        <span>{{
+          us._users[_id]?.data.application.mailingpostalcodezipin_name
+        }}</span>
+      </div>
+
+      <div *ngIf="us._users[_id]?.data.application.mailingprovinceinsi_name">
+        <h2>Province</h2>
+        <span>{{
+          us._users[_id]?.data.application.mailingprovinceinsi_name
+        }}</span>
+      </div>
+
+      <div
+        *ngIf="us._users[_id]?.data.application.gpostalcodeinsidemailin_name"
+      >
+        <h2>Postal code</h2>
+        <span>{{
+          us._users[_id]?.data.application.gpostalcodeinsidemailin_name
+        }}</span>
+      </div>
+
+      <div *ngIf="us._users[_id]?.data.application.placemailingcountry_name">
+        <h2>Country</h2>
+        <span>{{
+          us._users[_id]?.data.application.placemailingcountry_name
+        }}</span>
+      </div>
+
+      <div
+        *ngIf="
+          us._users[_id]?.data.application.physicaltypeofaddresssponsor_name
+        "
+      >
+        <h2>Move in date</h2>
+        <span>{{
+          us._users[_id]?.data.application.physicaltypeofaddresssponsor_name | date : "M/d/yyyy"
+        }}</span>
+      </div>
+
+      <div *ngIf="us._users[_id]?.data.application.sponsorplace_name">
+        <h2>
+          Is
+          {{
+            (us._users[_id]?.data.application.sponsorname &&
+              us._users[_id]?.data.application.sponsorname + "'s") ||
+              "Sponsor's"
+          }}
+          place of residence in the U.S?
+        </h2>
+        <span>{{ us._users[_id]?.data.application.sponsorplace_name }}</span>
+      </div>
+
+      <div *ngIf="us._users[_id]?.data.application.sponsordomicile_name">
+        <h2>
+          <span style="background: #ffff00; padding: 10px"
+            >About
+            {{
+              (us._users[_id]?.data.application.sponsorname &&
+                us._users[_id]?.data.application.sponsorname + "'s") ||
+                "Sponsor's"
+            }}
+            country of domicile</span
+          >
+        </h2>
+        <h2>
+          In order for
+          {{ us._users[_id]?.data.application.sponsorname || "Sponsor" }} to
+          sponsor "{{ us._users[_id]?.data.application.name || "Applicant" }}",
+          {{
+            (us._users[_id]?.data.application.sponsorname &&
+              us._users[_id]?.data.application.sponsorname + "'s") ||
+              "Sponsor's"
+          }}
+          country of domicile needs to be the United States. Is the United
+          States
+          {{
+            (us._users[_id]?.data.application.sponsorname &&
+              us._users[_id]?.data.application.sponsorname + "'s") ||
+              "Sponsor's"
+          }}
+          country of domicile?
+        </h2>
+        <span>{{ us._users[_id]?.data.application.sponsordomicile_name }}</span>
+      </div>
+      <div>
+        <h2>
+          <span style="background: #ffff00; padding: 10px">
+            What's the last address at which
+            {{ us._users[_id]?.data.application.sponsorname || "Sponsor" }} and
+            {{
+              (us._users[_id]?.data.application.name &&
+                us._users[_id]?.data.application.name) ||
+                "Applicant"
+            }}
+            physically lived together?
+          </span>
+        </h2>
+      </div>
+
+      <div *ngIf="us._users[_id]?.data.application.streettogethersponsors_name">
+        <h2>
+          What's the last address at which
+          {{ us._users[_id]?.data.application.sponsorname || "Sponsor" }} and
+          {{
+            (us._users[_id]?.data.application.name &&
+              us._users[_id]?.data.application.name) ||
+              "Applicant"
+          }}
+          physically lived together?
+        </h2>
+      </div>
+
+      <div *ngIf="us._users[_id]?.data.application.togetheraddress_name">
+        <h2>Type of address</h2>
+        <span>{{ us._users[_id]?.data.application.togetheraddress_name }}</span>
+      </div>
+
+      <div *ngIf="us._users[_id]?.data.application.streettogethersponsors_name">
+        <h2>Street number and name</h2>
+        <span>{{
+          us._users[_id]?.data.application.streettogethersponsors_name
+        }}</span>
+      </div>
+
+      <div *ngIf="us._users[_id]?.data.application.togethersponsor_name">
+        <h2>Apt./Ste./Flr. Number (if any)</h2>
+        <span>{{ us._users[_id]?.data.application.togethersponsor_name }}</span>
+        <span>{{
+          us._users[_id]?.data.application.physicalusstetogether_name
+        }}</span>
+      </div>
+      <div *ngIf="us._users[_id]?.data.application.togethertogether_name">
+        <h2>City or town</h2>
+        <span>{{
+          us._users[_id]?.data.application.togethertogether_name
+        }}</span>
+      </div>
+
+      <div *ngIf="us._users[_id]?.data.application.togetherprovinceplace_name">
+        <h2>Province</h2>
+        <span>{{
+          us._users[_id]?.data.application.togetherprovinceplace_name
+        }}</span>
+      </div>
+
+      <div
+        *ngIf="us._users[_id]?.data.application.togetherpostalcodeplace_name"
+      >
+        <h2>Postal code</h2>
+        <span>{{
+          us._users[_id]?.data.application.togetherpostalcodeplace_name
+        }}</span>
+      </div>
+
+      <div *ngIf="us._users[_id]?.data.application.togetherincesponsor_name">
+        <h2>State</h2>
+        <span>{{
+          us._users[_id]?.data.application.togetherincesponsor_name
+        }}</span>
+      </div>
+
+      <div *ngIf="us._users[_id]?.data.application.togethercountry_name">
+        <h2>Country</h2>
+        <span>{{ us._users[_id]?.data.application.togethercountry_name }}</span>
+      </div>
+
+      <div *ngIf="us._users[_id]?.data.application.togetherlcodesponsor_name">
+        <h2>ZIP code</h2>
+        <span>{{
+          us._users[_id]?.data.application.togetherlcodesponsor_name
+        }}</span>
+      </div>
+
+      <div *ngIf="us._users[_id]?.data.application.togetherdatefrom_name">
+        <h2>Date from</h2>
+        <span>{{
+          us._users[_id]?.data.application.togetherdatefrom_name | date : "M/d/yyyy"
+        }}</span>
+      </div>
+      <!-- <div *ngIf="us._users[_id]?.data.application.physicallyliveddate_name">
+        <h2>Currently live here together</h2>
+        <span>{{us._users[_id]?.data.application.physicallyliveddate_name}}</span>
+      </div> -->
+      <div *ngIf="us._users[_id]?.data.application.togetherdateto_name">
+        <h2>Date to</h2>
+        <span>
+          {{ us._users[_id]?.data.application.togetherdateto_name | date : "M/d/yyyy" }}
+        </span>
+      </div>
+      <h2>
+        <span style="background: #ffff00; padding: 10px"
+          >{{
+            (us._users[_id]?.data.application.sponsorname &&
+              us._users[_id]?.data.application.sponsorname + "'s") ||
+              "Sponsor's"
+          }}
+          previous physical addresses for the last five years
+        </span>
+      </h2>
+      <div>
+        <h2>
+          {{ us._users[_id]?.data.application.sponsorname || "Sponsor" }} has
+          lived at the current address for the last five years.
+        </h2>
+        <span>{{
+          us._users[_id]?.data.application.physicaladdressesus_name
+        }}</span>
+      </div>
+
+      <div
+        *ngFor="
+          let name of us._users[_id]?.data.application
+            .physicaladdressesus_names;
+          index as i
+        "
+      >
+        <span>PHYSICAL ADDRESS {{ i + 1 }}</span>
+        <div *ngIf="name.togetheraddressphysical_name">
+          <h2>Type of address</h2>
+          <span>{{ name.togetheraddressphysical_name }}</span>
+        </div>
+
+        <div *ngIf="name.streettogethersponsor_name">
+          <h2>Street number and name</h2>
+          <span>{{ name.streettogethersponsor_name }}</span>
+        </div>
+
+        <div *ngIf="name.togethersponsorss_name">
+          <h2>Apt./Ste./Flr. Number (if any)</h2>
+          <span>{{ name.togethersponsorss_name }}</span>
+          <span>{{ name.ssqstetogether_name }}</span>
+        </div>
+
+        <div *ngIf="name.physicalcity_name">
+          <h2>City or town</h2>
+          <span>{{ name.physicalcity_name }}</span>
+        </div>
+
+        <div *ngIf="name.physicalprovincee_name">
+          <h2>Province</h2>
+          <span>{{ name.physicalprovincee_name }}</span>
+        </div>
+
+        <div *ngIf="name.zipphysical_name">
+          <h2>Postal code</h2>
+          <span>{{ name.zipphysical_name }}</span>
+        </div>
+
+        <div *ngIf="name.physicalstate_name">
+          <h2>State</h2>
+          <span>{{ name.physicalstate_name }}</span>
+        </div>
+
+        <div *ngIf="name.physicalzip_name">
+          <h2>ZIP code</h2>
+          <span>{{ name.physicalzip_name }}</span>
+        </div>
+
+        <div *ngIf="name.countphysical_name">
+          <h2>Country</h2>
+          <span>{{ name.countphysical_name }}</span>
+        </div>
+
+        <div *ngIf="name.moveindate_name">
+          <h2>Move in date</h2>
+          <span>{{ name.moveindate_name | date : "M/d/yyyy" }}</span>
+        </div>
+
+        <div *ngIf="name.moveoutdate_name">
+          <h2>Move out date</h2>
+          <span>{{ name.moveoutdate_name | date : "M/d/yyyy" }}</span>
+        </div>
+      </div>
+
+      <h2 class="print__title">Financial Support</h2>
+
+      <h2>
+        First, let's check
+        {{ us._users[_id]?.data.application.name || "Applicant" }} if is exempt
+        from filing an Affidavit of Support
+      </h2>
+      <h2>
+        Is
+        {{ us._users[_id]?.data.application.sponsorname || "Sponsor" }} exempt
+        from filing Form I-864?
+      </h2>
+      <span>{{ us._users[_id]?.data.application.fin_name }}</span>
+      <h2>
+        <span style="background: #ffff00; padding: 10px"
+          >Now let's calculate
+          {{
+            (us._users[_id]?.data.application.sponsorname &&
+              us._users[_id]?.data.application.sponsorname + "'s") ||
+              "Sponsor's"
+          }}
+          household size</span
+        >
+      </h2>
+
+      <div
+        *ngIf="us._users[_id]?.data.application.haveanydependentchildren_name"
+      >
+        <h2>
+          Does
+          {{ us._users[_id]?.data.application.sponsorname || "Sponsor" }} have
+          any dependent children under 21 years of age?
+        </h2>
+        <span>{{
+          us._users[_id]?.data.application.haveanydependentchildren_name
+        }}</span>
+      </div>
+
+      <div *ngIf="us._users[_id]?.data.application.howmanyus_name">
+        <h2>How many?</h2>
+        <span>{{ us._users[_id]?.data.application.howmanyus_name }}</span>
+      </div>
+
+      <div *ngIf="us._users[_id]?.data.application.usmostrecentfederal_name">
+        <h2>
+          Not counting
+          {{ us._users[_id]?.data.application.name || "Applicant" }} or any
+          children who have been counted in the previous question, does
+          {{ us._users[_id]?.data.application.sponsorname || "Sponsor" }} have
+          any other dependents listed on
+          {{
+            (us._users[_id]?.data.application.sponsorname &&
+              us._users[_id]?.data.application.sponsorname + "'s") ||
+              "Sponsor's"
+          }}
+          most recent Federal income tax return?
+        </h2>
+        <span>{{
+          us._users[_id]?.data.application.usmostrecentfederal_name
+        }}</span>
+      </div>
+      <div *ngIf="us._users[_id]?.data.application.howmanyustaxreturn_name">
+        <h2>How many?</h2>
+        <span>{{
+          us._users[_id]?.data.application.howmanyustaxreturn_name
+        }}</span>
+      </div>
+
+      <div
+        *ngIf="us._users[_id]?.data.application.immigrantswhoarenowlawful_name"
+      >
+        <h2>
+          Not counting
+          {{ us._users[_id]?.data.application.name || "Applicant" }} or any
+          persons that have been counted in the previous two questions, is
+          {{
+            us._users[_id]?.data.application.sponsorname || "Sponsor"
+          }}
+          currently obligated to support any immigrants that
+          {{
+            us._users[_id]?.data.application.sponsorname || "Sponsor"
+          }}
+          previously sponsored with Form I-864 or Form I-864 EZ (Affidavit of
+          Support under Section 213A of the INA)? Count only those immigrants
+          who are now lawful permanent residents.
+        </h2>
+        <span>{{
+          us._users[_id]?.data.application.immigrantswhoarenowlawful_name
+        }}</span>
+      </div>
+      <div
+        *ngIf="
+          us._users[_id]?.data.application.howmanyuspermanentresidents_name
+        "
+      >
+        <h2>How many?</h2>
+        <span>{{
+          us._users[_id]?.data.application.howmanyuspermanentresidents_name
+        }}</span>
+      </div>
+      <div>
+        <h2>
+          <span style="background: #ffff00; padding: 10px"
+            >{{
+              (us._users[_id]?.data.application.sponsorname &&
+                us._users[_id]?.data.application.sponsorname + "'s") ||
+                "Sponsor's"
+            }}
+            minimum income requirement is ${{ us.result || "22,887" }}
+          </span>
+        </h2>
+      </div>
+
+      <div *ngIf="us._users[_id]?.data.application.greaterthanorequal_name">
+        <h2>
+          Is
+          {{
+            (us._users[_id]?.data.application.sponsorname &&
+              us._users[_id]?.data.application.sponsorname + "'s") ||
+              "Sponsor's"
+          }}
+          current individual annual income greater than or equal to ${{
+            us.result || "22,887"
+          }}?
+        </h2>
+
+        <span>{{
+          us._users[_id]?.data.application.greaterthanorequal_name
+        }}</span>
+      </div>
+      <div
+        *ngIf="
+          us._users[_id]?.data.application.greatcurrentindividualannual_name
+        "
+      >
+        <h2>
+          Great! What's
+          {{
+            (us._users[_id]?.data.application.sponsorname &&
+              us._users[_id]?.data.application.sponsorname + "'s") ||
+              "Sponsor's"
+          }}
+          current individual annual income?
+        </h2>
+        <span>{{
+          us._users[_id]?.data.application.greatcurrentindividualannual_name
+        }}</span>
+      </div>
+      <div *ngIf="us._users[_id]?.data.application.ustexyear_name">
+        <h2>
+          <span style="background: #ffff00; padding: 10px">
+            Finally, about
+            {{
+              (us._users[_id]?.data.application.sponsorname &&
+                us._users[_id]?.data.application.sponsorname + "'s") ||
+                "Sponsor's"
+            }}
+            Federal income tax returns
+          </span>
+        </h2>
+        <h2>
+          {{ us._users[_id]?.data.application.sponsorname || "Sponsor" }} did
+          not file a Federal income tax return for the most recent tax year.
+        </h2>
+        <h2>Tax year</h2>
+        <span>{{ us._users[_id]?.data.application.ustexyear_name }}</span>
+      </div>
+
+      <div *ngIf="us._users[_id]?.data.application.ustotalincome_name">
+        <h2>
+          {{
+            (us._users[_id]?.data.application.sponsorname &&
+              us._users[_id]?.data.application.sponsorname + "'s") ||
+              "Sponsor's"
+          }}
+          total income
+        </h2>
+        <span>{{ us._users[_id]?.data.application.ustotalincome_name }}</span>
+      </div>
+
+      <div *ngIf="us._users[_id]?.data.application.servicetranscript_name">
+        <h2>
+          USCIS requires that
+          {{
+            us._users[_id]?.data.application.sponsorname || "Sponsor"
+          }}
+          provide documentation for the most recent tax year's Federal
+          individual income tax return. Which type of documentation does
+          {{ us._users[_id]?.data.application.sponsorname || "Sponsor" }} choose
+          to provide?
+        </h2>
+        <h2>An Internal Revenue Service (IRS) transcript</h2>
+        <span>{{
+          us._users[_id]?.data.application.servicetranscript_name
+        }}</span>
+      </div>
+      <!-- <h2>A photocopy from {{us._users[_id]?.data.application.sponsorname && us._users[_id]?.data.application.sponsorname + "'s" || "Sponsor's"}} own records of {{us._users[_id]?.data.application.sponsorname && us._users[_id]?.data.application.sponsorname + "'s" || "Sponsor's"}} Federal individual income tax return</h2>
+          <h2>Did {{us._users[_id]?.data.application.sponsorname || "Sponsor"}} file a joint income tax return with {{us._users[_id]?.data.application.name || "Applicant"}} for the most recent tax year?</h2>
+          <span>{{us._users[_id]?.data.application.mostrecenttaxyearus_name}}</span>
+
+          <h2>Did {{us._users[_id]?.data.application.sponsorname || "Sponsor"}} file a joint income tax return with {{us._users[_id]?.data.application.name || "Applicant"}} for the most recent tax year?</h2>
+          <h2>{{us._users[_id]?.data.application.mostrecenttaxyearus_name}}</h2>
+
+          <h2>What's the reason for not filing?</h2>
+          <span>{{us._users[_id]?.data.application.thereasonfornotfiling_name}}</span>
+
+          <h2>2nd most recent Federal income tax return</h2>
+
+          <h2>{{us._users[_id]?.data.application.sponsorname || "Sponsor"}} did not file a Federal income tax return for the 2nd most recent tax year.</h2>
+          <span>{{us._users[_id]?.data.application.usthemostrecenttax_name}}</span> -->
+      <div *ngIf="us._users[_id]?.data.application.usustexyear_name">
+        <h2>Tax year</h2>
+        <span>{{ us._users[_id]?.data.application.usustexyear_name }}</span>
+      </div>
+
+      <div *ngIf="us._users[_id]?.data.application.usustotalincome_name">
+        <h2>
+          {{
+            (us._users[_id]?.data.application.sponsorname &&
+              us._users[_id]?.data.application.sponsorname + "'s") ||
+              "Sponsor's"
+          }}
+          total income
+        </h2>
+        <span>{{ us._users[_id]?.data.application.usustotalincome_name }}</span>
+      </div>
+
+      <div
+        *ngIf="us._users[_id]?.data.application.usthereasonfornotfiling_name"
+      >
+        <h2>What's the reason for not filing?</h2>
+        <span>{{
+          us._users[_id]?.data.application.usthereasonfornotfiling_name
+        }}</span>
+      </div>
+
+      <div
+        *ngIf="us._users[_id]?.data.application.usthereasonfornotfiling_name"
+      >
+        <h2>
+          {{ us._users[_id]?.data.application.sponsorname || "Sponsor" }} was
+          not required to file a Federal income tax return under U.S. tax law
+          for any other reason.
+        </h2>
+        <span>{{
+          us._users[_id]?.data.application.usthereasonfornotfiling_name
+        }}</span>
+      </div>
+
+      <div
+        *ngIf="us._users[_id]?.data.application.usthereasonfornotfiling_name"
+      >
+        <h2>
+          {{ us._users[_id]?.data.application.sponsorname || "Sponsor" }} was
+          required to file a Federal income tax return for this year but did not
+          do so.
+        </h2>
+        <span>{{
+          us._users[_id]?.data.application.usthereasonfornotfiling_name
+        }}</span>
+      </div>
+
+      <div *ngIf="us._users[_id]?.data.application.usthemostrecenttaxus_name">
+        <h2>3rd most recent Federal Income Tax return</h2>
+        <h2>
+          {{ us._users[_id]?.data.application.sponsorname || "Sponsor" }} did
+          not file a Federal income tax return for the 3rd most recent tax year.
+        </h2>
+        <span>{{
+          us._users[_id]?.data.application.usthemostrecenttaxus_name
+        }}</span>
+      </div>
+
+      <div *ngIf="us._users[_id]?.data.application.usustexyearus_name">
+        <h2>Tax year</h2>
+        <span>{{ us._users[_id]?.data.application.usustexyearus_name }}</span>
+      </div>
+
+      <div *ngIf="us._users[_id]?.data.application.usustotalincomeus_name">
+        <h2>
+          {{
+            (us._users[_id]?.data.application.sponsorname &&
+              us._users[_id]?.data.application.sponsorname + "'s") ||
+              "Sponsor's"
+          }}
+          total income
+        </h2>
+        <span>{{
+          us._users[_id]?.data.application.usustotalincomeus_name
+        }}</span>
+      </div>
+
+      <div
+        *ngIf="us._users[_id]?.data.application.usthereasonfornotfilingus_name"
+      >
+        <h2>What's the reason for not filing?</h2>
+        <span>{{
+          us._users[_id]?.data.application.usthereasonfornotfilingus_name
+        }}</span>
+      </div>
+
+      <div *ngIf="us._users[_id]?.data.application.abilitytomaintain_name">
+        <h2>
+          If
+          {{
+            us._users[_id]?.data.application.sponsorname || "Sponsor"
+          }}
+          believes additional returns may help
+          {{
+            us._users[_id]?.data.application.sponsorname || "Sponsor"
+          }}
+          establish
+          {{
+            (us._users[_id]?.data.application.sponsorname &&
+              us._users[_id]?.data.application.sponsorname + "'s") ||
+              "Sponsor's"
+          }}
+          ability to maintain sufficient income,
+          {{ us._users[_id]?.data.application.sponsorname || "Sponsor" }} has
+          the option to submit documentations for the 2nd and 3rd most recent
+          tax years's Federal individual income tax returns. Does
+          {{ us._users[_id]?.data.application.sponsorname || "Sponsor" }} want
+          to do this?
+        </h2>
+        <span>{{
+          us._users[_id]?.data.application.abilitytomaintain_name
+        }}</span>
+      </div>
+
+      <div
+        *ngIf="us._users[_id]?.data.application.typeofdocumentationwill_name"
+      >
+        <h2>
+          Which type of documentation will
+          {{ us._users[_id]?.data.application.sponsorname || "Sponsor" }} submit
+          for the 2nd and 3rd most recent tax years?
+        </h2>
+        <h2>Internal Revenue Service (IRS) transcripts</h2>
+        <span>{{
+          us._users[_id]?.data.application.typeofdocumentationwill_name
+        }}</span>
+      </div>
+
+      <div
+        *ngIf="us._users[_id]?.data.application.typeofdocumentationwill_name"
+      >
+        <h2>
+          Photocopies from
+          {{
+            (us._users[_id]?.data.application.sponsorname &&
+              us._users[_id]?.data.application.sponsorname + "'s") ||
+              "Sponsor's"
+          }}
+          own records of
+          {{
+            (us._users[_id]?.data.application.sponsorname &&
+              us._users[_id]?.data.application.sponsorname + "'s") ||
+              "Sponsor's"
+          }}
+          Federal individual income tax return
+        </h2>
+        <span>{{
+          us._users[_id]?.data.application.typeofdocumentationwill_name
+        }}</span>
+      </div>
+
+      <div
+        *ngIf="us._users[_id]?.data.application.typeofdocumentationwill_name"
+      >
+        <h2>
+          For the 2nd most recent tax year, did
+          {{ us._users[_id]?.data.application.sponsorname || "Sponsor" }} file a
+          joint income tax return with
+          {{ us._users[_id]?.data.application.name || "Applicant" }}?
+        </h2>
+        <span>{{
+          us._users[_id]?.data.application.typeofdocumentationwill_name
+        }}</span>
+      </div>
+
+      <div *ngIf="us._users[_id]?.data.application.forthetwo_name">
+        <h2>
+          For the 3nd most recent tax year, did
+          {{ us._users[_id]?.data.application.sponsorname || "Sponsor" }} file a
+          joint income tax return with
+          {{ us._users[_id]?.data.application.name || "Applicant" }}?
+        </h2>
+        <span>{{ us._users[_id]?.data.application.forthetwo_name }}</span>
+      </div>
+
+      <div>
+        <h2 class="print__title">Immigration Info</h2>
+      </div>
+      <h2>
+        <span style="background: #ffff00; padding: 10px"
+          >About
+          {{
+            (us._users[_id]?.data.application.sponsorname &&
+              us._users[_id]?.data.application.sponsorname + "'s") ||
+              "Sponsor's"
+          }}
+          U.S. citizenship</span
+        >
+      </h2>
+      <div
+        *ngIf="us._users[_id]?.data.application.sponsoradministrationcheck_name"
+      >
+        <h2>
+          {{
+            (us._users[_id]?.data.application.sponsorname &&
+              us._users[_id]?.data.application.sponsorname + "'s") ||
+              "Sponsor's"
+          }}
+          U.S. citizenship was acquired through
+        </h2>
+        {{ us._users[_id]?.data.application.sponsoradministrationcheck_name }}
+      </div>
+      <div>
+        <h2>
+          Has
+          {{
+            us._users[_id]?.data.application.sponsorname || "Sponsor"
+          }}
+          obtained a Certificate of Naturalization or a Certificate of
+          Citizenship?
+        </h2>
+        <span>{{ us._users[_id]?.data.application.sponsorobtained_name }}</span>
+      </div>
+      <div *ngIf="us._users[_id]?.data.application.certificatenumber_name">
+        <h2>About the certificate</h2>
+        <h2>Certificate number</h2>
+        <span>{{
+          us._users[_id]?.data.application.certificatenumber_name
+        }}</span>
+      </div>
+
+      <div *ngIf="us._users[_id]?.data.application.certificateissuance_name">
+        <h2>Place of issuance</h2>
+        <span>{{
+          us._users[_id]?.data.application.certificateissuance_name
+        }}</span>
+      </div>
+
+      <div
+        *ngIf="us._users[_id]?.data.application.certificateissuancedate_name"
+      >
+        <h2>Date of issuance</h2>
+        <span>{{
+          us._users[_id]?.data.application.certificateissuancedate_name | date : "M/d/yyyy"
+        }}</span>
+      </div>
+
+      <div *ngIf="us._users[_id]?.data.application.gainlawfulperemanent_name">
+        <h2>
+          Did
+          {{
+            (us._users[_id]?.data.application.sponsorname &&
+              us._users[_id]?.data.application.sponsorname) ||
+              "Sponsor"
+          }}
+          gain lawful permanent resident status or citizenship through adoption?
+        </h2>
+        <span>{{
+          us._users[_id]?.data.application.gainlawfulperemanent_name
+        }}</span>
+      </div>
+
+      <div *ngIf="us._users[_id]?.data.application.anumbersponsor_name">
+        <h2>
+          {{
+            (us._users[_id]?.data.application.sponsorname &&
+              us._users[_id]?.data.application.sponsorname + "'s") ||
+              "Sponsor's"
+          }}
+          alien registration number (A-number) (if any)
+        </h2>
+        <span>{{ us._users[_id]?.data.application.anumbersponsor_name }}</span>
+      </div>
+
+      <div *ngIf="us._users[_id]?.data.application.anumbersponsoraccount_name">
+        <h2>
+          {{
+            (us._users[_id]?.data.application.sponsorname &&
+              us._users[_id]?.data.application.sponsorname + "'s") ||
+              "Sponsor's"
+          }}
+          USCIS Online Account Number (if any)
+        </h2>
+        <span>{{
+          us._users[_id]?.data.application.anumbersponsoraccount_name
+        }}</span>
+      </div>
+
+      <div *ngIf="us._users[_id]?.data.application.classadmission_name">
+        <h2>
+          {{
+            (us._users[_id]?.data.application.sponsorname &&
+              us._users[_id]?.data.application.sponsorname + "'s") ||
+              "Sponsor's"
+          }}
+          class of admission
+        </h2>
+        <span>{{ us._users[_id]?.data.application.classadmission_name }}</span>
+      </div>
+
+      <div *ngIf="us._users[_id]?.data.application.admissiondate_name">
+        <h2>
+          {{
+            (us._users[_id]?.data.application.sponsorname &&
+              us._users[_id]?.data.application.sponsorname + "'s") ||
+              "Sponsor's"
+          }}
+          Date of admission
+        </h2>
+        <span>{{ us._users[_id]?.data.application.admissiondate_name | date : "M/d/yyyy" }}</span>
+      </div>
+
+      <div *ngIf="us._users[_id]?.data.application.admissiontown_name">
+        <h2>
+          {{
+            (us._users[_id]?.data.application.sponsorname &&
+              us._users[_id]?.data.application.sponsorname + "'s") ||
+              "Sponsor's"
+          }}
+          Place of Admission
+        </h2>
+        <h2>City or Town</h2>
+        <span>{{ us._users[_id]?.data.application.admissiontown_name }}</span>
+      </div>
+
+      <div *ngIf="us._users[_id]?.data.application.admissionstate_name">
+        <h2>State</h2>
+        <span>{{ us._users[_id]?.data.application.admissionstate_name }}</span>
+      </div>
+
+      <div *ngIf="us._users[_id]?.data.application.sponsoradministration_name">
+        <h2>
+          Did
+          {{ us._users[_id]?.data.application.sponsorname || "Sponsor" }} gain
+          lawful permanent resident status through marriage to a U.S. citizen or
+          lawful permanent resident?
+        </h2>
+        <span>{{
+          us._users[_id]?.data.application.sponsoradministration_name
+        }}</span>
+      </div>
+
+      <div
+        *ngIf="us._users[_id]?.data.application.ussponsoradministration_name"
+      >
+        <h2>
+          Did
+          {{ us._users[_id]?.data.application.sponsorname || "Sponsor" }} gain
+          lawful permanent resident status or citizenship through adoption?
+        </h2>
+        <span>{{
+          us._users[_id]?.data.application.ussponsoradministration_name
+        }}</span>
+      </div>
+
+      <div *ngIf="us._users[_id]?.data.application.anumbersponsor_name">
+        <h2>
+          {{
+            (us._users[_id]?.data.application.sponsorname &&
+              us._users[_id]?.data.application.sponsorname + "'s") ||
+              "Sponsor's"
+          }}
+          alien registration number (A-number) (if any)
+        </h2>
+        <span>{{ us._users[_id]?.data.application.anumbersponsor_name }}</span>
+      </div>
+
+      <div *ngIf="us._users[_id]?.data.application.admissiontown_name">
+        <h2>
+          <span style="background: #ffff00; padding: 10px">
+            About
+            {{
+              (us._users[_id]?.data.application.name &&
+                us._users[_id]?.data.application.name + "'s") ||
+                "Applicant's"
+            }}
+            Green Card application
+          </span>
+        </h2>
+        <p>
+          At which U.S. Embassy or U.S. Consulate will
+          {{ us._users[_id]?.data.application.name || "Applicant" }} apply for
+          Green Card (officially called "apply for an immigrant visa abroad")? "
+          with "At which U.S Citizenship and Immigration Services (USCIS) office
+          will {{ us._users[_id]?.data.application.name || "Applicant" }} apply
+          for the Green Card (officially called "apply for adjustment of status
+          to that of a lawful permanent resident")?
+        </p>
+      </div>
+      <div *ngIf="us._users[_id]?.data.application.admissiontown_name">
+        <h2>City/town</h2>
+        <span>{{ us._users[_id]?.data.application.admissiontown_name }}</span>
+      </div>
+
+      <div *ngIf="us._users[_id]?.data.application.applicationstate_name">
+        <h2>State</h2>
+        <span>{{
+          us._users[_id]?.data.application.applicationstate_name
+        }}</span>
+      </div>
+
+      <div *ngIf="us._users[_id]?.data.application.sponsorapp_name">
+        <h2>
+          To
+          {{
+            (us._users[_id]?.data.application.sponsorname &&
+              us._users[_id]?.data.application.sponsorname + "'s") ||
+              "Sponsor's"
+          }}
+          knowledge, has anyone else other than
+          {{ us._users[_id]?.data.application.sponsorname || "Sponsor" }} ever
+          filed a petition for
+          {{ us._users[_id]?.data.application.name || "Applicant" }}?
+        </h2>
+        <span>{{ us._users[_id]?.data.application.sponsorapp_name }}</span>
+      </div>
+
+      <div *ngIf="us._users[_id]?.data.application.sponsorobtained_name">
+        <h2>
+          <span style="background: #ffff00; padding: 10px"
+            >Has {{ us._users[_id]?.data.application.sponsorname || "Sponsor" }}
+            ever previously filed a petition for
+            {{ us._users[_id]?.data.application.name || "Applicant" }} or any
+            other alien?</span
+          >
+        </h2>
+        <span>{{
+          us._users[_id]?.data.application.sponsoreverpreviously_name
+        }}</span>
+      </div>
+      <div
+        *ngFor="
+          let name of us._users[_id]?.data.application
+            .sponsoralienprevious_names;
+          index as i
+        "
+      >
+        <div *ngIf="name.alien_name">
+          <h2>Alien full legal name</h2>
+
+          <h2>Given name (first name)</h2>
+          <span>{{ name.alien_name }}</span>
+        </div>
+
+        <div *ngIf="name.alienmiddle_name">
+          <h2>Middle name</h2>
+          <span>{{ name.alienmiddle_name }}</span>
+        </div>
+
+        <div *ngIf="name.familyalien_name">
+          <h2>Family name (last name)</h2>
+          <span>{{ name.familyalien_name }}</span>
+        </div>
+
+        <div *ngIf="name.aliencitygreen_name">
+          <h2>City or town</h2>
+          <span>{{ name.aliencitygreen_name }}</span>
+        </div>
+
+        <div *ngIf="name.alienstate_name">
+          <h2>State</h2>
+          <span>{{ name.alienstate_name }}</span>
+        </div>
+
+        <div *ngIf="name.greenaliencity_name">
+          <h2>Date filed</h2>
+          <span>{{ name.greenaliencity_name | date : "M/d/yyyy" }}</span>
+        </div>
+
+        <div *ngIf="name.aliengreen_name">
+          <h2>Result</h2>
+          <span>{{ name.aliengreen_name }}</span>
+        </div>
+      </div>
+      <div *ngIf="us._users[_id]?.data.application.sponsoralsosubmitting_name">
+        <h2>
+          <span style="background: #ffff00; padding: 10px"
+            >Is
+            {{ us._users[_id]?.data.application.sponsorname || "Sponsor" }} also
+            submitting separate petitions for other relatives?</span
+          >
+        </h2>
+        <span>{{
+          us._users[_id]?.data.application.sponsoralsosubmitting_name
+        }}</span>
+      </div>
+
+      <div
+        *ngFor="
+          let name of us._users[_id]?.data.application.sponsorrelative_names;
+          index as i
+        "
+      >
+        <div *ngIf="name.smother_name">
+          <h2>Relative full legal name</h2>
+          <h2>Given name (first name)</h2>
+          <span>{{ name.smother_name }}</span>
+        </div>
+        <div *ngIf="name.mother_smiddle_name">
+          <h2>Middle name</h2>
+          <span>{{ name.mother_smiddle_name }}</span>
+        </div>
+        <div *ngIf="name.smother_family_name">
+          <h2>Family name (last name)</h2>
+          <span>{{ name.smother_family_name }}</span>
+        </div>
+        <div *ngIf="name.srelationship_name">
+          <h2>Relationship</h2>
+          <span>{{ name.srelationship_name }}</span>
+        </div>
+      </div>
+
+      <div *ngIf="us._users[_id]?.data.application.splittleaboutname_name">
+        <h2 class="print__title">Family</h2>
+        <h2>
+          A little about
+          {{
+            (us._users[_id]?.data.application.sponsorname &&
+              us._users[_id]?.data.application.sponsorname + "'s") ||
+              "Sponsor's"
+          }}
+          mother
+        </h2>
+        <h2>Given name (first name)</h2>
+        <span>{{
+          us._users[_id]?.data.application.splittleaboutname_name
+        }}</span>
+      </div>
+
+      <div *ngIf="us._users[_id]?.data.application.splittleaboutmiddname_name">
+        <h2>Middle name</h2>
+        <span>{{
+          us._users[_id]?.data.application.splittleaboutmiddname_name
+        }}</span>
+      </div>
+
+      <div
+        *ngIf="us._users[_id]?.data.application.splittleaboutfamilyname_name"
+      >
+        <h2>Family name (last name)</h2>
+        <span>{{
+          us._users[_id]?.data.application.splittleaboutfamilyname_name
+        }}</span>
+      </div>
+
+      <div *ngIf="us._users[_id]?.data.application.littleaboutdateofbirth_name">
+        <h2>Date of birth</h2>
+        <span>{{
+          us._users[_id]?.data.application.littleaboutdateofbirth_name
+        }}</span>
+      </div>
+
+      <div
+        *ngIf="us._users[_id]?.data.application.littleaboutcountryofbirth_name"
+      >
+        <h2>Country of birth</h2>
+        <span>{{
+          us._users[_id]?.data.application.littleaboutcountryofbirth_name
+        }}</span>
+      </div>
+
+      <div
+        *ngIf="
+          us._users[_id]?.data.application.littleaboutcountryofresidence_name
+        "
+      >
+        <h2>Country of residence</h2>
+        <span>{{
+          us._users[_id]?.data.application.littleaboutcountryofresidence_name
+        }}</span>
+      </div>
+
+      <div
+        *ngIf="us._users[_id]?.data.application.littleaboutcitytownvillage_name"
+      >
+        <h2>City/town/village of residence</h2>
+        <span>{{
+          us._users[_id]?.data.application.littleaboutcitytownvillage_name
+        }}</span>
+      </div>
+
+      <div *ngIf="us._users[_id]?.data.application.nowabautfathername_name">
+        <h2>
+          <span style="background: #ffff00; padding: 10px">
+            Now about
+            {{
+              (us._users[_id]?.data.application.sponsorname &&
+                us._users[_id]?.data.application.sponsorname + "'s") ||
+                "Sponsor's"
+            }}
+            father
+          </span>
+        </h2>
+        <h2>Given name (first name)</h2>
+        <span>{{
+          us._users[_id]?.data.application.nowabautfathername_name
+        }}</span>
+      </div>
+
+      <div *ngIf="us._users[_id]?.data.application.nowabautfathermiddle_name">
+        <h2>Middle name</h2>
+        <span>{{
+          us._users[_id]?.data.application.nowabautfathermiddle_name
+        }}</span>
+      </div>
+
+      <div *ngIf="us._users[_id]?.data.application.nowabautfatherlastname_name">
+        <h2>Family name (last name)</h2>
+        <span>{{
+          us._users[_id]?.data.application.nowabautfatherlastname_name
+        }}</span>
+      </div>
+
+      <div *ngIf="us._users[_id]?.data.application.nowabautfatherbirth_name">
+        <h2>Date of birth</h2>
+        <span>{{
+          us._users[_id]?.data.application.nowabautfatherbirth_name | date : "M/d/yyyy"
+        }}</span>
+      </div>
+
+      <div *ngIf="us._users[_id]?.data.application.nowabautfathercountry_name">
+        <h2>Country of birth</h2>
+        <span>{{
+          us._users[_id]?.data.application.nowabautfathercountry_name
+        }}</span>
+      </div>
+
+      <div
+        *ngIf="us._users[_id]?.data.application.nowabautfatherresidence_name"
+      >
+        <h2>Country of residence</h2>
+        <span>{{
+          us._users[_id]?.data.application.nowabautfatherresidence_name
+        }}</span>
+      </div>
+
+      <div *ngIf="us._users[_id]?.data.application.nowabautfathercitytown_name">
+        <h2>City/town/village of residence</h2>
+        <span>{{
+          us._users[_id]?.data.application.nowabautfathercitytown_name
+        }}</span>
+      </div>
+
+      <div *ngIf="us._users[_id]?.data.application.priormarriages_name">
+        <h2>
+          <span style="background: #ffff00; padding: 10px">
+            Does
+            {{
+              (us._users[_id]?.data.application.sponsorname &&
+                us._users[_id]?.data.application.sponsorname + "'s") ||
+                "Sponsor's"
+            }}
+            have any prior marriages?
+          </span>
+        </h2>
+        <span>{{ us._users[_id]?.data.application.priormarriages_name }}</span>
+      </div>
+
+      <div *ngIf="us._users[_id]?.data.application.marriedmarried_name">
+        <h2>
+          How many times have
+          {{ us._users[_id]?.data.application.sponsorname }} been married?
+        </h2>
+        <span>{{ us._users[_id]?.data.application.marriedmarried_name }}</span>
+
+        <h2>
+          Enter information about
+          {{
+            (us._users[_id]?.data.application.sponsorname &&
+              us._users[_id]?.data.application.sponsorname + "'s") ||
+              "Sponsor's"
+          }}
+          prior marriages below:
+        </h2>
+      </div>
+
+      <div
+        *ngFor="
+          let name of us._users[_id]?.data.application.marriagessponsor_names;
+          index as i
+        "
+      >
+        <div *ngIf="name.mothersponsor_name">
+          <h2>Prior spouse legal name</h2>
+
+          <h2>Given name (first name)</h2>
+          <span>{{ name.mothersponsor_name }}</span>
+        </div>
+
+        <div *ngIf="name.middlesponsor_name">
+          <h2>Middle name</h2>
+          <span>{{ name.middlesponsor_name }}</span>
+        </div>
+
+        <div *ngIf="name.familysponsor_name">
+          <h2>Family name (last name)</h2>
+          <span>{{ name.familysponsor_name }}</span>
+        </div>
+
+        <div *ngIf="name.marriagedatesponsor_name">
+          <h2>Date marriage ended</h2>
+          <span>{{ name.marriagedatesponsor_name | date : "M/d/yyyy" }}</span>
+        </div>
+      </div>
+
+      <h2 class="print__title">Employment</h2>
+      <h2>
+        {{
+          (us._users[_id]?.data.application.sponsorname &&
+            us._users[_id]?.data.application.sponsorname + "'s") ||
+            "Sponsor's"
+        }}
+        employment history for the last five years
+      </h2>
+
+      <div
+        *ngFor="
+          let name of us._users[_id]?.data.application
+            .sponsoremploymentfiveyears_names;
+          index as i
+        "
+      >
+        <span>EMPLOYER {{ i + 1 }}</span>
+        <div *ngIf="name.admissiontown_name">
+          <h2>Name of employer/company</h2>
+          <span>{{ name.admissiontown_name }}</span>
+        </div>
+        <div *ngIf="us._users[_id]?.data.application.adaddressemployer_name">
+          <h2>Employer address</h2>
+          <h2>Type of adress</h2>
+          <span>{{
+            us._users[_id]?.data.application.adaddressemployer_name
+          }}</span>
+        </div>
+
+        <div *ngIf="name.togetheremployer_name">
+          <h2>Street number and name</h2>
+          <span>{{ name.togetheremployer_name }}</span>
+        </div>
+
+        <div *ngIf="name.employersponsor_name">
+          <h2>Apt./Ste./Flr. Number (if any)</h2>
+          <span>{{ name.employersponsor_name }}</span>
+        </div>
+
+        <div *ngIf="name.employertogether_name">
+          <h2>City or town</h2>
+          <span>{{ name.employertogether_name }}</span>
+        </div>
+
+        <div *ngIf="name.togetherinceemployer_name">
+          <h2>State</h2>
+          <span>{{ name.togetherinceemployer_name }}</span>
+        </div>
+
+        <div *ngIf="name.togetherlcodeemployer_name">
+          <h2>ZIP code</h2>
+          <span>{{ name.togetherlcodeemployer_name }}</span>
+        </div>
+
+        <div *ngIf="name.employerprovinceplace_name">
+          <h2>Province</h2>
+          <span>{{ name.employerprovinceplace_name }}</span>
+        </div>
+
+        <div *ngIf="name.employerpostalcodeplace_name">
+          <h2>Postal code</h2>
+          <span>{{ name.employerpostalcodeplace_name }}</span>
+        </div>
+
+        <div *ngIf="name.employercountry_name">
+          <h2>Country</h2>
+          <span>{{ name.employercountry_name }}</span>
+        </div>
+
+        <div *ngIf="name.admissionoccupation_name">
+          <h2>
+            {{
+              (us._users[_id]?.data.application.sponsorname &&
+                us._users[_id]?.data.application.sponsorname + "'s") ||
+                "Sponsor's"
+            }}
+            occupation
+          </h2>
+          <span>{{ name.admissionoccupation_name }}</span>
+        </div>
+        <div *ngIf="name.employmentstart_name">
+          <h2>Employment start date</h2>
+          <span>{{ name.employmentstart_name | date : "M/d/yyyy" }}</span>
+        </div>
+
+        <div *ngIf="name.admissiontownnn_name">
+          <h2>Employment end date</h2>
+          <span>{{ us._users[_id]?.data.application.employmentend_name }}</span>
+          <span>{{ name.admissiontownnn_name | date : "M/d/yyyy" }}</span>
+        </div>
+      </div>
+      <!-- <div *ngIf="name.sponsoradministration_name">
+          <h2>Is {{us._users[_id]?.data.application.sponsorname || "Sponsor"}} currently retired?</h2>
+          <span>{{name.sponsoradministration_name}}</span>
+        </div>
+
+        <div *ngIf="name.citidatedid_name">
+          <h2>On what date did chuks retire?</h2>
+          <span>{{name.citidatedid_name}}</span>
+        </div> -->
+
+      <div *ngIf="us._users[_id]?.data.application.sponsoradministration_name">
+        <h2 class="print__title">
+          Is
+          {{
+            us._users[_id]?.data.application.sponsorname || "Sponsor"
+          }}
+          currently retired?
+        </h2>
+        <span>{{
+          us._users[_id]?.data.application.sponsoradministration_name
+        }}</span>
+      </div>
+
+      <div *ngIf="us._users[_id]?.data.application.citidatedid_name">
+        <h2 class="print__title">
+          On what date did
+          {{
+            us._users[_id]?.data.application.sponsorname || "Sponsor"
+          }}
+          retire?
+        </h2>
+        <span>{{ us._users[_id]?.data.application.citidatedid_name }}</span>
+      </div>
+
+      <div *ngIf="us._users[_id]?.data.application.notification_name">
+        <h2 class="print__title">E-Notification</h2>
+        <h2>
+          Does
+          {{ us._users[_id]?.data.application.sponsorname || "Sponsor" }} want
+          to request an e-notification?
+        </h2>
+        <span>{{ us._users[_id]?.data.application.notification_name }}</span>
+      </div>
+      <div *ngIf="us._users[_id]?.data.application.enotificationemail_name">
+        <h2>Email address for e-notification</h2>
+        <span>{{
+          us._users[_id]?.data.application.enotificationemail_name
+        }}</span>
+      </div>
+      <div *ngIf="us._users[_id]?.data.application.enotificationmiddle_name">
+        <h2>Mobile phone number for e-notification (text message)</h2>
+        <span>{{
+          us._users[_id]?.data.application.enotificationmiddle_name
+        }}</span>
+      </div>
+      <div *ngIf="us._users[_id]?.data.application.signaturedate_name">
+        <h2>Date of Filling</h2>
+        <span>{{
+          us._users[_id]?.data.application.signaturedate_name | date : "M/d/yyyy"
+        }}</span>
+      </div>
+      <div>
+        <h2 class="print__title">Help us improve with your feedback</h2>
+        <div>
+          <h2>Tell us about these confusing parts, and we will fix them:</h2>
+          <span>{{ us._users[_id]?.data.application.anyfeedbacsdf_name }}</span>
+        </div>
+        <div>
+          <h2>Any other ways that Greenbroad could be better</h2>
+          <span>{{ us._users[_id]?.data.application.anyfeeqwe_name }}</span>
+        </div>
+        <div>
+          <h2>Tell us about the issues, and we will fix them:</h2>
+          <span>{{
+            us._users[_id]?.data.application.anyfeedbackthem_name
+          }}</span>
+        </div>
+        <div>
+          <h2>
+            When you first learned about Greenbroad, what concerns/doubts did
+            you have about it?
+          </h2>
+          <span>{{
+            us._users[_id]?.data.application.anyfeedbackthemfirst_name
+          }}</span>
+        </div>
+        <div>
+          <h2>Through Greenbroad Blog</h2>
+          <span>{{ us._users[_id]?.data.application.feedbackgreen }}</span>
+        </div>
+        <div>
+          <h2>Through a friend's recommendation</h2>
+          <span>{{ us._users[_id]?.data.application.feedbackgreentwo }}</span>
+        </div>
+        <div>
+          <h2>Through another channel:</h2>
+          <span>{{ us._users[_id]?.data.application.feedbackgreenthree }}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- <div *ngIf="us._users[_id]?._users[_id]">{{us._users[_id]|json}}</div>
+<div *ngIf="us._users[_id]?._users[_id]">{{us._users[_id]?.email}}</div>
+<div *ngIf="us._users[_id]?._users[_id]">{{us._users[_id]?.data|json}}</div>
+<div *ngIf="!us._users[_id]">Loading or no user found</div> -->

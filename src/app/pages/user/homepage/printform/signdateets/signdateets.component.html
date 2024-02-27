@@ -1,0 +1,74 @@
+<div *ngIf="section==1">
+	<div class="section__inner">
+		<div class="inner">
+			<h1 class="section__title">Sign, date, checkbox, etc.</h1>
+			<div class="signdateetc__discription">On the printed application forms, please carefully read and complete the following important parts. These parts include signatures, dates, contact information, important statements, declarations, certifications, and contracts with the U.S. government that are required before the application forms can be complete.</div>
+			<div class="signdateetc__discription">Make sure to use a pen with black ink, as this helps USCIS scan your forms correctly.</div>
+			<div class="signdateetc__discription"> 	<span class="p-text">IMPORTANT:</span> Make sure Forms I-130, I-130A, I-485, I-864 have been generated for you on the previous page. If it's not the case, contact us before proceeding. USCIS may reject your application if it does not include these form</div>
+		</div>
+		<div class="sub__inner">
+			<div class="sub__inner-title">Parts that {{us.data.application.sponsorname || "Sponsor"}} should read and complete:</div>
+			<div class="form__inner">
+				<span class="form__title">Form I-130</span>
+				<span>Parts 6-8 on pages 9-11</span>
+			</div>
+			<div class="form__inner">
+				<span class="form__title">Form I-864</span>
+				<span>Parts 8-10 on pages 6-91</span>
+			</div>
+			<div class="sub__inner-title">Parts that {{us.data.application.name || "Applicant"}} should read and complete:</div>
+			<div class="form__inner">
+				<span class="form__title">Form I-485</span>
+				<span>Parts 10-12 on pages 16-19. (Do NOT complete Part 13)</span>
+			</div>
+			<div class="form__inner">
+				<span class="form__title">Form I-765</span>
+				<span>Parts 3-5 on pages 4-6</span>
+			</div>
+			<div class="form__inner">
+				<span class="form__title">Form I-131</span>
+				<span>Parts 8-9 on page 5</span>
+			</div>
+			<div class="form__inner">
+				<span class="form__title">Form I-130A</span>
+				<span>Parts 4-6 on pages 3-5</span>
+			</div>
+			<div class="sub__inner-title">Pages that {{us.data.application.sponsorname || "Sponsor"}} should sign and date (use the page's white space):</div>
+
+			<div class="form__inner">
+				<span class="form__title">Additional Information Page</span>
+				<span>If an Additional Information page at the end of Form I-130 or Form I-864 is filled out, sign and date that Additional Information page.</span>
+			</div>
+			<div class="form__inner">
+				<span class="form__title">Cover Letter #1</span>
+				<span>Sign and date the cover letter titled "Re: I-130, Petition for Alien Relative"..</span>
+			</div>
+
+			<div class="sub__inner-title">Pages that {{us.data.application.name || "Applicant"}} should sign and date (use the page's white space):</div>
+
+			<div class="form__inner">
+				<span class="form__title">Additional Information Page</span>
+				<span>If an Additional Information page at the end of Form I-485, Form I-944, Form I-765, Form I-131 or Form I-130A is filled out, sign and date that Additional Information page.</span>
+			</div>
+			<div class="form__inner">
+				<span class="form__title">Cover Letter #2</span>
+				<span>Sign and date the cover letter titled "Re: I-485, Application to Register Permanent Residence or Adjust Status".</span>
+			</div>
+
+		</div>
+		<ul>
+			<li> Greenbroad, LLC is not an interpreter nor a preparer for these application forms. If you did not use an interpreter or a preparer, fill those parts out with "N/A". If you used an interpreter or a preparer, follow the <a style="color: #4D61FC;" target="_blank" href="https://www.uscis.gov/forms/all-forms">USCIS form instructions</a> to fill out the interpreter and preparer parts.</li>
+			<li> Each application form must be properly signed. USCIS will not accept a stamped or typewritten name in place of a signature. A legal guardian may also sign for a mentally incompetent person</li>
+		</ul>
+		<div class="sub__inner">
+			<div class="sub__section-btn" (click)="savingtip=!savingtip" (clickOutside)="savingtip=null"> <div class="sub__section-icon" [class._active]="savingtip">&#8250;</div>  Sources for this page (unless otherwise cited above)</div>
+			<div class="sub-sub__section-inner" *ngIf="savingtip">
+				<div class="sub__discription">USCIS Forms <a  target="_blank" href="https://www.uscis.gov/sites/default/files/document/forms/i-130.pdf">I-130</a>, <a target="_blank" href="https://www.uscis.gov/sites/default/files/document/forms/i-130a.pdf">I-130A</a>, <a target="_blank" href="https://www.uscis.gov/sites/default/files/document/forms/i-864.pdf">I-864</a>, <a target="_blank" href="https://www.uscis.gov/sites/default/files/document/forms/i-485.pdf">I-485</a>, <a target="_blank" href="https://www.uscis.gov/sites/default/files/document/forms/i-131.pdf">I-131</a>, <a target="_blank" href="https://www.uscis.gov/sites/default/files/document/forms/i-765.pdf">I-765</a>, <a target="_blank" href="https://www.uscis.gov/forms/filing-guidance/tips-for-filing-forms-by-mail">USCIS Filing Tips</a>,and Greenbroad suggestion</div>
+			</div>
+			<div class="section__container-btn">
+				<a class="form__btn-back" (click)="us.section='reviewandprint';us.top();"> < Back </a>
+				<a class="form__btn-continue" (click)="us.section='finalcheck';us.top();"> Continue ></a>
+			</div>
+		</div>
+	</div>
+</div>

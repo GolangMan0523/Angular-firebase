@@ -1,0 +1,25 @@
+.wrapper{
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    div {
+        width: 100%;
+        display: flex;
+        justify-content: flex-end;
+    }
+    button{
+        padding: 10px 20px;
+        border: none;
+        background: #4D61FC;
+        color: #fff; 
+        cursor: pointer;
+        border-radius: 5px;
+    }
+    button:hover{       
+        border: none;
+        background: #4d61fc86;
+        color: #fff;
+        outline: none;
+    }
+}

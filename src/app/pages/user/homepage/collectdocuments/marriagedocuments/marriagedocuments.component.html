@@ -1,0 +1,277 @@
+<div *ngIf="section==1">
+  <div class="section__inner">
+    <div class="inner">
+      <h1 class="section__title">Marriage documents</h1>
+      <span class="section__sub-title">For Form I-130</span>
+      <div class="proof__discription">The following documents help to establish that {{us.data.application.sponsorname
+        || "Sponsor"}} and {{us.data.application.name && us.data.application.name + "'s"
+        || "Applicant's"}} are married.</div>
+      <div class="proof__discription">If you submit a document with information in a foreign language, you must also
+        submit a full English translation. The translator must sign a certification that the English language
+        translation is complete and accurate, and that he or she is competent to translate from the foreign language
+        into English. The certification must include the translator’s signature. USCIS recommends the certification
+        contain the translator’s printed name and the date and the translator’s contact information.</div>
+      <div class="proof__discription">Here is a <a style="color:#1972F5;" target="_blank" href="">template for the
+          translation certification</a> you can download as a
+        reference. (Note: This template is a Greenbroad suggestion only, not from USCIS.)</div>
+      <div class="sub__section-btn" (click)="marriageordivorce=!marriageordivorce"
+        (clickOutside)="marriageordivorce=null">
+        <div class="sub__section-icon" [class._active]="marriageordivorce">&#8250;</div>What if I have a marriage or
+        divorce certificate from another country?
+      </div>
+      <div class="sub-sub__section-inner" *ngIf="marriageordivorce">
+        <p>You can find the requirements for an acceptable marriage or divorce certificate from each country using the
+          <a style="color:#1972F5;"
+            href="https://travel.state.gov/content/travel/en/us-visas/Visa-Reciprocity-and-Civil-Documents-by-Country.html">Department
+            of State Document Finder tool.</a>Select your country from the left-hand-side list in the tool, and
+          then scroll down to the section called "Marriage, Divorce Certificates". Direct links to some popular
+          countries:
+          <a target="_blank" style="color:#1972F5;"
+            href="https://travel.state.gov/content/travel/en/us-visas/Visa-Reciprocity-and-Civil-Documents-by-Country/China.html">China</a>,
+          <a target="_blank" style="color:#1972F5;"
+            href="https://travel.state.gov/content/travel/en/us-visas/Visa-Reciprocity-and-Civil-Documents-by-Country/Mexico.html">Mexico</a>,
+          <a target="_blank" style="color:#1972F5;"
+            href="https://travel.state.gov/content/travel/en/us-visas/Visa-Reciprocity-and-Civil-Documents-by-Country/DominicanRepublic.html">Dominican
+            Republic</a>,
+          <a target="_blank" style="color:#1972F5;"
+            href="https://travel.state.gov/content/travel/en/us-visas/Visa-Reciprocity-and-Civil-Documents-by-Country/Philippines.html">Philippines</a>,
+          <a target="_blank" style="color:#1972F5;"
+            href="https://travel.state.gov/content/travel/en/us-visas/Visa-Reciprocity-and-Civil-Documents-by-Country/India.html">India</a>,
+          <a target="_blank" style="color:#1972F5;"
+            href="https://travel.state.gov/content/travel/en/us-visas/Visa-Reciprocity-and-Civil-Documents-by-Country/VietNam.html">Vietnam</a>.
+        </p>
+        <div class="sub__discription">Source: <a
+            href="https://www.uscis.gov/sites/default/files/document/forms/i-864instr-pc.pdf">USCIS Form I-864 Page
+            8</a></div>
+      </div>
+      <div class="sub__section-btn" (click)="savingtip=!savingtip" (clickOutside)="savingtip=null">
+        <div class="sub__section-icon" [class._active]="savingtip">&#8250;</div>Greenbroad Exclusive Money Saving Tip
+      </div>
+      <div class="sub-sub__section-inner" *ngIf="savingtip">
+        <p>You do not need to pay for a professional translation service for document translation. For example, a friend
+          who is competent to translate can satisfy the requirement.</p>
+        <div class="sub__discription">Source: Greenbroad suggestion only, not from USCIS instructions</div>
+      </div>
+    </div>
+    <div class="form__inner">
+      <span class="forms__title">Provide the following documents, if applicable:</span>
+      <!-- -----------------------------------------------------------------------------------------  -->
+      <div class="sub__form" *ngIf="!us.data.docs.marriage.certificate">
+        <span class="title__form">A copy of {{us.data.application.sponsorname && us.data.application.sponsorname
+          || "Sponsor"}} and {{us.data.application.name && us.data.application.name + "'s"
+          || "Applicant's"}} marriage certificate</span>
+        <div class="form-btn__container">
+          <button
+            (click)="us.data.docs.marriage.certificate='completed';us.update();">Complete</button><span>Required</span>
+        </div>
+      </div>
+      <!-- ------------------------------------------------------------------------------------------ -->
+
+      <div class="sub__form" *ngIf="!us.data.docs.marriage.docOne">
+        <span class="title__form">If applicable, a full English translation of {{us.data.application.sponsorname ||
+          "Sponsor"}} and {{us.data.application.name && us.data.application.name + "'s" || "Applicant's"}} marriage
+          certificate, and the translator's certification (as described above)</span>
+        <div class="form-btn__container">
+          <button (click)="us.data.docs.marriage.docOne='completed';us.update();">Complete</button>
+          <label for="">
+            <input type="checkbox" (click)="us.data.docs.marriage.docOne='na';us.update();">
+            <span class="check__title">N/A</span>
+          </label>
+        </div>
+      </div>
+
+      <!-- ------------------------------------------------------------------------------------------ -->
+      <div class="sub__form" *ngIf="!us.data.docs.marriage.terminationdocuments">
+        <span class="title__form">If applicable, copies of prior marriage termination documents</span>
+        <div class="form-btn__container">
+          <button (click)="us.data.docs.marriage.terminationdocuments='completed';us.update();">Complete</button>
+          <label for="">
+            <input type="checkbox" (click)="us.data.docs.marriage.terminationdocuments='na';us.update();">
+            <span class="check__title">N/A</span>
+          </label>
+        </div>
+      </div>
+      <!-- ------------------------------------------------------------------------------------------ -->
+      <div class="sub__form" *ngIf="!us.data.docs.marriage.eng">
+        <span class="title__form">If applicable, a full English translation of prior marriage termination documents, and
+          the translator's certification (as described above)</span>
+        <div class="form-btn__container">
+          <button (click)="us.data.docs.marriage.eng='completed';us.update();">Complete</button>
+          <label for="">
+            <input type="checkbox" (click)="us.data.docs.marriage.eng='na';us.update();">
+            <span class="check__title">N/A</span>
+          </label>
+        </div>
+      </div>
+
+      <div class="sub__form" *ngIf="!us.data.docs.marriage.englisht">
+        <span class="title__form">An original statement from a U.S. consular officer verifying that
+          {{us.data.application.sponsorname && us.data.application.sponsorname
+          || "Sponsor"}} is a U.S. citizen
+          with a valid passport</span>
+        <div class="form-btn__container">
+          <button (click)="us.data.docs.marriage.englisht='completed';us.update();">Complete</button>
+          <label for="">
+            <input type="checkbox" (click)="us.data.docs.marriage.englisht='na';us.update();">
+            <span class="check__title">N/A</span>
+          </label>
+        </div>
+      </div>
+    </div>
+
+
+
+    <div class="form__inner">
+      <div *ngFor="let name of us.data.application.add_names; index as i">
+        <div class="sub__form">
+          <span class="title__form">{{name}}</span>
+          <div class="form-btn__container">
+            <button *ngIf="us.data.docs.marriage[name] !== 'completed'"
+              (click)="us.data.docs.marriage[name]='completed'; us.update()">Complete</button>
+            <span *ngIf="us.data.docs.marriage[name] === 'completed'">Completed</span>
+            <div class="form-btn__container" style="position: relative;">
+
+              <button style="position: absolute; right: -3px;" *ngIf="us.data.docs.marriage[name] !== 'completed'" class="add-delete-btn"
+                (click)="us.data.application.add_names.splice(i,1); us.update(); ">Delete</button>
+
+
+              <button style="position: absolute; right: -3px;" *ngIf="us.data.docs.marriage[name] === 'completed'" class="add-delete-btn"
+                (click)="us.data.docs.marriage[name]=''; us.update(); ">Undo</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <div style="padding: 25px;">
+      <button class="followingdocuments__btn" (click)="modal.show({component: 'add'});">+ Add New Item</button>
+    </div>
+
+    <!-- ---------------------------------------------------------------------------------------------- -->
+    <div class="form__inner">
+      <div class="sub__form" *ngIf="us.data.docs.marriage.certificate">
+        <span>A copy of {{us.data.application.sponsorname || "Sponsor"}} and {{us.data.application.name &&
+          us.data.application.name + "'s" || "Applicant's"}} marriage certificate</span>
+        <div class="form-btn__container">
+          <button (click)="us.data.docs.marriage.certificate='';us.update();">Undo</button>
+          <span>Completed</span>
+        </div>
+      </div>
+    </div>
+    <!-- ---------------------------------------------------------------------------------------------- -->
+    <div class="form__inner" *ngIf="us.data.docs.marriage.docOne">
+      <div class="sub__form">
+        <span class="title__form">If applicable, a full English translation of {{us.data.application.sponsorname ||
+          "Sponsor"}} and {{us.data.application.name && us.data.application.name + "'s" || "Applicant's"}} marriage
+          certificate, and the translator's certification (as described above)</span>
+        <div class="form-btn__container" *ngIf="us.data.docs.marriage.docOne=='completed'">
+          <button (click)="us.data.docs.marriage.docOne='';us.update();">Undo</button>
+          <span>Completed</span>
+        </div>
+        <div class="form__btn" *ngIf="us.data.docs.marriage.docOne=='na'">
+          <input type="checkbox" (click)="us.data.docs.marriage.docOne='';us.update();">
+          <span class="check__title" (click)="us.data.docs.marriage.docOne='';us.update();">N/A</span>
+        </div>
+      </div>
+    </div>
+
+
+    <!-- --------------------------------------------------------------------------------------------- -->
+    <div class="form__inner" *ngIf="us.data.docs.marriage.terminationdocuments">
+      <div class="sub__form">
+        <span class="title__form">If applicable, copies of prior marriage termination documents </span>
+        <div class="form-btn__container" *ngIf="us.data.docs.marriage.terminationdocuments=='completed'">
+          <button (click)="us.data.docs.marriage.terminationdocuments='';us.update();">Undo</button>
+          <span>Completed</span>
+        </div>
+        <div class="form__btn" *ngIf="us.data.docs.marriage.terminationdocuments=='na'">
+          <input type="checkbox" (click)="us.data.docs.marriage.terminationdocuments='';us.update();">
+          <span class="check__title" (click)="us.data.docs.marriage.terminationdocuments='';us.update();">N/A</span>
+        </div>
+      </div>
+    </div>
+    <!-- ---------------------------------------------------------------------------------------------- -->
+    <div class="form__inner" *ngIf="us.data.docs.marriage.englishtranslation">
+      <div class="sub__form">
+        <span class="title__form">If applicable, a full English translation of prior marriage termination documents, and
+          the translator's certification (as described above)</span>
+        <div class="form-btn__container" *ngIf="us.data.docs.marriage.englishtranslation=='completed'">
+          <button (click)="us.data.docs.marriage.englishtranslation='';us.update();">Undo</button>
+          <span>Completed</span>
+        </div>
+        <div class="form__btn" *ngIf="us.data.docs.marriage.englishtranslation=='na'">
+          <input type="checkbox" (click)="us.data.docs.marriage.englishtranslation='';us.update();">
+          <span class="check__title" (click)="us.data.docs.marriage.englishtranslation='';us.update();">N/A</span>
+        </div>
+      </div>
+    </div>
+
+
+
+
+    <div class="form__inner" *ngIf="us.data.docs.marriage.eng">
+      <div class="sub__form">
+        <span class="title__form">If applicable, a full English translation of {{us.data.application.sponsorname ||
+          "Sponsor"}} and {{us.data.application.name && us.data.application.name + "'s" || "Applicant's"}} marriage
+          certificate, and the translator's certification (as described above)</span>
+        <div class="form-btn__container" *ngIf="us.data.docs.marriage.eng=='completed'">
+          <button (click)="us.data.docs.marriage.eng='';us.update();">Undo</button>
+          <span>Completed</span>
+        </div>
+        <div class="form__btn" *ngIf="us.data.docs.marriage.eng=='na'">
+          <input type="checkbox" (click)="us.data.docs.marriage.eng='';us.update();">
+          <span class="check__title" (click)="us.data.docs.marriage.eng='';us.update();">N/A</span>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="form__inner" *ngIf="us.data.docs.marriage.lation">
+      <div class="sub__form">
+        <span class="title__form">If applicable, a full English translation of {{us.data.application.sponsorname ||
+          "Sponsor"}} and {{us.data.application.name && us.data.application.name + "'s" || "Applicant's"}} marriage
+          certificate, and the translator's certification (as described above)</span>
+        <div class="form-btn__container" *ngIf="us.data.docs.marriage.lation=='completed'">
+          <button (click)="us.data.docs.marriage.lation='';us.update();">Undo</button>
+          <span>Completed</span>
+        </div>
+        <div class="form__btn" *ngIf="us.data.docs.marriage.lation=='na'">
+          <input type="checkbox" (click)="us.data.docs.marriage.lation='';us.update();">
+          <span class="check__title" (click)="us.data.docs.marriage.lation='';us.update();">N/A</span>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="form__inner" *ngIf="us.data.docs.marriage.englisht">
+      <div class="sub__form">
+        <span class="title__form">If applicable, a full English translation of {{us.data.application.sponsorname ||
+          "Sponsor"}} and {{us.data.application.name && us.data.application.name + "'s" || "Applicant's"}} marriage
+          certificate, and the translator's certification (as described above)</span>
+        <div class="form-btn__container" *ngIf="us.data.docs.marriage.englisht=='completed'">
+          <button (click)="us.data.docs.marriage.englisht='';us.update();">Undo</button>
+          <span>Completed</span>
+        </div>
+        <div class="form__btn" *ngIf="us.data.docs.marriage.englisht=='na'">
+          <input type="checkbox" (click)="us.data.docs.marriage.englisht='';us.update();">
+          <span class="check__title" (click)="us.data.docs.marriage.englisht='';us.update();">N/A</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- --------------------------------------------------------------------------------------------- -->
+
+
+    <div class="sub-section__inner">
+      <span class="sub__discription">Sources for this page (unless otherwise cited above): USCIS Form Instructions for
+        <a target="_blank" href="https://www.uscis.gov/sites/default/files/document/forms/i-130instr.pdf">I-130</a>
+      </span>
+      <div class="section__container-btn">
+        <a class="form__btn-back" (click)="us.section='home'; us.tab='collectdocuments'; us.top();">
+          < Back </a>
+            <a class="form__btn-continue" (click)="us.section='profofus';us.top();"> Continue ></a>
+      </div>
+    </div>
+  </div>
+</div>

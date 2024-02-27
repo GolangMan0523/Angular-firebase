@@ -1,0 +1,11 @@
+<div class="children__inner">
+	<h1 class="children__title">Does {{us.data.application.name}} have any children under 21 years old who are applying with {{us.data.application.name}}?</h1>
+	<span class="children__discription">The children are called derivative applicants. The application process is different.</span>
+	<div class="children__cardholder" >
+		<a class="children__link" (click)="us.auth='greenboardsupport'">Yes</a>
+		<a class="children__link" (click)="us.auth='owner'">No</a>
+	</div>
+	<div class="container__btn">
+		<a class="children__btn" (click)="us.auth='physicaladdress';us.top();" > < Back </a>
+	</div>
+</div>

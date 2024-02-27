@@ -1,0 +1,124 @@
+<div class="price__inner">
+	<h1 class="price__title">
+		We have set up the application for you!
+	</h1>
+	<span class="price__discription" *ngIf="us.data.cardholder == 'us' && us.data.location == 'inside'">
+		The application process for the spouse of a U.S. citizen applying from inside the U.S. is called <a target="_blank" class="price__discription-link" href="https://www.uscis.gov/green-card/green-card-processes-and-procedures/concurrent-filing-of-form-i-485">Concurrent Filing.</a>
+	</span>
+	<span class="price__discription" *ngIf="us.data.cardholder == 'greencard' && us.data.location == 'inside'">
+		The application process for the spouse of a green card holder applying from inside the U.S. is called  <a target="_blank" class="price__discription-link" href="https://www.uscis.gov/green-card/green-card-processes-and-procedures/adjustment-of-status">Adjustment of Status.</a>
+	</span>
+	<span class="price__discription" *ngIf="us.data.cardholder == 'greencard' && us.data.location == 'outside'">
+		The application process for the spouse of a green card holder applying from outside the U.S. is called <a target="_blank" class="price__discription-link" href="https://www.uscis.gov/green-card/green-card-processes-and-procedures/consular-processing">Consular Processing.</a>
+	</span>
+	<span class="price__discription" *ngIf="us.data.cardholder == 'us' && us.data.location == 'outside'">
+		The application process for the spouse of a U.S. citizen applying from outside the U.S. is called. <a target="_blank" class="price__discription-link" href="https://www.uscis.gov/green-card/green-card-processes-and-procedures/consular-processing">Consular Processing</a>
+	</span>
+	<span class="price__sub-discription">
+		Before we dive in, here are some quick facts about the process:
+	</span>
+	<table class="price__table">
+		<tr><td>
+			<span class="td__title">
+				Number of Application Forms
+			</span>
+			<span class="td__discription" *ngIf="us.data.cardholder == 'us' && us.data.location == 'outside'">
+				Between 4 and 5 forms. We will help you fill them out.
+			</span>
+			<span class="td__discription" *ngIf="us.data.cardholder == 'us' && us.data.location == 'inside'">
+				Between 5 and 9 forms. We will help you fill them out.
+			</span>
+			<span class="td__discription" *ngIf="us.data.cardholder == 'greencard' && us.data.location == 'inside'">
+				Between 5 and 9 forms. We will help you fill them out.
+			</span>
+			<span class="td__discription" *ngIf="us.data.cardholder == 'greencard' && us.data.location == 'outside'">
+				Between 4 and 5 forms. We will help you fill them out.
+			</span>
+		</td></tr>
+		<tr><td>
+			<span class="td__title">
+				Number of Supporting Documents
+			</span>
+			<span class="td__discription" *ngIf="us.data.cardholder == 'greencard' && us.data.location == 'inside'">
+				Between 26 and 75+ documents. We will create a personalized document checklist for your case.
+			</span>
+			<span class="td__discription" *ngIf="us.data.cardholder == 'us' && us.data.location == 'inside'">
+				Between 25 and 74+ documents. We will create a personalized document checklist for your case.
+			</span>
+			<span class="td__discription" *ngIf="us.data.cardholder == 'us' && us.data.location == 'outside'">
+				Between 13 and 37+ documents. We will create a personalized document checklist for your case.
+			</span>
+			<span class="td__discription" *ngIf="us.data.cardholder == 'greencard' && us.data.location == 'outside'">
+				Between 13 and 37+ documents. We will create a personalized document checklist for your case.
+			</span>
+		</td></tr>
+		<tr><td>
+			<span class="td__title">
+				How to Submit
+			</span>
+			<span class="td__discription" *ngIf="us.data.cardholder == 'us' && us.data.location == 'inside'">
+				Normally, the application should be submitted in two sequential packages, but since your case is eligible for the USCIS <a class="price__discription-link" href="https://www.uscis.gov/green-card/green-card-processes-and-procedures/concurrent-filing-of-form-i-485">Concurrent Filing </a> procedure, you can actually submit both packages at the same time in one envelope. We will walk you through this submission process.
+			</span>
+			<span   *ngIf="us.data.cardholder == 'greencard' && us.data.location == 'outside'" class="td__discription">
+				<a target="_blank" class="price__discription-link" href="https://www.uscis.gov/green-card/green-card-processes-and-procedures/consular-processing">
+				Consular Processing</a> Consular Processing consists of two submission steps, with a waiting period between them. We will walk you through each submission.
+			</span>
+			<span *ngIf="us.data.cardholder == 'greencard' && us.data.location == 'inside'" class="td__discription">
+				<a target="_blank"  class="price__discription-link" href="https://www.uscis.gov/green-card/green-card-processes-and-procedures/adjustment-of-status">Adjustment of Status</a>
+				consists of two submission steps, with a waiting period between them. We will walk you through each
+			</span>
+			<span class="td__discription" *ngIf="us.data.cardholder == 'us' && us.data.location == 'outside'">
+				<a target="_blank" class="price__discription-link" href="https://www.uscis.gov/green-card/green-card-processes-and-procedures/consular-processing">Consular Processing</a> consists of two submission steps, with a waiting period between them. We will walk you through each submission.
+			</span>
+		</td></tr>
+		<tr><td>
+			<span class="td__title">
+				Total Time before Receiving Green Card
+			</span>
+			<span class="td__discription" *ngIf="us.data.cardholder == 'greencard' && us.data.location == 'outside'" >
+				Around 14 - 19 months. We will provide you with a personalized timeline.
+			</span>
+			<span *ngIf="us.data.cardholder == 'greencard' && us.data.location == 'inside'">
+				Around 11 - 14 months. We will provide you with a personalized timeline.
+			</span>
+			<span class="td__discription" *ngIf="us.data.cardholder == 'us' && us.data.location == 'outside'" >
+				Around 14 - 18 months. We will provide you with a personalized timeline.
+			</span>
+			<span class="td__discription" *ngIf="us.data.cardholder == 'us' && us.data.location == 'inside'" >
+				Around 10 - 13 months. We will provide you with a personalized timeline.
+			</span>
+		</td></tr>
+		<tr><td>
+			<span class="td__title">
+				Total U.S. Government Filing Fees
+			</span>
+			<span class="td__discription" *ngIf="us.data.cardholder == 'greencard' && us.data.location == 'inside'">
+				$1760. We will walk you through the payment process.
+			</span>
+			<span class="td__discription" *ngIf="us.data.cardholder == 'greencard' && us.data.location == 'outside'">
+				$1200. We will walk you through the payment process.
+			</span>
+			<span class="td__discription" *ngIf="us.data.cardholder == 'us' && us.data.location == 'inside'">
+				$1760. We will walk you through the payment process.
+			</span>
+			<span class="td__discription" *ngIf="us.data.cardholder == 'us' && us.data.location == 'outside'">
+				$1200. We will walk you through the payment process.
+			</span>
+		</td></tr>
+	</table>
+	<span class="bottom__discription">
+		The application process can be confusing to navigate, but you are in good hands - Greenbroad will walk you through the entire process, step by step. Let's begin!
+	</span>
+	<div class="price__btn-container">
+		<a class="back-btn" (click)="us.auth='';us.top();">< Back</a>
+		<a class="next-btn" *ngIf="us.data.cardholder == 'us' && us.data.location == 'outside'" (click)="us.auth='register'; us.top();">Next</a>
+		<a class="next-btn" *ngIf="us.data.cardholder == 'greencard' && us.data.location == 'inside'" (click)="us.auth='register';us.top();">Next</a>
+		<a class="next-btn" *ngIf="us.data.cardholder == 'greencard' && us.data.location == 'outside'" (click)="us.auth='register';us.top();">Next</a>
+		<a class="next-btn" *ngIf="us.data.cardholder == 'us' && us.data.location == 'inside'" (click)="us.auth='register';us.top();">Next</a>
+	</div>
+</div>
+
+
+
+
+

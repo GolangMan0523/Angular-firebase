@@ -1,0 +1,512 @@
+<div *ngIf="us.pagesection==1">
+  <div class="section__inner">
+    <h1 class="section__title">What's {{us.data.application.sponsorname || "Sponsor"}} full legal name?</h1>
+    <span class="section__discription">Do not provide a nickname.</span>
+    <din class="section__container">
+      <label>
+        <span class="form__title">Given name (first name)</span>
+        <input type="text"
+          maxlength="27"
+          oninput="this.value = this.value.replace(/[^a-zA-Z\s]/g, '');"
+          [class.err]="err.gName"
+          [(ngModel)]="us.data.application.sponsorname"
+          (ngModelChange)="us.data.application.sponsorname = us.data.application.sponsorname.toUpperCase();
+            us.update(); err.gName = false; validateLength27(us.data.application.sponsorname)"
+          (blur)="!us.data.application.sponsorname && err.gName = true">
+        <span *ngIf="err.gName" class="errspan">This field is required</span>
+
+        <span class="form__title">Middle name</span>
+        <input type="text" maxlength="27"
+        [(ngModel)]="us.data.application.sponsormiddle_name"
+        oninput="this.value = this.value.replace(/[^a-zA-Z\s]/g, '');"
+        (ngModelChange)="us.data.application.sponsormiddle_name = us.data.application.sponsormiddle_name.toUpperCase();
+          us.update(); validateLength27(us.data.application.sponsormiddle_name)">
+      </label>
+    </din>
+    <div class="section__container">
+      <label>
+        <span class="form__title">Family name (last name)</span>
+        <input class="section__npt" type="text" [class.err]="err.fName" maxlength="27"
+          [(ngModel)]="us.data.application.sponsorfamily_name"
+          oninput="this.value = this.value.replace(/[^a-zA-Z\s]/g, '');"
+          (ngModelChange)="us.data.application.sponsorfamily_name = us.data.application.sponsorfamily_name.toUpperCase();
+            us.update(); err.fName = false; validateLength27(us.data.application.sponsorfamily_name)"
+          (blur)="!us.data.application.sponsorfamily_name && err.fName = true">
+      </label>
+    </div>
+    <span *ngIf="err.fName" class="errspan">This field is required</span>
+
+    <div class="sub-discription">
+      Sources for this page (unless otherwise cited above): USCIS Forms
+      <a target="_blank" href="https://www.uscis.gov/sites/default/files/document/forms/i-130.pdf">I-130,</a>
+      <a target="_blank" href="https://www.uscis.gov/sites/default/files/document/forms/i-864.pdf">I-864,</a>
+      <a target="_blank" href="https://www.uscis.gov/sites/default/files/document/forms/i-485.pdf">I-485,</a>
+    </div>
+    <div class="section__container-btn">
+      <a class="form__btn-back" (click)="us.section='home';us.top();">
+        < Back </a>
+          <a class="form__btn-continue" (click)="ChangeTab(2);us.top();"> Continue ></a>
+    </div>
+  </div>
+</div>
+<div *ngIf="us.pagesection==2">
+  <div class="section__inner">
+    <h1 class="section__title">Has {{us.data.application.sponsorname || "Sponsor"}} ever used names other than
+      "{{us.data.application.sponsorname || "Sponsor"}} {{us.data.application.sponsormiddle_name}}
+      {{us.data.application.sponsorfamily_name}}" ?</h1>
+    <div class="section__discription">Provide all other names {{us.data.application.sponsorname || "Sponsor"}} has
+      ever used, including the family name at birth, names by previous marriages, maiden name, other legal names,
+      nicknames, aliases, and assumed names.</div>
+    <div class="form__check">
+      <label>
+        <input type="radio" name="sponsorother_name" [value]="'yes'" [(ngModel)]="us.data.application.sponsorother_name"
+          (ngModelChange)="us.update();">
+        <span class="check"> Yes</span>
+      </label>
+      <label>
+        <input type="radio" name="sponsorother_name" [value]="'no'" [(ngModel)]="us.data.application.sponsorother_name"
+          (ngModelChange)="us.update();">
+        <span class="check"> No</span>
+      </label>
+    </div>
+    <div class="sub__section" *ngIf="us.data.application.sponsorother_name=='yes'">
+      <span class="sub__section-title">Enter other names used below:</span>
+      <div class="sub__section-forms" *ngFor="let name of us.data.application.sponsorform_names;index as i">
+        <div class="sponsor__sub-forms"><span class="section__sub-title">OTHER NAME {{i+1}}<button
+              class="sponsor-form__btn"
+              (click)="us.data.application.sponsorform_names.splice(i,1);us.update()">X</button></span>
+        </div>
+        <div class="sub__section-forms-inner">
+          <label>
+            <span>Given name (first name)</span>
+            <input type="text"
+              maxlength="27"
+              oninput="this.value = this.value.replace(/[^a-zA-Z\s]/g, '');"
+              [class.err]="err.gName2"
+              [(ngModel)]="name.sponsorsubfirstname_name"
+              (ngModelChange)="name.sponsorsubfirstname_name = name.sponsorsubfirstname_name.toUpperCase();
+                us.update(); err.gName2 = false; validateLength27(name.sponsorsubfirstname_namee)"
+              (blur)="!name.sponsorsubfirstname_name && err.gName2 = true">
+          </label>
+          <span *ngIf="err.gName2" class="errspan">This field is required</span>
+
+          <label>
+            <span>Middle name</span>
+            <input type="text" maxlength="27"
+            oninput="this.value = this.value.replace(/[^a-zA-Z\s]/g, '');"
+            [(ngModel)]="name.sponsorsubmiddlename_name"
+            (ngModelChange)="name.sponsorsubmiddlename_name = name.sponsorsubmiddlename_name.toUpperCase();
+              us.update(); validateLength27(name.sponsorsubmiddlename_name)">
+          </label>
+          <label>
+            <span>Family name (last name)</span>
+            <input type="text" maxlength="27"
+              [class.err]="err.fName2" [(ngModel)]="name.sponsorsublastname_name"
+              oninput="this.value = this.value.replace(/[^a-zA-Z\s]/g, '');"
+              (ngModelChange)="name.sponsorsublastname_name = name.sponsorsublastname_name.toUpperCase();
+                us.update(); err.fName2 = false; validateLength27(name.sponsorsublastname_name)"
+              (blur)="!name.sponsorsublastname_name &&  err.fName2 = true; ">
+          </label>
+          <span *ngIf="err.fName2" class="errspan">This field is required</span>
+
+        </div>
+      </div>
+      <div class="sub-section__btn">
+        <button class="sub__section-add" (click)="addsponsor()">+ Add Another Name</button>
+      </div>
+    </div>
+    <div class="sub-discription">
+      Sources for this page (unless otherwise cited above): USCIS Forms
+      <a target="_blank" href="https://www.uscis.gov/sites/default/files/document/forms/i-130.pdf">I-130,</a>
+    </div>
+    <div class="section__container-btn">
+      <a class="form__btn-back" (click)="us.pagesection=1;us.top();">
+        < Back </a>
+          <a class="form__btn-continue" (click)="ChangeTab2(3);us.top();"> Continue > </a>
+    </div>
+  </div>
+</div>
+<div *ngIf="us.pagesection==3">
+  <div class="section-form__inner">
+    <h1 class="section__title">Some basic info about {{us.data.application.sponsorname &&
+      us.data.application.sponsorname || "Sponsor"}}</h1>
+    <div class="form__check">
+      <span class="form__title">Sex</span>
+      <label>
+        <input type="radio" name="sponsorbasicinfo_name" [value]="'Male'"
+          [(ngModel)]="us.data.application.sponsorbasicinfo_name"
+          (ngModelChange)="us.update(); err.sex3 = false"
+          (blur)="!us.data.application.sponsorbasicinfo_name && err.sex3 = true">
+        <span class="check">Male</span>
+      </label>
+      <label>
+        <input type="radio" name="sponsorbasicinfo_name" [value]="'Female'"
+          [(ngModel)]="us.data.application.sponsorbasicinfo_name"
+          (ngModelChange)="us.update(); err.sex3 = false"
+          (blur)="!us.data.application.sponsorbasicinfo_name && err.sex3 = true">
+        <span class="check">Female</span>
+      </label>
+    </div>
+    <span *ngIf="err.sex3" class="errspan">This field is required</span>
+
+    <div class="form__inner">
+      <label>
+        <span class="form__title">Date of birth</span>
+        <!-- <ng2-flatpickr placeholder="mm/dd/yyyy" [config]="pickerOptions"  [setDate]="us.data.application.insaidedateofbirrth_name" [(ngModel)]="us.data.application.insaidedateofbirrth_name" (ngModelChange)="us.update();"></ng2-flatpickr> -->
+        <input type="date" placeholder="mm/dd/yyyy" [(ngModel)]="us.data.application.insaidedateofbirrth_name" (ngModelChange)="us.update();">
+
+        <!-- <input type="text" placeholder="mm/dd/yyyy" class="form-control" bsDatepicker
+        [(ngModel)]="us.data.application.insaidedateofbirrth_name"
+        (ngModelChange)="us.data.application.insaidedateofbirrth_name = us.data.application.insaidedateofbirrth_name.toUpperCase();
+          us.update();"> -->
+
+        <my-date [class.err]="err.birthDate" [date]="us.data.application.insaidedateofbirrth_name"
+          (update)="us.data.application.insaidedateofbirrth_name= $event; us.update(); err.birthDate = false"
+          (blur)="!us.data.application.insaidedateofbirrth_name && err.birthDate = true"></my-date>
+      </label>
+    </div>
+    <span *ngIf="err.birthDate" class="errspan">This field is required</span>
+
+    <div class="form__inner">
+      <span class="form__title">Place of birth</span>
+      <div class="container__forms">
+        <label>
+          <span class="form__title">Country of birth</span>
+          <input type="text" maxlength="17"
+            [class.err]="err.birthCountry"
+            oninput="this.value = this.value.replace(/[^a-zA-Z\s]/g, '');"
+            [(ngModel)]="us.data.application.ofinsidesponsorbirth_name"
+            (ngModelChange)="us.data.application.ofinsidesponsorbirth_name = us.data.application.ofinsidesponsorbirth_name.toUpperCase();
+              us.update(); err.birthCountry = false; validateLength17(us.data.application.ofinsidesponsorbirth_name)"
+            (blur)="!us.data.application.ofinsidesponsorbirth_name && err.birthCountry = true">
+        </label>
+        <span *ngIf="err.birthCountry" class="errspan">This field is required</span>
+
+        <label>
+          <span class="form__title">State or province of birth </span>
+          <input type="text" maxlength="17"
+            oninput="this.value = this.value.replace(/[^a-zA-Z\s]/g, '');"
+            [class.err]="err.birthState"
+            [(ngModel)]="us.data.application.insideorprovince_name"
+            (ngModelChange)="us.data.application.insideorprovince_name = us.data.application.insideorprovince_name.toUpperCase();
+              us.update(); err.birthState = false; validateLength17(us.data.application.insideorprovince_name)"
+            (blur)="!us.data.application.insideorprovince_name && err.birthState = true">
+        </label>
+        <span *ngIf="err.birthState" class="errspan">This field is required</span>
+
+        <label>
+          <span class="form__title">City/town/village of birth</span>
+          <input type="text" maxlength="17"
+            oninput="this.value = this.value.replace(/[^a-zA-Z\s]/g, '');"
+            [class.err]="err.birthCity"
+            [(ngModel)]="us.data.application.cityinside_name"
+            (ngModelChange)="us.data.application.cityinside_name = us.data.application.cityinside_name.toUpperCase();
+              us.update(); err.birthCity = false; validateLength17(us.data.application.cityinside_name);"
+            (blur)="!us.data.application.cityinside_name && err.birthCity = true">
+        </label>
+        <span *ngIf="err.birthCity" class="errspan">This field is required</span>
+
+      </div>
+    </div>
+    <div class="sub-section__administration">
+      <label>
+        <span class="form__title"> {{us.data.application.sponsorname && us.data.application.sponsorname ||
+          "Sponsor"}} U.S. social security number</span>
+        <div class="security-number__container">
+          <input style="width: 75px;" placeholder="xxx" type="text" maxlength="3"
+            oninput="this.value = this.value.replace(/[^0-9.]/g, ''); this.value = this.value.replace(/(\..*)\./g, '$1');"
+            [(ngModel)]="us.data.application.sponsorsecuritynumberone_name" (ngModelChange)="us.update();">
+          <span>-</span>
+          <input style="width: 75px;" placeholder="xx" type="text" maxlength="2"
+            oninput="this.value = this.value.replace(/[^0-9.]/g, ''); this.value = this.value.replace(/(\..*)\./g, '$1');"
+            [(ngModel)]="us.data.application.sponsorsecuritynumbertwo_name" (ngModelChange)="us.update();">
+          <span>-</span>
+          <input style="width: 75px;" placeholder="xxxx" type="text" maxlength="4"
+            oninput="this.value = this.value.replace(/[^0-9.]/g, ''); this.value = this.value.replace(/(\..*)\./g, '$1');"
+            [(ngModel)]="us.data.application.sponsorsecuritynumberthree_name" (ngModelChange)="us.update();">
+        </div>
+      </label>
+    </div>
+    <div class="form__check">
+      <span class="form__title">Is {{us.data.application.sponsorname && us.data.application.sponsorname ||
+        "Sponsor"}} currently on active duty in the U.S. Armed Forces or U.S. Coast Guard?</span>
+      <label>
+        <input type="radio" name="sponsoradministration_name" [value]="'yes'"
+          [(ngModel)]="us.data.application.sponsoradministration_name"
+          (ngModelChange)="us.update(); err.choice3 = false"
+          (blur)="!us.data.application.sponsoradministration_name && err.choice3 = true">
+        <span class="check">Yes</span>
+      </label>
+      <label>
+        <input type="radio" name="sponsoradministration_name" [value]="'no'"
+          [(ngModel)]="us.data.application.sponsoradministration_name"
+          (ngModelChange)="us.update(); err.choice3 = false"
+          (blur)="!us.data.application.sponsoradministration_name && err.choice3 = true">
+        <span class="check">No</span>
+      </label>
+    </div>
+    <span *ngIf="err.choice3" class="errspan">This field is required</span>
+
+    <div class="form__inner">
+      <span class="form__title">Contact Information</span>
+      <div class="container__forms">
+        <label>
+          <span class="form__title">Daytime phone number</span>
+          <input type="text" maxlength="10"
+            oninput="this.value = this.value.replace(/[^0-9\s.]/g, ''); this.value = this.value.replace(/(\..*)\./g, '$1');"
+            [class.err]="err.number3" [(ngModel)]="us.data.application.phonenumbersponsor_name"
+            (ngModelChange)="us.update(); err.number3 = false"
+            (blur)="!us.data.application.phonenumbersponsor_name && err.number3 = true">
+        </label>
+        <span *ngIf="err.number3" class="errspan">This field is required</span>
+
+        <label>
+          <span class="form__title">Mobile phone number (if any)</span>
+          <input type="text" maxlength="10"
+            oninput="this.value = this.value.replace(/[^0-9\s.]/g, ''); this.value = this.value.replace(/(\..*)\./g, '$1');"
+            [(ngModel)]="us.data.application.insponsormobile_name" (ngModelChange)="us.update();">
+        </label>
+        <label>
+          <span class="form__title">Email address (if any) </span>
+          <input type="text" [(ngModel)]="us.data.application.insponsoremail_name" (ngModelChange)="us.update();">
+        </label>
+      </div>
+    </div>
+    <span class="form__subdiscription">
+      Sources for this page (unless otherwise cited above): USCIS Forms
+      <a target="_blank" href="https://www.uscis.gov/sites/default/files/document/forms/i-130.pdf">I-130</a>,
+      <a target="_blank" href="https://www.uscis.gov/sites/default/files/document/forms/i-864.pdf">I-864</a>,
+      <a target="_blank" href="https://www.uscis.gov/sites/default/files/document/forms/i-485.pdf">I-485</a>
+    </span>
+    <div class="section__container-btn">
+      <a class="form__btn-back" (click)="us.pagesection=2;us.top();">
+        < Back </a>
+          <a class="form__btn-continue" (click)="ChangeTab3(4);us.top();"> Continue > </a>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="us.pagesection==4">
+  <div class="section__inner">
+    <h1 class="section__title">{{us.data.application.sponsorname && us.data.application.sponsorname + "'s" ||
+      "Sponsor's"}} Biographic info</h1>
+    <div class="form__check">
+      <span class="form__title">Ethnicity</span>
+      <label>
+        <input type="radio" name="latino_name" [value]="'Hispanic or Latino'"
+          [(ngModel)]="us.data.application.latino_name"
+          (ngModelChange)="us.update(); err.ethnicity = false"
+          (blur)="!us.data.application.latino_name && err.ethnicity = true">
+        <span class="check">Hispanic or Latino</span>
+      </label>
+      <label>
+        <input type="radio" name="latino_name" [value]="'Not Hispanic or Latino'"
+          [(ngModel)]="us.data.application.latino_name"
+          (ngModelChange)="us.update(); err.ethnicity = false"
+          (blur)="!us.data.application.latino_name && err.ethnicity = true">
+        <span class="check">Not Hispanic or Latino</span>
+      </label>
+    </div>
+    <span *ngIf="err.ethnicity" class="errspan">This field is required</span>
+
+    <div class="form__check">
+      <span class=" section-form__title">Race (select all applicable boxes)</span>
+      <label>
+        <input type="checkbox" name="white_name" [(ngModel)]="us.data.application.white_name"
+          (ngModelChange)="us.update(); err.race = false">
+        <span class="name-check">White</span>
+      </label>
+      <label>
+        <input type="checkbox" name="asian_name" [(ngModel)]="us.data.application.asian_name"
+          (ngModelChange)="us.update(); err.race = false">
+        <span class="name-check">Asian</span>
+      </label>
+      <label>
+        <input type="checkbox" name="africanamerican_name" [(ngModel)]="us.data.application.africanamerican_name"
+          (ngModelChange)="us.update(); err.race = false">
+        <span class="name-check">Black or African American</span>
+      </label>
+      <label>
+        <input type="checkbox" name="alaskanative_name" [(ngModel)]="us.data.application.alaskanative_name"
+          (ngModelChange)="us.update(); err.race = false">
+        <span class="name-check">American Indian or Alaska Native</span>
+      </label>
+      <label>
+        <input type="checkbox" name="hawaiianor_name" [(ngModel)]="us.data.application.hawaiianor_name"
+          (ngModelChange)="us.update(); err.race = false">
+        <span class="name-check">Native Hawaiian or Other Pacific Islander</span>
+      </label>
+    </div>
+    <span *ngIf="err.race" class="errspan">This field is required</span>
+
+    <div class="form__check">
+      <span class="section-form__title">Eye color</span>
+      <label>
+        <input type="radio" name="eye_name" [value]="'Black'" [(ngModel)]="us.data.application.eye_name"
+          (ngModelChange)="us.update(); err.eyeColor = false">
+        <span class="check">Black</span>
+      </label>
+      <label>
+        <input type="radio" name="eye_name" [value]="'Gray'" [(ngModel)]="us.data.application.eye_name"
+          (ngModelChange)="us.update(); err.eyeColor = false">
+        <span class="check">Gray</span>
+      </label>
+      <label>
+        <input type="radio" name="eye_name" [value]="'Maroon'" [(ngModel)]="us.data.application.eye_name"
+          (ngModelChange)="us.update(); err.eyeColor = false">
+        <span class="check">Maroon</span>
+      </label>
+      <label>
+        <input type="radio" name="eye_name" [value]="'Blue'" [(ngModel)]="us.data.application.eye_name"
+          (ngModelChange)="us.update(); err.eyeColor = false">
+        <span class="check">Blue</span>
+      </label>
+      <label>
+        <input type="radio" name="eye_name" [value]="'Green'" [(ngModel)]="us.data.application.eye_name"
+          (ngModelChange)="us.update(); err.eyeColor = false">
+        <span class="check">Green</span>
+      </label>
+      <label>
+        <input type="radio" name="eye_name" [value]="'Pink'" [(ngModel)]="us.data.application.eye_name"
+          (ngModelChange)="us.update(); err.eyeColor = false">
+        <span class="check">Pink</span>
+      </label>
+      <label>
+        <input type="radio" name="eye_name" [value]="'Brown'" [(ngModel)]="us.data.application.eye_name"
+          (ngModelChange)="us.update(); err.eyeColor = false">
+        <span class="check">Brown</span>
+      </label>
+      <label>
+        <input type="radio" name="eye_name" [value]="'Hazel'" [(ngModel)]="us.data.application.eye_name"
+          (ngModelChange)="us.update(); err.eyeColor = false">
+        <span class="check">Hazel</span>
+      </label>
+      <label>
+        <input type="radio" name="eye_name" [value]="'Unknown'" [(ngModel)]="us.data.application.eye_name"
+          (ngModelChange)="us.update(); err.eyeColor = false">
+        <span class="check">Unknown/Other</span>
+      </label>
+    </div>
+    <span *ngIf="err.eyeColor" class="errspan">This field is required</span>
+
+    <div class="form__check">
+      <span class="section-form__title">Hair color</span>
+      <label>
+        <input type="radio" name="hair_name" [value]="'Black'" [(ngModel)]="us.data.application.hair_name"
+          (ngModelChange)="us.update(); err.hairColor = false">
+        <span class="check">Black</span>
+      </label>
+      <label>
+        <input type="radio" name="hair_name" [value]="'Blond'" [(ngModel)]="us.data.application.hair_name"
+          (ngModelChange)="us.update(); err.hairColor = false">
+        <span class="check">Blond</span>
+      </label>
+      <label>
+        <input type="radio" name="hair_name" [value]="'Bald'" [(ngModel)]="us.data.application.hair_name"
+          (ngModelChange)="us.update(); err.hairColor = false">
+        <span class="check">Bald (No hair)</span>
+      </label>
+      <label>
+        <input type="radio" name="hair_name" [value]="'Brown'" [(ngModel)]="us.data.application.hair_name"
+          (ngModelChange)="us.update(); err.hairColor = false">
+        <span class="check">Brown</span>
+      </label>
+      <label>
+        <input type="radio" name="hair_name" [value]="'Gray'" [(ngModel)]="us.data.application.hair_name"
+          (ngModelChange)="us.update(); err.hairColor = false">
+        <span class="check">Gray</span>
+      </label>
+      <label>
+        <input type="radio" name="hair_name" [value]="'Red'" [(ngModel)]="us.data.application.hair_name"
+          (ngModelChange)="us.update(); err.hairColor = false">
+        <span class="check">Red</span>
+      </label>
+      <label>
+        <input type="radio" name="hair_name" [value]="'Sandy'" [(ngModel)]="us.data.application.hair_name"
+          (ngModelChange)="us.update(); err.hairColor = false">
+        <span class="check">Sandy</span>
+      </label>
+      <label>
+        <input type="radio" name="hair_name" [value]="'White'" [(ngModel)]="us.data.application.hair_name"
+          (ngModelChange)="us.update(); err.hairColor = false">
+        <span class="check">White</span>
+      </label>
+      <label>
+        <input type="radio" name="hair_name" [value]="'Unknown'" [(ngModel)]="us.data.application.hair_name"
+          (ngModelChange)="us.update(); err.hairColor = false">
+        <span class="check">Unknown/Other</span>
+      </label>
+      <span *ngIf="err.hairColor" class="errspan">This field is required</span>
+
+      <div class="forms__inner">
+        <span class="form__title">Weight</span>
+        <label>
+          <input class="weigh"
+            oninput="this.value = this.value.replace(/[^0-9.]/g, ''); this.value = this.value.replace(/(\..*)\./g, '$1');"
+            maxlength="1" type="text" [class.err]="err.weight" [(ngModel)]="us.data.application.sponsoruspounds_name"
+            (ngModelChange)="us.update(); err.weight = false">
+
+          <input class="weigh" maxlength="1" type="text"
+            oninput="this.value = this.value.replace(/[^0-9.]/g, ''); this.value = this.value.replace(/(\..*)\./g, '$1');"
+            [(ngModel)]="us.data.application.sponsoruspoundsa_name" (ngModelChange)="us.update();">
+
+          <input class="weigh" maxlength="1" type="text"
+            oninput="this.value = this.value.replace(/[^0-9.]/g, ''); this.value = this.value.replace(/(\..*)\./g, '$1');"
+            [(ngModel)]="us.data.application.sponsoruspoundss_name" (ngModelChange)="us.update();"><span
+            class="sticker">Pounds</span>
+
+        </label>
+        <span *ngIf="err.weight" class="errspan">This field is required</span>
+
+      </div>
+      <div class="forms__sub-inner">
+        <span class="form__title">Height</span>
+        <label>
+          <select class="top" [class.err]="err.heightFeet" [(ngModel)]="us.data.application.sponsorusfeet_name"
+            (ngModelChange)="us.update(); err.heightFeet = false"
+            (blur)="!us.data.application.sponsorusfeet_name && err.heightFeet = true">
+            <option>2</option>
+            <option>3</option>
+            <option>4</option>
+            <option>5</option>
+            <option>6</option>
+            <option>7</option>
+            <option>8</option>
+          </select><span class="sticker">Feet</span>
+        </label>
+        <span *ngIf="err.heightFeet" class="errspan">Feet is required</span>
+
+        <label>
+          <select class="top" [class.err]="err.heightInches" [(ngModel)]="us.data.application.sponsorusinches_name"
+            (ngModelChange)="us.update(); err.heightInches = false"
+            (blur)="!us.data.application.sponsorusinches_name && err.heightInches = true">
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+            <option>4</option>
+            <option>5</option>
+            <option>6</option>
+            <option>7</option>
+            <option>8</option>
+            <option>9</option>
+            <option>10</option>
+            <option>11</option>
+          </select><span class="sticker">Inches</span>
+        </label>
+        <span *ngIf="err.heightInches" class="errspan">Inches is required</span>
+      </div>
+
+    </div>
+    <div class="sub-discription">
+      Sources for this page (unless otherwise cited above): USCIS Forms
+      <a target="_blank" href="https://www.uscis.gov/sites/default/files/document/forms/i-130.pdf">I-130,</a>
+    </div>
+    <div class="section__container-btn">
+      <a class="form__btn-back" (click)="us.pagesection=3;us.top();">
+        < Back </a>
+          <a class="form__btn-continue"
+          (click)="us.section='sponsorplaceslived'; us.pagesection=1; us.top();">
+            Continue ></a>
+    </div>
+  </div>
+</div>

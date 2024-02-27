@@ -1,0 +1,25 @@
+<div *ngIf="section==1">
+	<div class="section__inner">
+		<h1 class="section__title">Step 5 of 5 - Next Steps</h1>
+		<img class="section__img"  src="assets/submit.png" alt="">
+		<div class="section__discription">Finally, it's time to organize all the forms and documents, and send them out 😇</div>
+		<div class="section__discription">In this step, we will walk you through how to organize and submit the application package. This includes:</div>
+		<div class="section__container">
+			<ul class="section__list">
+				<li>Pay USCIS filing fees1</li>
+				<li>Organize and assemble the application package according to USCIS guidelines</li>
+				<li>Mail to the correct address</li>
+				<li>Timeline after submission</li>
+				<li>Track your case status</li>
+				<li>Things to note while your application is pending</li>
+				<li>Prepare for the Green Card interview</li>
+				<li>Things to note after receiving Green Card</li>
+				<span>Let's get started!</span>
+			</ul> 
+		</div>
+		<div class="section__container-btn">
+			<a class="form__btn-back" (click)="us.section='home';us.top();"> < Back </a>
+			<a class="form__btn-continue" (click)="us.section='uscisfiling';us.top();"> Continue ></a>
+		</div>
+	</div>
+</div>

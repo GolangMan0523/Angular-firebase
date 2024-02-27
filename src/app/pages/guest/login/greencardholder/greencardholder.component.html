@@ -1,0 +1,54 @@
+<div class="container__inner">
+  <img class="welcome__img" src="assets/welcome.png" />
+  <h1 class="welcome__title">Welcome to Greenbroad</h1>
+  <span class="welcome__discription"
+    >Let's set up the application for you with a few simple questions:</span
+  >
+  <div class="welcome__inner">
+    <span class="welcome__question">What is the applicant’s first name?</span>
+    <span class="welcome__sub-discription"
+      >The applicant is the person seeking a Green Card.</span
+    >
+    <label>
+      <input
+        type="text"
+        [class.err]="err.applName"
+        [(ngModel)]="us.data.application.name"
+        (ngModelChange)="us.update(); err.applName = false"
+        (blur)="!us.data.application.name && (err.applName = true)"
+      />
+    </label>
+    <span *ngIf="err.applName" class="errspan">This field is required</span>
+  </div>
+  <div class="welcome__inner">
+    <span class="welcome__question">What is the sponsor’s first name?</span>
+    <span class="welcome__sub-discription"
+      >The sponsor is the applicant's spouse and is a U.S. citizen or Green Card
+      holder.</span
+    >
+    <label>
+      <input
+        type="text"
+        [class.err]="err.sponsorName"
+        [(ngModel)]="us.data.application.sponsorname"
+        (ngModelChange)="us.update(); err.sponsorName = false"
+        (blur)="!us.data.application.sponsorname && (err.sponsorName = true)"
+      />
+    </label>
+    <span *ngIf="err.sponsorName" class="errspan">This field is required</span>
+  </div>
+  <div class="login__container-btn">
+    <button
+      class="welcome__btn"
+      (click)="ChangeTab((us.auth = 'cardholder')); us.top()"
+      [disabled]="!us.data.application.name || !us.data.application.sponsorname"
+    >
+      Sign up
+    </button>
+    <a
+      class="sign-btn"
+      (click)="us.auth = 'register'; us.isSignIn = true; us.top()"
+      >Sign in</a
+    >
+  </div>
+</div>

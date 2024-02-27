@@ -1,0 +1,15 @@
+<div class="greenboardsupport__inner">
+	<h1 class="greenboardsupport__title">Sorry,  Greenbroad currently does not support your application type. </h1>
+	<span class="greenboardsupport__discription">Even though Greenbroad cannot help with your application, your case may still qualify for a Green Card. We suggest you consult USCIS instructions or work with an immigration attorney on your case.</span>
+	<span class="greenboardsupport__discription">If you want to get notified when Greenbroad starts handling your application type in the future, leave your email address below and we will keep you posted!</span>
+	<div class="greenboardsupport__cardholder">
+
+		<input type="text" name="address" [(ngModel)]="us.data.application.addmail_name" (ngModelChange)="us.update();" placeholder="Email address"><button (click)="us.auth='';us.top();" class="greenboardsupport__email-btn">&#8594;</button>
+    <span class="alert" *ngIf="us.data.application.addmail_name && !ui.valid(us.data.application.addmail_name)">Invalid email address</span>
+	</div>
+	<div class="container__btn">
+	<a class="greenboardsupport__btn" (click)="back();us.top();" > < Back </a>
+	</div>
+</div>
+
+

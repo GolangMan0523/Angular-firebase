@@ -1,0 +1,183 @@
+.errspan{
+  color: red;
+}
+.err{
+  border: 1px solid red;
+}
+.section__inner{
+	max-width: 1200px;
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	padding: 35px;
+	border-top: 3px solid #ed9121;
+	background: #fff;
+	box-shadow: 0 0 25px rgb(0 0 0 / 25%);
+	.section__title{
+		color: #1972F5;
+		padding: 0 0 25px 0;
+	}
+	.section__discription{
+		padding-top: 25px;
+		color: rgba(0, 0, 0, .5);
+		font-weight: 600;
+	}
+	.section__container{
+		width: 100%;
+		display: flex;
+		flex-direction: row;
+		label{
+			width: 100%;
+			display: flex;
+			flex-direction: column;
+		}
+		input{
+			padding: 10px;
+			color: rgba(0, 0, 0, .5);
+		}
+
+	}
+
+  .weigh{
+   margin-right: 10px;
+   width: 100%;
+   max-width: 50px;
+  }
+
+
+		.top{
+		width: 100%;
+		max-width: 250px;
+		padding: 10px;
+	}
+	.section__sub-container{
+		display: flex;
+		max-width: 600px;
+		width: 100%;
+		label{
+			width: 100%;
+			display: flex;
+			flex-direction: column;
+			input{
+				padding: 10px;
+				color: rgba(0, 0, 0, .5);
+				width: 100%;
+				max-width: 250px;
+			}
+		}
+	}
+	.section__container-btn{
+		width: 100%;
+	}
+	.npt__title{
+		padding-top: 25px;
+	}
+	.sub-discription{
+		padding-top: 25px;
+		color: rgba(0, 0, 0, .5);
+	}
+	.sub-discription a{
+		color: #1972F5;
+	}
+	.section__container-btn{
+		padding-top: 25px;
+	}
+	.form__btn-continue{
+		margin-left: 25px;
+		padding: 10px;
+		background: #1972F5;
+		border-radius: 5px;
+		text-decoration: none;
+		color: #fff;
+		cursor: pointer;
+	}
+
+	.form__btn-continue:hover{
+		background: #8290ff;
+		transition: 0.5s;
+	}
+	.sub-discription a{
+		padding-left: 5px;
+	}
+}
+
+.form-control{
+  width: 100%;
+}
+
+input{
+	font-family: inherit; /* 1 */
+	font-size: 100%; /* 1 */
+	line-height: 1.15; /* 1 */
+	margin: 0; /* 2 */
+	padding: 10px;
+  text-transform: uppercase;
+}
+.images{
+  width: 75px;
+  padding-top: 25px;
+
+
+}
+.inner-top{
+  text-align: center;
+}
+.sub__section-btn{
+	color: #1972F5;
+	cursor: pointer;
+	display: flex;
+	align-items: baseline;
+	font-size: 20px;
+	cursor: pointer;
+}
+
+.sub__section-icon {
+	display: inline-block;
+	font-size: 30px;
+	margin-right: 10px;
+	transition: .2s all ease-in-out;
+	&._active {
+		transform: rotate(90deg);
+		transition: .2s all ease-in-out;
+	}
+}
+.form__check {
+  display: flex;
+  flex-direction: column;
+  padding-top: 10px;
+}
+
+.form__check {
+  padding-bottom: 10px;
+}
+.check {
+  padding-left: 10px;
+}
+.sub-form__container {
+  width: 100%;
+  background: #4d61fc7d;
+  padding: 15px;
+  border-radius: 5px;
+  margin-top: 7px;
+}
+
+.sub-form__container span {
+  font-weight: 600;
+}
+.form__title{
+	padding-top: 15px;
+	font-weight: 600;
+}
+.add-certificates__btn{
+	padding-top: 15px;
+	border:none;
+	background: none;
+	color: #1972F5;
+	cursor: pointer;
+}
+.close__x{
+	border:none;
+	background: none;
+	cursor: pointer;
+}

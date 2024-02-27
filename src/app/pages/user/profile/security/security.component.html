@@ -1,0 +1,20 @@
+<div  style="padding: 25px;">
+<h3>Change password</h3>
+<div class="row">
+	<div class="col-2">
+		<label class="w-forms">
+			<span class="w-forms__title">Old password</span>
+			<input class="w-forms__input" [(ngModel)]="oldPass" type="text" name="old" placeholder="Type Password">
+		</label>
+	</div>
+	<div class="col-2">
+		<label class="w-forms">
+			<span class="w-forms__title">New password</span>
+			<input class="w-forms__input" [(ngModel)]="newPass" type="text" name="new" placeholder="Type Password">
+		</label>
+	</div>
+</div>
+<div style="display: flex; justify-content: flex-end;">
+<button class="change-btn" (click)="changePassword(); close();">Change</button>
+</div>
+</div>

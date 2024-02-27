@@ -1,0 +1,116 @@
+<div *ngIf="section==1">
+  <div class="section__inner">
+    <h1 class="section__title">Step 3 of 5 - Collect documents</h1>
+    <img class="section__img" src="assets/collet.png" alt="">
+    <div class="section__discription">Good job on finishing the application questions! Now it's time to collect the
+      supporting documents that will be submitted with the forms 👌</div>
+    <div class="section__discription">In this step, we will help you collect all the necessary supporting documents
+      using a comprehensive checklist. All items on this list come from <a style="color: #4D61FC;" target="_blank"
+        href="https://www.uscis.gov/forms/all-forms">official USCIS instructions</a>. </div>
+    <div class="section__discription">Later in the <a style="color: #4D61FC;" target="_blank"
+        (click)="us.tab='submit'; us.section='home';">Submit Step</a>, we will help you sort these documents
+      into correct groups and attach them onto their corresponding application forms. For now, just focus on
+      gathering the documents into one place.</div>
+    <p>You don't need to scan or upload any document to Greenbroad. Instead, simply make photocopies of the documents, and we will show you later how to mail them directly to USCIS </p>
+
+    <div class="section__discription">A few things to note before we start:</div>
+
+    <div class="sub__section-container">
+      <div class="sub__section-btn" (click)="collectdocument=!collectdocument" (clickOutside)="collectdocument=null">
+        <span class="sub__section-icon" [class._active]="collectdocument">&#8250;</span> Should I submit photocopies or
+        originals?</div>
+      <div class="sub-sub__section-inner" *ngIf="collectdocument">
+        <p>You may submit legible photocopies of the documents requested, unless the USCIS instructions
+          specifically state that you must submit an original document. USCIS may request an original document
+          at the time of filing or at any time during processing of an application, petition, or request.</p>
+        <p>If you submit original documents when not required, different forms handle that different, ranging
+          from automatically returning them to you, to returning to you upon request only, to immediately
+          destroying them. Read form specific instructions for details.</p>
+        <div class="sub__discription">Source: <a target="_blank"
+            href="https://www.uscis.gov/sites/default/files/document/forms/i-130instr.pdf">Source: USCIS
+            Form I-130 Instructions Page 3</a>,
+          <a target="_blank" href="https://www.uscis.gov/sites/default/files/document/forms/i-864instr.pdf">USCIS Form
+            I-864 Instructions Page 3</a>,
+          <a target="_blank" href="https://www.uscis.gov/sites/default/files/document/forms/i-485instr.pdf">USCIS Form
+            I-485 Instructions Page 5</a>,
+          <a target="_blank" href="https://www.uscis.gov/sites/default/files/document/forms/i-944instr-pc.pdf">USCIS
+            Form I-944
+            Instructions Page 2</a> ,
+          <a target="_blank" href="https://www.uscis.gov/sites/default/files/document/forms/i-131instr.pdf">USCIS Form
+            I-131
+            Instructions Page 8</a>,
+          <a target="_blank" href="https://www.uscis.gov/sites/default/files/document/forms/i-765instr.pdf">USCIS Form
+            I-765
+            Instructions Page 20</a>
+        </div>
+      </div>
+      <div class="sub__section-btn" (click)="collectdocumenttwo=!collectdocumenttwo"
+        (clickOutside)="collectdocumenttwo=null"> <span class="sub__section-icon"
+          [class._active]="collectdocumenttwo">&#8250;</span>Should copies of supporting documents be
+        single-sided or double sided?</div>
+      <div class="sub-sub__section-inner" *ngIf="collectdocumenttwo">
+        <p>They should be single-sided.</p>
+        <div class="sub__discription">Source: <a target="_blank"
+            href="https://www.uscis.gov/forms/filing-guidance/form-filing-tips">Source: USCIS Form Filing
+            Tips</a>
+        </div>
+      </div>
+      <div class="sub__section-btn" (click)="collectdocumentthree=!collectdocumentthree"
+        (clickOutside)="collectdocumentthree=null"> <span class="sub__section-icon"
+          [class._active]="collectdocumentthree">&#8250;</span> Translation for Foreign Documents</div>
+      <div class="sub-sub__section-inner" *ngIf="collectdocumentthree">
+        <p>If you submit a document with information in a foreign language, you must also submit a full English
+          translation. The translator must sign a certification that the English language translation is
+          complete and accurate, and that he or she is competent to translate from the foreign language into
+          English. The certification must include the translator’s signature. The Department of Homeland
+          Security recommends the certification contain the translator’s printed name, the date and the
+          translator’s contact information.</p>
+
+        <div class="sub__discription">Source: <a target="_blank"
+            href="https://www.uscis.gov/sites/default/files/document/forms/i-130instr.pdf">USCIS Form I-130
+            Instructions Page 3</a>,
+          <a target="_blank" href="https://www.uscis.gov/sites/default/files/document/forms/i-130instr.pdf">USCIS Form
+            I-130
+            Instructions Page 3</a>,
+          <a target="_blank" href="https://www.uscis.gov/sites/default/files/document/forms/i-485instr.pdf">USCIS Form
+            I-485 Instructions Page 5</a>,
+          <a target="_blank" href="https://www.uscis.gov/sites/default/files/document/forms/i-131instr.pdf">USCIS Form
+            I-131
+            Instructions Page 8</a>,
+          <a target="_blank" href="https://www.uscis.gov/sites/default/files/document/forms/i-765instr.pdf">USCIS Form
+            I-765
+            Instructions Page 20</a>
+        </div>
+        <p>Here is <a target="_blank" style="color: #4D61FC;" href="/images/myw3schoolsimage.jpg" download>template for
+            the translation certification</a> you can download as
+          a reference. (Note: This template is a Greenbroad suggestion only, not from USCIS.)</p>
+      </div>
+      <div class="sub__section-btn" (click)="collectdocumentfour=!collectdocumentfour"
+        (clickOutside)="collectdocumentfour=null"> <span class="sub__section-icon"
+          [class._active]="collectdocumentfour">&#8250;</span> What if a name has changed?</div>
+      <div class="sub-sub__section-inner" *ngIf="collectdocumentfour">
+        <p>If either you or your spouse is using a name that is not the same name shown on the relevant
+          documents, you must provide copies of the legal documents reflecting the name change, such as a
+          marriage certificate, adoption decree, or court order.</p>
+        <div class="sub__discription">Source: <a target="_blank"
+            href="https://www.greencardhero.com/s/i-130instr">Source: USCIS Form I-130 Page 8</a>
+        </div>
+
+      </div>
+      <div class="sub__section-btn" (click)="collectdocumentcolor=!collectdocumentcolor"
+        (clickOutside)="collectdocumentcolor=null"> <span class="sub__section-icon"
+          [class._active]="collectdocumentcolor">&#8250;</span> Do the photocopies need to be full-color?</div>
+      <div class="sub-sub__section-inner" *ngIf="collectdocumentcolor">
+        <p>USCIS does not have specific requirements regarding color or black-and-white photocopies. We have seen many
+          applicants submit black-and-white photocopies and their cases were approved fine.</p>
+        <div class="sub__discription">Source: Greenbroad suggestion only, not from USCIS
+        </div>
+      </div>
+    </div>
+    <div class="section__container-btn">
+      <a class="form__btn-back" (click)="us.section='home'; us.tab='sponsor'; us.top();">
+        < Back </a>
+          <a class="form__btn-continue" (click)="us.section='marriagedocuments';us.top();"> Continue ></a>
+    </div>
+  </div>
+</div>

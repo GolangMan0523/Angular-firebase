@@ -1,0 +1,32 @@
+<div class="section-inner">
+  <div style="overflow: auto;">
+    <table>
+      <tr>
+        <th>User</th>
+        <th>Email</th>
+        <th>PDF Forms</th>
+        <th>Admin</th>
+        <th>Print</th>
+        <th>Action</th>
+      </tr>
+      <tr *ngFor="let user of us.users|search:search:'name email'">
+        <td><img style="object-fit: contain;" id="user-avatar" [src]="user.avatarUrl" alt="" height="50" width="50"></td>
+        <td>{{user.email}}</td>
+        <td class="pdf-inner">
+          <a [routerLink]="['/pdf-com/', user._id]" routerLinkActive="router-link-active"  class="pdf-btn">PDF</a>
+        </td>
+        <td *ngFor="let role of us.roles; let i = index;">
+          <label class="switch">
+            <input type="checkbox" [(ngModel)]="user.is[role]" (ngModelChange)="us.save(user);" name="role name">
+            <span class="slider round"></span>
+          </label>
+        </td>
+        <td>
+          <a class="pdf-btn" href="/print/{{user._id}}" target="_blank">Print</a>
+        </td>
+        <td>
+          <a class="admin-btn" (click)="us.delete(user._id);">Delete</a>
+        </td>
+    </table>
+  </div>
+</div>

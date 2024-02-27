@@ -1,0 +1,322 @@
+<div class="home__section">
+  <h1 class="section__form-title">Step 1 of 5 - Applicant Info</h1>
+  <img src="assets/home_img.png" alt="">
+  <div class="section__discription">
+    <span class="section__form-discription" *ngIf="us.data.cardholder == 'us' && us.data.location == 'inside'">This step
+      is for {{us.data.application.name || "Applicant"}} – we will go over the application questions
+      {{us.data.application.name || "Applicant"}} needs to complete 👍</span>
+    <span class="section__form-discription" *ngIf="us.data.cardholder == 'us' && us.data.location == 'inside'">Later in
+      the <a class="discription__link" target="_blank" (click)="us.section='finalcheck'; us.tab='printform'">Print
+        Forms</a> Step, you can download all the filled-out application forms, and learn how to submit them correctly.
+      Let's get started!</span>
+    <span class="section__form-discription" *ngIf="us.data.cardholder == 'us' && us.data.location == 'outside'">This
+      step is for {{us.data.application.name || "Applicant"}} – we will go over the application questions
+      {{us.data.application.name || "Applicant"}} needs to complete 👍</span>
+    <span class="section__form-discription" *ngIf="us.data.cardholder == 'us' && us.data.location == 'outside'">Later in
+      the <a class="discription__link" target="_blank"
+        (click)="us.section='collectdocuments'; us.tab='submissionone'">Submission 1</a> and <a
+        class="discription__link" target="_blank"
+        (click)="us.section='collectdocument'; us.tab='submissiontwo'">Submission 2</a> steps, you can download the
+      filled-out application forms, and learn how to submit them correctly. Let's get started!
+    </span>
+    <span class="section__form-discription"
+      *ngIf="us.data.cardholder == 'greencard' && us.data.location == 'inside'">This step is for
+      {{us.data.application.name || "Applicant"}} – we will go over the application questions {{us.data.application.name
+      || "Applicant"}} needs to complete 👍</span>
+    <span class="section__form-discription"
+      *ngIf="us.data.cardholder == 'greencard' && us.data.location == 'inside'">Later in the <a
+        class="discription__link" target="_blank"
+        (click)="us.section='collectdocuments'; us.tab='submissionone'">Submission 1</a> and <a
+        class="discription__link" target="_blank"
+        (click)="us.section='collectdocument'; us.tab='submissiontwo'">Submission 2</a> steps, you can download the
+      filled-out application forms, and learn how to submit them correctly. Let's get started!
+    </span>
+    <span class="section__form-discription"
+      *ngIf="us.data.cardholder == 'greencard' && us.data.location == 'outside'">This step is for
+      {{us.data.application.name || "Applicant"}} – we will go over the application questions {{us.data.application.name
+      || "Applicant"}} needs to complete 👍</span>
+    <span class="section__form-discription"
+      *ngIf="us.data.cardholder == 'greencard' && us.data.location == 'outside'">Later in the <a
+        class="discription__link" target="_blank"
+        (click)="us.section='collectdocuments'; us.tab='submissiontwo'">Submission 1</a> and <a
+        class="discription__link" target="_blank"
+        (click)="us.section='collectdocument'; us.tab='submissionone'">Submission 2</a> steps, you can download the
+      filled-out application forms, and learn how to submit them correctly. Let's get started!
+    </span>
+  </div>
+  <div class="sub__section" *ngIf="us.data.cardholder == 'greencard' && us.data.location == 'inside'">
+    <div class="sub__section-btn" (click)="subsection=!subsection" (clickOutside)="subsection=null"><span
+        class="sub__section-icon" [class._active]="subsection">&#8250;</span> See the list of forms we will help
+      {{us.data.application.name || "Applicant"}} complete</div>
+    <div class="sub-sub__section-inner" *ngIf="subsection">
+      <ul class="sub__section-list">
+        <li>
+          <a class="sub__section-link" target="_blank" href="https://www.uscis.gov/i-485">Form I-485 - Application to
+            Register Permanent Residence or Adjust Status</a>
+          <span>Used by a person in the United States ({{us.data.application.name || "Applicant"}}) to apply for lawful
+            permanent resident status (commonly known as Green Card)</span>
+        </li>
+        <li>
+          <a class="sub__section-link" target="_blank" href="https://www.uscis.gov/i-765">Form I-765 - Application for
+            Employment Authorization </a>(optional)
+          <span>Used to request employment authorization and an Employment Authorization Document (EAD) to authorize
+            {{us.data.application.name || "Applicant"}} to work in the United States while {{us.data.application.name ||
+            "Applicant"}}'s Form I-485 is pending.</span>
+        </li>
+        <li>
+          <a class="sub__section-link" target="_blank" href="https://www.uscis.gov/i-131">Form I-131 - Application for
+            Travel Document </a>(optional)
+        </li>
+        <span>Used to apply for an Advance Parole Document to allow {{us.data.application.name || "Applicant"}} to
+          return to the United States after temporary foreign travel while {{us.data.application.name &&
+          us.data.application.name + "'s" || "Applicant's"}} Form I-485 is pending</span>
+        <li>
+          <a class="sub__section-link" target="_blank" href="https://www.uscis.gov/i-130">Form I-130A - Supplemental
+            Information for Spouse Beneficiary</a>
+        </li>
+        <span>Used to collect additional information for a spouse beneficiary ({{us.data.application.name ||
+          "Applicant"}}) of Form I-130, Petition for Alien Relative</span>
+        <li>
+          <a class="sub__section-link" target="_blank" href="https://www.uscis.gov/g-1145">Form G-1145 - e-Notification
+            of Application/Petition Acceptance (optional)</a>
+        </li>
+        <span>Used to request an electronic notification (e-Notification) when U.S. Citizenship and Immigration Services
+          (USCIS) accepts {{us.data.application.name && us.data.application.name + "'s" || "Applicant's"}} immigration
+          application</span>
+      </ul>
+      <span>Used to request an electronic notification (e-Notification) when U.S. Citizenship and Immigration Services
+        (USCIS) accepts {{us.data.application.name && us.data.application.name + "'s" || "Applicant's"}} immigration
+        application</span>
+    </div>
+    <div class="sub__section-btn" (click)="subsectiontwo=!subsectiontwo" (clickOutside)="subsectiontwo=null"> <span
+        class="sub__section-icon" [class._active]="subsectiontwo">&#8250;</span>Sources for this page</div>
+    <div class="sub-sub__section-inner" *ngIf="subsectiontwo">
+      <a style="color:#4D61FC;" target="_blank" href="https://www.uscis.gov/family/bring-spouse-to-live-in-US">Bringing
+        Spouses to Live in the United States as Permanent Residents</a>,
+      <a style="color:#4D61FC;" target="_blank" href="https://www.uscis.gov/green-card">Green Card Overview</a>,
+      <a style="color:#4D61FC;" target="_blank"
+        href="https://www.uscis.gov/green-card/green-card-processes-and-procedures/adjustment-of-status">Adjustment of
+        Status</a>,
+      <a style="color:#4D61FC;" target="_blank"
+        href="https://www.uscis.gov/green-card/green-card-processes-and-procedures/travel-documents">Travel
+        Documents</a>,
+      <a style="color:#4D61FC;" target="_blank"
+        href="https://www.uscis.gov/green-card/green-card-processes-and-procedures/employment-authorization-document">Employment
+        Authorization Document</a>
+      <a style="color:#4D61FC;" target="_blank" href="https://www.uscis.gov/i-130">I-130, Petition for Alien
+        Relative</a>,
+      <a style="color:#4D61FC;" target="_blank" href="https://www.uscis.gov/g-1145">G-1145, E-Notification of
+        Application/Petition Acceptance</a>,
+      <a style="color:#4D61FC;" target="_blank"
+        href="https://www.uscis.gov/sites/default/files/document/policy-manual-resources/Appendix-PublicChargeApplicabilitytoFamily-BasedAOS.pdf">USCIS
+        Public Policy Manual Chapter 3,</a>,
+      <a style="color:#4D61FC;" target="_blank"
+        href="https://www.uscis.gov/sites/default/files/document/policy-manual-resources/Appendix-PublicChargeApplicabilitytoFamily-BasedAOS.pdf">USCIS
+        Policy Manual Public Charge Appendix Page 1</a>,
+    </div>
+  </div>
+  <div class="sub__section" *ngIf="us.data.cardholder == 'us' && us.data.location == 'inside'">
+    <div class="sub__section-btn" (click)="subsection=!subsection" (clickOutside)="subsection=null"><span
+        class="sub__section-icon" [class._active]="subsection">&#8250;</span> See the list of forms we will help
+      {{us.data.application.name || "Applicant"}} complete</div>
+    <div class="sub-sub__section-inner" *ngIf="subsection">
+      <ul class="sub__section-list">
+        <li>
+          <a class="sub__section-link" target="_blank" href="https://www.uscis.gov/i-485">Form I-485 - Application to
+            Register Permanent Residence or Adjust Status </a>
+          <span>Used by a person in the United States ({{us.data.application.name || "Applicant"}}) to apply for lawful
+            permanent resident status (commonly known as Green Card)</span>
+        </li>
+        <li>
+          <a class="sub__section-link" target="_blank" href="https://www.uscis.gov/i-765">Form I-765 - Application for
+            Employment Authorization </a>(optional)
+          <span>Used to request employment authorization and an Employment Authorization Document (EAD) to authorize
+            {{us.data.application.name || "Applicant"}} to work in the United States while {{us.data.application.name ||
+            "Applicant"}}'s Form I-485 is pending.</span>
+        </li>
+        <li>
+          <a class="sub__section-link" target="_blank" href="https://www.uscis.gov/i-131">Form I-131 - Application for
+            Travel Document </a>(optional)
+        </li>
+        <span>Used to apply for an Advance Parole Document to allow {{us.data.application.name || "Applicant"}} to
+          return to the United States after temporary foreign travel while {{us.data.application.name &&
+          us.data.application.name + "'s" || "Applicant's"}} Form I-485 is pending</span>
+        <li>
+          <a class="sub__section-link" target="_blank" href="https://www.uscis.gov/i-130">Form I-130A - Supplemental
+            Information for Spouse Beneficiary</a>
+        </li>
+        <span>Used to collect additional information for a spouse beneficiary ({{us.data.application.name ||
+          "Applicant"}}) of Form I-130, Petition for Alien Relative</span>
+        <li>
+          <a class="sub__section-link" target="_blank" href="https://www.uscis.gov/g-1145">Form G-1145 - e-Notification
+            of Application/Petition Acceptance (optional)</a>
+        </li>
+        <span>Used to request an electronic notification (e-Notification) when U.S. Citizenship and Immigration Services
+          (USCIS) accepts {{us.data.application.name && us.data.application.name + "'s" || "Applicant's"}} immigration
+          application</span>
+      </ul>
+      <span>This list is based on USCIS instructions; you can see the source citations below:</span>
+    </div>
+    <div class="sub__section-btn" (click)="subsectiontwo=!subsectiontwo" (clickOutside)="subsectiontwo=null"> <span
+        class="sub__section-icon" [class._active]="subsectiontwo">&#8250;</span>Sources for this page</div>
+    <div class="sub-sub__section-inner" *ngIf="subsectiontwo">
+      <a style="color:#4D61FC;" target="_blank" href="https://www.uscis.gov/family/bring-spouse-to-live-in-US">Bringing
+        Spouses to Live in the United States as Permanent Residents</a>,
+      <a style="color:#4D61FC;" target="_blank" href="https://www.uscis.gov/green-card">Green Card Overview</a>,
+      <a style="color:#4D61FC;" target="_blank"
+        href="https://www.uscis.gov/green-card/green-card-processes-and-procedures/adjustment-of-status">Adjustment of
+        Status</a>,
+      <a style="color:#4D61FC;" target="_blank"
+        href="https://www.uscis.gov/green-card/green-card-processes-and-procedures/travel-documents">Travel
+        Documents</a>,
+      <a style="color:#4D61FC;" target="_blank"
+        href="https://www.uscis.gov/green-card/green-card-processes-and-procedures/employment-authorization-document">Employment
+        Authorization Document</a>
+      <a style="color:#4D61FC;" target="_blank" href="https://www.uscis.gov/i-130">I-130, Petition for Alien
+        Relative</a>,
+      <a style="color:#4D61FC;" target="_blank" href="https://www.uscis.gov/g-1145">G-1145, E-Notification of
+        Application/Petition Acceptance</a>,
+      <a style="color:#4D61FC;" target="_blank"
+        href="https://www.uscis.gov/sites/default/files/document/policy-manual-resources/Appendix-PublicChargeApplicabilitytoFamily-BasedAOS.pdf">USCIS
+        Public Policy Manual Chapter 3,</a>,
+      <a style="color:#4D61FC;" target="_blank"
+        href="https://www.uscis.gov/sites/default/files/document/policy-manual-resources/Appendix-PublicChargeApplicabilitytoFamily-BasedAOS.pdf">USCIS
+        Policy Manual Public Charge Appendix Page 1</a>,
+    </div>
+  </div>
+  <div class="sub__section" *ngIf="us.data.cardholder == 'greencard' && us.data.location == 'outside'">
+    <div class="sub__section-btn" (click)="subsection=!subsection" (clickOutside)="subsection=null"><span
+        class="sub__section-icon" [class._active]="subsection">&#8250;</span> See the list of forms
+      {{us.data.application.name || "Applicant"}} needs to submit</div>
+    <div class="sub-sub__section-inner" *ngIf="subsection">
+      <ul class="sub__section-list">
+        <li>
+          <a class="sub__section-link" target="_blank" href="">Form I-130A - Supplemental Information for Spouse
+            Beneficiary</a>
+        </li>
+        (optional)
+        <span>Used to collect additional information for a spouse beneficiary ({{us.data.application.name ||
+          "Applicant"}}) of Form I-130, Petition for Alien Relative.</span>
+        <li>
+          <a class="sub__section-link" target="_blank" href="">Form DS-260 </a>(Not Covered by Greenbroad)
+        </li>
+        <span>DS-260 (Online Immigrant Visa and Alien Registration Application) needs to be submitted directly through
+          Department of State's online portal, and is therefore not covered by Greenbroad. Later in the Submission 2
+          step, we will remind you to fill out this form on your own.</span>
+        <li>
+          <a class="sub__section-link" target="_blank" href="">Form DS-5540 </a>(Not Covered by Greenbroad)
+        </li>
+        <span>Form DS-5540 is a 4-page form used to demonstrate that {{us.data.application.name || "Applicant"}} can be
+          self-sufficient financially. {{us.data.application.name || "Applicant"}} will be asked to present a completed
+          DS-5540 at the time of the visa interview. This form is not covered by Greenbroad. Later in the Next Steps
+          section, we will remind you to fill out this form on your own.</span>
+      </ul>
+      <span>Form I-130A will be submitted in Submission 1. Form DS-260 will be submitted in Submission 2. Form DS-5540
+        will be submitted at the visa interview.
+      </span>
+      <span>This list is based on USCIS and U.S. State Department instructions; you can see the source citations
+        below:</span>
+    </div>
+    <div class="sub__section-btn" (click)="subsectiontwo=!subsectiontwo" (clickOutside)="subsectiontwo=null"> <span
+        class="sub__section-icon" [class._active]="subsectiontwo">&#8250;</span>Sources for this page</div>
+    <div class="sub-sub__section-inner" *ngIf="subsectiontwo">
+      <a style="color:#4D61FC;" target="_blank" href="https://www.uscis.gov/family/bring-spouse-to-live-in-US">Bringing
+        Spouses to Live in the United States as Permanent Residents</a>,
+      <a style="color:#4D61FC;" target="_blank" href="https://www.uscis.gov/green-card">Green Card Overview</a>,
+      <a style="color:#4D61FC;" target="_blank"
+        href="https://www.uscis.gov/green-card/green-card-processes-and-procedures/adjustment-of-status">Adjustment of
+        Status</a>,
+      <a style="color:#4D61FC;" target="_blank"
+        href="https://www.uscis.gov/green-card/green-card-processes-and-procedures/travel-documents">Travel
+        Documents</a>,
+      <a style="color:#4D61FC;" target="_blank"
+        href="https://www.uscis.gov/green-card/green-card-processes-and-procedures/employment-authorization-document">Employment
+        Authorization Document</a>
+      <a style="color:#4D61FC;" target="_blank" href="https://www.uscis.gov/i-130">I-130, Petition for Alien
+        Relative</a>,
+      <a style="color:#4D61FC;" target="_blank" href="https://www.uscis.gov/g-1145">G-1145, E-Notification of
+        Application/Petition Acceptance</a>,
+      <a style="color:#4D61FC;" target="_blank"
+        href="https://www.uscis.gov/sites/default/files/document/policy-manual-resources/Appendix-PublicChargeApplicabilitytoFamily-BasedAOS.pdf">USCIS
+        Public Policy Manual Chapter 3,</a>,
+      <a style="color:#4D61FC;" target="_blank"
+        href="https://www.uscis.gov/sites/default/files/document/policy-manual-resources/Appendix-PublicChargeApplicabilitytoFamily-BasedAOS.pdf">USCIS
+        Policy Manual Public Charge Appendix Page 1</a>,
+    </div>
+  </div>
+  <div class="sub__section" *ngIf="us.data.cardholder == 'us' && us.data.location == 'outside'">
+    <div class="sub__section-btn" (click)="subsection=!subsection" (clickOutside)="subsection=null"><span
+        class="sub__section-icon" [class._active]="subsection">&#8250;</span> See the list of forms {{us.data.application.name || "Applicant"}} needs to submit</div>
+    <div class="sub-sub__section-inner" *ngIf="subsection">
+      <ul class="sub__section-list">
+
+
+        <li>
+          <a class="sub__section-link" target="_blank" href="https://www.uscis.gov/i-485">Form I-485 - Application to
+            Register Permanent Residence or Adjust Status</a>
+          <span>Used by a person in the United States ({{us.data.application.name || "Applicant"}}) to apply for lawful
+            permanent resident status (commonly known as Green Card)</span>
+        </li>
+        <li>
+          <a class="sub__section-link" target="_blank" href="https://www.uscis.gov/i-765">Form I-765 - Application for
+            Employment Authorization </a>(optional)
+          <span>Used to request employment authorization and an Employment Authorization Document (EAD) to authorize
+            {{us.data.application.name || "Applicant"}} to work in the United States while {{us.data.application.name ||
+            "Applicant"}}'s Form I-485 is pending.</span>
+        </li>
+        <li>
+          <a class="sub__section-link" target="_blank" href="https://www.uscis.gov/i-131">Form I-131 - Application for
+            Travel Document </a>(optional)
+        </li>
+        <span>Used to apply for an Advance Parole Document to allow {{us.data.application.name || "Applicant"}} to
+          return to the United States after temporary foreign travel while {{us.data.application.name &&
+          us.data.application.name + "'s" || "Applicant's"}} Form I-485 is pending</span>
+        <li>
+          <a class="sub__section-link" target="_blank" href="https://www.uscis.gov/i-130">Form I-130A - Supplemental
+            Information for Spouse Beneficiary</a>
+        </li>
+        <span>Used to collect additional information for a spouse beneficiary ({{us.data.application.name ||
+          "Applicant"}}) of Form I-130, Petition for Alien Relative</span>
+        <li>
+          <a class="sub__section-link" target="_blank" href="https://www.uscis.gov/g-1145">Form G-1145 - e-Notification
+            of Application/Petition Acceptance (optional)</a>
+        </li>
+        <span>Used to request an electronic notification (e-Notification) when U.S. Citizenship and Immigration Services
+          (USCIS) accepts {{us.data.application.name && us.data.application.name + "'s" || "Applicant's"}} immigration
+          application</span>
+      </ul>
+      <span>Used to request an electronic notification (e-Notification) when U.S. Citizenship and Immigration Services
+        (USCIS) accepts {{us.data.application.name && us.data.application.name + "'s" || "Applicant's"}} immigration
+        application</span>
+    </div>
+    <div class="sub__section-btn" (click)="subsectiontwo=!subsectiontwo" (clickOutside)="subsectiontwo=null"> <span
+        class="sub__section-icon" [class._active]="subsectiontwo">&#8250;</span>Sources for this page</div>
+    <div class="sub-sub__section-inner" *ngIf="subsectiontwo">
+      <a style="color:#4D61FC;" target="_blank" href="https://www.uscis.gov/family/bring-spouse-to-live-in-US">Bringing
+        Spouses to Live in the United States as Permanent Residents</a>,
+      <a style="color:#4D61FC;" target="_blank" href="https://www.uscis.gov/green-card">Green Card Overview</a>,
+      <a style="color:#4D61FC;" target="_blank"
+        href="https://www.uscis.gov/green-card/green-card-processes-and-procedures/adjustment-of-status">Adjustment of
+        Status</a>,
+      <a style="color:#4D61FC;" target="_blank"
+        href="https://www.uscis.gov/green-card/green-card-processes-and-procedures/travel-documents">Travel
+        Documents</a>,
+      <a style="color:#4D61FC;" target="_blank"
+        href="https://www.uscis.gov/green-card/green-card-processes-and-procedures/employment-authorization-document">Employment
+        Authorization Document</a>
+      <a style="color:#4D61FC;" target="_blank" href="https://www.uscis.gov/i-130">I-130, Petition for Alien
+        Relative</a>,
+      <a style="color:#4D61FC;" target="_blank" href="https://www.uscis.gov/g-1145">G-1145, E-Notification of
+        Application/Petition Acceptance</a>,
+      <a style="color:#4D61FC;" target="_blank"
+        href="https://www.uscis.gov/sites/default/files/document/policy-manual-resources/Appendix-PublicChargeApplicabilitytoFamily-BasedAOS.pdf">USCIS
+        Public Policy Manual Chapter 3,</a>,
+      <a style="color:#4D61FC;" target="_blank"
+        href="https://www.uscis.gov/sites/default/files/document/policy-manual-resources/Appendix-PublicChargeApplicabilitytoFamily-BasedAOS.pdf">USCIS
+        Policy Manual Public Charge Appendix Page 1</a>,
+    </div>
+  </div>
+  <div class="section__container-btn">
+    <a class="section__btn" (click)="us.section='personal'; us.pagesection=1">Continue ></a>
+  </div>
+</div>

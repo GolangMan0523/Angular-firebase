@@ -1,0 +1,480 @@
+<div *ngIf="us.pagesection==1">
+  <div class="section__inner">
+    <div class="inner-top">
+      <h1 class="section__title">Public Charge Ground of Inadmissibility</h1>
+      <span class="section__discription"><img class="images" src="assets/star.png"></span>
+    </div>
+
+    <span class="section__discription">
+      The next page will go over questions needed to complete the "Public Charge" section of the new Form I-485. These
+      questions were just released by USCIS for the first time on Dec 23, 2022, as a result of the new <a
+        style="color: #4D61FC;" target="_blank"
+        href="https://www.uscis.gov/green-card/green-card-processes-and-procedures/public-charge/public-charge-resources">public
+        charge final</a> public charge final
+      rule. The purpose of this "Public Charge" section is to help USCIS determine how likely {{us.data.application.name
+      && us.data.application.name ||
+      "Applicant"}} can remain self-sufficient
+      and not become a public charge at any time in the future.
+    </span>
+    <span class="section__discription">
+      Source: <a style="color: #4D61FC;" target="_blank"
+        href="https://www.uscis.gov/green-card/green-card-processes-and-procedures/public-charge/public-charge-resources">
+        USCIS Public Charge Resources</a>, <a style="color: #4D61FC;" target="_blank"
+        href="https://www.federalregister.gov/documents/2022/09/09/2022-18867/public-charge-ground-of-inadmissibility">Federal
+        Register - Public Charge Ground of Inadmissibility</a> and Greenbroad
+      suggestions
+    </span>
+
+    <span class="section__discription">
+      Since this "Public Charge" section is so new, USCIS has not published much guidance to clarify questions 😓 In
+      this
+      part of Greenbroad, we will try our best to clarify and simplify, but given the lack of official guidance, we are
+      currently unable to provide much more additional information beyond what we have already included on the next
+      page.
+      We will continuously update our instructions as new government guidance becomes available.
+    </span>
+    <span class="section__discription">
+      Now, let's dive into this brave new world together 🌈
+    </span>
+
+    <span style="font-weight: 600; padding-top: 25px;">
+      An overview of the public charge ground of inadmissibility
+    </span>
+
+    <span class="section__discription">
+      With a few exceptions aside, most green card applicants need to demonstrate in their application that they are not
+      likely to at any time become a public charge. USCIS defines “likely at any time to become a public charge” as
+      someone who is “likely at any time to become primarily dependent on the government for subsistence, as
+      demonstrated
+      by either the receipt of public cash assistance for income maintenance or long-term institutionalization at
+      government expense.”
+    </span>
+    <span class="section__discription">
+      When determining whether an applicant is likely at any time to become a public charge, USCIS will consider the
+      following factors:</span>
+    <ul>
+      <li>Age</li>
+      <li> Health (based on the medical exam)</li>
+      <li>Family status (based on info provided in this section)</li>
+      <li>Assets, resources, and financial status (based on info provided in this section and in Form I-864)</li>
+      <li>Education and skills (based on info provided in this section).</li>
+
+    </ul>
+    <span class="section__discription">
+      There is no “bright-line” test in making a public charge inadmissibility determination, meaning that no one
+      factor,
+      other than the lack of a sufficient Form I-864 can be the sole criterion for determining if an applicant is likely
+      at any time to become a public charge. Instead, USCIS considers the applicant’s circumstances in their totality,
+      meaning that USCIS considers all the relevant information provided on Form I-485, Form I-693 (the medical exam),
+      any
+      other forms and evidence contained in the record, and statements by an applicant during an interview, if
+      applicable.
+    </span>
+
+    <span class="section__discription">
+      Source: <a style="color: #4D61FC;" target="_blank"
+        href="https://www.uscis.gov/sites/default/files/document/policy-manual-updates/20221219-PublicChargeFinalRule.pdf">USCIS
+        Policy Manual, Volume 8: Admissibility Part G – Public Charge Ground of Inadmissibility</a>
+    </span>
+
+    <span style="font-weight: 600; padding-top: 25px;">
+      What if I'm not sure whether USCIS would determine I'm "likely at any time to become a public charge"?
+    </span>
+
+    <span class="section__discription">
+      You may consider having a quick consultation about it with a lawyer (However, you can still use Greenbroad to
+      complete the rest of your application).
+    </span>
+
+    <span class="section__discription">
+      Source: Greenbroad suggestion only.
+    </span>
+    <div class="section__container-btn">
+      <a class="form__btn-back" (click)="us.section='placeslived';us.top();">
+        < Back </a>
+          <a class="form__btn-continue" (click)="us.pagesection=2;us.top();">
+            Continue
+            ></a>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="us.pagesection==2">
+  <div class="section__inner">
+    <h1 class="section__title">Is {{us.data.application.name && us.data.application.name ||
+      "Applicant"}} subject to the public charge ground of inadmissibility under INA section 212(a)(4)?
+    </h1>
+
+    <span class="section__discription">All marriage-based green card applicants are generally subject to the public
+      charge ground of inadmissibility under INA section 212(a)(4), unless they are specially exempt from it. For your
+      reference, the noncitizens who are exempt from the public charge ground of inadmissibility are listed
+      below.
+    </span>
+
+
+
+    <span class="section__discription">Source:
+      <a style="color: #4D61FC;" target="_blank"
+        href="https://www.uscis.gov/sites/default/files/document/policy-manual-updates/20221219-PublicChargeFinalRule.pdf">
+        USCIS Policy Manual, Volume 8: Admissibility Part G – Public Charge Ground of Inadmissibility page 11
+      </a>
+    </span>
+    <div class="sub__section-btn" (click)="subsection=!subsection" (clickOutside)="subsection=null"><span
+        class="sub__section-icon" [class._active]="subsection">&#8250;</span>List of noncitizens exempt from the public
+      charge ground of inadmissibility
+    </div>
+    <div class="sub-sub__section-inner" *ngIf="subsection">
+      <p>The following noncitizens are exempt from the public charge ground of inadmissibility when applying for visas,
+        admission, or adjustment of status:
+      </p>
+      <ul>
+
+        <li>Asylees and refugees;</li>
+        <li>Amerasian immigrants at admission;</li>
+        <li>Afghan and Iraqi interpreters or Afghan or Iraqi nationals employed by or on behalf of the U.S. government;
+        </li>
+        <li>Cuban and Haitian entrants applying for adjustment of status under section 202 of the Immigration Reform and
+          Control Act of 1986;</li>
+        <li>Applicants seeking adjustment under the Cuban Adjustment Act;</li>
+        <li>Nicaraguans and other Central Americans applying for adjustment of status under section 202(a) and section
+          203 of the Nicaraguan Adjustment and Central American Relief Act (NACARA);</li>
+        <li>Haitians who are applying for adjustment of status under section 902 of the Haitian Refugee Immigration
+          Fairness Act of 1998;</li>
+        <li>Lautenberg parolees;</li>
+        <li>Special immigrant juveniles;</li>
+        <li>Aliens who entered the United States prior to January 1, 1972, and who meet the other conditions for being
+          granted lawful permanent residence under section 249 of the Act and 8 CFR part 249 (Registry);</li>
+        <li>Applicants seeking Temporary Protected Status (TPS);</li>
+        <li>Certain nonimmigrant ambassadors, ministers, diplomats, and other foreign government officials, and their
+          families;</li>
+        <li>Human trafficking victims (T nonimmigrants);</li>
+        <li>Victims of qualifying criminal activity (U nonimmigrants);</li>
+        <li>
+          Self-petitioners under the Violence against Women Act (VAWA);</li>
+        <li>Certain battered noncitizens who are “qualified aliens” under the Personal Responsibility and Work
+          Opportunity Reconciliation Act of 1996;</li>
+        <li>Applicants adjusting status who qualify for a benefit as surviving spouses, children, or parents of military
+          members;</li>
+        <li>
+          American Indians born in Canada determined to fall under section 289 of the Immigration and Nationality Act;
+        </li>
+        <li>
+          Noncitizen members of the Texas Band of Kickapoo Indians of the Kickapoo Tribe of Oklahoma;</li>
+        <li>Nationals of Vietnam, Cambodia, and Laos applying under the Indochinese Act;</li>
+        <li>
+          Polish and Hungarian Parolees;</li>
+        <li>Certain Syrian nationals;</li>
+        <li>
+          adjusting under the Liberian Refugee Immigration Fairness (LRIF) law;</li>
+        <li>
+          Any other categories of noncitizens exempt under any other law from the public charge ground of
+          inadmissibility provisions under the Immigration and Nationality Act 212(a)(4).</li>
+
+      </ul>
+    </div>
+
+
+    <div class="form__check">
+      <label>
+        <input type="radio" name="publiccheck_name" [value]="'yes'" [(ngModel)]="us.data.application.publiccheck_name"
+          (ngModelChange)="us.update();">
+        <span class="check">Yes</span>
+      </label>
+      <label>
+        <input type="radio" name="publiccheck_name" [value]="'no'" [(ngModel)]="us.data.application.publiccheck_name"
+          (ngModelChange)="us.update();">
+        <span class="check">No</span>
+      </label>
+    </div>
+    <div *ngIf="us.data.application.publiccheck_name=='yes'">
+      <div class="section__container">
+        <label>
+          <span class="form__title">What is the size of {{us.data.application.name && us.data.application.name + "'s" ||
+            "Applicant's"}} household?</span>
+          <input maxlength="2" class="section__npt" type="text"
+          oninput="this.value = this.value.replace(/[^0-9]/g, '');"
+            [class.err]="err.size" [(ngModel)]="us.data.application.sizeee_name"
+            (ngModelChange)="us.data.application.sizeee_name = us.data.application.sizeee_name.toUpperCase();
+             us.update(); err.size = false" (blur)="!us.data.application.sizeee_name && err.size = true">
+          <span *ngIf="err.size" class="errspan">This field is required</span>
+        </label>
+      </div>
+
+      <div class="form__check">
+        <span class="form__title">Indicate {{us.data.application.name && us.data.application.name +
+          "'s" || "Applicant's"}} annual household income.</span>
+        <label>
+          <input type="radio" name="inadmissibility_name" [value]="'$0-27,000'"
+            [(ngModel)]="us.data.application.inadmissibility_name" (ngModelChange)="us.update(); err.hairColor = false">
+          <span class="check">$0-27,000</span>
+        </label>
+        <label>
+          <input type="radio" name="inadmissibility_name" [value]="'$27,001-52,000'"
+            [(ngModel)]="us.data.application.inadmissibility_name" (ngModelChange)="us.update(); err.hairColor = false">
+          <span class="check">$27,001-52,000</span>
+        </label>
+        <label>
+          <input type="radio" name="inadmissibility_name" [value]="'$52,001-85,000'"
+            [(ngModel)]="us.data.application.inadmissibility_name" (ngModelChange)="us.update(); err.hairColor = false">
+          <span class="check">$52,001-85,000</span>
+        </label>
+        <label>
+          <input type="radio" name="inadmissibility_name" [value]="'$85,001-141,000'"
+            [(ngModel)]="us.data.application.inadmissibility_name" (ngModelChange)="us.update(); err.hairColor = false">
+          <span class="check">$85,001-141,000</span>
+        </label>
+        <label>
+          <input type="radio" name="inadmissibility_name" [value]="'Over $141,000'"
+            [(ngModel)]="us.data.application.inadmissibility_name" (ngModelChange)="us.update(); err.hairColor = false">
+          <span class="check">Over $141,000</span>
+        </label>
+        <span *ngIf="err.hairColor" class="errspan">This field is required</span>
+
+      </div>
+
+
+      <div class="form__check">
+        <span class="form__title">Identify the total value of {{us.data.application.name && us.data.application.name +
+          "'s" || "Applicant's"}} household assets.</span>
+        <label>
+          <input type="radio" name="inadmissibilityis_name" [value]="'$0-18,400'"
+            [(ngModel)]="us.data.application.inadmissibilityis_name" (ngModelChange)="us.update(); err.hairColor = false">
+          <span class="check">$0-18,400</span>
+        </label>
+        <label>
+          <input type="radio" name="inadmissibilityis_name" [value]="'$18,401-136,000'"
+            [(ngModel)]="us.data.application.inadmissibilityis_name" (ngModelChange)="us.update(); err.hairColor = false">
+          <span class="check">$18,401-136,000</span>
+        </label>
+        <label>
+          <input type="radio" name="inadmissibilityis_name" [value]="'$136,001-321,400'"
+            [(ngModel)]="us.data.application.inadmissibilityis_name" (ngModelChange)="us.update(); err.hairColor = false">
+          <span class="check">$136,001-321,400</span>
+        </label>
+        <label>
+          <input type="radio" name="inadmissibilityis_name" [value]="'$321,401-707,100'"
+            [(ngModel)]="us.data.application.inadmissibilityis_name" (ngModelChange)="us.update(); err.hairColor = false">
+          <span class="check">$321,401-707,100</span>
+        </label>
+        <label>
+          <input type="radio" name="inadmissibilityis_name" [value]="'Over $707,100'"
+            [(ngModel)]="us.data.application.inadmissibilityis_name" (ngModelChange)="us.update(); err.hairColor = false">
+          <span class="check">Over $707,100</span>
+        </label>
+        <span *ngIf="err.hairColor" class="errspan">This field is required</span>
+
+      </div>
+
+      <div class="form__check">
+        <span class="form__title">Identify the total value of {{us.data.application.name && us.data.application.name +
+        "'s" || "Applicant's"}} household liabilities (including both secured and unsecured liabilities).</span>
+        <label>
+          <input type="radio" name="isinadmissibility_name" [value]="'$0'"
+            [(ngModel)]="us.data.application.isinadmissibility_name" (ngModelChange)="us.update(); err.hairColor = false">
+          <span class="check">$0</span>
+        </label>
+        <label>
+          <input type="radio" name="isinadmissibility_name" [value]="'$1-10,100'"
+            [(ngModel)]="us.data.application.isinadmissibility_name" (ngModelChange)="us.update(); err.hairColor = false">
+          <span class="check">$1-10,100</span>
+        </label>
+        <label>
+          <input type="radio" name="isinadmissibility_name" [value]="'$10,101-57,700'"
+            [(ngModel)]="us.data.application.isinadmissibility_name" (ngModelChange)="us.update(); err.hairColor = false">
+          <span class="check">$10,101-57,700</span>
+        </label>
+        <label>
+          <input type="radio" name="isinadmissibility_name" [value]="'$57,701-186,800'"
+            [(ngModel)]="us.data.application.isinadmissibility_name" (ngModelChange)="us.update(); err.hairColor = false">
+          <span class="check">$57,701-186,800</span>
+        </label>
+        <label>
+          <input type="radio" name="isinadmissibility_name" [value]="'Over $186,800'"
+            [(ngModel)]="us.data.application.isinadmissibility_name" (ngModelChange)="us.update(); err.hairColor = false">
+          <span class="check">Over $186,800</span>
+        </label>
+        <span *ngIf="err.hairColor" class="errspan">This field is required</span>
+      </div>
+
+      <div class="form__check">
+        <span class="form__title">What is the highest degree or level of school {{us.data.application.name && us.data.application.name ||
+          "Applicant"}} has completed?</span>
+        <label>
+          <input type="radio" name="inadmissibilitysa_name" [value]="'Grades 1 through 11'"
+            [(ngModel)]="us.data.application.inadmissibilitysa_name" (ngModelChange)="us.update(); err.hairColor = false">
+          <span class="check">Grades 1 through 11</span>
+        </label>
+        <label>
+          <input type="radio" name="inadmissibilitysa_name" [value]="''"
+            [(ngModel)]="us.data.application.inadmissibilitysa_name" (ngModelChange)="us.update(); err.hairColor = false">
+          <span class="check">12th grade - no diploma</span>
+        </label>
+        <label>
+          <input type="radio" name="inadmissibilitysa_name"
+            [value]="'High school diploma, GED, or alternative credential'"
+            [(ngModel)]="us.data.application.inadmissibilitysa_name" (ngModelChange)="us.update(); err.hairColor = false">
+          <span class="check">High school diploma, GED, or alternative credential</span>
+        </label>
+        <label>
+          <input type="radio" name="inadmissibilitysa_name" [value]="'1 or more years of college credit, no degree'"
+            [(ngModel)]="us.data.application.inadmissibilitysa_name" (ngModelChange)="us.update(); err.hairColor = false">
+          <span class="check">1 or more years of college credit, no degree</span>
+        </label>
+        <label>
+          <input type="radio" name="inadmissibilitysa_name" [value]="'Associates degree'"
+            [(ngModel)]="us.data.application.inadmissibilitysa_name" (ngModelChange)="us.update(); err.hairColor = false">
+          <span class="check">Associate's degree</span>
+        </label>
+        <label>
+          <input type="radio" name="inadmissibilitysa_name" [value]="'Bachelors degree'"
+            [(ngModel)]="us.data.application.inadmissibilitysa_name" (ngModelChange)="us.update(); err.hairColor = false">
+          <span class="check">Bachelor's degree</span>
+        </label>
+        <label>
+          <input type="radio" name="inadmissibilitysa_name" [value]="'Masters degree'"
+            [(ngModel)]="us.data.application.inadmissibilitysa_name" (ngModelChange)="us.update(); err.hairColor = false">
+          <span class="check">Master's degree</span>
+        </label>
+        <label>
+          <input type="radio" name="inadmissibilitysa_name" [value]="'Professional degree (JD, MD, DMD, etc.)'"
+            [(ngModel)]="us.data.application.inadmissibilitysa_name" (ngModelChange)="us.update(); err.hairColor = false">
+          <span class="check">Professional degree (JD, MD, DMD, etc.)</span>
+        </label>
+        <label>
+          <input type="radio" name="inadmissibilitysa_name" [value]="'Doctorate degree'"
+            [(ngModel)]="us.data.application.inadmissibilitysa_name" (ngModelChange)="us.update(); err.hairColor = false">
+          <span class="check">Doctorate degree</span>
+        </label>
+        <span *ngIf="err.hairColor" class="errspan">This field is required</span>
+
+      </div>
+
+
+      <div class="form__inner">
+        <div>
+          <label>
+            <div class="form__title"><span>List {{us.data.application.name && us.data.application.name + "'s" ||
+                "Applicant's"}} certifications, licenses, skills obtained through work experience, and educational
+                certificates. </span>
+              <!-- <div class="tooltip-container">
+              <span class="tooltip__i">i</span>
+
+              <div class="tooltip">
+                <span class="tooltips__title">Country or Countries of Citizenship or Nationality
+                </span>
+                <span>List all countries where you are currently a citizen or national.</span>
+                <span>If you are stateless, type or print the name of the country where you were last a citizen or
+                  national.</span>
+                <span class="tooltip__link">Source: <a target="_blank"
+                    href="https://www.uscis.gov/sites/default/files/document/forms/i-765.pdf">USCIS Form I-765 Page
+                    2</a>, <a target="_blank"
+                    href="https://www.uscis.gov/sites/default/files/document/forms/i-765instr.pdf">Form I-765
+                    Instructions Page 22</a></span>
+              </div>
+            </div> -->
+            </div>
+            <div style="display: flex; margin-top: 15px;" *ngFor="let name of us.data.application.certificates_names;">
+              <input type="text" maxlength="50" [(ngModel)]="name.certificates_name" [class.err]="err.certificates"
+                (ngModelChange)="name.certificates_name = name.certificates_name.toUpperCase(); us.update();err.certificates = false; validateLength(name.certificates_name)"
+                (blur)="!name.certificates_name && err.certificates = true">
+              <button class="close__x" (click)="us.data.application.certificates_names.splice(i,1);us.update();">X
+              </button>
+            </div>
+            <span *ngIf="err.certificates" class="errspan">This field is required
+            </span>
+          </label>
+
+          <div class="add-country-btn__container">
+            <button class="add-certificates__btn" (click)="addcertificates()">+ Add item</button>
+          </div>
+        </div>
+
+        <div class="form__check">
+          <span class="form__title">Has "{{us.data.application.name || "Applicant"}} ever received Supplemental Security
+            Income (SSI), Temporary Assistance for Needy Families (TANF), or State, Tribal, territorial, or local, cash
+            benefit programs for income maintenance (often called “General Assistance” in the State context, but which
+            also exist under other names)?</span>
+          <label>
+            <input type="radio" name="publicheck_name" [value]="'yes'" [(ngModel)]="us.data.application.publicheck_name"
+              (ngModelChange)="us.update();">
+            <span class="check">Yes</span>
+          </label>
+          <label>
+            <input type="radio" name="publicheck_name" [value]="'no'" [(ngModel)]="us.data.application.publicheck_name"
+              (ngModelChange)="us.update();">
+            <span class="check">No</span>
+          </label>
+        </div>
+
+        <div class="sub-form__container" *ngIf="us.data.application.publicheck_name=='yes'">
+          <span>Your Case Requires Additional Attention</span>
+          <p>Because the applicant is exempt from filing an Affidavit of Support, there may be additional
+            documents/forms you need to submit that are not covered by Greenbroad.</p>
+          <p>If you choose to proceed using Greenbroad, you can continue filling out all the questions asked in our
+            software and preparing all the documents listed in our document checklist. At the end, we will generate
+            for you all the forms and cover letters that we cover. <span>However, we strongly suggest you consult an
+              <a style="color: #1972F5;" target="_blank" href="https://www.ailalawyer.com/">immigration lawyer</a> to
+              prepare the additional
+              documents/forms or your
+              application may be
+              rejected or denied.</span></p>
+          <p>If you have any questions or need a lawyer recommendation, do not hesitate to contact us.</p>
+        </div>
+
+
+        <div class="form__check">
+          <span class="form__title">Has {{us.data.application.name || "Applicant"}} ever received long-term
+            institutionalization at government expense?</span>
+          <label>
+            <input type="radio" name="publi_name" [value]="'yes'" [(ngModel)]="us.data.application.publi_name"
+              (ngModelChange)="us.update();">
+            <span class="check">Yes</span>
+          </label>
+          <label>
+            <input type="radio" name="publi_name" [value]="'no'" [(ngModel)]="us.data.application.publi_name"
+              (ngModelChange)="us.update();">
+            <span class="check">No</span>
+          </label>
+        </div>
+
+        <div class="sub-form__container" *ngIf="us.data.application.publi_name=='yes'">
+          <span>Your Case Requires Additional Attention</span>
+          <p>Because the applicant is exempt from filing an Affidavit of Support, there may be additional
+            documents/forms you need to submit that are not covered by Greenbroad.</p>
+          <p>If you choose to proceed using Greenbroad, you can continue filling out all the questions asked in our
+            software and preparing all the documents listed in our document checklist. At the end, we will generate
+            for you all the forms and cover letters that we cover. <span>However, we strongly suggest you consult an
+              <a style="color: #1972F5;" target="_blank" href="https://www.ailalawyer.com/">immigration lawyer</a> to
+              prepare the additional
+              documents/forms or your
+              application may be
+              rejected or denied.</span></p>
+          <p>If you have any questions or need a lawyer recommendation, do not hesitate to contact us.</p>
+        </div>
+      </div>
+
+    </div>
+    <div class="sub-form__container" *ngIf="us.data.application.publiccheck_name=='no'">
+      <span>Your Case Requires Additional Attention</span>
+      <p>Because the applicant is exempt from filing an Affidavit of Support, there may be additional
+        documents/forms you need to submit that are not covered by Greenbroad.</p>
+      <p>If you choose to proceed using Greenbroad, you can continue filling out all the questions asked in our
+        software and preparing all the documents listed in our document checklist. At the end, we will generate
+        for you all the forms and cover letters that we cover. <span>However, we strongly suggest you consult an
+          <a style="color: #1972F5;" target="_blank" href="https://www.ailalawyer.com/">immigration lawyer</a> to
+          prepare the additional
+          documents/forms or your
+          application may be
+          rejected or denied.</span></p>
+      <p>If you have any questions or need a lawyer recommendation, do not hesitate to contact us.</p>
+    </div>
+
+    <div class="section__container-btn">
+      <a class="form__btn-back" (click)="us.pagesection=1;us.top();">
+        < Back </a>
+          <a class="form__btn-continue" (click)="us.section='otherhistory'; us.pagesection=1; us.top();">
+            Continue
+            ></a>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,1113 @@
+<div class="section__inner">
+  <div style="
+  position: sticky;
+  padding: 0 0 0 20px;
+  margin: 0 0 0 20px;
+  border-left: solid 1px #686868;" class="summary__aside-menu">
+    <div class="leftbar-sponsor__inner">
+      <nav class="leftbar__manu">
+        <div class="leftbar__manu-link" (click)="us.section='personalinfo'" [class.active]="us.section=='personalinfo'">
+          Personal info</div>
+        <div class="leftbar__manu-link" (click)="us.section='sponsorplaceslived'"
+          [class.active]="us.section=='sponsorplaceslived'">Places lived</div>
+        <div class="leftbar__manu-link" (click)="us.section='financical'" [class.active]="us.section=='financical'">
+          Financial support</div>
+        <div class="leftbar__manu-link" (click)="us.section='sponsorimmigration'"
+          [class.active]="us.section=='sponsorimmigration'">Immigration info</div>
+        <div class="leftbar__manu-link" (click)="us.section='sponsorfamily'"
+          [class.active]="us.section=='sponsorfamily'">Family</div>
+        <div class="leftbar__manu-link" (click)="us.section='sponsoremploument'"
+          [class.active]="us.section=='sponsoremploument'">Employment</div>
+        <div class="leftbar__manu-link" (click)="us.section='enotification'"
+          [class.active]="us.section=='enotification'">E-Notification</div>
+        <div class="leftbar__manu-link" (click)="us.section='sponsorsummary'"
+          [class.active]="us.section=='sponsorsummary'">★ SUMMARY</div>
+      </nav>
+    </div>
+  </div>
+  <div style="width: 80%;" *ngIf="section==1">
+    <h1 class="section__title">Sponsor Info Summary</h1>
+    <span class="form__title">Personal Info</span>
+    <div class="form__container">
+      <div class="form__top"><span>Full Legal Name</span> <a class="form-top__link"(click)="us.section='personalinfo'; updateps(1); us.top();">Edit</a></div>
+      <div class="form__section">
+        <div class="form"><span>First name</span> <a class="form__link"(click)="us.section='personalinfo'; updateps(1); us.top();" >{{us.data.application.sponsorname &&
+            us.data.application.sponsorname || "Need Info"}}</a></div>
+        <div class="form"><span>Middle name</span> <a class="form__link"
+          (click)="us.section='personalinfo'; updateps(1); us.top();">{{us.data.application.sponsormiddle_name
+            &&
+            us.data.application.sponsormiddle_name || "Need Info"}}</a></div>
+        <div class="form"><span>Last name</span> <a class="form__link" (click)="us.section='personalinfo'; updateps(1); us.top();">{{us.data.application.sponsorfamily_name
+            &&
+            us.data.application.sponsorfamily_name || "Need Info"}}</a></div>
+      </div>
+    </div>
+    <!-- --------------------------------------------------------------------------------------------------------------------------------------------------------- -->
+    <div class="form__top"><span>{{us.data.application.sponsorname && us.data.application.sponsorname + "'s" ||
+        "Sponsor's"}}
+        Other Names</span> <a class="form-top__link" (click)="us.section='personalinfo'; updateps(2); us.top();">Edit</a>
+    </div>
+    <div class="form__container">
+      <div *ngFor="let name of us.data.application.sponsorform_names">
+        <div class="form__section">
+          <div class="form"><span>First name</span> <a class="form__link" (click)="us.section='personalinfo'; updateps(1); us.top();">{{name.sponsorsubfirstname_name &&
+              name.sponsorsubfirstname_name || "Need Info"}}</a></div>
+          <div class="form__section">
+            <div class="form"><span>Middle name</span> <a class="form__link" (click)="us.section='personalinfo'; updateps(1); us.top();">{{name.sponsorsubmiddlename_name
+                &&
+                name.sponsorsubmiddlename_name || "Need Info"}}</a></div>
+          </div>
+          <div class="form__section">
+            <div class="form"><span>Last name</span> <a class="form__link"(click)="us.section='personalinfo'; updateps(1); us.top();">{{name.sponsorsublastname_name &&
+                name.sponsorsublastname_name || "Need Info"}}</a></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ------------------------------------------------------------------------------------------------------------------------------------------------------ -->
+
+    <!-- <div class="form__container">
+      <div class="form__top"><span>{{us.data.application.name && us.data.application.name || "Applicant's"}}
+          Name in
+          Native Language</span> <a class="form-top__link" >Edit</a></div>
+      <div class="form__section">
+        <div class="form"><span>First name</span> <a class="form__link" >{{us.data.application.subfirstnames_name
+            &&
+            us.data.application.subfirstnames_name || "Need Info"}}</a></div>
+        <div class="form__section">
+          <div class="form"><span>Middle name</span> <a class="form__link"
+              >{{us.data.application.subsubmiddlenames_name && us.data.application.subsubmiddlenames_name
+              ||
+              "Need
+              Info"}}</a>
+          </div>
+        </div>
+        <div class="form__section">
+          <div class="form"><span>Last name</span> <a class="form__link"
+              >{{us.data.application.subsublastnames_name
+              && us.data.application.subsublastnames_name || "Need Info"}}</a></div>
+        </div>
+      </div>
+    </div> -->
+
+    <!-- -------------------------------------------------------------------------------------------------------------------------------------------------------- -->
+
+
+    <div class="form__container">
+      <div class="form__top"><span>{{us.data.application.sponsorname && us.data.application.sponsorname + "'s"
+          ||
+          "Sponsor's"}}
+          Basic
+          Info</span> <a class="form-top__link" (click)="us.section='personalinfo'; updateps(3); us.top();">Edit</a>
+      </div>
+      <div class="form__section">
+        <div class="form"><span>Sex</span> <a class="form__link" (click)="us.section='personalinfo'; updateps(3); us.top();">{{us.data.application.sponsorbasicinfo_name &&
+            us.data.application.sponsorbasicinfo_name || "Need Info"}}</a>
+        </div>
+
+
+        <div class="form"><span>Date of birth</span> <a class="form__link"
+          (click)="us.section='personalinfo'; updateps(3); us.top();">{{formatDate(us.data.application.insaidedateofbirrth_name) || "Need Info"}}</a>
+        </div>
+
+        <div class="form"><span>Country of birth</span> <a class="form__link"
+          (click)="us.section='personalinfo'; updateps(3); us.top();">{{us.data.application.ofinsidesponsorbirth_name
+            &&
+            us.data.application.ofinsidesponsorbirth_name || "Need Info"}}</a>
+        </div>
+
+
+        <div class="form"><span>State/province of birth</span> <a class="form__link"
+          (click)="us.section='personalinfo'; updateps(3); us.top();">{{us.data.application.insideorprovince_name &&
+            us.data.application.insideorprovince_name || "Need Info"}}</a>
+        </div>
+
+        <div class="form"><span>City/town/village of birth</span> <a class="form__link"
+          (click)="us.section='personalinfo'; updateps(3); us.top();">{{us.data.application.cityinside_name &&
+            us.data.application.cityinside_name || "Need Info"}}</a>
+        </div>
+
+        <div class="form"><span>U.S. Social Security Number</span>
+          <a class="form__link" (click)="us.section='personalinfo'; updateps(3); us.top();">{{us.data.application.sponsorsecuritynumberone_name &&
+            us.data.application.sponsorsecuritynumbertwo_name && us.data.application.sponsorsecuritynumberthree_name ?
+            [us.data.application.sponsorsecuritynumberone_name ,
+            us.data.application.sponsorsecuritynumbertwo_name ,
+            us.data.application.sponsorsecuritynumberthree_name].join('
+            '):
+            "Need
+            Info"}}</a>
+        </div>
+
+
+        <div class="form"><span>Daytime phone number</span> <a class="form__link"
+          (click)="us.section='personalinfo'; updateps(3); us.top();">{{us.data.application.phonenumbersponsor_name &&
+            us.data.application.phonenumbersponsor_name || "Need Info"}}</a>
+        </div>
+
+
+        <div class="form"><span>Mobile phone number</span> <a class="form__link"
+          (click)="us.section='personalinfo'; updateps(3); us.top();">{{us.data.application.insponsormobile_name
+            &&
+            us.data.application.insponsormobile_name || "Need Info"}}</a>
+        </div>
+
+
+        <div class="form"><span>Email address</span> <a class="form__link"
+          (click)="us.section='personalinfo'; updateps(3); us.top();">{{us.data.application.insponsoremail_name
+            &&
+            us.data.application.insponsoremail_name || "Need Info"}}</a>
+        </div>
+
+        <div class="form"><span>Is {{us.data.application.sponsorname && us.data.application.sponsorname || "Sponsor's"}}
+            on active duty in the U.S. Armed Forces or U.S. Coast Guard?</span> <a class="form__link" (click)="us.section='personalinfo'; updateps(3); us.top();"
+            >{{us.data.application.register_name
+            &&
+            us.data.application.register_name || "Need Info"}}</a>
+        </div>
+      </div>
+    </div>
+
+
+    <!-- --------------------------------------------------------------------------------------------------------------------------------------------------------- -->
+
+
+    <div class="form__container">
+      <div class="form__top"><span>{{us.data.application.sponsorname && us.data.application.sponsorname + "'s"
+          ||
+          "Sponsor's"}}
+          Biographic Info</span> <a class="form-top__link" (click)="us.section='personalinfo'; updateps(4); us.top();">Edit</a></div>
+      <div class="form__section">
+
+        <div class="form"><span>Ethnicity</span> <a class="form__link" (click)="us.section='personalinfo'; updateps(4); us.top();" >{{stringUpper(us.data.application.latino_name) || "Need Info"}}</a></div>
+
+        <div class="form"><span>Race</span> <a class="form__link" (click)="us.section='personalinfo'; updateps(4); us.top();" >{{us.data.application.hawaiianor_name
+            &&
+            us.data.application.white_name && us.data.application.asian_name &&
+            us.data.application.africanamerican_name && us.data.application.alaskanative_name ?
+            [us.data.application.hawaiianor_name ,
+            us.data.application.white_name , us.data.application.asian_name ,
+            us.data.application.africanamerican_name , us.data.application.alaskanative_name].join(' '): "Need
+            Info"}}</a>
+        </div>
+
+        <div class="form"><span>Eye color</span> <a class="form__link" (click)="us.section='personalinfo'; updateps(4); us.top();" >{{stringUpper(us.data.application.eye_name) || "Need Info"}}</a></div>
+
+        <div class="form"><span>Hair color</span> <a class="form__link" (click)="us.section='personalinfo'; updateps(4); us.top();" >{{stringUpper(us.data.application.hair_name) || "Need Info"}}</a></div>
+
+        <div class="form"><span>Weight</span> <a class="form__link" (click)="us.section='personalinfo'; updateps(4); us.top();" >{{us.data.application.sponsoruspounds_name
+            &&
+            us.data.application.sponsoruspoundsa_name && us.data.application.sponsoruspoundss_name ?
+            [us.data.application.sponsoruspounds_name ,
+            us.data.application.sponsoruspoundsa_name , us.data.application.sponsoruspoundss_name].join(' '): "Need
+            Info"}}</a>
+        </div>
+
+        <div class="form"><span>Height</span> <a class="form__link" (click)="us.section='personalinfo'; updateps(4); us.top();" >{{us.data.application.sponsorusfeet_name &&
+            us.data.application.sponsorusinches_name ? [us.data.application.sponsorusfeet_name ,
+            us.data.application.sponsorusinches_name].join(' '): "Need Info"}}</a></div>
+      </div>
+    </div>
+
+
+
+
+    <!-- -------------------------------------------------------------------------------------------------------------------------------------------------------- -->
+
+
+
+
+
+
+    <span class="form__title">Places lived</span>
+    <div class="form__container">
+      <div class="form__top"><span>{{us.data.application.sponsorname && us.data.application.sponsorname + "'s" ||
+          "Sponsor's"}}
+          mailing address</span> <a class="form-top__link"(click)="us.section='sponsorplaceslived'; updateps(2); us.top();" >Edit</a>
+      </div>
+      <div class="form__section">
+        <div class="form"><span>In care of name</span> <a class="form__link"
+          (click)="us.section='sponsorplaceslived'; updateps(2); us.top();">{{us.data.application.insponsorincare_name
+            && us.data.application.insponsorincare_name || "Need Info"}}</a></div>
+      </div>
+      <div class="form__section">
+        <div class="form"><span>Mailing address</span> <a class="form__link" (click)="us.section='sponsorplaceslived'; updateps(2); us.top();"
+            >{{us.data.application.inphysicalstreetsponsor_name &&
+            us.data.application.inphysicalstreetsponsor_name || "Need Info"}}
+            {{ us.data.application.sponsortypeaddress_name && us.data.application.sponsortypeaddress_name}}
+            {{ us.data.application.physicalusaptsponsor_name && us.data.application.physicalusaptsponsor_name}}
+            {{ us.data.application.physicalusstesponsor_name && us.data.application.physicalusstesponsor_name}}
+            {{us.data.application.physicalcitysponsorus_name && us.data.application.physicalcitysponsorus_name}}
+            {{us.data.application.physicalusprovincesponsorin_name &&
+            us.data.application.physicalusprovincesponsorin_name}}
+            {{us.data.application.usinsidezipcode_name && us.data.application.usinsidezipcode_name}}
+            {{us.data.application.provinceusinside_name && us.data.application.provinceusinside_name}}
+            {{us.data.application.postalcodeinsideus_name && us.data.application.postalcodeinsideus_name}}
+            {{us.data.application.insidecountrysponsorus_name && us.data.application.insidecountrysponsorus_name}}
+          </a></div>
+
+      </div>
+    </div>
+    <div class="form__container">
+      <div class="form__top"><span>{{us.data.application.sponsorname && us.data.application.sponsorname + "'s" ||
+          "Sponsor's"}}
+          physical address</span> <a class="form-top__link" (click)="us.section='sponsorplaceslived'; updateps(3); us.top();">Edit</a>
+      </div>
+      <div class="form__section">
+        <div class="form"><span>Physical address</span> <a class="form__link" (click)="us.section='sponsorplaceslived'; updateps(3); us.top();">
+            {{ us.data.application.physicaladdresssponsor_name && us.data.application.physicaladdresssponsor_name}}
+            {{us.data.application.streetsponsorandname_name &&
+            us.data.application.streetsponsorandname_name || "Need Info"}}
+
+            {{ us.data.application.physicalaptsponsor_name && us.data.application.physicalaptsponsor_name}}
+
+            {{ us.data.application.physicalstesponsore_name && us.data.application.physicalstesponsore_name}}
+
+            {{us.data.application.placemailingcity_name && us.data.application.placemailingcity_name}}
+
+            {{us.data.application.usmailingprovinceinside_name &&
+            us.data.application.usmailingprovinceinside_name}}
+
+            {{us.data.application.mailingpostalcodezipin_name && us.data.application.mailingpostalcodezipin_name}}
+
+            {{us.data.application.mailingprovinceinsi_name && us.data.application.mailingprovinceinsi_name}}
+
+            {{us.data.application.gpostalcodeinsidemailin_name && us.data.application.gpostalcodeinsidemailin_name}}
+
+            {{us.data.application.placemailingcountry_name && us.data.application.placemailingcountry_name}}
+
+            {{formatDate(us.data.application.physicaltypeofaddresssponsor_name)}}
+
+          </a>
+        </div>
+        <div class="form__section">
+          <div class="form"><span>Move in date</span> <a class="form__link" (click)="us.section='sponsorplaceslived'; updateps(3); us.top();" >
+              {{formatDate(us.data.application.currentphysicaladdress_name) || "Need Info"}}
+            </a>
+          </div>
+        </div>
+
+        <div class="form__section" *ngIf="us.data.cardholder == 'greencard' && us.data.location == 'inside'">
+          <div class="form"><span>About {{us.data.application.sponsorname && us.data.application.sponsorname + "'s" ||
+              "Sponsor's"}} country of domicile</span> <a class="form__link" (click)="us.section='sponsorplaceslived'; updateps(3); us.top();" >
+              {{us.data.application.sponsordomicile_name &&
+              us.data.application.sponsordomicile_name || "Need Info"}}
+            </a>
+          </div>
+        </div>
+        <div class="form__section" *ngIf="us.data.cardholder == 'us' && us.data.location == 'inside'">
+          <div class="form"><span>Is the United States {{us.data.application.sponsorname &&
+              us.data.application.sponsorname + "'s" ||
+              "Sponsor's"}} country of domicile?</span> <a class="form__link" (click)="us.section='sponsorplaceslived'; updateps(3); us.top();" >
+              {{us.data.application.sponsorplace_name &&
+              us.data.application.sponsorplace_name || "Need Info"}}
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="form__container">
+        <div class="form__top"><span>Last address at which {{us.data.application.sponsorname &&
+            us.data.application.sponsorname || "Sponsor's"}} and 1 physically lived together</span>
+          <a class="form-top__link" (click)="us.section='sponsorplaceslived'; updateps(4); us.top();">Edit</a>
+        </div>
+        <div class="form__section">
+          <div class="form"><span>Address</span>
+            <a class="form__link" (click)="us.section='sponsorplaceslived'; updateps(4); us.top();" >
+
+              {{us.data.application.togetheraddress_name &&
+              us.data.application.togetheraddress_name + ',' ||  "Need Info"}}
+
+              {{us.data.application.streettogethersponsors_name &&
+              us.data.application.streettogethersponsors_name + ','}}
+
+
+              {{us.data.application.togethersponsor_name &&
+              us.data.application.togethersponsor_name + ','}}
+
+
+              {{us.data.application.physicalusstetogether_name &&
+              us.data.application.physicalusstetogether_name + ','}}
+
+              {{us.data.application.togethertogether_name &&
+              us.data.application.togethertogether_name + ','}}
+
+
+              {{us.data.application.togetherprovinceplace_name &&
+              us.data.application.togetherprovinceplace_name + ','}}
+
+              {{us.data.application.togetherpostalcodeplace_name &&
+              us.data.application.togetherpostalcodeplace_name + ','}}
+
+
+              {{us.data.application.togetherincesponsor_name &&
+              us.data.application.togetherincesponsor_name + ','}}
+
+
+              {{us.data.application.togetherlcodesponsor_name &&
+              us.data.application.togetherlcodesponsor_name + ','}}
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="form__section">
+        <div class="form"><span>Date from</span> <a class="form__link" (click)="us.section='sponsorplaceslived'; updateps(4); us.top();">
+            {{formatDate(us.data.application.togetherdatefrom_name) || "Need Info"}}
+          </a>
+        </div>
+      </div>
+      <div class="form__section">
+        <div class="form"><span>Date to</span> <a class="form__link" (click)="us.section='sponsorplaceslived'; updateps(4); us.top();">
+            {{formatDate(us.data.application.togetherdateto_name) || "Need Info"}}
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="form__container">
+      <div class="form__top"><span>{{us.data.application.sponsorname && us.data.application.sponsorname + "'s" ||
+          "Sponsor's"}}
+          previous addresses last five years</span> <a class="form-top__link" (click)="us.section='sponsorplaceslived'; updateps(5); us.top();">Edit</a></div>
+      <div class="form__section">
+        <div class="form"><span>Previous address</span> <a class="form__link" (click)="us.section='sponsorplaceslived'; updateps(5); us.top();">
+            <div *ngFor="let name of us.data.application.physicaladdressesus_names">
+              {{name.togetheraddressphysical_name && name.togetheraddressphysical_name + ',' || "Need Info"}}
+
+              {{name.streettogethersponsor_name &&
+              name.streettogethersponsor_name + ','}}
+
+              {{name.togethersponsorss_name &&
+              name.togethersponsorss_name + ','}}
+
+              {{name.ssqstetogether_name &&
+              name.ssqstetogether_name + ','}}
+
+              {{name.physicalcity_name &&
+              name.physicalcity_name + ','}}
+
+              {{name.physicalprovincee_name &&
+              name.physicalprovincee_name + ','}}
+
+              {{name.zipphysical_name &&
+              name.zipphysical_name + ','}}
+
+              {{name.physicalstate_name &&
+              name.physicalstate_name + ','}}
+
+              {{name.physicalzip_name &&
+              name.physicalzip_name + ','}}
+
+              {{name.countphysical_name &&
+              name.countphysical_name + ','}}
+
+              {{formatDate(name.moveindate_name) &&
+                formatDate(name.moveindate_name) + ','}}
+
+              {{formatDate(name.moveoutdate_name) &&
+                formatDate(name.moveoutdate_name) + ','}}
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <span class="form__title">Financial Support</span>
+
+    <div class="form__top"><span>Form I-864 Exemption</span> <a class="form-top__link" (click)="us.section='financical'; updateps(2); us.top();">Edit</a>
+    </div>
+    <div class="form__section">
+      <div class="form"><span>Is {{us.data.application.sponsorname && us.data.application.
+          sponsorname ||
+          "Sponsor"}} exempt from filing Form I-864?</span> <a class="form__link" (click)="us.section='financical'; updateps(2); us.top();">
+
+          {{us.data.application.fin_name &&
+          us.data.application.fin_name || "Need Info"}}
+        </a>
+      </div>
+    </div>
+
+
+    <div class="form__top"><span>Household Size</span> <a class="form-top__link" (click)="us.section='financical'; updateps(3); us.top();">Edit</a>
+    </div>
+    <div class="form__section">
+      <div class="form__sub-title">DEPENDENT CHILDREN</div>
+    </div>
+    <div class="form__section">
+      <div class="form"><span>Does {{us.data.application.sponsorname && us.data.application.sponsorname ||
+          "Sponsor's"}} have any dependent children under 21 years of age?</span>
+        <a class="form__link" (click)="us.section='financical'; updateps(3); us.top();" >
+          {{us.data.application.haveanydependentchildren_name && us.data.application.haveanydependentchildren_name ||
+          "Need Info"}}
+        </a>
+      </div>
+    </div>
+    <div class="form__section">
+      <div class="form"><span>How many?</span>
+        <a class="form__link" (click)="us.section='financical'; updateps(3); us.top();" >
+          {{us.data.application.howmanyus_name && us.data.application.howmanyus_name || "Need Info"}}
+        </a>
+      </div>
+    </div>
+    <div class="form__section">
+      <div class="form__sub-title">OTHER DEPENDENTS</div>
+    </div>
+    <div class="form__section">
+      <div class="form"><span>Not counting {{us.data.application.sponsorname && us.data.application.sponsorname ||
+          "Sponsor"}} or any children who have been counted in the previous question, does
+          {{us.data.application.sponsorname && us.data.application.sponsorname || "Sponsor"}} have any other
+          dependents
+          listed on {{us.data.application.sponsorname && us.data.application.sponsorname + "'s" || "Sponsor's"}} most
+          recent Federal income tax return?</span> <a class="form__link" (click)="us.section='financical'; updateps(3); us.top();"
+          >{{us.data.application.usmostrecentfederal_name
+          && us.data.application.usmostrecentfederal_name || "Need Info"}}</a>
+      </div>
+    </div>
+    <div class="form__section">
+      <div class="form"><span>How many?</span>
+        <a class="form__link" (click)="us.section='financical'; updateps(3); us.top();" >
+          {{us.data.application.howmanyustaxreturn_name && us.data.application.howmanyustaxreturn_name || "Need Info"}}
+        </a>
+      </div>
+    </div>
+    <div class="form__section">
+      <div class="form__sub-title"> IMMIGRANTS SUPPORTED</div>
+    </div>
+    <div class="form__section">
+      <div class="form"><span>Not counting {{us.data.application.sponsorname && us.data.application.sponsorname ||
+          "Sponsor"}} or any persons that have been counted in the previous two questions, is
+          {{us.data.application.sponsorname && us.data.application.sponsorname || "Sponsor"}} currently obligated to
+          support any immigrants that {{us.data.application.sponsorname && us.data.application.sponsorname ||
+          "Sponsor"}} previously sponsored?
+        </span> <a class="form__link" (click)="us.section='financical'; updateps(3); us.top();" >{{us.data.application.immigrantswhoarenowlawful_name &&
+          us.data.application.immigrantswhoarenowlawful_name || "Need Info"}}</a>
+      </div>
+    </div>
+    <div class="form__section">
+      <div class="form"><span>How many?</span>
+        <a class="form__link" (click)="us.section='financical'; updateps(3); us.top();" >
+          {{us.data.application.howmanyuspermanentresidents_name && us.data.application.howmanyuspermanentresidents_name
+          || "Need Info"}}
+        </a>
+      </div>
+    </div>
+    <div class="form__top"><span>Annual Income</span> <a class="form-top__link" >Edit</a>
+    </div>
+    <div class="form__section">
+      <div class="form"><span>Based on the information provided, USCIS requires {{us.data.application.sponsorname &&
+          us.data.application.sponsorname || "Sponsor"}} to have a current individual
+          annual income greater or equal to $65487 to meet the minimum income requirement. Can
+          {{us.data.application.sponsorname && us.data.application.sponsorname || "Sponsor"}} satisfy this
+          requirement?
+        </span> <a class="form__link" (click)="us.section='financical'; updateps(3); us.top();" >{{us.data.application.greaterthanorequal_name &&
+          us.data.application.greaterthanorequal_name || "Need Info"}}</a>
+      </div>
+    </div>
+    <div class="form__section">
+      <div class="form"><span>
+          Great! What's {{us.data.application.sponsorname &&
+          us.data.application.sponsorname + "'s" || "Sponsor's"}} current individual annual income?
+        </span> <a class="form__link" (click)="us.section='financical'; updateps(3); us.top();" >{{us.data.application.greatcurrentindividualannual_name &&
+          us.data.application.greatcurrentindividualannual_name || "Need Info"}}</a>
+      </div>
+    </div>
+
+
+    <div class="form__top"><span>Income Tax Returns</span> <a class="form-top__link" (click)="us.section='financical'; updateps(4); us.top();">Edit</a>
+    </div>
+    <div class="form__section">
+      <div class="form__sub-title">MOST RECENT FEDERAL INCOME TAX RETURN</div>
+    </div>
+    <div class="form__section">
+      <div class="form"><span>Tax year
+        </span> <a class="form__link" (click)="us.section='financical'; updateps(4); us.top();">{{us.data.application.ustexyear_name &&
+          us.data.application.ustexyear_name || "Need Info"}}</a>
+      </div>
+    </div>
+    <div class="form__section">
+      <div class="form"><span>{{us.data.application.sponsorname && us.data.application.sponsorname + "'s" ||
+          "Sponsor's"}} total income
+        </span> <a class="form__link" (click)="us.section='financical'; updateps(4); us.top();">{{us.data.application.ustotalincome_name &&
+          us.data.application.ustotalincome_name || "Need Info"}}</a>
+      </div>
+    </div>
+    <div class="form__section">
+      <div class="form"><span>Tax return documentation to submit
+        </span> <a class="form__link" (click)="us.section='financical'; updateps(4); us.top();">{{us.data.application.mothercheck_name &&
+          us.data.application.mothercheck_name || "Need Info"}}</a>
+      </div>
+    </div>
+
+    <div class="form__section">
+      <div class="form__sub-title">2ND MOST RECENT FEDERAL INCOME TAX RETURN</div>
+    </div>
+    <div class="form__section">
+      <div class="form"><span>Tax year
+        </span> <a class="form__link" (click)="us.section='financical'; updateps(4); us.top();">{{us.data.application.usustexyear_name &&
+          us.data.application.usustexyear_name || "Need Info"}}</a>
+      </div>
+    </div>
+    <div class="form__section">
+      <div class="form"><span>{{us.data.application.sponsorname && us.data.application.sponsorname + "'s" ||
+          "Sponsor's"}} total income
+        </span> <a class="form__link" (click)="us.section='financical'; updateps(4); us.top();">{{us.data.application.usustotalincome_name &&
+          us.data.application.usustotalincome_name || "Need Info"}}</a>
+      </div>
+    </div>
+
+    <div class="form__section">
+      <div class="form__sub-title">MOST RECENT FEDERAL INCOME TAX RETURN</div>
+    </div>
+    <div class="form__section">
+      <div class="form"><span>Tax year
+        </span> <a class="form__link" (click)="us.section='financical'; updateps(4); us.top();">{{us.data.application.usustexyearus_name &&
+          us.data.application.usustexyearus_name || "Need Info"}}</a>
+      </div>
+    </div>
+    <div class="form__section">
+      <div class="form"><span>{{us.data.application.sponsorname && us.data.application.sponsorname + "'s" ||
+          "Sponsor's"}} total income
+        </span> <a class="form__link" (click)="us.section='financical'; updateps(4); us.top();">{{us.data.application.usustotalincomeus_name &&
+          us.data.application.usustotalincomeus_name || "Need Info"}}</a>
+      </div>
+    </div>
+    <div class="form__section">
+      <div class="form"><span>Does {{us.data.application.sponsorname && us.data.application.sponsorname || "Sponsor"}}
+          want to submit documentation for the previous tax years' Federal individual income tax returns?
+        </span> <a class="form__link" (click)="us.section='financical'; updateps(4); us.top();">{{us.data.application.abilitytomaintain_name &&
+          us.data.application.abilitytomaintain_name || "Need Info"}}</a>
+      </div>
+    </div>
+
+    <!-- --------------------------------------------------------------------------------------------------------------------------------------- -->
+
+    <div class="form__title">Immigration Info</div>
+
+    <div class="form__container">
+      <div class="form__top"><span>{{us.data.application.sponsorname && us.data.application.sponsorname + "'s" ||
+          "Sponsor's"}} U.S. Citizenship</span> <a class="form-top__link" (click)="us.section='sponsorimmigration'; updateps(2); us.top();">Edit</a></div>
+
+      <div class="form__section">
+        <div class="form"><span>{{us.data.application.sponsorname && us.data.application.sponsorname ||
+            "Sponsor"}} U.S. citizenship was acquired through</span> <a
+            class="form__link" (click)="us.section='sponsorimmigration'; updateps(2); us.top();" >{{us.data.application.sponsoradministrationcheck_name &&
+            us.data.application.sponsoradministrationcheck_name || "Need Info"}}</a>
+        </div>
+      </div>
+      <div class="form__section">
+        <div class="form"><span>Has {{us.data.application.sponsorname && us.data.application.sponsorname ||
+          "Sponsor"}} obtained a Certificate of Naturalization or a Certificate of Citizenship?</span> <a class="form__link" (click)="us.section='sponsorimmigration'; updateps(2); us.top();"
+            >{{us.data.application.sponsorobtained_name
+            &&
+            us.data.application.sponsorobtained_name || "Need Info"}}</a>
+        </div>
+      </div>
+
+      <div class="form__section">
+        <div class="form"><span>Certificate number
+        </span> <a
+            class="form__link" (click)="us.section='sponsorimmigration'; updateps(2); us.top();" >{{us.data.application.certificatenumber_name &&
+            us.data.application.certificatenumber_name || "Need Info"}}</a>
+        </div>
+      </div>
+
+
+      <div class="form__section">
+        <div class="form"><span>Certificate place of issuance
+        </span> <a
+            class="form__link" (click)="us.section='sponsorimmigration'; updateps(2); us.top();" >{{us.data.application.certificateissuance_name &&
+            us.data.application.certificateissuance_name || "Need Info"}}</a>
+        </div>
+      </div>
+
+
+      <div class="form__section">
+        <div class="form"><span>Certificate date of issuance
+        </span> <a
+            class="form__link" (click)="us.section='sponsorimmigration'; updateps(2); us.top();" >{{us.data.application.certificateissuancedate_name &&
+            us.data.application.certificateissuancedate_name || "Need Info"}}</a>
+        </div>
+      </div>
+
+
+      <div class="form__section">
+        <div class="form"><span>Certificate number
+        </span> <a
+            class="form__link" (click)="us.section='sponsorimmigration'; updateps(2); us.top();" >{{us.data.application.certificatenumber_name &&
+            us.data.application.certificatenumber_name || "Need Info"}}</a>
+        </div>
+      </div>
+
+      <div class="form__section">
+        <div class="form"><span>Did {{us.data.application.sponsorname || "Sponsor"}} gain lawful permanent resident
+          status or citizenship through adoption?
+        </span> <a
+            class="form__link" (click)="us.section='sponsorimmigration'; updateps(2); us.top();" >{{us.data.application.ussponsoradministration_name &&
+            us.data.application.ussponsoradministration_name || "Need Info"}}</a>
+        </div>
+      </div>
+
+      <div class="form__section">
+        <div class="form"><span>{{us.data.application.sponsorname && us.data.application.sponsorname + "'s" ||
+          "Sponsor's"}} alien registration number (A-number)
+        </span> <a
+            class="form__link" (click)="us.section='sponsorimmigration'; updateps(2); us.top();" >{{us.data.application.anumbersponsor_name &&
+            us.data.application.anumbersponsor_name || "Need Info"}}</a>
+        </div>
+      </div>
+
+      <div class="form__section">
+        <div class="form"><span>{{us.data.application.sponsorname && us.data.application.sponsorname + "'s" ||
+          "Sponsor's"}} USCIS Online Account Number (if any)
+        </span> <a
+            class="form__link" (click)="us.section='sponsorimmigration'; updateps(2); us.top();" >{{us.data.application.anumbersponsoraccount_name &&
+            us.data.application.anumbersponsoraccount_name || "Need Info"}}</a>
+        </div>
+      </div>
+      <div class="form__top"><span>About {{us.data.application.name && us.data.application.name + "'s" ||
+          "Applicant's"}}
+          Green Card application</span> <a class="form-top__link" >Edit</a>
+      </div>
+      <div class="form__section">
+        <div class="form__sub-title">AT WHICH U.S. EMBASSY OR U.S. CONSULATE WILL 1 APPLY FOR GREEN CARD?</div>
+      </div>
+
+
+
+      <div class="form__section">
+        <div class="form"><span>City</span> <a class="form__link" (click)="us.section='sponsorimmigration'; updateps(2); us.top();" >{{us.data.admissiontown_name &&
+            us.data.admissiontown_name || "Need Info"}}</a>
+        </div>
+      </div>
+      <div class="form__section">
+        <div class="form"><span>Province</span> <a class="form__link" (click)="us.section='sponsorimmigration'; updateps(2); us.top();" >{{us.data.provinceadmission_name &&
+            us.data.provinceadmission_name || "Need Info"}}</a>
+        </div>
+      </div>
+      <div class="form__section">
+        <div class="form"><span>State</span> <a class="form__link" (click)="us.section='sponsorimmigration'; updateps(2); us.top();" >{{us.data.applicationstate_name &&
+            us.data.applicationstate_name || "Need Info"}}</a>
+        </div>
+      </div>
+
+      <div class="form__section">
+        <div class="form"><span>To {{us.data.application.sponsorname && us.data.application.sponsorname + "'s" ||
+            "Sponsor's"}} knowledge, has anyone else other than {{us.data.application.sponsorname &&
+            us.data.application.sponsorname ||
+            "Sponsor"}} ever filed a petition for {{us.data.application.sponsorname && us.data.application.sponsorname
+            ||
+            "Sponsor"}}?</span> <a class="form__link" (click)="us.section='sponsorimmigration'; updateps(2); us.top();" >{{us.data.application.sponsorapp_name &&
+            us.data.application.sponsorapp_name || "Need Info"}}</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="form__top"><span>{{us.data.application.sponsorname && us.data.application.sponsorname + "'s" ||
+        "Sponsor's"}} previous Green Card petition</span> <a class="form-top__link" (click)="us.section='sponsorimmigration'; updateps(3); us.top();">Edit</a>
+    </div>
+    <div class="form__section">
+      <div class="form"><span>Has {{us.data.application.sponsorname && us.data.application.sponsorname + "'s" ||
+          "Sponsor's"}} ever previously filed a petition for jerry or any other alien?gfw</span> <a class="form__link" (click)="us.section='sponsorimmigration'; updateps(3); us.top();"
+          >{{us.data.application.sponsoreverpreviously_name &&
+          us.data.application.sponsoreverpreviously_name || "Need Info"}}</a>
+      </div>
+    </div>
+
+    <div class="form__section" *ngIf="us.data.application.sponsoreverpreviously_name=='yes'"
+      style="background: #f5f5f5; padding: 10px;">
+      <div *ngFor="let name of us.data.application.sponsoralienprevious_names; index as i">
+        <span style="font-weight: 600;">PREVIOUS PETITION {{i+1}}</span>
+        <div class="form__section">
+          <div class="form"><span>Given name (first name)</span> <a class="form__link" (click)="us.section='sponsorimmigration'; updateps(3); us.top();" >{{name.alien_name &&
+              name.alien_name || "Need Info"}}</a>
+          </div>
+        </div>
+        <div class="form__section">
+          <div class="form"><span>Middle name</span> <a class="form__link" (click)="us.section='sponsorimmigration'; updateps(3); us.top();" >{{name.alienmiddle_name &&
+              name.alienmiddle_name || "Need Info"}}</a>
+          </div>
+        </div>
+        <div class="form__section">
+          <div class="form"><span>Family name (last name)</span> <a class="form__link" (click)="us.section='sponsorimmigration'; updateps(3); us.top();" >{{name.familyalien_name
+              &&
+              name.familyalien_name || "Need Info"}}</a>
+          </div>
+        </div>
+        <div class="form__section">
+          <div class="form"><span>City or town</span> <a class="form__link" (click)="us.section='sponsorimmigration'; updateps(3); us.top();" >{{name.aliencitygreen_name &&
+              name.aliencitygreen_name || "Need Info"}}</a>
+          </div>
+        </div>
+        <div class="form__section">
+          <div class="form"><span>State</span> <a class="form__link" (click)="us.section='sponsorimmigration'; updateps(3); us.top();" >{{name.alienstate_name &&
+              name.alienstate_name || "Need Info"}}</a>
+          </div>
+        </div>
+        <div class="form__section">
+          <div class="form"><span>Date filed</span> <a class="form__link" (click)="us.section='sponsorimmigration'; updateps(3); us.top();" >
+            {{formatDate(name.greenaliencity_name)
+              &&
+              formatDate(name.greenaliencity_name) || "Need Info"}}</a>
+          </div>
+        </div>
+        <div class="form__section">
+          <div class="form"><span>Result</span> <a class="form__link" (click)="us.section='sponsorimmigration'; updateps(3); us.top();" >{{name.aliengreen_name &&
+              name.aliengreen_name || "Need Info"}}</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="form__top"><span>{{us.data.application.sponsorname && us.data.application.sponsorname + "'s" ||
+        "Sponsor's"}} previous Green Card petition</span> <a class="form-top__link" (click)="us.section='sponsorimmigration'; updateps(3); us.top();">Edit</a>
+    </div>
+    <div class="form__section">
+      <div class="form"><span>Separate petitions for other relatives</span> <a class="form__link" (click)="us.section='sponsorimmigration'; updateps(3); us.top();"
+          >{{us.data.application.sponsoralsosubmitting_name &&
+          us.data.application.sponsoralsosubmitting_name || "Need Info"}}</a>
+      </div>
+    </div>
+
+    <div class="form__section" *ngIf="us.data.application.sponsoralsosubmitting_name=='yes'"
+      style="background: #f5f5f5; padding: 10px;">
+      <div *ngFor="let name of us.data.application.sponsorrelative_names; index as i">
+        <span style="font-weight: 600;">RELATIVE {{i+1}}</span>
+        <div class="form__section">
+          <div class="form"><span>Given name (first name)</span> <a class="form__link" (click)="us.section='sponsorimmigration'; updateps(3); us.top();" >{{name.smother_name &&
+              name.smother_name || "Need Info"}}</a>
+          </div>
+        </div>
+        <div class="form__section">
+          <div class="form"><span>Middle name</span> <a class="form__link" (click)="us.section='sponsorimmigration'; updateps(3); us.top();" >{{name.mother_smiddle_name &&
+              name.mother_smiddle_name || "Need Info"}}</a>
+          </div>
+        </div>
+        <div class="form__section">
+          <div class="form"><span>Family name (last name)</span> <a class="form__link" (click)="us.section='sponsorimmigration'; updateps(3); us.top();"
+              >{{name.smother_family_name
+              &&
+              name.smother_family_name || "Need Info"}}</a>
+          </div>
+        </div>
+        <div class="form__section">
+          <div class="form"><span>Relationship</span> <a class="form__link" (click)="us.section='sponsorimmigration'; updateps(3); us.top();" >{{name.srelationship_name &&
+              name.srelationship_name || "Need Info"}}</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- -------------------------------------------------------------------------------------------------------------------------------------------------------------------- -->
+    <div class="form__container">
+      <span class="form__title">Family</span>
+      <div>
+        <div class="form__container">
+          <div class="form__top"><span>{{us.data.application.sponsorname && us.data.application.sponsorname + "'s" ||
+              "Sponsor's"}}
+              mother</span> <a class="form-top__link" (click)="us.section='sponsorfamily'; updateps(2); us.top();">Edit</a>
+          </div>
+          <div class="form__section">
+            <div class="form__sub-title">MOTHER'S FULL LEGAL NAME</div>
+          </div>
+          <div class="form__section">
+            <div class="form"><span>First name</span> <a class="form__link"
+(click)="us.section='sponsorfamily'; updateps(2); us.top();"                >{{us.data.application.splittleaboutname_name
+                && us.data.application.splittleaboutname_name || "Need Info"}}</a>
+            </div>
+          </div>
+          <div class="form__section">
+            <div class="form"><span>Middle name</span> <a class="form__link"
+(click)="us.section='sponsorfamily'; updateps(2); us.top();"                >{{us.data.application.splittleaboutmiddname_name &&
+                us.data.application.splittleaboutmiddname_name || "Need
+                Info"}}</a>
+            </div>
+          </div>
+          <div class="form__section">
+            <div class="form"><span>Last name</span> <a class="form__link"
+(click)="us.section='sponsorfamily'; updateps(2); us.top();"                >{{us.data.application.splittleaboutfamilyname_name &&
+                us.data.application.splittleaboutfamilyname_name || "Need
+                Info"}}</a>
+
+            </div>
+          </div>
+          <div class="form__section">
+            <div class="form"><span>Mother's date of birth</span> <a class="form__link"
+(click)="us.section='sponsorfamily'; updateps(2); us.top();" >{{formatDate(us.data.application.littleaboutdateofbirth_name) || "Need Info"}}</a>
+            </div>
+          </div>
+          <div class="form__section">
+            <div class="form"><span>Mother's country of birth</span> <a class="form__link"
+(click)="us.section='sponsorfamily'; updateps(2); us.top();"                >{{us.data.application.littleaboutcountryofbirth_name &&
+                us.data.application.littleaboutcountryofbirth_name || "Need
+                Info"}}</a>
+            </div>
+          </div>
+          <div class="form__section">
+            <div class="form"><span>Mother's country of residence</span> <a class="form__link"
+(click)="us.section='sponsorfamily'; updateps(2); us.top();"                >{{us.data.application.littleaboutcountryofresidence_name &&
+                us.data.application.littleaboutcountryofresidence_name || "Need
+                Info"}}</a>
+            </div>
+          </div>
+          <div class="form__section">
+            <div class="form"><span>Mother's city of residence</span> <a class="form__link"
+(click)="us.section='sponsorfamily'; updateps(2); us.top();"                >{{us.data.application.littleaboutcitytownvillage_name &&
+                us.data.application.littleaboutcitytownvillage_name || "Need
+                Info"}}</a>
+            </div>
+          </div>
+
+
+          <div class="form__top"><span>{{us.data.application.sponsorname && us.data.application.sponsorname +
+              "'s"
+              ||
+              "Sponsor's"}}
+              father</span> <a class="form-top__link"(click)="us.section='sponsorfamily'; updateps(3); us.top();" >Edit</a>
+          </div>
+          <div class="form__section">
+            <div class="form__sub-title">FATHER'S FULL LEGAL NAME</div>
+          </div>
+          <div class="form__section">
+            <div class="form"><span>First name</span> <a class="form__link" (click)="us.section='sponsorfamily'; updateps(3); us.top();"
+                >{{us.data.application.nowabautfathername_name
+                && us.data.application.nowabautfathername_name || "Need Info"}}</a>
+            </div>
+          </div>
+          <div class="form__section">
+            <div class="form"><span>Middle name</span> <a class="form__link" (click)="us.section='sponsorfamily'; updateps(3); us.top();"
+                >{{us.data.application.nowabautfathermiddle_name &&
+                us.data.application.nowabautfathermiddle_name || "Need
+                Info"}}</a>
+            </div>
+          </div>
+          <div class="form__section">
+            <div class="form"><span>Last name</span> <a class="form__link" (click)="us.section='sponsorfamily'; updateps(3); us.top();"
+                >{{us.data.application.nowabautfatherlastname_name &&
+                us.data.application.nowabautfatherlastname_name || "Need
+                Info"}}</a>
+            </div>
+          </div>
+          <div class="form__section">
+            <div class="form"><span>Father's date of birth</span> <a class="form__link" (click)="us.section='sponsorfamily'; updateps(3); us.top();"
+                >{{formatDate(us.data.application.nowabautfatherbirth_name) || "Need Info"}}</a>
+            </div>
+          </div>
+          <div class="form__section">
+            <div class="form"><span>Father's country of birth</span> <a class="form__link" (click)="us.section='sponsorfamily'; updateps(3); us.top();"
+                >{{us.data.application.nowabautfathercountry_name &&
+                us.data.application.nowabautfathercountry_name || "Need
+                Info"}}</a>
+            </div>
+          </div>
+          <div class="form__section">
+            <div class="form"><span>Father's country of residence</span> <a class="form__link" (click)="us.section='sponsorfamily'; updateps(3); us.top();"
+                >{{us.data.application.nowabautfatherresidence_name &&
+                us.data.application.nowabautfatherresidence_name || "Need
+                Info"}}</a>
+            </div>
+          </div>
+          <div class="form__section">
+            <div class="form"><span>Father's city of residence</span> <a class="form__link" (click)="us.section='sponsorfamily'; updateps(3); us.top();"
+                >{{us.data.application.nowabautfathercitytown_name &&
+                us.data.application.nowabautfathercitytown_name || "Need
+                Info"}}</a>
+            </div>
+          </div>
+        </div>
+        <div class="form__container">
+          <div class="form__top"><span>{{us.data.application.sponsorname && us.data.application.sponsorname +
+              "'s"
+              ||
+              "Sponsor's"}}
+              Prior Marriages</span> <a class="form-top__link" (click)="us.section='sponsorfamily'; updateps(4); us.top();">Edit</a>
+          </div>
+          <div class="form__section">
+            <div class="form"><span>Prior marriage </span> <a class="form__link" (click)="us.section='sponsorfamily'; updateps(4); us.top();"
+                >{{us.data.application.priormarriages_name &&
+                us.data.application.priormarriages_name || "Need Info"}}</a>
+            </div>
+          </div>
+          <div class="form__section" *ngIf="us.data.application.priormarriages_name=='yes'"
+            style="background: #f5f5f5; padding: 10px;">
+            <div *ngFor="let name of us.data.application.marriagessponsor_names; index as i">
+              <span style="font-weight: 600;">Prior marriage {{i+1}}</span>
+              <div class="form__section">
+                <div class="form"><span>Prior spouse first name</span> <a class="form__link" (click)="us.section='sponsorfamily'; updateps(4); us.top();"
+                    >{{name.mothersponsor_name
+                    &&
+                    name.mothersponsor_name || "Need Info"}}</a>
+                </div>
+              </div>
+              <div class="form__section">
+                <div class="form"><span>Prior spouse first name</span> <a class="form__link" (click)="us.section='sponsorfamily'; updateps(4); us.top();"
+                    >{{name.middlesponsor_name &&
+                    name.middlesponsor_name || "Need Info"}}</a>
+                </div>
+              </div>
+              <div class="form__section">
+                <div class="form"><span>Prior spouse last name</span> <a class="form__link" (click)="us.section='sponsorfamily'; updateps(4); us.top();"
+                    >{{name.familysponsor_name
+                    &&
+                    name.familysponsor_name || "Need Info"}}</a>
+                </div>
+              </div>
+              <div class="form__section">
+                <div class="form"><span>Date prior marriage legally ended</span> <a class="form__link" (click)="us.section='sponsorfamily'; updateps(4); us.top();"
+                    >{{formatDate(name.marriagedatesponsor_name) &&
+                      formatDate(name.marriagedatesponsor_name) || "Need Info"}}</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <span class="form__title">Employment</span>
+        <div class="form__container">
+          <div class="form__top"><span>{{us.data.application.sponsorname && us.data.application.sponsorname +
+              "'s"
+              ||
+              "Sponsor's"}} employment last five years</span>
+            <a class="form-top__link" (click)="us.section='sponsoremploument'; updateps(2); us.top();">Edit</a>
+          </div>
+
+          <div class="form__section">
+            <div class="form__sub-title">EMPLOYMENT</div>
+            <div class="form__section" style="background: #f5f5f5; padding: 10px;">
+              <div *ngFor="let name of us.data.application.sponsoremploymentfiveyears_names; index as i">
+                <span style="padding: 50px 0 0 0; font-weight: 600; ">EMPLOYMENT {{i+1}}</span>
+                <div class="form__section">
+                  <div class="form"><span>Name of employer/company</span> <a class="form__link" (click)="us.section='sponsoremploument'; updateps(2); us.top();"
+                      >{{name.admissiontown_name
+                      &&
+                      name.admissiontown_name || "Need Info"}}</a>
+                  </div>
+                </div>
+
+                <div class="form__section">
+                  <div class="form"><span>Employer address</span> <a class="form__link" (click)="us.section='sponsoremploument'; updateps(2); us.top();"
+                      >{{name.adaddressemployer_name
+                      &&
+                      name.adaddressemployer_name || "Need Info"}}</a>
+                  </div>
+                </div>
+
+                <div class="form__section">
+                  <div class="form"><span>Street number and name</span> <a class="form__link" (click)="us.section='sponsoremploument'; updateps(2); us.top();"
+                      >{{name.marriagedatesponsor_name &&
+                      name.marriagedatesponsor_name || "Need Info"}}</a>
+                  </div>
+                </div>
+
+                <div class="form__section">
+                  <div class="form"><span>Apt./Ste./Flr. Number (if any)</span> <a class="form__link" (click)="us.section='sponsoremploument'; updateps(2); us.top();"
+                      >{{name.employersponsor_name &&
+                      name.employersponsor_name || "Need Info"}} {{name.sponsorphysicalusstetogether_name &&
+                      name.sponsorphysicalusstetogether_name}}</a>
+                  </div>
+                </div>
+
+
+                <div class="form__section">
+                  <div class="form"><span>City or town</span> <a class="form__link" (click)="us.section='sponsoremploument'; updateps(2); us.top();" >{{name.employertogether_name
+                      &&
+                      name.employertogether_name || "Need Info"}}</a>
+                  </div>
+                </div>
+
+                <div class="form__section">
+                  <div class="form"><span>State</span> <a class="form__link" (click)="us.section='sponsoremploument'; updateps(2); us.top();" >{{name.togetherinceemployer_name &&
+                      name.togetherinceemployer_name || "Need Info"}}</a>
+                  </div>
+                </div>
+
+                <div class="form__section">
+                  <div class="form"><span>ZIP code</span> <a class="form__link" (click)="us.section='sponsoremploument'; updateps(2); us.top();"
+                      >{{name.togetherlcodeemployer_name &&
+                      name.togetherlcodeemployer_name || "Need Info"}}</a>
+                  </div>
+                </div>
+
+                <div class="form__section">
+                  <div class="form"><span>Province</span> <a class="form__link" (click)="us.section='sponsoremploument'; updateps(2); us.top();"
+                      >{{name.employerprovinceplace_name
+                      &&
+                      name.employerprovinceplace_name || "Need Info"}}</a>
+                  </div>
+                </div>
+
+                <div class="form__section">
+                  <div class="form"><span>Postal code</span> <a class="form__link" (click)="us.section='sponsoremploument'; updateps(2); us.top();"
+                      >{{name.employerpostalcodeplace_name &&
+                      name.employerpostalcodeplace_name || "Need Info"}}</a>
+                  </div>
+                </div>
+
+                <div class="form__section">
+                  <div class="form"><span>Country</span> <a class="form__link" (click)="us.section='sponsoremploument'; updateps(2); us.top();" >{{name.employercountry_name &&
+                      name.employercountry_name || "Need Info"}}</a>
+                  </div>
+                </div>
+                <div class="form__section">
+                  <div class="form"><span>Employment start date</span> <a class="form__link" (click)="us.section='sponsoremploument'; updateps(2); us.top();"
+                      >{{formatDate(name.employmentstart_name) &&
+                        formatDate(name.employmentstart_name) || "Need Info"}}</a>
+                  </div>
+                </div>
+                <div class="form__section">
+                  <div class="form"><span>Employment end date</span> <a class="form__link" (click)="us.section='sponsoremploument'; updateps(2); us.top();"
+                      >{{formatDate(name.employmentstart_name) &&
+                        formatDate(name.employmentstart_name) || "Need Info"}}</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="form__top"><span>About Retirement</span><a class="form-top__link"(click)="us.section='sponsoremploument'; updateps(3); us.top();" >Edit</a></div>
+          <div class="form__section">
+            <div class="form"><span>Is {{us.data.application.sponsorname && us.data.application.sponsorname ||
+                "Sponsor"}} currently retired?</span> <a class="form__link" (click)="us.section='sponsoremploument'; updateps(3); us.top();"
+                >{{us.data.application.sponsoradministration_name
+                &&
+                us.data.application.sponsoradministration_name || "Need Info"}}</a>
+            </div>
+            <div class="form__section">
+              <div class="form"><span>Retirement date</span> <a class="form__link" (click)="us.section='sponsoremploument'; updateps(3); us.top();"
+                  >{{formatDate(us.data.application.citidatedid_name) || "Need Info"}}</a>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="form__title">E-Notification</div>
+      <div class="form__top"><span>E-notification</span> <a class="form-top__link" (click)="us.section='enotification'; updateps(1); us.top();">Edit</a></div>
+      <div class="form__section">
+        <div class="form"><span>Does {{us.data.application.sponsorname && us.data.application.sponsorname ||
+            "Sponsor"}} want to request an e-notification?</span> <a class="form__link" (click)="us.section='enotification'; updateps(1); us.top();"
+            >{{us.data.application.notification_name
+            &&
+            us.data.application.notification_name || "Need Info"}}</a>
+        </div>
+      </div>
+      <div class="form__section">
+        <div class="form"><span>Email address for e-notification</span> <a class="form__link" (click)="us.section='enotification'; updateps(1); us.top();"
+            >{{us.data.enotificationemail_name
+            &&
+            us.data.enotificationemail_name || "Need Info"}}</a>
+        </div>
+      </div>
+      <div class="form__section">
+        <div class="form"><span>Mobile phone number for e-notification</span> <a class="form__link" (click)="us.section='enotification'; updateps(1); us.top();"
+            >{{us.data.enotificationmiddle_name
+            &&
+            us.data.enotificationmiddle_name || "Need Info"}}</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="section__container-btn">
+      <a class="form__btn-back" (click)="us.section='enotification';us.top();">
+        < Back </a>
+          <a class="form__btn-continue" (click)="us.section='home'; us.tab='collectdocuments'"> Continue >
+          </a>
+    </div>
+  </div>
+</div>

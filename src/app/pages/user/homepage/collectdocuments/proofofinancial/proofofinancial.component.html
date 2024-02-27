@@ -1,0 +1,114 @@
+<div *ngIf="section == 1">
+  <div class="section__inner">
+    <div class="inner">
+      <h1 class="section__title">Proof of financial support</h1>
+      <span class="sub__title">For Form I-864 and potentially Form I-485</span>
+      <div class="proof__discription">
+        Form I-485's evidence relating to public charge
+      </div>
+      <p>
+        Applicants are not required to provide any initial evidence relating to
+        the public charge ground of inadmissibility with their Form I-485 (with
+        one exception if the applicant received institutionalization). If USCIS
+        requires additional evidence to determine if an applicant is
+        inadmissible under the public charge ground of inadmissibility, it will
+        issue a Request for Evidence and consider all evidence that the
+        applicant provides in response.
+      </p>
+
+      <div class="sub__discription">
+        Source:
+        <a
+          target="_blank"
+          href="https://www.uscis.gov/sites/default/files/document/forms/i-485instr.pdf"
+          >USCIS Form I-485 Instructions Page 16</a
+        >
+      </div>
+
+      <div class="proof__discription">
+        Form I-864's proof of financial support
+      </div>
+
+      <p>
+        Affidavit of Support (Form I-864) requires the supporting documents as
+        listed below.
+      </p>
+
+      <div
+        class="sub__section-btn"
+        (click)="collecthome = !collecthome"
+        (clickOutside)="collecthome = null"
+      >
+        <div class="sub__section-icon" [class._active]="collecthome">
+          &#8250;
+        </div>
+        Note on State and Foreign Tax Returns
+      </div>
+      <div class="sub-sub__section-inner" *ngIf="collecthome">
+        <p>
+          Do not submit copies of
+          {{
+            (us.data.application.sponsorname &&
+              us.data.application.sponsorname + "'s") ||
+              "Sponsor's"
+          }}
+          state income tax returns. Do not submit any tax returns that
+          {{ us.data.application.sponsorname || "Sponsor" }} filed with any
+          foreign government unless
+          {{ us.data.application.sponsorname || "Sponsor" }} claims that
+          {{ us.data.application.sponsorname || "Sponsor" }} was not required to
+          file a Federal individual income tax return with the United States
+          Government and
+          {{ us.data.application.sponsorname || "Sponsor" }} wishes to rely on
+          the foreign return solely to establish the amount of
+          {{
+            (us.data.application.sponsorname &&
+              us.data.application.sponsorname + "'s") ||
+              "Sponsor's"
+          }}
+          income that is not subject to tax in the United States.
+        </p>
+        <div class="sub__discription">
+          Source:
+          <a
+            target="_blank"
+            href="https://www.uscis.gov/sites/default/files/document/forms/i-864instr.pdf"
+            >USCIS Form I-864 Page 8</a
+          >
+        </div>
+      </div>
+    </div>
+    <div class="sub__inner">
+      <span class="proof__discription"
+        >Please first complete
+        <a
+          style="color: #4d61fc"
+          (click)="us.section = 'financical'; us.tab = 'sponsor'"
+          >the information about
+          {{
+            (us.data.application.sponsorname &&
+              us.data.application.sponsorname + "'s") ||
+              "Sponsor's"
+          }}
+          Federal income tax returns</a
+        >
+        in Step 2, so we can customize the checklist for you.</span
+      >
+    </div>
+      <div class="section__container-btn">
+        <a
+          class="form__btn-back"
+          (click)="us.section = 'proofoimmigration'; us.top()"
+        >
+          < Back
+        </a>
+        <a
+          class="form__btn-continue"
+          (click)="us.section = 'medical'; us.top()"
+        >
+          Continue ></a
+        >
+      </div>
+
+  </div>
+</div>

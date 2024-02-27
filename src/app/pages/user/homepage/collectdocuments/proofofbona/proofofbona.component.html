@@ -1,0 +1,21 @@
+<div *ngIf="section==1">
+	<div class="section__inner">
+		<h1 class="section__title">Instant Access after Checkout</h1>
+		<div class="discription__inner">
+			<span class="discription__title">Identification Documents</span>
+			<span>The more proof of bona fide marriage you provide, the stronger your application becomes.</span>
+			<span>We will show you not only the required documents, but also additional ideas and inspirations to make your application even stronger 💪</span>
+		</div>
+		<!-- <button class="section__btn" (click)="modal.show({component: 'stripemodal'});"> Proceed to Checkout</button> -->
+		<stripe-buy-button
+        buy-button-id="buy_btn_1NPWZ3DBW6vzTeKzsM0SVS9n"
+        publishable-key="pk_live_51IRTF6DBW6vzTeKz7SJzo2ku8Lds2B6SUtszzntTuWzyt5x8xPpoOgYY49urR3vxn73FwUFbLlNjhgtpJftEJmyg00Lz8XrNDe"
+      ></stripe-buy-button>
+		<a class="section__link" (click)="modal.show({component: 'key'});">Already purchased?</a>
+		<img class="section__img"  src="assets/checkout.png" alt="">
+		<div class="section__container-btn">
+			<a class="form__btn-back" (click)="us.section='identification';us.top();"> < Back </a>
+			<a class="form__btn-continue" (click)="us.section='proofoimmigration';us.top();"> Continue ></a>
+		</div>
+	</div>
+</div>

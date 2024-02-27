@@ -1,0 +1,28 @@
+.form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  margin: 50px 0 0 0;
+}
+
+.form-inner {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0 50px 0 50px;
+
+}
+
+.print__wrapper {
+  display: flex;
+  flex-direction: column;
+
+  span {
+    padding: 25px 0 0 0;
+    font-weight: 600;
+  }
+}
+  .print__title {
+    color: #ed9121;
+  }

@@ -1,0 +1,14 @@
+<div *ngIf="invalidError">
+  {{ invalidError.message }}
+</div>
+<div class="strape-wrapper">
+  <div class="stripe-top">
+    <img class="topbarlogo" src="assets/topbar-logo.png" alt="strape-logo">
+  </div>
+  <div class="strape-contant">
+    <stripe-card #stripeCard (sourceChange)="sourceChange($event)"></stripe-card>
+    <div style="padding-top: 25px;">
+      <button class="strape-button" type="button" (click)="stripeCard.createSource({}); close()">Pay:$750</button>
+    </div>
+  </div>
+</div>

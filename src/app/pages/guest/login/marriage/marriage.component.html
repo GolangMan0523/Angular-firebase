@@ -1,0 +1,11 @@
+<div class="marriage__inner">
+	<h1 class="marriage__title">Did {{us.data.application.sponsorname}} obtain {{us.data.application.sponsorname + "'s"}} Green Card through a prior marriage to a U.S. citizen or Green Card holder?</h1>
+	<span class="marriage__discription">Together with the previous question, this determines if {{us.data.application.applicantperson_name}} is qualified to sponsor a marriage-based Green Card.</span>
+	<div class="marriage__cardholder">
+		<a class="marriage__link" (click)="us.auth='marriageterminated'">Yes</a>
+		<a class="marriage__link" (click)="us.auth='price'">No</a>
+	</div>
+	<div class="container__btn">
+		<a class="marriage__btn" (click)="us.auth='owner';us.top();"> < Back </a>
+	</div>
+</div>

@@ -1,0 +1,39 @@
+<div *ngIf="section==1">
+	<div class="section__inner">	
+		<h1 class="section__title">Step 3 of 5 - Submission 1 (Immigrant Petition)
+		</h1>
+		<img class="section__img" src="assets/submissionone.png">
+		<div class="section__discription">The Green Card application process consists of two separate submissions, with wait time between them. Let's start with Submission 1. In this submission, 1 will file an immigrant petition on behalf of 1. Only after this immigrant petition has been approved by USCIS, will 1 become eligible to apply for a Green Card (which will be covered in Submission 2).</div>
+		<div class="section__discription">
+		In this step, we will walk you through what you need to do to submit Submission 1. This includes:</div>
+		<div class="section__container">
+			<ul class="section__list" >
+				<li>Collect all required supporting documents using an interactive checklist</li>
+				<li>Review and print all the filled out Submission 1 application forms</li>
+				<li>Print out a personalized application cover letter</li>
+				<li>Pay USCIS filing fees</li>
+				<li>Organize and assemble the application package according to USCIS guidelines</li>
+				<li>Mail to the correct address</li>
+				<li>Timeline after Submission 1, and when to start Submission 2</li>
+				<li>How to track your case status</li>
+				<li>Waiting period and the visa bulletin</li>
+				<li>Things to note while Submission 1 is pending</li>
+			</ul>
+		</div>
+		<div class="section__discription">
+		The U.S. government agency that will process your Submission 1 is called the U.S. Citizenship and Immigration Services (USCIS).</div>
+		<div class="section__sub-discription">
+			Greenboard Suggestion: To better understand what goes into each submission, check out our <a class="sub-discription-link"  href="">Complete Application Guide.
+			</a> 
+		</div>
+
+		<div class="sub-discription">
+			Sources for this page (unless otherwise cited above): <a class="sub-discription-link" href="">Bringing Spouses to Live in the United States as Permanent Residents, Consular Processing</a> , <a class="sub-discription-link"  href="">Immigrant Visa Process - Petition, I-130, Petition for Alien Relative</a>, <a class="sub-discription-link"  href="">and Greenboard suggestions</a>	
+		</div>
+
+		<div class="section__container-btn">	
+			<a class="form__btn-back" (click)="us.section='personal';us.top();"> < Back </a>
+			<a class="form__btn-continue" (click)="us.section='collectdocuments';us.top();"> Continue >  </a>
+		</div>
+
+	</div>

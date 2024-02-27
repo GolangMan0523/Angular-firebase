@@ -1,0 +1,27 @@
+@import 'scss/util/index';
+@import 'scss/vendor/index';
+@import 'scss/layout/index';
+@import 'scss/common/index';
+#html .cart > .modal-content{
+	width: 100%;
+	max-width: 320px;
+}
+
+.modal-content{
+  position: relative;
+  background-color: #fff;
+  margin: 15% auto;
+  padding: 1px!important;
+  border: 1px solid #888;
+  min-width: 320px!important;
+  max-width: 30%!important;
+
+}
+
+
+
+/* Importing Bootstrap SCSS file. */
+// @import "~bootstrap/scss/bootstrap";
+
+/* Importing Datepicker SCSS file. */
+@import "node_modules/ngx-bootstrap/datepicker/bs-datepicker";

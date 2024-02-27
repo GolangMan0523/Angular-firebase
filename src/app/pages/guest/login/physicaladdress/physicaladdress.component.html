@@ -1,0 +1,23 @@
+<div class="physicaladdress__inner">
+	<h1 class="physicaladdress__title">Is {{us.data.application.sponsorname + "'s"}} physical address in the U.S.?</h1>
+	<span class="physicaladdress__discription">A sponsor with a foreign physical address may have a different minimum income requirement amount. We will walk you through it.</span>
+	<div class="physicaladdress__cardholder" *ngIf="us.data.location != 'inside'  && us.data.cardholder != 'greencard'">
+		<a class="physicaladdress__link" (click)="us.auth='price'; us.data.location='outside'; us.update()">Yes</a>
+		<a class="physicaladdress__link" (click)="us.auth='price'">No</a>
+	</div>
+	<div class="physicaladdress__cardholder" *ngIf="us.data.location == 'inside'  && us.data.cardholder != 'greencard'">
+		<a class="physicaladdress__link" (click)="us.auth='visa'; us.data.location='inside'; us.update()">Yes</a>
+		<a class="physicaladdress__link" (click)="us.auth='visa'">No</a>
+	</div>
+	<div class="physicaladdress__cardholder" *ngIf="us.data.location == 'inside' && us.data.cardholder == 'greencard'">
+		<a class="physicaladdress__link" (click)="us.auth='children'; us.update()">Yes</a>
+		<a class="physicaladdress__link" (click)="us.auth='children'">No</a>
+	</div>
+	<div class="physicaladdress__cardholder" *ngIf="us.data.location == 'outside' && us.data.cardholder == 'greencard'">
+		<a class="physicaladdress__link" (click)="us.auth='children'; us.update()">Yes</a>
+		<a class="physicaladdress__link" (click)="us.auth='children'">No</a>
+	</div>
+	<div class="container__btn">
+	<a class="physicaladdress__btn" (click)="us.auth='application';us.top();"> < Back </a>
+	</div>
+</div>

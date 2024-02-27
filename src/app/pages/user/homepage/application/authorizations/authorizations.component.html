@@ -1,0 +1,585 @@
+<div *ngIf="us.pagesection == 1">
+  <div class="section__inner">
+    <h1 class="section__title">Work and travel while Form I-485 is pending</h1>
+    <img src="assets/up.png" />
+    <div>
+    <div class="section__discription">
+      If you want to work in the U.S. and/or travel outside the U.S. while your
+      Form I-485 is pending, you can apply for work authorization (called
+      “Employment Authorization Document” or “EAD”) by filing Form I-765, and
+      apply for travel authorization (called “Advance Parole Document”) by
+      filing Form I-131. Until recently, these two authorizations were issued
+      together on one card, so they were also known as the “combo card”. But now
+      USCIS actually issues two separate cards, one for work and one for travel.
+    </div>
+    <div class="section__discription">
+      Greenbroad can help you prepare Forms I-765 and I-131 at no extra cost,
+      and later we will also show you how to file them together with Form I-485.
+    </div>
+    <div class="section__discription">
+      <strong
+        >Will filing I-765 and I-131 impact the green card processing
+        time?</strong
+      >
+    </div>
+
+    <div class="section__discription">
+      It is not likely to impact the green card processing time. Once received
+      by USCIS, Forms I-765, I-131 and I-485 are separated and processed
+      independently from one another. The green card processing time is governed
+      primarily by I-485’s processing time.
+    </div>
+    <div class="sub-discription">
+      Source: Greenbroad suggestion only, not from USCIS
+    </div>
+    <div class="section__discription">
+      <strong> Does USCIS charge extra filing fees for I-765 and I-131?</strong>
+    </div>
+    <div class="section__discription">
+      No, there is no extra filing fees for I-765 and I-131 when they are filed
+      together with I-485.
+    </div>
+    <div class="sub-discription">Source: <a target="_blank" href="https://www.uscis.gov/sites/default/files/document/forms/g-1055.pdf">USCIS Fee Schedule</a></div>
+    <div class="section__discription">
+      Should I file I-765 with I-485 if I’m not sure whether I will work in the
+      U.S. while my I-485 is pending?
+    </div>
+
+    <div class="section__discription">
+      It may still be a good idea to file. You don’t need to have a current
+      employment to file Form I-765. Even though you can file I-765 at a later
+      time, its approval can take months. Filing I-765 with I-485 allows you to
+      get the Employment Authorization Document earlier.
+    </div>
+    <div class="sub-discription">
+      Source: Greenbroad suggestion only, not from USCIS
+    </div>
+    <div class="section__discription">
+      <strong>
+        Should I file I-131 with I-485 if I’m not sure whether I will travel
+        outside the U.S. while my I-485 is pending?</strong
+      >
+    </div>
+    <div class="section__discription">
+      It may still be a good idea to file. There is no requirement to provide a
+      detailed itinerary for Form I-131 (it does ask for the date of intended
+      departure and the expected length of trip). Like with I-765, you can file
+      I-131 at a later time, but its approval can take months. Filing I-131 with
+      I-485 allows you to get the Advance Parole Document earlier.
+    </div>
+    <div class="sub-discription">
+      Source: Greenbroad suggestion only, not from USCIS
+    </div>
+  </div>
+    <div class="section__container-btn">
+      <a class="form__btn-back" (click)="us.section = 'otherhistory'; us.top()">
+        < Back
+      </a>
+      <a class="form__btn-continue" (click)="us.pagesection = 2; us.top()">
+        Continue >
+      </a>
+    </div>
+  </div>
+</div>
+<div *ngIf="us.pagesection == 2">
+  <div class="section__inner">
+    <div class="form__inner">
+      <h1 class="section__title">
+        Apply for an Employment Authorization Document for working in the U.S.
+      </h1>
+      <div class="section__discription">
+        {{ us.data.application.name || "Applicant" }} may apply for an
+        Employment Authorization Document (EAD) to legally work in the U.S.
+        during the period when
+        {{
+          (us.data.application.name && us.data.application.name + "'s") ||
+            "Applicant's"
+        }}
+        Form I-485 is pending. The form used to apply for an EAD is
+        <a style="color: #4d61fc" href="https://www.uscis.gov/i-765"
+          >Form I-765</a
+        >
+        . We will help you complete it.
+      </div>
+      <div
+        class="sub__section-btn"
+        (click)="authorizationus = !authorizationus"
+        (clickOutside)="authorizationus = null"
+      >
+        <span class="sub__section-icon" [class._active]="authorizationus"
+          >&#8250;</span
+        >
+        What if I have a current EAD or an H-1B visa?
+      </div>
+      <div class="sub-sub__section-inner" *ngIf="authorizationus">
+        <p>
+          Applying for an EAD with your green card is optional. If you have a
+          current EAD or an H-1B visa, you can still apply for an EAD with your
+          green card application, but you don't have to.
+        </p>
+
+        <p>
+          Some applicants may find it desirable to apply for an EAD with their
+          green card application because it is not tied to one particular
+          sponsoring employer like an H-1B visa, or because their current EAD or
+          H-1B visa cannot last through the application period.
+        </p>
+
+        <p>
+          Also, in case this is useful, according to page 15 of the
+          <a
+            style="color: #4d61fc"
+            href="https://www.uscis.gov/sites/default/files/document/forms/i-765instr.pdf"
+            >Form I-765 instructions</a
+          >, Form I-765 (the form used to apply for employment authorization)
+          can be filed on a later date, separately from Form I-485. So you have
+          some time to decide. If you decide to file Form I-765 on a later date,
+          keep the processing time in mind: Currently, it can take 8 months or
+          more for USCIS to issue an EAD (the actual time it takes varies
+          significantly from case to case), so it is important to plan ahead.
+        </p>
+
+        <p>
+          This being said, since we are not lawyers, we cannot give legal
+          advice. If you want to figure out the best course of action regarding
+          Form I-765, we would recommend consulting a lawyer. You can either
+          have a quick lawyer consultation now, or have a final lawyer review
+          after finishing your application using Greenbroad. Many applicants do
+          this. Both of these two options are affordable, and many lawyers
+          provide remote services if you do not want to visit their office. If
+          you need a lawyer recommendation, just let us know.
+        </p>
+        <div class="sub__discription">
+          Source: Greenbroad suggestion only, not from USCIS
+        </div>
+      </div>
+      <div class="sub__discription-inner">
+        <p>Potential future USCIS fee increase</p>
+
+        <p>
+          On Oct 2, 2020, USCIS was going to start charging an extra $550 fee
+          for filing Form I-765, which is the form used to apply for an
+          Employment Authorization Document. However, the fee increase was
+          temporarily blocked by a federal court injunction on Sept 29, 2020. As
+          long as this injunction is in effect, USCIS will not charge the new
+          fee.
+        </p>
+
+        <p>
+          Note that this injunction is only temporary and can change at any time
+          without notice.
+          <span class="text__item"
+            >You should double check the
+            <a target="_blank" href="https://www.uscis.gov/g-1055"
+              >USCIS Fee Schedule page</a
+            >
+            right before you file to make sure you are using the correct filing
+            fees.</span
+          >
+        </p>
+      </div>
+      <div class="form__check">
+        <div class="form__title">
+          Does {{ us.data.application.name || "Applicant" }} want to apply for
+          an Employment Authorization Document?
+        </div>
+        <label>
+          <input
+            type="radio"
+            name="applyforanemployment_name"
+            [value]="'yes'"
+            [(ngModel)]="us.data.application.applyforanemployment_name"
+            (ngModelChange)="us.update()"
+          />
+          <span class="check">Yes</span>
+        </label>
+        <label>
+          <input
+            type="radio"
+            name="applyforanemployment_name"
+            [value]="'no'"
+            [(ngModel)]="us.data.application.applyforanemployment_name"
+            (ngModelChange)="us.update()"
+          />
+          <span class="check">No</span>
+        </label>
+      </div>
+      <div *ngIf="us.data.application.applyforanemployment_name == 'yes'">
+        <div class="form__check">
+          <div class="form__title">
+            Does {{ us.data.application.name || "Applicant" }} want the Social
+            Security Administration (SSA) to issue
+            {{ us.data.application.name || "Applicant" }} a Social Security
+            card?
+          </div>
+          <label>
+            <input
+              type="radio"
+              name="socialsecuritycard_name"
+              [value]="'yes'"
+              [(ngModel)]="us.data.application.socialsecuritycard_name"
+              (ngModelChange)="us.update()"
+            />
+            <span class="check">Yes</span>
+          </label>
+          <label>
+            <input
+              type="radio"
+              name="socialsecuritycard_name"
+              [value]="'no'"
+              [(ngModel)]="us.data.application.socialsecuritycard_name"
+              (ngModelChange)="us.update()"
+            />
+            <span class="check">No</span>
+          </label>
+        </div>
+
+        <div *ngIf="us.data.application.socialsecuritycard_name == 'yes'">
+          <div class="form__check">
+            <div class="form__title">
+              Consent for Disclosure: Does
+              {{ us.data.application.name || "Applicant" }} authorize disclosure
+              of information from this application to the SSA as required for
+              the purpose of assigning
+              {{ us.data.application.name || "Applicant" }} an SSN and issuing
+              {{ us.data.application.name || "Applicant" }} a Social Security
+              card?
+            </div>
+            <label>
+              <input
+                type="radio"
+                name="consentfordisclosure_name"
+                [value]="'yes'"
+                [(ngModel)]="us.data.application.consentfordisclosure_name"
+                (ngModelChange)="us.update()"
+              />
+              <span class="check">Yes</span>
+            </label>
+            <label>
+              <input
+                type="radio"
+                name="consentfordisclosure_name"
+                [value]="'no'"
+                [(ngModel)]="us.data.application.consentfordisclosure_name"
+                (ngModelChange)="us.update()"
+              />
+              <span class="check">No</span>
+            </label>
+          </div>
+        </div>
+        <div *ngIf="us.data.application.consentfordisclosure_name == 'no'">
+          <div class="sub__discription-inner">
+            <p class="sub-form__title">
+              Your Case Requires Additional Attention
+            </p>
+            <p>
+              Because the applicant answered "yes" to one or more of the questions
+              above, there may be additional documents/forms you need to submit that
+              are not covered by Greenbroad.
+            </p>
+
+            <p>
+              If you choose to proceed using Greenbroad, you can continue filling
+              out all the questions asked in our software and preparing all the
+              documents listed in our document checklist. At the end, we will
+              generate for you all the forms and cover letters that we cover.<strong>
+                However, we strongly suggest you consult an immigration lawyer to
+                prepare the additional documents/forms, or your application may be
+                rejected or denied. </strong
+              >If you need a lawyer recommendation,
+              <a class="sub__section-link" target="_blank"
+                >here is the contact information</a
+              >
+              of an immigration lawyer we work with.
+            </p>
+
+            <p>
+              If you have any questions, please don't hesitate to contact us.
+            </p>
+          </div>
+        </div>
+        <div class="form__check">
+          <div class="form__title">
+            Has {{ us.data.application.name || "Applicant" }} previously filed
+            <sapn class="title__link"
+              ><a target="_blank" href="https://www.uscis.gov/i-765"
+                >Form I-765, Application For Employment Authorization?</a
+              ></sapn
+            >
+          </div>
+          <label>
+            <input
+              type="radio"
+              name="applicationforus_name"
+              [value]="'yes'"
+              [(ngModel)]="us.data.application.applicationforus_name"
+              (ngModelChange)="us.update()"
+            />
+            <span class="check">Yes</span>
+          </label>
+          <label>
+            <input
+              type="radio"
+              name="applicationforus_name"
+              [value]="'no'"
+              [(ngModel)]="us.data.application.applicationforus_name"
+              (ngModelChange)="us.update()"
+            />
+            <span class="check">No</span>
+          </label>
+        </div>
+      </div>
+    </div>
+    <div class="sub__discription">
+      Sources for this page (unless otherwise cited above): USCIS Form
+      <a target="_blank" href="https://www.uscis.gov/i-765">I-765</a> ,
+      <a
+        target="_blank"
+        href="https://www.uscis.gov/working-in-the-united-states/information-for-employers-and-employees/employer-information/employment-authorization"
+        >Employment Authorization (Form I-765 Category Section)</a
+      >
+    </div>
+    <div class="section__container-btn">
+      <a class="form__btn-back" (click)="us.pagesection = 1; us.top()">
+        < Back
+      </a>
+      <a class="form__btn-continue" (click)="us.pagesection = 3; us.top()">
+        Continue >
+      </a>
+    </div>
+  </div>
+</div>
+<div *ngIf="us.pagesection == 3">
+  <div class="section__inner">
+    <div class="form__inner">
+      <h1 class="section__title">
+        Apply for an Advance Parole Document for traveling outside the U.S.
+      </h1>
+      <div class="section__discription">
+        {{ us.data.application.name || "Applicant" }} may apply for an Advance
+        Parole Document to travel abroad temporarily during the period when
+        {{
+          (us.data.application.name && us.data.application.name + "'s") ||
+            "Applicant's"
+        }}
+        Form I-485 is pending. The purpose of the travel should be for “urgent
+        humanitarian reasons” or in furtherance of a “significant public
+        benefit,” which may include a personal or family emergency or bona fide
+        business reasons.
+      </div>
+
+      <div class="section__discription">
+        If {{ us.data.application.name || "Applicant" }} departs from the United
+        States before the Advance Parole Document is issued,
+        {{
+          (us.data.application.name && us.data.application.name + "'s") ||
+            "Applicant's"
+        }}
+        application for an Advance Parole Document will be considered abandoned.
+      </div>
+      <div class="section__discription">
+        Please read the Travel Warning on pages 5 - 6 of the
+        <a
+          style="color: #4d61fc"
+          href="https://www.uscis.gov/sites/default/files/document/forms/i-131instr.pdf"
+          >Form I-131 Instructions</a
+        >
+        before you apply for an Advance Parole Document.
+      </div>
+
+      <div class="sub__discription-inner">
+        <p>Potential future USCIS fee increase</p>
+
+        <p>
+          On Oct 2, 2020, USCIS was going to start charging an extra $590 fee
+          for filing Form I-131, which is the form used to apply for an Advance
+          Parole Document. However, the fee increase was temporarily blocked by
+          a federal court injunction on Sept 29, 2020. As long as this
+          injunction is in effect, USCIS will not charge the new fee.
+        </p>
+
+        <p>
+          Note that this injunction is only temporary and can change at any time
+          without notice.
+          <span class="text__item"
+            >You should double check the
+            <a target="_blank" href="https://www.uscis.gov/g-1055"
+              >USCIS Fee Schedule page</a
+            >
+            right before you file to make sure you are using the correct filing
+            fees.</span
+          >
+        </p>
+      </div>
+      <div class="form__check">
+        <div class="form__title">
+          Does {{ us.data.application.name || "Applicant" }} want to apply for
+          an Advance Parole Document?
+        </div>
+        <label>
+          <input
+            type="radio"
+            name="wanttoapplyforan_name"
+            [value]="'yes'"
+            [(ngModel)]="us.data.application.wanttoapplyforan_name"
+            (ngModelChange)="us.update()"
+          />
+          <span class="check">Yes</span>
+        </label>
+        <label>
+          <input
+            type="radio"
+            name="wanttoapplyforan_name"
+            [value]="'no'"
+            [(ngModel)]="us.data.application.wanttoapplyforan_name"
+            (ngModelChange)="us.update()"
+          />
+          <span class="check">No</span>
+        </label>
+      </div>
+      <div *ngIf="us.data.application.wanttoapplyforan_name == 'yes'">
+        <div class="sub__discription-inner">
+          <label class="label__inner">
+            <span class="form__title">Date of intended departure</span>
+            <!-- <ng2-flatpickr placeholder="mm/dd/yyyy" [config]="pickerOptions" [setDate]="us.data.application.sntendeddeparture_name" [(ngModel)]="us.data.application.sntendeddeparture_name" (ngModelChange)="us.update();"></ng2-flatpickr> -->
+            <input type="date" placeholder="mm/dd/yyyy" [(ngModel)]="us.data.application.sntendeddeparture_name" (ngModelChange)="us.update();">
+            <!-- <input type="text" placeholder="mm/dd/yyyy" class="form-control" bsDatepicker
+            [(ngModel)]="us.data.application.sntendeddeparture_name" (ngModelChange)="us.update();"> -->
+
+            <my-date
+              [class.err]="err.qName"
+              (blur)="
+                !us.data.application.sntendeddeparture_name &&
+                  (err.qName = true)
+              "
+              [date]="us.data.application.sntendeddeparture_name"
+              (update)="
+                us.data.application.sntendeddeparture_name = $event; us.update()
+              "
+            ></my-date>
+            <span *ngIf="err.qName" class="errspan"
+              >This field is required</span
+            >
+          </label>
+          <label class="label__inner">
+            <span class="form__title">Expected Length of Trip (in Days)</span>
+            <input
+              type="text"
+              [class.err]="err.wName"
+              [(ngModel)]="us.data.application.xpectedlengthoftrip_name"
+              (blur)="
+                !us.data.application.xpectedlengthoftrip_name &&
+                  (err.wName = true)
+              "
+              oninput="this.value = this.value.replace(/[^0-9.]/g, ''); this.value = this.value.replace(/(\..*)\./g, '$1');"
+              (ngModelChange)="us.update()"
+            />
+            <span *ngIf="err.wName" class="errspan"
+              >This field is required</span
+            >
+          </label>
+        </div>
+
+        <div class="form__check">
+          <div class="form__title">
+            Does {{ us.data.application.name || "Applicant" }} intend to travel
+            outside the U.S. more than once using this document?
+          </div>
+          <label>
+            <input
+              type="radio"
+              name="intendtotraveloutside_name"
+              [value]="'yes'"
+              [(ngModel)]="us.data.application.intendtotraveloutside_name"
+              (ngModelChange)="us.update()"
+            />
+            <span class="check">Yes</span>
+          </label>
+          <label>
+            <input
+              type="radio"
+              name="intendtotraveloutside_name"
+              [value]="'no'"
+              [(ngModel)]="us.data.application.intendtotraveloutside_name"
+              (ngModelChange)="us.update()"
+            />
+            <span class="check">No</span>
+          </label>
+        </div>
+        <div class="form__check">
+          <div class="form__title">
+            Has {{ us.data.application.name || "Applicant" }} ever before been
+            issued a reentry permit or Refugee Travel Document?
+          </div>
+          <label>
+            <input
+              type="radio"
+              name="areentrypermitor_name"
+              [value]="'yes'"
+              [(ngModel)]="us.data.application.areentrypermitor_name"
+              (ngModelChange)="us.update()"
+            />
+            <span class="check">Yes</span>
+          </label>
+          <label>
+            <input
+              type="radio"
+              name="areentrypermitor_name"
+              [value]="'no'"
+              [(ngModel)]="us.data.application.areentrypermitor_name"
+              (ngModelChange)="us.update()"
+            />
+            <span class="check">No</span>
+          </label>
+        </div>
+        <div *ngIf="us.data.application.areentrypermitor_name == 'yes'">
+          <div class="sub__discription-inner">
+            <p class="sub-form__title">
+              Your Case Requires Additional Attention
+            </p>
+            <p>
+              Because the applicant answered "yes" to one or more of the questions
+              above, there may be additional documents/forms you need to submit that
+              are not covered by Greenbroad.
+            </p>
+
+            <p>
+              If you choose to proceed using Greenbroad, you can continue filling
+              out all the questions asked in our software and preparing all the
+              documents listed in our document checklist. At the end, we will
+              generate for you all the forms and cover letters that we cover.<strong>
+                However, we strongly suggest you consult an immigration lawyer to
+                prepare the additional documents/forms, or your application may be
+                rejected or denied. </strong
+              >If you need a lawyer recommendation,
+              <a class="sub__section-link" target="_blank"
+                >here is the contact information</a
+              >
+              of an immigration lawyer we work with.
+            </p>
+
+            <p>
+              If you have any questions, please don't hesitate to contact us.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="sub__discription">
+      Sources for this page (unless otherwise cited above): USCIS Form
+      <a target="_blank" href="https://www.uscis.gov/i-131">I-131</a>
+      <!-- <a target="_blank" href="https://www.uscis.gov/sites/default/files/document/forms/i-765.pdf">I-765</a> , <a target="_blank" href="https://www.uscis.gov/working-in-the-united-states/information-for-employers-and-employees/employer-information/employment-authorization">Employment Authorization (Form I-765 Category Section)</a> -->
+    </div>
+    <div class="section__container-btn">
+      <a class="form__btn-back" (click)="us.pagesection = 2; us.top()">
+        < Back
+      </a>
+      <a
+        class="form__btn-continue"
+        (click)="us.section = 'appenotification'; us.pagesection = 1; us.top()"
+      >
+        Continue >
+      </a>
+    </div>
+  </div>
+</div>

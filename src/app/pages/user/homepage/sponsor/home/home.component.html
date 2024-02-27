@@ -1,0 +1,92 @@
+<div class="home__section">
+  <h1 class="section__form-title">Step 2 of 5 - Sponsor Info</h1>
+  <img src="assets/sponsor_home.png" alt="">
+  <div class="section__discription">
+    <span class="section__form-discription" *ngIf="us.data.cardholder == 'us' && us.data.location == 'inside'">This step
+      is for {{us.data.application.sponsorname || "Sponsor"}} – we will go over the application questions
+      {{us.data.application.sponsorname || "Sponsor"}} needs to complete 👍</span>
+    <span class="section__form-discription" *ngIf="us.data.cardholder == 'us' && us.data.location == 'inside'">Later in
+      the <a class="discription__link" href="printform">Print Forms</a> Step, you can download all the
+      filled-out application forms, and learn how to submit them correctly. Let's get started!</span>
+    <span class="section__form-discription" *ngIf="us.data.cardholder == 'us' && us.data.location == 'outside'">This
+      step is for {{us.data.application.sponsorname || "Sponsor"}} – we will go over the application questions
+      {{us.data.application.sponsorname || "Sponsor"}} needs to complete 👍</span>
+    <span class="section__form-discription" *ngIf="us.data.cardholder == 'us' && us.data.location == 'outside'">Later in
+      the <a class="discription__link" href="printforms">Submission 1</a> and <a
+        class="discription__link" href="printi864">Submission 2</a> steps, you can download the
+      filled-out application forms, and learn how to submit them correctly. Let's get started!
+    </span>
+    <span class="section__form-discription"
+      *ngIf="us.data.cardholder == 'greencard' && us.data.location == 'inside'">This step is for
+      {{us.data.application.sponsorname || "Sponsor"}} – we will go over the application questions
+      {{us.data.application.sponsorname || "Sponsor"}} needs to complete 👍</span>
+    <span class="section__form-discription"
+      *ngIf="us.data.cardholder == 'greencard' && us.data.location == 'inside'">Later in the <a
+        class="discription__link" href="printforms">Submission 1</a> and <a class="discription__link"
+         href="printi864">Submission 2</a> steps, you can download the filled-out application forms, and
+      learn how to submit them correctly. Let's get started!
+    </span>
+    <span class="section__form-discription"
+      *ngIf="us.data.cardholder == 'greencard' && us.data.location == 'outside'">This step is for
+      {{us.data.application.sponsorname || "Sponsor"}} – we will go over the application questions
+      {{us.data.application.sponsorname || "Sponsor"}} needs to complete 👍</span>
+    <span class="section__form-discription"
+      *ngIf="us.data.cardholder == 'greencard' && us.data.location == 'outside'">Later in the <a
+        class="discription__link"  href="printforms">Submission 1</a> and <a class="discription__link"
+         href="printi864">Submission 2</a> steps, you can download the filled-out application forms, and
+      learn how to submit them correctly. Let's get started!
+    </span>
+  </div>
+  <div class="sub__section">
+    <div class="sub__section-btn" (click)="subsection=!subsection" (clickOutside)="subsection=null"><span
+        class="sub__section-icon" [class._active]="subsection">&#8250;</span>See the list of forms we will help
+      {{us.data.application.sponsorname || "Sponsor"}} complete</div>
+    <div class="sub-sub__section-inner" *ngIf="subsection">
+      <ul class="sub__section-list">
+        <li>
+          <a class="sub__section-link" target="_blank" href="https://www.uscis.gov/i-130">Form I-130 - Petition for
+            Alien Relatives</a>
+          <span>A citizen of the United States (1) may file Form I-130, Petition for Alien Relative, with U.S.
+            Citizenship and Immigration Services (USCIS) to establish the existence of a relationship to certain alien
+            relatives (1) who wish to immigrate to the United States.</span>
+        </li>
+        <li>
+          <a class="sub__section-link" target="_blank" href="https://www.uscis.gov/i-864">Form I-864 - Affidavit of
+            Support Under Section 213A of the INA</a>
+        </li>
+        <span>This affidavit is required for most family-based immigrants (1) to show that they have adequate means of
+          financial support and are not likely to become a public charge.</span>
+
+        <li>
+          <a class="sub__section-link" target="_blank" href="https://www.uscis.gov/g-1145">Form G-1145 - e-Notification
+            of Application/Petition Acceptance</a><span>(optional)</span>
+        </li>
+        <span>Used to request an electronic notification (e-Notification) when USCIS accepts 1's immigration
+          application</span>
+
+      </ul>
+      <span>Forms I-130 and G-1145 will be submitted in <a class="sub__section-link" target="_blank" href="">Submission
+          1</a>. Form I-864 will be submitted in <a class="sub__section-link" target="_blank" href="">Submission 2</a>.
+
+        This list is based on USCIS and U.S. State Department instructions; you can see the source citations
+        below:</span>
+
+      <span>This list is based on USCIS and U.S. State Department instructions; you can see the source citations
+        below:</span>
+    </div>
+    <div class="sub__section-btn" (click)="subsectiontwo=!subsectiontwo" (clickOutside)="subsectiontwo=null"><span
+        class="sub__section-icon" [class._active]="subsectiontwo">&#8250;</span>Sources for this page</div>
+    <div class="sub-sub__section-inner" *ngIf="subsectiontwo">
+    <a class="sub__section-link" href="https://www.uscis.gov/family/bring-spouse-to-live-in-US">Bringing Spouses to Live in the United States as Permanent Residents</a>,
+    <a class="sub__section-link" href="https://www.uscis.gov/green-card">Green Card Overview</a>,
+    <a class="sub__section-link" href="https://www.uscis.gov/green-card/green-card-processes-and-procedures/adjustment-of-status">Adjustment of Status</a>,
+    <a class="sub__section-link" href="https://www.uscis.gov/green-card/green-card-processes-and-procedures/affidavit-of-support">Affidavit of Support</a>,
+    <a class="sub__section-link" href="https://www.uscis.gov/g-1145">G-1145, E-Notification of Application/Petition Acceptance</a>
+
+
+    </div>
+  </div>
+  <div class="section__container-btn">
+    <a class="section__btn" (click)="us.section='personalinfo'; us.pagesection=1; us.top();">Continue ></a>
+  </div>
+</div>

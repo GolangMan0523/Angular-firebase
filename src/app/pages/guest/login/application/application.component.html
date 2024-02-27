@@ -1,0 +1,15 @@
+<div class="application__inner">
+	<h1 class="application__title">When applying for the green card, will  {{us.data.application.name}} be inside or outside the U.S?</h1>
+	<span class="application__discription">The application process differs depending on {{us.data.application.name + "'s" }} physical location. We will help you select the right process for your case.</span>
+	<div class="application__cardholder" *ngIf="us.data.cardholder == 'us'">
+		<a class="application__link" (click)="us.auth='physicaladdress'; us.data.location='inside'; us.update()">Inside U.S.</a>
+		<a class="application__link" (click)="us.auth='physicaladdress'; us.data.location='outside'; us.update()">Outside U.S.</a>
+	</div>
+	<div class="application__cardholder" *ngIf="us.data.cardholder == 'greencard'">
+		<a class="application__link" (click)="us.auth='physicaladdress'; us.data.location='inside'; us.update()">Inside U.S.</a>
+		<a class="application__link" (click)="us.auth='physicaladdress'; us.data.location='outside'; us.update()">Outside U.S.</a>
+	</div>
+	<div class="container__btn">
+		<a class="application__btn" (click)="us.auth='cardholder';us.top();"> < Back </a>
+	</div>
+</div>

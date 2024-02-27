@@ -1,0 +1,111 @@
+<div *ngIf="section==1">
+  <div class="section__inner">
+    <img class="done__img" src="assets/done.png" alt="">
+    <h1 class="section__title">Help us improve with your feedback 🙂</h1>
+    <span class="form__title">If your friend applies for a marriage green card in the future, how likely will you
+      recommend Greenbroad to them?</span>
+    <form action="" method="post" class="ratized">
+      <input id="radio1" type="radio" name="estrellas" value="1">
+      <label for="radio1">&#9733;</label>
+
+      <input id="radio2" type="radio" name="estrellas" value="2">
+      <label for="radio2">&#9733;</label>
+
+      <input id="radio3" type="radio" name="estrellas" value="3">
+      <label for="radio3">&#9733;</label>
+
+      <input id="radio4" type="radio" name="estrellas" value="4">
+      <label for="radio4">&#9733;</label>
+
+      <input id="radio5" type="radio" name="estrellas" value="5">
+      <label for="radio5">&#9733;</label>
+    </form>
+    <div>
+      <div class="form__check">
+        <span class="form__title">Are there any questions or steps in the software that should be explained more
+          clearly?</span>
+        <label>
+          <input type="radio" name="feedback_name" [value]="'yes'" [(ngModel)]="us.data.application.feedback_name"
+            (ngModelChange)="us.update();">
+          <span class="check"> Yes</span>
+        </label>
+        <label>
+          <input type="radio" name="feedback_name" [value]="'no'" [(ngModel)]="us.data.application.feedback_name"
+            (ngModelChange)="us.update();">
+          <span class="check"> No</span>
+        </label>
+      </div>
+      <div *ngIf="us.data.application.feedback_name=='yes'">
+        <span class="form__title">Tell us about these confusing parts, and we will fix them:</span>
+        <label for="">
+          <textarea [(ngModel)]="us.data.application.anyfeedbacsdf_name"
+          (ngModelChange)="us.update();" name="" id="" cols="30" rows="10"></textarea>
+        </label>
+      </div>
+      <div class="form__check">
+        <span class="form__title">Did you run into any technical issues when using the software (for example: the
+          software
+          crashed, could not download forms, data wasn't saved)?</span>
+        <label>
+          <input type="radio" name="anyfeedback_name" [value]="'yes'" [(ngModel)]="us.data.application.anyfeedback_name"
+            (ngModelChange)="us.update();">
+          <span class="check"> Yes</span>
+        </label>
+        <label>
+          <input type="radio" name="anyfeedback_name" [value]="'no'" [(ngModel)]="us.data.application.anyfeedback_name"
+            (ngModelChange)="us.update();">
+          <span class="check"> No</span>
+        </label>
+      </div>
+      <div *ngIf="us.data.application.anyfeedback_name=='yes'">
+        <span class="form__title">Tell us about the issues, and we will fix them:</span>
+        <label for="">
+          <textarea [(ngModel)]="us.data.application.anyfeedbackthem_name"
+          (ngModelChange)="us.update();" name="" id="" cols="30" rows="10"></textarea>
+        </label>
+      </div>
+      <div class="form__check">
+        <span class="form__title">When you first learned about Greenbroad, what concerns/doubts did you have first it?
+          Are
+          these concerns/doubts resolved now?</span>
+        <label>
+          <textarea [(ngModel)]="us.data.application.anyfeedbackthemfirst_name"
+          (ngModelChange)="us.update();" placeholder="" name="" id="" cols="30" rows="10"></textarea>
+        </label>
+      </div>
+      <div class="form__check">
+        <span class="form__title">Any other ways that Greenbroad could be better</span>
+        <label>
+          <textarea [(ngModel)]="us.data.application.anyfeeqwe_name"
+          (ngModelChange)="us.update();" placeholder="" name="" id="" cols="30" rows="10"></textarea>
+        </label>
+      </div>
+      <div class="form__check">
+        <span class="form__title">How did you find about Greenbroad</span>
+        <label>
+          <input type="checkbox" [value]="'yes'" name="feedbackgreen" [(ngModel)]="us.data.application.feedbackgreen"
+            (ngModelChange)="us.update();">
+          <span style="margin: 0 0 0 10px;" class="check">Through Greenbroad Blog</span>
+        </label>
+        <label>
+          <input type="checkbox" [value]="'yes'" name="feedbackgreentwo" [(ngModel)]="us.data.application.feedbackgreentwo"
+            (ngModelChange)="us.update();">
+          <span style="margin: 0 0 0 10px;" class="check">Through a friend's recommendation</span>
+        </label>
+        <label>
+          <span style="margin: 0 10px 0 0;" class="check">Through another channel:</span>
+          <input type="text" name="feedbackgreenthree" [(ngModel)]="us.data.application.feedbackgreenthree"
+            (ngModelChange)="us.update();">
+        </label>
+      </div>
+      <div>
+        <button class="feedback-btn" (click)="modal.show({component: 'done'});">Submit feedback</button>
+      </div>
+    </div>
+
+    <div class="section__container-btn">
+      <a class="form__btn-back" (click)="section=4;us.top();">
+        < Back </a>
+    </div>
+  </div>
+</div>

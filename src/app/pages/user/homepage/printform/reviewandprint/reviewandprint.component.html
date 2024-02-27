@@ -1,0 +1,129 @@
+<div *ngIf="section==1">
+  <div class="section__inner">
+    <div class="inner">
+      <h1 class="section__title">Review and print</h1>
+      <div class="Review__discription">Here we are! Below you will find:</div>
+      <ul>
+        <li>All USCIS forms needed for your application, already filled in based on information you provided. (Note that
+          the forms are not considered complete until you <a style="color: #4D61FC;"
+            (click)="us.section='signdateets';us.top();">sign, date and complete some manual parts</a> in the next
+          section.)</li>
+        <li style="font-weight: 600;">Two application packet cover letters, one for the Petition for Alien Relative
+          packet, and the other for the Adjustment of Status packet.</li>
+        <div class="sub__section-btn" (click)="coverletter=!coverletter" (clickOutside)="coverletter=null">
+          <div class="sub__section-icon" [class._active]="coverletter">&#8250;</div>What is a cover letter?
+        </div>
+      </ul>
+      <div class="sub-sub__section-inner" *ngIf="coverletter">
+        <p>A cover letter is essentially a table of contents of all the forms and documents contained within an
+          application packet. A cover letter helps you organize your papers, and also helps USCIS agents during their
+          review.</p>
+        <p>For easy processing, USCIS advises the application materials be organized into two separate packets:</p>
+        <ul>
+          <li>The Petition for Alien Relative packet – used by {{us.data.application.sponsorname || "Sponsor"}} to
+            establish the existence of a marital relationship with {{us.data.application.name || "Applicant"}}</li>
+          <li>The Adjustment of Status packet – used by {{us.data.application.name || "Applicant"}} to apply for lawful
+            permanent resident status (commonly known as Green Card)</li>
+        </ul>
+
+
+        <p>Below you can download a cover letter for each packet, created based on your input in the <a
+            style="color: #4D61FC;" (click)="us.section='summary'; us.tab='application'">Applicant Info</a>, <a
+            style="color: #4D61FC;" (click)="us.section='sponsorsummary'; us.tab='sponsor'">Sponsor Info</a> and <a
+            style="color: #4D61FC;" (click)="us.section='home'; us.tab='collectdocuments'">Collect Documents</a> steps.
+        </p>
+
+        <p>Later in the <a style="color: #4D61FC;" (click)="us.section='organizeapp'; us.tab='submit'">Submit Step</a>,
+          we will walk you through how to assemble the packets using the cover letters.</p>
+      </div>
+      <ol>
+        <li>Review each application form carefully and confirm that the information contained is complete, true and
+          correct.
+          How to edit my form entries?
+          <div class="sub__section-btn" (click)="fromenties=!fromenties" (clickOutside)="fromenties=null">
+            <div class="sub__section-icon" [class._active]="fromenties">&#8250;</div>How to edit my form entries?
+          </div>
+          <div class="sub-sub__section-inner" *ngIf="fromenties">
+            <p><span class="p-text">Option 1:</span> Edit your answers in the <a style="color: #4D61FC;"
+                (click)="us.section='summary'; us.tab='application'">Applicant Info</a> or <a style="color: #4D61FC;"
+                (click)="us.section='sponsorsummary'; us.tab='sponsor'">Sponsor Info</a> steps, and the forms will be
+              automatically updated here.</p>
+
+            <p><span class="p-text">Option 2:</span> If Option 1 does not fix the issue, then you can edit form entries
+              directly when you open a form in the Greenbroad PDF Viewer. Only use this option if Option 1 does not
+              work, and read the warning message below.</p>
+
+            <p><span class="p-text">Warning:</span> Changing your form entries can potentially change your application
+              eligibility, required forms, required supporting documents, filing fees, filing method, and more. Make
+              sure you do the following:</p>
+            <ul>
+              <li>If changing form entries using Option 1, make sure to browse through the entire Greenbroad software
+                afterwards for updated instructions.</li>
+              <li>If changing form entries using Option 2, Greenbroad cannot update instructions after you make changes.
+                It is your responsibility to review the relevant USCIS instructions on your own to make sure you are
+                filing correctly.</li>
+            </ul>
+          </div>
+        </li>
+        <li>Review the <a target="_blank" style="color: #4D61FC;" href="https://www.uscis.gov/forms/all-forms">USCIS
+            instructions</a> for each application form and confirm that all requirements are met correctly.</li>
+        <li>Review each cover letter and confirm that all the application forms and documents you intend to submit to
+          USCIS are correctly listed on the cover letter. Note: All documents from the <a style="color: #4D61FC;"
+            (click)="us.section='home'; us.tab='collectdocuments'">Collect Documents</a> step are included in the cover
+          letter, unless the document is marked as "Skipped" or "N/A" by you. So make sure you have marked each item
+          correctly.
+          <div class="sub__section-btn" (click)="mycoverletter=!mycoverletter" (clickOutside)="mycoverletter=null">
+            <div class="sub__section-icon" [class._active]="mycoverletter">&#8250;</div>How to edit my form entries?
+          </div>
+          <div class="sub-sub__section-inner" *ngIf="mycoverletter">
+            Edit your entries in the <a style="color: #4D61FC;"
+              (click)="us.section='home'; us.tab='collectdocuments'">Collect Documents</a> step, and the cover letter
+            will be automatically updated here.
+          </div>
+        </li>
+        <li>When you are happy with the application forms and cover letter(s), download and print them out, single-sided
+          😃
+        </li>
+      </ol>
+      <ul>
+        <!-- <li>How to print out the forms from a different computer? — You can follow <a target="_blank" style="color: #4D61FC;" href="https://www.greencardhero.com/info/how-to-print-my-forms-and-cover-letters-on-a-different-computer/">this detailed guide</a> on how to do that.</li> -->
+        <li>Should I print the forms and supporting documents single-sided or double-sided? — According to <a
+            target="_blank" style="color: #4D61FC;"
+            href="https://www.uscis.gov/forms/filing-guidance/tips-for-filing-forms-by-mail">USCIS</a>, the forms should
+          be printed single-sided. Copies of your supporting documents should also be single-sided.</li>
+        <li>Can I generate the forms and cover letters again after making changes? — Yes, of course. You can download
+          and print as many times as you need, and this page updates automatically when you make new changes. Just
+          download the forms and cover letters again to see the changes 👍</li>
+        <li>Is it OK if my forms do not have a barcode at the bottom? — Yes, it is OK not to have that barcode on your
+          forms. According to <a target="_blank" style="color: #4D61FC;"
+            href="https://www.uscis.gov/forms/filing-guidance/tips-for-filing-forms-by-mail">USCIS:</a> "Depending on
+          which internet browser you use, the barcode may not be visible when you open the form. We will process all
+          forms with or without a barcode at the bottom of the page."</li>
+      </ul>
+    </div>
+    <div class="section__sub-inner">
+      <h1 class="section__title">Instant Download of All Forms and Cover Letters</h1>
+      <div class="p-description">
+        <p style="text-align: center;">In case you are wondering:</p>
+
+        <p>You can download and print as many times as you need, and this page updates automatically when you make
+          new
+          changes 👍</p>
+      </div>
+      <!-- <button (click)="modal.show({component: 'stripemodal'});" class="section__btn">Proceed to Checkout</button> -->
+
+      <stripe-buy-button
+        buy-button-id="buy_btn_1NPWZ3DBW6vzTeKzsM0SVS9n"
+        publishable-key="pk_live_51IRTF6DBW6vzTeKz7SJzo2ku8Lds2B6SUtszzntTuWzyt5x8xPpoOgYY49urR3vxn73FwUFbLlNjhgtpJftEJmyg00Lz8XrNDe"
+      ></stripe-buy-button>
+
+      <a class="section__link" (click)="modal.show({component: 'key'});">Already purchased?</a>
+      <img class=" section__img" src="assets/submissionone.png" alt="">
+      <div class="section__container-btn">
+        <a class="form__btn-back" (click)="us.section='reviewandprint';us.top();">
+          < Back </a>
+            <a class="form__btn-continue" (click)="us.section='signdateets';us.top();"> Continue > </a>
+      </div>
+    </div>
+  </div>
+</div>

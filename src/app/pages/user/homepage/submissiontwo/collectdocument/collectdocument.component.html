@@ -1,0 +1,43 @@
+<div *ngIf="section==1">
+	<div class="section__inner">
+		<h1 class="section__title" >Collect Documents</h1>
+		<img class="section__img" src="assets/collet.png">
+		<div class="section__discription">Now it's time to prepare the supporting documents that will be submitted with Submission 2 👌 </div>
+		<div class="section__discription">
+		NVC requires two sets of documents: civil documents, and financial evidence. In this section, we will help you collect all the necessary supporting documents using a comprehensive checklist.</div>
+		<div class="section__discription">
+			All items on this checklist come from official Department of State and USCIS instructions. The document items are grouped into the following categories:
+		</div>
+		<div class="section__container">
+			<ul class="section__list" >
+				<li>Financial evidence</li>
+				<li>Civil documents (part 1) - and 's documents</li>
+				<li>Civil documents (part 2) - 's police certificates</li>
+			</ul>
+		</div>
+		<div class="section__discription">Let's get started!</div>
+		<div class="section__container-btn">
+			<a class="form__btn-back" (click)="us.section='submissiontwohome';us.top();"> < Back </a>
+			<a class="form__btn-continue" (click)="section=2;us.top();"> Continue >  </a>
+		</div>
+	</div>
+</div>
+<div *ngIf="section==2">
+	<div class="section__inner">
+		<div class="sub__section-container">
+			<h1 class="section__title">
+				Financial evidence
+			</h1>
+			<span class="section__discription">
+				Form I-864
+			</span>
+			<span class="section__discription">
+				Affidavit of Support (Form I-864) requires the following supporting documents.
+			</span>
+		</div>
+		<div class="section__container-btn">
+			<a class="form__btn-back" (click)="us.section=1;us.top();"> < Back </a>
+			<a class="form__btn-continue" (click)="us.section='printi864';us.top();"> Continue ></a>
+		</div>
+	</div>
+</div>

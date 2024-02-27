@@ -1,0 +1,83 @@
+<div *ngIf="section == 1">
+  <div class="section__inner">
+    <h1 class="section__title">Instant Access after Checkout</h1>
+    <div class="discription__inner">
+      <span class="discription__title">Here are key points for the medical examination for a Marriage Green Card:</span>
+      <ul>
+        <span class="title-list"> Finding the Right Doctor:</span>
+
+        <li>
+          Research authorized civil surgeons designated by U.S. Citizenship and
+          Immigration Services (USCIS) in your area.
+        </li>
+
+        <li>
+          Check the USCIS website or contact the nearest U.S. embassy or
+          consulate for a list of approved doctors.
+        </li>
+        <span class="title-list"> Scheduling the Exam:</span>
+
+        <li>
+          Contact the chosen civil surgeon's office to schedule the medical
+          examination.
+        </li>
+        <li>
+          Plan the exam well in advance to ensure completion within the required
+          timeframe.
+        </li>
+        <span class="title-list"> Documents to Bring:</span>
+
+        <li>Valid passport or government-issued identification document.</li>
+        <li>Vaccination records (if available).</li>
+        <li>
+          Any medical documentation relevant to past or current conditions (if
+          applicable).
+        </li>
+        <span class="title-list"> What to Expect at the Exam:</span>
+
+        <li>
+          The civil surgeon will conduct a thorough physical examination,
+          including vital signs, blood tests, and a review of your medical
+          history.
+        </li>
+        <li>
+          The doctor will assess your overall health and screen for communicable
+          diseases specified by USCIS.
+        </li>
+        <li>
+          Chest X-ray and syphilis testing may be required as part of the
+          examination.
+        </li>
+        <span class="title-list"> Money-Saving Tip:</span>
+        <li>
+          Consider obtaining any required vaccinations before the exam from a
+          lower-cost source (such as a local health department) to potentially
+          save on vaccination fees charged by the civil surgeon.
+        </li>
+      </ul>
+    </div>
+    <!-- <button class="section__btn" (click)="modal.show({component: 'stripemodal'});"> Proceed to Checkout</button> -->
+    <stripe-buy-button
+      buy-button-id="buy_btn_1NPWZ3DBW6vzTeKzsM0SVS9n"
+      publishable-key="pk_live_51IRTF6DBW6vzTeKz7SJzo2ku8Lds2B6SUtszzntTuWzyt5x8xPpoOgYY49urR3vxn73FwUFbLlNjhgtpJftEJmyg00Lz8XrNDe"
+    ></stripe-buy-button>
+    <a class="section__link" (click)="modal.show({ component: 'key' })"
+      >Already purchased?</a
+    >
+    <img class="section__img" src="assets/checkout.png" alt="" />
+    <div class="section__container-btn">
+      <a
+        class="form__btn-back"
+        (click)="us.section = 'proofofinancial'; us.top()"
+      >
+        < Back
+      </a>
+      <a
+        class="form__btn-continue"
+        (click)="us.section = 'birthcertificate'; us.top()"
+      >
+        Continue ></a
+      >
+    </div>
+  </div>
+</div>

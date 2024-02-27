@@ -1,0 +1,9 @@
+<div *ngIf="section==1">
+	<div class="section__inner">
+		<h1 class="section__title">Instant Access after Checkout</h1>
+		<button class="section__btn" (click)="modal.show({component: 'stripe'});"> Proceed to Checkout</button>
+		<a class="section__link" (click)="modal.show({component: 'key'});">Already purchased?</a>
+
+	</div>
+
+</div>

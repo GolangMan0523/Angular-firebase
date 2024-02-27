@@ -1,0 +1,1494 @@
+
+<div *ngIf="section==1" >
+	<div class="section__inner">
+		<div class="section__sub-inner">
+			<h1 class="section__title">Evidence of {{us.data.application.name && us.data.application.name + "'s" || "Applicant's"}} Self-Sufficiency</h1>
+			<img class="images" src="assets/star.png">
+		</div>
+		<span class="section__discription">This section will collect all the information required to complete Form I-944 – Declaration of Self-Sufficiency. This is a brand-new form that the USCIS just released for the first time on Feb 24, 2020, as a result of the new public charge rule. The purpose of Form I-944 is to help the USCIS determine how likely {{us.data.application.name || "Applicant"}} can remain self-sufficient and not become a public charge at any time in the future.</span>
+		<span class="sub-discription">Source:
+			<a href="https://www.uscis.gov/sites/default/files/document/forms/i-944instr-pc.pdf"> USCIS Form I-944 Instructions</a> and <a href="https://www.uscis.gov/green-card/green-card-processes-and-procedures/public-charge">Public Charge</a>
+		</span>
+		<span class="section__discription">As you will soon find out, Form I-944 asks for a lot of information and many of the questions are quite vague. And since this form is so new, the U.S. government has not published much guidance to clarify questions 😓</span>
+		<span class="section__discription">In this section, we will try our best to clarify and simplify, but given the lack of official guidance, we are currently unable to provide much more additional information beyond what we have already included in this section. We will continuously update our instructions as new government guidance becomes available.</span>
+		<span class="section__discription">Later in the Collect Documents step, we will also help you prepare the documents required by Form I-944.</span>
+		<span class="section__discription">Now, let's dive into this brave new world together 🌈</span>
+
+		<div class="section__container-btn">
+			<a class="form__btn-back" (click)="us.section='home';us.top();"> < Back </a>
+			<a class="form__btn-continue" (click)="section=2;us.top();"> Continue ></a>
+		</div>
+	</div>
+</div>
+<div *ngIf="section==2">
+	<div class="section__inner">
+		<div class="section__sub-inner">
+			<h1 class="section__title">An Overview of "Public Charge"</h1>
+			<img class="images" src="assets/scared.png">
+		</div>
+
+		<span class="section__sub-title">The purpose of Form I-944 is to help USCIS determine whether an applicant is likely at any time to become a public charge.</span>
+		<span class="discription-title">What does it mean that an applicant is "likely at any time to become a public charge"?</span>
+		<span class="section__discription">TIt means USCIS thinks the applicant will likely, at any point in the future, not have enough income/assets/resources to support him/herself and will become a public charge. (A public charge is someone who receives one or more public benefits for more than 12 months, in total, within any 36-month period). Such an applicant may be denied based on the public charge inadmissibility ground.</span>
+		<span class="sub-discription">Source: <a href="https://www.uscis.gov/news/public-charge-fact-sheet">Public Charge Fact Sheet</a>, <a href="https://www.uscis.gov/policy-manual/volume-8-part-g-chapter-3">Public Charge Fact Sheet</a>, <a href="https://www.uscis.gov/sites/default/files/document/policy-manual-resources/Appendix-PublicChargeApplicabilitytoFamily-BasedAOS.pdf"> USCIS Public Policy Manual Chapter 3</a>, <a href="https://www.uscis.gov/sites/default/files/document/policy-manual-resources/Appendix-PublicChargeApplicabilitytoFamily-BasedAOS.pdf">USCIS Policy Manual Public Charge Appendix Page 1</a> and Greenbroad suggestion.</span>
+		<span class="discription-title">What are public benefits?</span>
+
+		<span class="section__sub-title">USCIS considers both cash and noncash benefits including:</span>
+		<span class="section__discription">
+			<ul>
+				<li>Any federal, state, local or tribal cash assistance for income maintenance
+					<ul>
+						<li>Supplemental Security Income</li>
+						<li>Temporary Assistance for Needy Families</li>
+						<li>Federal, State, local, or tribal cash benefit programs for income maintenance (often called General Assistance in the state context, but which may exist under other names) </li>
+					</ul>
+				</li>
+				<li>Supplemental Nutrition Assistance Program (formerly called Food Stamps)</li>
+				<li>Section 8 Housing Assistance under the Housing Choice Voucher Program</li>
+				<li>Section 8 Project-Based Rental Assistance (including Moderate Rehabilitation)</li>
+				<li>Public Housing under section 9 the Housing Act of 1937, 42 U.S.C. 1437 et seq.</li>
+				<li>Most forms of federally funded Medicaid (with certain exclusions)</li>
+				<li>Programs (including Medicaid) supporting aliens who are institutionalized for long-term care (for</li>
+				<li>example, in a nursing home or mental health institution)</li>
+			</ul>
+		</span>
+		<span class="sub-discription">
+			Source: <a href="https://www.uscis.gov/green-card/green-card-processes-and-procedures/public-charge">Public Charge</a>, <a href="https://www.uscis.gov/policy-manual/volume-8-part-g-chapter-10">USCIS Policy Manual Chapter 10</a>, <a href="https://www.uscis.gov/policy-manual/volume-8-part-g-chapter-9">USCIS Policy Manual Chapter 9</a>
+		</span>
+		<span class="discription-title">How does USCIS determine if an applicant is "likely at any time to become a public charge"?</span>
+		<span class="section__sub-title">USCIS considers the following categories of factors when making the determination:</span>
+		<span class="section__discription">
+			<ul>
+				<li> <span class="list__title">The applicant's age</span> (if the applicant is younger than 18 or older than 61, that could be a negative factor);</li>
+				<li><span class="list__title">The applicant's health</span> (if the applicant's medical exam (Form I-693) lists a Class A medical condition or a Class B medical condition that the civil surgeon, panel physician, or other medical professional indicates is significant enough to interfere with the applicant’s ability to provide and care for him or herself, to attend school, or to work, or that is likely to require extensive medical treatment or institutionalization in the future, then that could be a negative factor);</li>
+				<li><span class="list__title">The applicant's family status</span> (more about this coming up);</li>
+				<li><span class="list__title">The applicant's assets, resources and financial status</span> (more about this coming up);</li>
+				<li><span class="list__title">The applicant's education and skills</span> (more about this coming up);</li>
+				<li><span class="list__title">The applicant's prospective immigration status</span> (lawful permanent resident);</li>
+				<li><span class="list__title" >The applicant's expected period of admission </span>(permanently);</li>
+				<li><span class="list__title">A sufficient Affidavit of Support (Form I-864)</span> (more about this in the Sponsor Info Step); and</li>
+				<li><span class="list__title">The presence of heavily weighted positive and negative factors</span> (more about this coming up).</li>
+			</ul>
+		</span>
+		<span class="section__discription">There are various positive and negative factors that USCIS considers in each category, some are weighted more heavily than others. We will walk you through these factors in the following pages. USCIS makes the public charge determination based on the totality of the circumstances. This means that USCIS weighs both the positive and negative factors.</span>
+		<span class="sub-discription">
+			Source: <a href="https://www.uscis.gov/green-card/green-card-processes-and-procedures/public-charge">Public Charge</a>, <a href="https://www.uscis.gov/policy-manual/volume-8-part-g-chapter-5">USCIS Policy Manual Chapter 5</a>, <a href="https://www.uscis.gov/policy-manual/volume-8-part-g-chapter-6">USCIS Policy Manual Chapter 6</a>, <a href="https://www.uscis.gov/policy-manual/volume-8-part-g-chapter-7">USCIS Policy Manual Chapter 7</a>, <a href="https://www.uscis.gov/policy-manual/volume-8-part-g-chapter-15">USCIS Policy Manual Chapter 15</a>
+		</span>
+		<span class="discription-title">What if I'm not sure whether USCIS would determine I'm "likely at any time to become a public charge"?</span>
+		<span class="section__sub-title">You may consider reviewing your application with an immigration lawyer before submission. Here is how it works:</span>
+		<span class="section__discription">After completing your application using Greenbroad, take it to an immigration lawyer and ask for an "application review". Many lawyers provide remote services if you do not want to visit their office. Typically, a lawyer would only charge around $500 for a thorough 2 - 2.5-hour review (1 hour for the lawyer to review the forms and documents on his/her own, and another 1 to 1.5 hours to meet with the applicant and sponsor remotely or in person). In contrast, hiring a lawyer to do the whole application can cost $4,000 and two months.</span>
+		<span class="section__discription">If you need a lawyer recommendation, just let us know.</span>
+		<span class="sub-discription">
+			Source: Greenbroad suggestion only. Not from USCIS
+		</span>
+		<div class="section__container-btn">
+			<a class="form__btn-back" (click)="section=1;us.top();"> < Back </a>
+			<a class="form__btn-continue" (click)="section=3;us.top();"> Continue ></a>
+		</div>
+	</div>
+</div>
+<div *ngIf="section==3">
+	<div class="section__inner">
+		<div class="section__sub-inner">
+			<h1 class="section__title">Does any of the following heavily weighted negative factors apply to {{us.data.application.name || "Applicant"}}? Scroll to the bottom to answer.</h1>
+		</div>
+		<span class="section__sub-title">Among the negative factors that would increase an applicant's likelihood of becoming a public charge, four factors are "heavily weighted".</span>
+		<span>The four heavily weighted negative factors are:</span>
+		<div class="section__discription"> <span class="app__number">1</span>The applicant is not a full-time student and is authorized to work, but cannot show current employment, recent employment history or a reasonable prospect of future employment.</div>
+		<div class="section__discription"><span class="app__number">2</span>The applicant has received, or has been certified or approved to receive, one or more public benefits for more than 12 months, in total, within any 36-month period, beginning no earlier than 36 months before the applicant applied for admission or adjustment of status on or after Feb. 24, 2020.</div>
+		<div class="section__discription"><span class="app__number">3</span>The applicant has been diagnosed with a medical condition that is likely to require extensive medical treatment or institutionalization or that will interfere with his or her ability to provide for him or herself, attend school, or work and he or she is uninsured and has neither the prospect of obtaining private health insurance nor the financial resources to pay for reasonably foreseeable medical costs related to a medical condition.</div>
+		<div class="section__discription"><span class="app__number">4</span>The applicant has previously been found by an immigration judge or the Board of Immigration Appeals to be inadmissible or deportable based on public charge grounds.</div>
+		<span class="sub-discription">Source:
+			<a href="https://www.uscis.gov/sites/default/files/document/forms/i-944instr-pc.pdf"> USCIS Form I-944 Instructions</a> and <a href="https://www.uscis.gov/green-card/green-card-processes-and-procedures/public-charge">Public Charge</a>
+		</span>
+		<span class="section__discription">The existence of any one of the above four factors are particularly indicative of the likelihood that the applicant would become a public charge. However, the mere presence of any one heavily weighted negative factor does not, alone, make the applicant inadmissible based on the public charge ground.</span>
+
+		<div class="form__check">
+			<div class="form__title">Does any of the heavily weighted negative factors listed above apply to {{us.data.application.name || "Applicant"}}?</div>
+			<label>
+				<input type="radio" name="factors_name" [value]="'yes'" [(ngModel)]="us.data.application.factors_name" (ngModelChange)="us.update();">
+				<span class="check">Yes</span>
+			</label>
+			<label>
+				<input type="radio" name="factors_name" [value]="'no'" [(ngModel)]="us.data.application.factors_name" (ngModelChange)="us.update();">
+				<span class="check">No</span>
+			</label>
+			<div class="sub-sub__section" *ngIf="us.data.application.factors_name=='yes'" >
+				<span class="sub__section-title">Your Case Requires Additional Attention</span>
+				<span>Because one or more of the heavily weighted negative factors apply to the applicant, there may be additional documents/forms you need to submit that are not covered by Greenbroad.</span>
+				<span>If you choose to proceed using Greenboard, you can continue filling out all the questions asked in our software and preparing all the documents listed in our document checklist. At the end, we will generate for you all the forms and cover letters that we cover.<span class="sub__p">However, we strongly suggest you consult an <a class="sub__section-link" href="https://www.ailalawyer.com/">immigration lawyer</a> to prepare the additional documents/forms or your application may be rejected or denied.</span></span>
+
+				<span>If you have any questions or need a lawyer recommendation, do not hesitate to contact us.</span>
+			</div>
+			<span class="sub-discription">Sources for this page (unless otherwise cited above):<a href="https://www.uscis.gov/green-card/green-card-processes-and-procedures/public-charge">Public Charge</a>, <a href="https://www.uscis.gov/policy-manual/volume-8-part-g-chapter-14">USCIS Policy Manual Chapter 14</a>
+			</span>
+		</div>
+
+
+		<div class="section__container-btn">
+			<a class="form__btn-back" (click)="section=2;us.top();"> < Back </a>
+			<a class="form__btn-continue" (click)="section=4;us.top();"> Continue ></a>
+		</div>
+	</div>
+</div>
+<div *ngIf="section==4">
+	<div class="section__inner">
+		<div class="section__sub-inner">
+			<h1 class="section__title">Evidence of {{us.data.application.name && us.data.application.name + "'s" || "Applicant's"}} Self-Sufficiency</h1>
+			<img class="images" src="assets/star.png">
+		</div>
+		<span class="section__discription">USCIS considers whether an applicant has a household to support, or whether the applicant is being supported by others in the applicant’s household, and whether the applicant’s household size makes the applicant more or less likely to become a public charge.</span>
+		<span class="section__discription">USCIS considers the applicant’s household size in relation to the applicant’s assets and resources. The more assets and resources the applicant has, the more self-sufficient the applicant is likely to be, and the less likely the applicant is to receive public benefits.</span>
+		<span class="section__discription">In this Self-Sufficiency sub-section, we will collect information for Form I-944 regarding the Family Status category and the Assets, Resources, and Financial Status category. USCIS uses this information, along with Forms I-485 and I-864, to determine if any of the following positive and negative factors apply to the applicant:</span>
+
+		<div class="img__title">
+			<img class="title-img" src="assets/img-1.png" alt="">
+			<span>Positive Factors</span>
+		</div>
+		<ul>
+			<li>If the applicant is able to support him or herself and his or her household members at or above 125 percent of the <a class="list__link" href="">Federal Poverty Guidelines</a> (100 percent for active duty military, other than active duty for training, in the U.S. armed forces) for the applicant’s household size. </li>
+			<li>Current employment</li>
+			<li>Total household gross income at or above 125 percent of the <a class="list__link" href="">Federal Poverty Guidelines</a> (100 percent for those on active duty, other than active duty for training, in the U.S. armed forces)
+			Financial resources that would make the applicant ineligible to obtain means-tested public benefits</li>
+			<li>Total household assets and resources in the applicable equivalent amount</li>
+			<li>Good, very good, or exceptional credit score (FICO credit score 670 and above)</li>
+			<li>Health insurance, not otherwise considered a public benefit, or sufficient income, assets, or resources to pay for reasonably foreseeable medical costs</li>
+		</ul>
+
+		<div class="img__title">
+			<img class="title-img" src="assets/img-2.png" alt="">
+			<span>Heavily Weighted Positive Factors</span>
+		</div>
+		<ul>
+			<li>Total household income, assets, or resources, and support of at least 250 percent of the <a class="list__link" href="">Federa lPoverty Guidelines</a></li>
+			<li>Private health insurance appropriate for the expected period of admission (not including health insurance for which the applicant receives subsidies in the form of premium tax credits under the Patient Protection and Affordable Care Act, as amended)</li>
+		</ul>
+
+		<div class="img__title-red">
+			<img class="title-img" src="assets/img-3.png" alt="">
+			<span>Positive Factors</span>
+		</div>
+
+		<ul>
+			<li>If the applicant is not able to support him or herself and his or her household members at or above 125 percent of the <a class="list__link" href="">Federal Poverty Guidelines</a> (100 percent for active duty military, other than active duty for training, in the U.S. armed forces) for the applicant’s household size.</li>
+			<li>No or low income or applicable equivalent assets</li>
+			<li>Request, certification of, or receipt of public benefits in the United States as defined</li>
+			<li>Any bankruptcy filings within the last 2 years</li>
+			<li>Request or receipt of a fee waiver for immigration benefits</li>
+			<li>Poor credit score (FICO credit score below 580)</li>
+			<li>No private health insurance or sufficient income, assets, or resources to pay for reasonably foreseeable medical costs</li>
+		</ul>
+
+		<div class="img__title-red">
+			<img class="title-img" src="assets/img-4.png" alt="">
+			<span>Heavily Weighted Negative Factors</span>
+		</div>
+		<ul>
+			<li>Receipt, certification of, or approval of public benefits for more than 12 months in any 36-month period starting before the application for adjustment of status, (calculated no earlier than February 24, 2020)</li>
+			<li>Medical condition and is uninsured and either lacks the prospect of obtaining private health insurance or lacks the financial resources to pay for reasonably foreseeable medical costs related to such medical condition</li>
+		</ul>
+
+		<span class="sub-discription">Sources for this page (unless otherwise cited above): <a href="https://www.uscis.gov/policy-manual/volume-8-part-g-chapter-8">USCIS Policy Manual Chapter 8</a>, <a href="https://www.uscis.gov/policy-manual/volume-8-part-g-chapter-9">USCIS Policy Manual Chapter 9</a>
+		</span>
+
+
+
+		<div class="section__container-btn">
+			<a class="form__btn-back" (click)="us.section=3;us.top();"> < Back </a>
+			<a class="form__btn-continue" (click)="section=5;us.top();"> Continue ></a>
+		</div>
+	</div>
+</div>
+<div *ngIf="section==5">
+	<div class="section__inner">
+		<h1 class="section__title">About {{us.data.application.name && us.data.application.name + "'s" || "Applicant's"}} income</h1>
+		<span class="discription-title">Regarding {{us.data.application.name && us.data.application.name + "'s" || "Applicant's"}} most recent federal income tax return:</span>
+		<div class="discription__section"><span>Note: The definition of the most recent federal income tax return for Form I-944 may be different than the definition for Form I-864.</span> <span>Make sure to click and read the  icon above</span></div>
+		<div class="section__form-inner">
+			<div class="form__title">Did {{us.data.application.name || "Applicant"}} file a federal tax return?</div>
+			<div class="form__check">
+				<label>
+					<input type="radio" name="usfederaltax_name" [value]="'yes'" [(ngModel)]="us.data.application.usfederaltax_name" (ngModelChange)="us.update();">
+					<span class="check">Yes</span>
+				</label>
+				<label>
+					<input type="radio" name="usfederaltax_name" [value]="'no'" [(ngModel)]="us.data.application.usfederaltax_name" (ngModelChange)="us.update();">
+					<span class="check">No</span>
+				</label>
+			</div>
+
+			<div class="form__check" *ngIf="us.data.application.usfederaltax_name=='no'">
+				<div class="form__title">What is the reason for not filing?</div>
+				<label>
+					<input type="radio" name="filethetax_name" [value]="'yes'" [(ngModel)]="us.data.application.filethetax_name" (ngModelChange)="us.update();">
+					<span class="check">Plan to file the tax return before the due date for this year</span>
+				</label>
+				<label>
+					<input type="radio" name="filethetax_name" [value]="'no'" [(ngModel)]="us.data.application.filethetax_name" (ngModelChange)="us.update();">
+					<span class="check">Not required to file a tax return</span>
+				</label>
+				<label>
+					<input type="radio" name="filethetax_name" [value]="'yesyes'" [(ngModel)]="us.data.application.filethetax_name" (ngModelChange)="us.update();">
+					<span class="check">Filed for an extension</span>
+				</label>
+				<label>
+					<input type="radio" name="filethetax_name" [value]="'nono'" [(ngModel)]="us.data.application.filethetax_name" (ngModelChange)="us.update();">
+					<span class="check">Not going to file</span>
+				</label>
+				<label>
+					<input type="radio" name="filethetax_name" [value]="'yesyesyes'" [(ngModel)]="us.data.application. filethetax_name" (ngModelChange)="us.update();">
+					<span class="check">Did not file for other reasons</span>
+				</label>
+			</div>
+			<div class="sub-sub__section" *ngIf="us.data.application.filethetax_name=='nono'">
+				<span class="sub__section-title">Your Case Requires Additional Attention</span>
+				<p>Because the applicant is not going to file the most recent federal income tax return, there may be additional documents/forms you need to submit that are not covered by Greenbroad.</p>
+
+				<p>If you choose to proceed using Greenbroad, you can continue filling out all the questions asked in our software and preparing all the documents listed in our document checklist. At the end, we will generate for you all the forms and cover letters that we cover. <span class="sub__p">However, we strongly suggest you consult an <a class="sub__section-link" href="https://www.ailalawyer.com/">immigration lawyer</a> to prepare the additional documents/forms or your application may be rejected or denied.</span></p>
+
+				<p>If you have any questions or need a lawyer recommendation, do not hesitate to contact us.</p>
+			</div>
+			<div class="sub__form" *ngIf="us.data.application.filethetax_name=='no'">
+				<div class="form__title">Explanation for Not Filing</div>
+				<textarea name="comment" cols="40" rows="3"></textarea>
+			</div>
+			<div class="section__form" *ngIf="us.data.application.filethetax_name=='yesyesyes'">
+				<label>
+					<span class="form__title">Reason for Not Filing</span>
+					<input type="text" [(ngModel)]="us.data.application.filingnot_name" (ngModelChange)="us.update();">
+				</label>
+			</div>
+			<div class="section__form">
+				<label>
+					<span class="form__title">Federal Tax Year</span>
+					<input type="text" [(ngModel)]="us.data.application.federal_name" (ngModelChange)="us.update();">
+				</label>
+				<label>
+					<span class="form__title">Total income from tax return or Item 1 on W-2 "Wages, tips, other compensation" (U.S. dollars) (if applicable)</span>
+					<input type="text" placeholder="$" [(ngModel)]="us.data.application.usdollars_name" (ngModelChange)="us.update();">
+				</label>
+			</div>
+		</div>
+		<span class="form__title">Did {{us.data.application.name || "Applicant" }} receive additional income on a continuing weekly, monthly, or annual basis during the most recent tax year, and the income is NOT listed on the tax return?
+		</span>
+		<div class="form__check">
+			<label>
+				<input type="radio" name="receiveadditional_name" [value]="'yes'" [(ngModel)]="us.data.application.receiveadditional_name" (ngModelChange)="us.update();">
+				<span class="check">Yes</span>
+			</label>
+			<label>
+				<input type="radio" name="receiveadditional_name" [value]="'no'" [(ngModel)]="us.data.application.receiveadditional_name" (ngModelChange)="us.update();">
+				<span class="check">No</span>
+			</label>
+		</div>
+		<div *ngIf="us.data.application.receiveadditional_name=='yes'">
+			<div *ngFor="let name of us.data.application.receiveadditionalus_names;index as i">
+				<div class="add-form__inner">
+					<div class="container__title">
+						<div class="sub__title">ADDITIONAL INCOME  {{i+1}}</div>
+						<button class="inner-title__btn" (click)="us.data.application.receiveadditionalus_names.splice(i,1);us.update()">X</button>
+					</div>
+					<div class="form__inner">
+						<label class="label__inner">
+							<span class="form__title">Type of Additional Income</span>
+							<input type="text"  [(ngModel)]="name.income_name" (ngModelChange)="us.update();">
+						</label>
+						<label class="label__inner">
+							<span class="form__title">Annual Amount Received</span>
+							<input type="text"  [(ngModel)]="name.annual_name" (ngModelChange)="us.update();">
+						</label>
+						<div class="form__check">
+							<span class="form__title">Will {{us.data.application.name || "Applicant" }}  continue to receive this income in the future?</span>
+							<label>
+								<input type="radio" name="continuetoreceive_name" [value]="'yes'" [(ngModel)]="us.data.application.continuetoreceive_name" (ngModelChange)="us.update();">
+								<span class="check">Yes</span>
+							</label>
+							<label>
+								<input type="radio" name="continuetoreceive_name" [value]="'no'" [(ngModel)]="us.data.application.continuetoreceive_name" (ngModelChange)="us.update();">
+								<span class="check">No</span>
+							</label>
+						</div>
+						<label class="label__inner">
+							<span class="form__title">When does {{us.data.application.name || "Applicant" }} anticipate {{us.data.application.name || "Applicant" }} will stop receiving this additional income?</span>
+							<ng2-flatpickr placeholder="mm/dd/yyyy" [setDate]="name.incomedate_name" [(ngModel)]="name.incomedate_name" (ngModelChange)="us.update();"></ng2-flatpickr>
+
+
+
+
+						</label >
+						<label class="label__inner">
+							<span class="form__title">Total annual amount of additional income received (at the time of filing)</span>
+							<input type="text"  [(ngModel)]="name.totalannual_name" (ngModelChange)="us.update();">
+						</label>
+					</div>
+				</div>
+			</div>
+			<div>
+				<button class="add-form__btn" (click)="itionaladd()">+ Add Additional Income</button>
+			</div>
+		</div>
+		<span class="sub-discription"> Sources for this page (unless otherwise cited above): USCIS <a href="https://www.uscis.gov/sites/default/files/document/forms/i-944-pc.pdf">Form I-944</a>
+		</span>
+		<div class="section__container-btn">
+			<a class="form__btn-back" (click)="section=4;us.top();"> < Back </a>
+			<a class="form__btn-continue" (click)="section=6;us.top();"> Continue ></a>
+		</div>
+	</div>
+</div>
+<div *ngIf="section==6">
+	<div class="section__inner">
+		<h1 class="section__title">About {{us.data.application.name && us.data.application.name + "'s" || "Applicant's"}} household members (Part 1) — {{us.data.application.sponsorname || "Sponsor"}}</h1>
+		<div class="list__title">The following individuals are part of {{us.data.application.name && us.data.application.name + "'s" || "Applicant's"}} household:</div>
+		<div class="section__list-form">
+			<ul>
+				<li>
+					{{us.data.application.name || "Applicant" }};
+				</li>
+				<li>
+					{{us.data.application.sponsorname || "Sponsor"}}, if physically residing with {{us.data.application.name || "Applicant" }};
+					{{us.data.application.name && us.data.application.name + "'s" || "Applicant's"}} children (under the age of 21 and unmarried) physically residing with {{us.data.application.name || "Applicant" }}. The term child includes stepchildren and adopted children;
+				</li>
+				<li>
+					{{us.data.application.name && us.data.application.name + "'s" || "Applicant's"}} children (under the age of 21 and unmarried) not physically residing with {{us.data.application.name || "Applicant" }} for whom {{us.data.application.name || "Applicant" }} provide or is required to provide at least 50 percent of financial support, as evidenced by a child support order or agreement, a custody order or agreement, or any other order or agreement specifying the amount of financial support to be provided by {{us.data.application.name || "Applicant" }};
+				</li>
+				<li>
+					Any other individuals (including a spouse not physically residing with {{us.data.application.name || "Applicant" }}) to whom {{us.data.application.name || "Applicant" }} provide, or are required to provide, at least 50 percent of the individual’s financial support, or who are listed as a dependent on {{us.data.application.name && us.data.application.name + "'s" || "Applicant's"}} federal income tax return; and
+
+				</li>
+				<li>
+					Any individual who provides to {{us.data.application.name || "Applicant" }} at least 50 percent of {{us.data.application.name && us.data.application.name + "'s" || "Applicant's"}} financial support, or who lists {{us.data.application.name || "Applicant" }} as a dependent on his or her federal income tax return.
+				</li>
+			</ul>
+			<div class="sub__discription">
+				Source:  <a href="https://www.uscis.gov/sites/default/files/document/forms/i-944instr-pc.pdf">USCIS Form I-944 Instructions Page 4</a>
+			</div>
+		</div>
+		<div class="form__title">
+			Based on the definition above, is {{us.data.application.sponsorname || "Sponsor"}} part of {{us.data.application.name && us.data.application.name + "'s" || "Applicant's"}} household?
+		</div>
+		<div class="form__check">
+			<label>
+				<input type="radio" name="definitionabove_name" [value]="'yes'" [(ngModel)]="us.data.application.definitionabove_name" (ngModelChange)="us.update();">
+				<span class="check">Yes</span>
+			</label>
+			<label>
+				<input type="radio" name="definitionabove_name" [value]="'no'" [(ngModel)]="us.data.application.definitionabove_name" (ngModelChange)="us.update();">
+				<span class="check">No</span>
+			</label>
+		</div>
+		<div *ngIf="us.data.application.definitionabove_name=='no'">
+			<div class="discription-title">Regarding {{us.data.application.sponsorname && us.data.application.sponsorname + "'s" || "Sponsor's"}} most recent federal income tax return:</div>
+			<div class="discription__section">
+				<span>Note: The definition of the most recent federal income tax return for Form I-944 may be different than the definition for Form I-864. Make sure to click and read the  icon above</span>
+			</div>
+			<div class="section__form-inner">
+				<div class="form__title">Did {{us.data.application.name || "Applicant"}} file a federal tax return?</div>
+				<div class="form__check">
+					<label>
+						<input type="radio" name="usfederaltaxreturn_name" [value]="'yes'" [(ngModel)]="us.data.application.usfederaltaxreturn_name" (ngModelChange)="us.update();">
+						<span class="check">Yes</span>
+					</label>
+					<label>
+						<input type="radio" name="usfederaltaxreturn_name" [value]="'no'" [(ngModel)]="us.data.application.usfederaltaxreturn_name" (ngModelChange)="us.update();">
+						<span class="check">No</span>
+					</label>
+				</div>
+				<div *ngIf="us.data.application.usfederaltaxreturn_name=='no'">
+					<div class="form__check" >
+						<div class="form__title">What is the reason for not filing?</div>
+						<label>
+							<input type="radio" name="filethetaxus_name" [value]="'yes'" [(ngModel)]="us.data.application.filethetaxus_name" (ngModelChange)="us.update();">
+							<span class="check">Plan to file the tax return before the due date for this year</span>
+						</label>
+						<label>
+							<input type="radio" name="filethetaxus_name" [value]="'no'" [(ngModel)]="us.data.application.filethetaxus_name" (ngModelChange)="us.update();">
+							<span class="check">Not required to file a tax return</span>
+						</label>
+						<label>
+							<input type="radio" name="filethetaxus_name" [value]="'yesyes'" [(ngModel)]="us.data.application.filethetaxus_name" (ngModelChange)="us.update();">
+							<span class="check">Filed for an extension</span>
+						</label>
+						<label>
+							<input type="radio" name="filethetaxus_name" [value]="'nono'" [(ngModel)]="us.data.application.filethetaxus_name" (ngModelChange)="us.update();">
+							<span class="check">Not going to file</span>
+						</label>
+						<label>
+							<input type="radio" name="filethetaxus_name" [value]="'yesyesyes'" [(ngModel)]="us.data.application. filethetaxus_name" (ngModelChange)="us.update();">
+							<span class="check">Did not file for other reasons</span>
+						</label>
+					</div>
+				</div>
+				<div class="sub-sub__section" *ngIf="us.data.application.filethetaxus_name=='nono'">
+					<span class="sub__section-title">Your Case Requires Additional Attention</span>
+					<p>Because the applicant is not going to file the most recent federal income tax return, there may be additional documents/forms you need to submit that are not covered by Greenbroad.</p>
+
+					<p>If you choose to proceed using Greenbroad, you can continue filling out all the questions asked in our software and preparing all the documents listed in our document checklist. At the end, we will generate for you all the forms and cover letters that we cover. <span class="sub__p">However, we strongly suggest you consult an <a class="sub__section-link" href="https://www.ailalawyer.com/">immigration lawyer</a> to prepare the additional documents/forms or your application may be rejected or denied.</span></p>
+
+					<p>If you have any questions or need a lawyer recommendation, do not hesitate to contact us.</p>
+				</div>
+				<div class="sub__form" *ngIf="us.data.application.filethetaxus_name=='no'">
+					<div class="form__title">Explanation for Not Filing</div>
+					<textarea name="comment" cols="40" rows="3"></textarea>
+				</div>
+				<div class="section__form" *ngIf="us.data.application.filethetaxus_name=='yesyesyes'">
+					<label>
+						<span class="form__title">Reason for Not Filing</span>
+						<input type="text" [(ngModel)]="us.data.application.usfilingnot_name" (ngModelChange)="us.update();">
+					</label>
+				</div>
+				<div class="section__form">
+					<label>
+						<span class="form__title">Federal Tax Year</span>
+						<input type="text" [(ngModel)]="us.data.application.usfederalus_name" (ngModelChange)="us.update();">
+					</label>
+					<label>
+						<span class="form__title">Total income from tax return or Item 1 on W-2 "Wages, tips, other compensation" (U.S. dollars) (if applicable)</span>
+						<input type="text" placeholder="$" [(ngModel)]="us.data.application.ususdollars_name" (ngModelChange)="us.update();">
+					</label>
+				</div>
+			</div>
+			<div class="form__check">
+				<label>
+					<input type="radio" name="receiveadditional_name" [value]="'yes'" [(ngModel)]="us.data.application.receiveadditional_name" (ngModelChange)="us.update();">
+					<span class="check">Yes</span>
+				</label>
+				<label>
+					<input type="radio" name="receiveadditional_name" [value]="'no'" [(ngModel)]="us.data.application.receiveadditional_name" (ngModelChange)="us.update();">
+					<span class="check">No</span>
+				</label>
+			</div>
+			<div *ngIf="us.data.application.receiveadditional_name=='yes'">
+				<div *ngFor="let name of us.data.application.receiveadditionalus_names;index as i">
+					<div class="add-form__inner">
+						<div class="container__title">
+							<div class="sub__title">ADDITIONAL INCOME  {{i+1}}</div>
+							<button class="inner-title__btn" (click)="us.data.application.receiveadditionalus_names.splice(i,1);us.update()">X</button>
+						</div>
+						<div class="form__inner">
+							<label class="label__inner">
+								<span class="form__title">Type of Additional Income</span>
+								<input type="text"  [(ngModel)]="name.income_name" (ngModelChange)="us.update();">
+							</label>
+							<label class="label__inner">
+								<span class="form__title">Annual Amount Received</span>
+								<input type="text"  [(ngModel)]="name.annual_name" (ngModelChange)="us.update();">
+							</label>
+							<div class="form__check">
+								<span class="form__title">Will {{us.data.application.name || "Applicant" }}  continue to receive this income in the future?</span>
+								<label>
+									<input type="radio" name="continuetoreceive_name" [value]="'yes'" [(ngModel)]="us.data.application.continuetoreceive_name" (ngModelChange)="us.update();">
+									<span class="check">Yes</span>
+								</label>
+								<label>
+									<input type="radio" name="continuetoreceive_name" [value]="'no'" [(ngModel)]="us.data.application.continuetoreceive_name" (ngModelChange)="us.update();">
+									<span class="check">No</span>
+								</label>
+							</div>
+							<label class="label__inner">
+								<span class="form__title">When does {{us.data.application.name || "Applicant" }} anticipate {{us.data.application.name || "Applicant" }} will stop receiving this additional income?</span>
+								<ng2-flatpickr placeholder="mm/dd/yyyy" [setDate]="name.incomedate_name" [(ngModel)]="name.incomedate_name" (ngModelChange)="us.update();"></ng2-flatpickr>
+							</label >
+							<label class="label__inner">
+								<span class="form__title">Total annual amount of additional income received (at the time of filing)</span>
+								<input type="text"  [(ngModel)]="name.totalannual_name" (ngModelChange)="us.update();">
+							</label>
+						</div>
+					</div>
+				</div>
+				<div>
+					<button class="add-form__btn" (click)="itionaladd()">+ Add Additional Income</button>
+				</div>
+			</div>
+		</div>
+		<span class="sub__discription"> Sources for this page (unless otherwise cited above): USCIS <a href="https://www.uscis.gov/sites/default/files/document/forms/i-944-pc.pdf">Form I-944</a>
+		</span>
+		<div class="section__container-btn">
+			<a class="form__btn-back" (click)="section=5;us.top();"> < Back </a>
+			<a class="form__btn-continue" (click)="section=7;us.top();"> Continue ></a>
+		</div>
+	</div>
+</div>
+<div *ngIf="section==7">
+	<div class="section__inner">
+		<h1 class="section__title">About {{us.data.application.name && us.data.application.name + "'s" || "Applicant's"}} household members (Part 2) — Others</h1>
+		<div class="list__title">The following individuals are part of {{us.data.application.name && us.data.application.name + "'s" || "Applicant's"}} household:</div>
+		<div class="section__list-form">
+			<ul>
+				<li>
+					{{us.data.application.name || "Applicant" }};
+				</li>
+				<li>
+					{{us.data.application.sponsorname || "Sponsor"}}, if physically residing with {{us.data.application.name || "Applicant" }};
+					{{us.data.application.name && us.data.application.name + "'s" || "Applicant's"}} children (under the age of 21 and unmarried) physically residing with {{us.data.application.name || "Applicant" }}. The term child includes stepchildren and adopted children;
+				</li>
+				<li>
+					{{us.data.application.name && us.data.application.name + "'s" || "Applicant's"}} children (under the age of 21 and unmarried) not physically residing with {{us.data.application.name || "Applicant" }} for whom {{us.data.application.name || "Applicant" }} provide or is required to provide at least 50 percent of financial support, as evidenced by a child support order or agreement, a custody order or agreement, or any other order or agreement specifying the amount of financial support to be provided by {{us.data.application.name || "Applicant" }};
+				</li>
+				<li>
+					Any other individuals (including a spouse not physically residing with {{us.data.application.name || "Applicant" }}) to whom {{us.data.application.name || "Applicant" }} provide, or are required to provide, at least 50 percent of the individual’s financial support, or who are listed as a dependent on {{us.data.application.name && us.data.application.name + "'s" || "Applicant's"}} federal income tax return; and
+
+				</li>
+				<li>
+					Any individual who provides to {{us.data.application.name || "Applicant" }} at least 50 percent of {{us.data.application.name && us.data.application.name + "'s" || "Applicant's"}} financial support, or who lists {{us.data.application.name || "Applicant" }} as a dependent on his or her federal income tax return.
+				</li>
+			</ul>
+			<div class="sub__discription">
+				Source:  <a href="https://www.uscis.gov/sites/default/files/document/forms/i-944instr-pc.pdf">USCIS Form I-944 Instructions Page 4</a>
+			</div>
+		</div>
+		<div class="form__title">
+			Based on the above definition, does {{us.data.application.name || "Applicant" }} have any additional household member who is not {{us.data.application.sponsorname || "Sponsor"}}?
+		</div>
+		<div class="form__check">
+			<label>
+				<input type="radio" name="definitionaboveothers_name" [value]="'yes'" [(ngModel)]="us.data.application.definitionaboveothers_name" (ngModelChange)="us.update();">
+				<span class="check">Yes</span>
+			</label>
+			<label>
+				<input type="radio" name="definitionaboveothers_name" [value]="'no'" [(ngModel)]="us.data.application.definitionaboveothers_name" (ngModelChange)="us.update();">
+				<span class="check">No</span>
+			</label>
+		</div>
+		<div *ngIf="us.data.application.definitionaboveothers_name=='yes'">
+			<div *ngFor="let name of us.data.application.additionalhausehold_names;index as i">
+				<div class="add-form__inner">
+					<div class="container__title">
+						<div class="sub__title">ADDITIONAL HOUSEHOLD MEMBER {{i+1}}</div>
+						<button class="inner-title__btn" (click)="us.data.application.additionalhausehold_names.splice(i,1);us.update()">X</button>
+					</div>
+					<div class="form__inner">
+						<div class="sub-sub__section-title">
+							Name
+						</div>
+						<div class="form__sub-inner">
+							<div class="form__sub-sub-inner">
+								<label class="label__inner">
+									<span class="form__title">Given name (first name)</span>
+									<input type="text"  [(ngModel)]="name.hauseholdgiven_name" (ngModelChange)="us.update();">
+								</label>
+								<label class="label__inner">
+									<span class="form__title">Middle name</span>
+									<input type="text"  [(ngModel)]="name.hauseholdmiddle_name" (ngModelChange)="us.update();">
+								</label>
+							</div>
+							<label class="label__inner">
+								<span class="form__title">Family name (last name)</span>
+								<input type="text"  [(ngModel)]="name.hauseholdfamily_name" (ngModelChange)="us.update();">
+							</label>
+						</div>
+						<label class="label__inner">
+							<span class="form__title">Date of Birth</span>
+							<input type="text"  [(ngModel)]="name.hauseholddateofbirth_name" (ngModelChange)="us.update();">
+						</label>
+						<label class="label__inner">
+							<span class="form__title">Relationship to {{us.data.application.name || "Applicant" }}</span>
+							<ng2-flatpickr placeholder="mm/dd/yyyy" [setDate]="name.elationshiphausehold_name" [(ngModel)]="name.elationshiphausehold_name" (ngModelChange)="us.update();"></ng2-flatpickr>
+						</label>
+						<label class="label__inner">
+							<span class="form__title">Alien registration number (A-number) (if any)</span>
+							<input type="text" placeholder="A -"  [(ngModel)]="name.hauseholdanumber_name" (ngModelChange)="us.update();">
+						</label>
+
+						<div class="form__check">
+							<div class="form__title">Does this individual live with {{us.data.application.name || "Applicant" }}?</div>
+							<label>
+								<input type="radio" name="individuallive_name" [value]="'yes'" [(ngModel)]="us.data.application.individuallive_name" (ngModelChange)="us.update();">
+								<span class="check">Yes</span>
+							</label>
+							<label>
+								<input type="radio" name="individuallive_name" [value]="'no'" [(ngModel)]="us.data.application.individuallive_name" (ngModelChange)="us.update();">
+								<span class="check">No</span>
+							</label>
+						</div>
+
+						<div class="form__check">
+							<div class="form__title">Is this individual filing an application for an immigration benefit with {{us.data.application.name || "Applicant" }} or has this individual already filed an application?</div>
+							<label>
+								<input type="radio" name="individualalready_name" [value]="'yes'" [(ngModel)]="us.data.application.individualalready_name" (ngModelChange)="us.update();">
+								<span class="check">Yes</span>
+							</label>
+							<label>
+								<input type="radio" name="individualalready_name" [value]="'no'" [(ngModel)]="us.data.application.individualalready_name" (ngModelChange)="us.update();">
+								<span class="check">No</span>
+							</label>
+						</div>
+						<div class="form__title">Regarding this household member's most recent federal income tax return:</div>
+						<div class="section__form-inner">
+							<div class="form__title">Did this household member file a federal tax return?</div>
+							<div class="form__check">
+								<label>
+									<input type="radio" name="usmemberfile_name" [value]="'yes'" [(ngModel)]="us.data.application.usmemberfile_name" (ngModelChange)="us.update();">
+									<span class="check">Yes</span>
+								</label>
+								<label>
+									<input type="radio" name="usmemberfile_name" [value]="'no'" [(ngModel)]="us.data.application.usmemberfile_name" (ngModelChange)="us.update();">
+									<span class="check">No</span>
+								</label>
+							</div>
+							<div *ngIf="us.data.application.usmemberfile_name=='no'">
+								<div class="form__check" >
+									<div class="form__title">What is the reason for not filing?</div>
+									<label>
+										<input type="radio" name="fileafederaltax_name" [value]="'yes'" [(ngModel)]="us.data.application.fileafederaltax_name" (ngModelChange)="us.update();">
+										<span class="check">Plan to file the tax return before the due date for this year</span>
+									</label>
+									<label>
+										<input type="radio" name="fileafederaltax_name" [value]="'no'" [(ngModel)]="us.data.application.fileafederaltax_name" (ngModelChange)="us.update();">
+										<span class="check">Not required to file a tax return</span>
+									</label>
+									<label>
+										<input type="radio" name="fileafederaltax_name" [value]="'yesyes'" [(ngModel)]="us.data.application.fileafederaltax_name" (ngModelChange)="us.update();">
+										<span class="check">Filed for an extension</span>
+									</label>
+									<label>
+										<input type="radio" name="fileafederaltax_name" [value]="'nono'" [(ngModel)]="us.data.application.fileafederaltax_name" (ngModelChange)="us.update();">
+										<span class="check">Not going to file</span>
+									</label>
+									<label>
+										<input type="radio" name="fileafederaltax_name" [value]="'yesyesyes'" [(ngModel)]="us.data.application. fileafederaltax_name" (ngModelChange)="us.update();">
+										<span class="check">Did not file for other reasons</span>
+									</label>
+								</div>
+							</div>
+							<div class="sub-sub__section" *ngIf="us.data.application.fileafederaltax_name=='nono'">
+								<span class="sub__section-title">Your Case Requires Additional Attention</span>
+								<p>Because the applicant is not going to file the most recent federal income tax return, there may be additional documents/forms you need to submit that are not covered by Greenbroad.</p>
+
+								<p>If you choose to proceed using Greenbroad, you can continue filling out all the questions asked in our software and preparing all the documents listed in our document checklist. At the end, we will generate for you all the forms and cover letters that we cover. <span class="sub__p">However, we strongly suggest you consult an <a class="sub__section-link" href="https://www.ailalawyer.com/">immigration lawyer</a> to prepare the additional documents/forms or your application may be rejected or denied.</span></p>
+
+								<p>If you have any questions or need a lawyer recommendation, do not hesitate to contact us.</p>
+							</div>
+							<div class="sub__form" *ngIf="us.data.application.fileafederaltax_name=='no'">
+								<div class="form__title">Explanation for Not Filing</div>
+								<textarea name="comment" cols="40" rows="3"></textarea>
+							</div>
+							<div class="section__form" *ngIf="us.data.application.fileafederaltax_name=='yesyesyes'">
+								<label>
+									<span class="form__title">Reason for Not Filing</span>
+									<input type="text" [(ngModel)]="us.data.application.usfilingnot_name" (ngModelChange)="us.update();">
+								</label>
+							</div>
+							<div class="section__form">
+								<label>
+									<span class="form__title">Federal Tax Year</span>
+									<input type="text" [(ngModel)]="us.data.application.usfederalyear_name" (ngModelChange)="us.update();">
+								</label>
+								<label>
+									<span class="form__title">Total income from tax return or Item 1 on W-2 "Wages, tips, other compensation" (U.S. dollars) (if applicable)</span>
+									<input type="text" placeholder="$" [(ngModel)]="us.data.application.ususdollarsifapplicable_name" (ngModelChange)="us.update();">
+								</label>
+							</div>
+						</div>
+						<div class="form__check">
+							<div class="form__title">
+								Did this household member receive additional income on a continuing weekly, monthly, or annual basis during the most recent tax year, and the income is NOT listed on the tax return?
+							</div>
+							<label>
+								<input type="radio" name="incomeisnot_name" [value]="'yes'" [(ngModel)]="us.data.application.incomeisnot_name" (ngModelChange)="us.update();">
+								<span class="check">Yes</span>
+							</label>
+							<label>
+								<input type="radio" name="incomeisnot_name" [value]="'no'" [(ngModel)]="us.data.application.incomeisnot_name" (ngModelChange)="us.update();">
+								<span class="check">No</span>
+							</label>
+							<div *ngIf="us.data.application.incomeisnot_name=='no'">
+								<div *ngFor="let name of us.data.application.receiveadditionalus_names;index as i">
+									<div class="add-form__inner">
+										<div class="container__title">
+											<div class="sub__title">ADDITIONAL INCOME  {{i+1}}</div>
+											<button class="inner-title__btn" (click)="us.data.application.receiveadditionalus_names.splice(i,1);us.update()">X</button>
+										</div>
+										<div class="form__inner">
+											<label class="label__inner">
+												<span class="form__title">Type of Additional Income</span>
+												<input type="text"  [(ngModel)]="name.income_name" (ngModelChange)="us.update();">
+											</label>
+											<label class="label__inner">
+												<span class="form__title">Annual Amount Received</span>
+												<input type="text"  [(ngModel)]="name.annual_name" (ngModelChange)="us.update();">
+											</label>
+											<div class="form__check">
+												<span class="form__title">Will {{us.data.application.name || "Applicant" }}  continue to receive this income in the future?</span>
+												<label>
+													<input type="radio" name="continuetoreceive_name" [value]="'yes'" [(ngModel)]="us.data.application.continuetoreceive_name" (ngModelChange)="us.update();">
+													<span class="check">Yes</span>
+												</label>
+												<label>
+													<input type="radio" name="continuetoreceive_name" [value]="'no'" [(ngModel)]="us.data.application.continuetoreceive_name" (ngModelChange)="us.update();">
+													<span class="check">No</span>
+												</label>
+											</div>
+											<label class="label__inner">
+												<span class="form__title">When does {{us.data.application.name || "Applicant" }} anticipate {{us.data.application.name || "Applicant" }} will stop receiving this additional income?</span>
+												<ng2-flatpickr placeholder="mm/dd/yyyy" [setDate]="name.incomedate_name" [(ngModel)]="name.incomedate_name" (ngModelChange)="us.update();"></ng2-flatpickr>
+											</label >
+											<label class="label__inner">
+												<span class="form__title">Total annual amount of additional income received (at the time of filing)</span>
+												<input type="text"  [(ngModel)]="name.totalannual_name" (ngModelChange)="us.update();">
+											</label>
+										</div>
+									</div>
+								</div>
+								<div>
+									<button class="add-form__btn" (click)="itionaladd()">+ Add Additional Income</button>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div>
+				<button class="add-form__btn" (click)="additionalhauseholdadd()">+ Add Additional Income</button>
+			</div>
+		</div>
+		<div class="section__container-btn">
+			<a class="form__btn-back" (click)="section=6;us.top();"> < Back </a>
+			<a class="form__btn-continue" (click)="section=8;us.top();"> Continue ></a>
+		</div>
+	</div>
+</div>
+<div *ngIf="section==8">
+	<div class="section__inner">
+		<h1 class="section__title">About {{us.data.application.name && us.data.application.name + "'s" || "Applicant's"}} household's assets</h1>
+		<div class="section__form-info">
+
+			<div class="sub-list__title">Important Requirement Regarding Household Income and Assets</div>
+			<p>
+				According to Form I-944, {{us.data.application.name && us.data.application.name + "'s" || "Applicant's"}} household’s annual gross income should be at least 125 percent (100 percent if {{us.data.application.name || "Applicant" }} is on active duty, other than in training, in the U.S. Armed Forces) of the Federal Poverty Guidelines for the most recent year for {{us.data.application.name && us.data.application.name + "'s" || "Applicant's"}} household size.
+			</p>
+			<p>
+				If {{us.data.application.name && us.data.application.name + "'s" || "Applicant's"}} household annual gross income is less than 125 percent of the Federal Poverty Guidelines based on {{us.data.application.name && us.data.application.name + "'s" || "Applicant's"}} household size, {{us.data.application.name || "Applicant" }} may demonstrate that the total value of {{us.data.application.name && us.data.application.name + "'s" || "Applicant's"}} household’s assets (the total value of the assets less any offsetting liabilities) and resources is at least three times the difference between {{us.data.application.name && us.data.application.name + "'s" || "Applicant's"}} household’s annual gross income and 125 percent (100 percent if {{us.data.application.name || "Applicant" }} are on active duty, other than in training, in the U.S. Armed Forces) of the Federal Poverty Guideline for {{us.data.application.name && us.data.application.name + "'s" || "Applicant's"}} household size.
+			</p>
+		</div>
+		<div class="section-btn__inner">
+			<div class="sub__section-btn" (click)="subsectioninfo=!subsectioninfo" (clickOutside)="subsectioninfo=null"><span class="sub__section-icon" [class._active]="subsectioninfo">&#8250;</span>The Definition of "Annual Gross Income"</div>
+			<div class="sub-sub__section-inner" *ngIf="subsectioninfo">
+				<div class="form__title">Annual Gross Income</div>
+				<p>Annual gross income is the total income before any adjustment, taxes, or deductions. This includes wages from employment. This is line 6 “total income” on the 1040 Internal Revenue Service (IRS) form. On a Wage and Tax Statement, Form W-2, the total income is in line 1 “Wages, tips, other compensation.” However, a W-2 does not include income from bank account interest, stocks and bond interest, or other income a person may be receiving outside of employment. If a person has multiple jobs with multiple corresponding Forms W-2, the income is added to find the total gross income.</p>
+
+				<div class="form__title">Lawful Sources of Income</div>
+
+				<p>USCIS only considers income sources from legal employment or transactions. USCIS does not consider income derived from illegal activities, whether illegal under federal law or state law, in the calculation of gross annual household income. These sources include, but are not limited to income gained illegally from: gambling, drug sales or trafficking, money laundering, prostitution, and alien smuggling.</p>
+
+				<p>Any income derived from unlawful sources must be deducted from the applicant’s household annual gross income.</p>
+
+				<p>However, income from unauthorized employment should be included in the applicant’s household annual gross income.</p>
+			</div>
+			<div class="sub__section-btn" (click)="subsectioninfotwo=!subsectioninfotwo" (clickOutside)="subsectioninfotwo=null"><span class="sub__section-icon" [class._active]="subsectioninfotwo">&#8250;</span>What assets are acceptable for the purpose of Form I-944?</div>
+			<div class="sub-sub__section-inner" *ngIf="subsectioninfotwo">
+				<p>List only the assets that can be converted into cash within 12 months. Provide the value of any asset held in the United States or outside the United States, in U.S. dollars</p>
+
+				<p>If you or a household member owns a home, you may include the net value of your or the household member's home as an asset. The net value of the home is the appraised value of the home, minus the sum of all loans secured by a mortgage, trust deed, or other lien on the home. If you wish to include the net value of your or your household member's home, then you must include documentation demonstrating that you or the household member owns it, a recent appraisal by a licensed appraiser, and evidence of the amount of all loans secured by a mortgage, trust deed, or other lien on the home.</p>
+
+				<p>You may not include the net value of an automobile unless you or your household member shows that you or your household member have/has more than one automobile, and at least one automobile is not included as an asset</p>
+
+				<p>If you list assets or resources, submit evidence of the value of your or your household member(s)'s assets. You must include the name of the asset holder, a description of the asset, proof of ownership, and the basis for the owner's claim of its net cash value. Evidence of assets and resources include:</p>
+				<ol>
+					<li>Checking and savings account statements;
+					Annuities;</li>
+					<li>Stocks and bonds (cash value)/certificates of deposit;</li>
+					<li>Retirement accounts and educational accounts;</li>
+					<li>Net cash value of real estate holdings; and</li>
+					<li>Any other evidence of substantial assets that can be easily converted into cash.</li>
+				</ol>
+				<p>For checking and savings accounts, you must provide account statements from the bank(s) covering at least 12 months prior to filing the application. You can also provide any documentation from the household members' assets. For additional information, see www.uscis.gov/greencard/public-charge.</p>
+				<div class="sub__discription">Source: <a href="https://www.uscis.gov/sites/default/files/document/forms/i-944instr-pc.pdf">USCIS Form I-944 Instructions Pages 6 and </a>7</div>
+			</div>
+			<div class="sub__section-btn" (click)="sectioninfo=!sectioninfo" (clickOutside)="sectioninfo=null"><span class="sub__section-icon" [class._active]="sectioninfo">&#8250;</span>Make sure your Federal Poverty number is up-to-date</div>
+			<div class="sub-sub__section-inner" *ngIf="sectioninfo">
+				The U.S. Department of Health and Human Services (HHS) updates the Federal Poverty Guidelines each year around January. So if you are applying around that time of the year, right before you mail your application, make sure to double check with the <a href="https://aspe.hhs.gov/poverty-guidelines">HHS Poverty Guideline</a>  to ensure the amount you are using is up-to-date. (We will remind you to do this in the Submit Step)
+
+				If you are applying during other months, it is still a good idea to double check with the <a href="https://aspe.hhs.gov/poverty-guidelines">HHS Poverty Guidelin</a> e right before you submit to ensure the amount is up-to-date.
+			</div>
+		</div>
+		<div class="form__check">
+			<div class="form__title">Does {{us.data.application.name && us.data.application.name + "'s" || "Applicant's"}} household have any assets?</div>
+			<label>
+				<input type="radio" name="haveanyassets_name" [value]="'yes'" [(ngModel)]="us.data.application.haveanyassets_name" (ngModelChange)="us.update();">
+				<span class="check">Yes</span>
+			</label>
+			<label>
+				<input type="radio" name="haveanyassets_name" [value]="'no'" [(ngModel)]="us.data.application.haveanyassets_name" (ngModelChange)="us.update();">
+				<span class="check">No</span>
+			</label>
+		</div>
+		<div *ngIf="us.data.application.haveanyassets_name=='no'">
+			<div class="form__title">Enter information for each asset below:</div>
+			<div *ngFor="let name of us.data.application.assetbelow_names;index as i">
+				<div class="add-form__inner">
+					<div class="container__title">
+						<div class="sub__title">ASSET {{i+1}}</div>
+						<button class="inner-title__btn" (click)="us.data.application.assetbelow_names.splice(i,1);us.update()">X</button>
+					</div>
+					<div class="form__inner">
+						<div class="form__title">
+							Name of Asset Holder ({{us.data.application.name || "Applicant" }} or {{us.data.application.name && us.data.application.name + "'s" || "Applicant's"}} household member)
+						</div>
+						<div class="form__sub-inner">
+							<div class="form__sub-sub-inner">
+								<label class="label__inner">
+									<span class="form__title">Given name (first name)</span>
+									<input type="text"  [(ngModel)]="name.assetholdername_name" (ngModelChange)="us.update();">
+								</label>
+								<label class="label__inner">
+									<span class="form__title">Middle name</span>
+									<input type="text"  [(ngModel)]="name.assetholdermiddle_name" (ngModelChange)="us.update();">
+								</label>
+							</div>
+							<label class="label__inner">
+								<span class="form__title">Family name (last name)</span>
+								<input type="text"  [(ngModel)]="name.assetholderfamily_name" (ngModelChange)="us.update();">
+							</label>
+						</div>
+						<label class="label__inner">
+							<span class="form__title">Type of Asset</span>
+							<select type="text"  [(ngModel)]="name.assetholdertype_name" (ngModelChange)="us.update();"></select>
+						</label>
+						<label class="label__inner">
+							<span class="form__title">Amount (U.S. dollars)</span>
+							<input type="text" placeholder="S -" [(ngModel)]="name.assetholderdollars_name" (ngModelChange)="us.update();">
+						</label>
+					</div>
+
+				</div>
+			</div>
+			<div>
+				<button class="add-form__btn" (click)="assetbelowadd()">+ Add Another Asset</button>
+			</div>
+			<label class="label__inner">
+				<span class="form__title">Current Cash Value (U.S. dollars)</span>
+				<input type="text" placeholder="S -" [(ngModel)]="us.data.application.currentcashus_name" (ngModelChange)="us.update();">
+			</label>
+		</div>
+		<div class="sub__discription"> Sources for this page (unless otherwise cited above): USCIS Form <a href="https://www.uscis.gov/sites/default/files/document/forms/i-944-pc.pdf">I-944</a>,  <a href="https://www.uscis.gov/sites/default/files/document/forms/i-944instr-pc.pdf">USCIS Form I-944 Instructions Page 5</a>, <a href="https://www.uscis.gov/policy-manual/volume-8-part-g-chapter-9">USCIS Policy Manual Chapter 9</a>
+		</div>
+		<div class="section__container-btn">
+			<a class="form__btn-back" (click)="section=7;us.top();"> < Back </a>
+			<a class="form__btn-continue" (click)="section=9;us.top();"> Continue ></a>
+		</div>
+	</div>
+</div>
+<div *ngIf="section==9">
+	<div class="section__inner">
+		<h1 class="section__title">
+		About {{us.data.application.name && us.data.application.name + "'s" || "Applicant's"}} liabilities</h1>
+		<p>Provide a list of all {{us.data.application.name && us.data.application.name + "'s" || "Applicant's"}} liabilities or debts. Examples of liabilities and debts include mortgages, car loans, unpaid child or spousal support, unpaid taxes, and credit card debt.</p>
+		<div class="sub__discription">
+			Source: <a href="https://www.uscis.gov/sites/default/files/document/forms/i-944instr-pc.pdf">USCIS Form I-944 Instructions Page 7</a>
+		</div>
+		<div class="form__check">
+			<div class="form__title">Does {{us.data.application.name || "Applicant" }} have any liabilities or debts?</div>
+			<label>
+				<input type="radio" name="haveanyliabilities_name" [value]="'yes'" [(ngModel)]="us.data.application.haveanyliabilities_name" (ngModelChange)="us.update();">
+				<span class="check">Yes</span>
+			</label>
+			<label>
+				<input type="radio" name="haveanyliabilities_name" [value]="'no'" [(ngModel)]="us.data.application.haveanyliabilities_name" (ngModelChange)="us.update();">
+				<span class="check">No</span>
+			</label>
+		</div>
+		<div *ngIf="us.data.application.haveanyliabilities_name=='yes'">
+			<div *ngFor="let name of us.data.application.liabilitydebt_names;index as i">
+				<div class="add-form__inner">
+					<div class="container__title">
+						<div class="sub__title">LIABILITY/DEBT {{i+1}}</div>
+						<button class="inner-title__btn" (click)="us.data.application.liabilitydebt_names.splice(i,1);us.update()">X</button>
+					</div>
+					<div class="form__inner">
+						<label class="label__inner">
+							<span class="form__title">Name of Liability or Debt</span>
+							<input type="text" [(ngModel)]="name.liabilityordebtname_name" (ngModelChange)="us.update();">
+						</label>
+						<label class="label__inner">
+							<span class="form__title">Type of Liability or Debt</span>
+							<select type="text"  [(ngModel)]="name.liabilityordebt_name" (ngModelChange)="us.update();"></select>
+						</label>
+						<label class="label__inner">
+							<span class="form__title">Amount (U.S. dollars)</span>
+							<input type="text" placeholder="S -" [(ngModel)]="name.debtdollars_name" (ngModelChange)="us.update();">
+						</label>
+					</div>
+				</div>
+				<div>
+					<button class="add-form__btn" (click)="liabilitydebtadd()">+ Add liability/debt</button>
+				</div>
+			</div>
+			<div class="sub__discription">
+				Source: Sources for this page (unless otherwise cited above): USCIS Form <a href="https://www.uscis.gov/sites/default/files/document/forms/i-944-pc.pdf">I-944</a>
+			</div>
+			<div class="section__container-btn">
+				<a class="form__btn-back" (click)="section=8;us.top();"> < Back </a>
+				<a class="form__btn-continue" (click)="section=10;us.top();"> Continue ></a>
+			</div>
+		</div>
+	</div>
+</div>
+<div *ngIf="section==10">
+	<div class="section__inner">
+		<h1 class="section__title">
+		About {{us.data.application.name && us.data.application.name + "'s" || "Applicant's"}} U.S. credit report and credit score</h1>
+		<p>
+			USCIS will review {{us.data.application.name && us.data.application.name + "'s" || "Applicant's"}} U.S. credit report and the credit score, if available, to review {{us.data.application.name && us.data.application.name + "'s" || "Applicant's"}} financial status.
+		</p>
+		<div class="section-btn__inner">
+			<div class="sub__section-btn" (click)="subsectionreditscore=!subsectionreditscore" (clickOutside)="subsectionreditscore=null"><span class="sub__section-icon" [class._active]="subsectionreditscore">&#8250;</span>  How to obtain your U.S. credit report and credit score?</div>
+			<div class="sub-sub__section-inner" *ngIf="subsectionreditscore">
+				<div class="form__title">CREDIT REPORT</div>
+				<p>You can obtain a free credit report once a year from each one of the three credit reporting agencies. You are only required to provide one credit report from any of the three nationwide credit reporting agencies: Equifax, Experian, and TransUnion. Here is how to request it:</p>
+				<ul>
+					<li>Online: Visit AnnualCreditReport.com</li>
+					<li>By Phone: Call 1-877-322-8228. For TTY service, call 711 and ask the relay operator for 1-800-821-7232.</li>
+					<li>By Mail: Complete the Annual Credit Report Request Form and mail it to:
+						Annual Credit Report Request Service
+						PO Box 105281
+					Atlanta, GA 30348-5281</li>
+				</ul>
+				<div class="sub__discription">Source: <a href="https://www.uscis.gov/sites/default/files/document/forms/i-944instr-pc.pdf">USCIS Form I-944 Instructions Page 7</a>, <a href="https://www.usa.gov/credit-reports">usa.gov</a></div>
+				<div class="form__title">CREDIT SCORE</div>
+				<p>The free annual credit report mentioned above does not include your credit score. According to consumerfinance.gov, there are four main ways to get a credit score:</p>
+				<ul>
+					<li>Check your credit card or other loan statement</li>
+					<li>Talk to a non-profit counselor</li>
+					<li>Use a credit score service</li>
+					<li>Buy a score</li>
+				</ul>
+				<p>Experian (one of the three credit reporting agencies) appears to offer a free credit score service. However, since the USCIS instructions do not specify what types of credit score documents are acceptable, we cannot advice how you should obtain your credit score document.</p>
+				<div class="sub__discription" ></div>Source: Greenbroad suggestion only, not from USCIS
+			</div>
+			<div class="sub__section-btn" (click)="subsectionicreditreport=!subsectionicreditreport" (clickOutside)="subsectionicreditreport=null"><span class="sub__section-icon" [class._active]="subsectionicreditreport">&#8250;</span> How to show that you do not have a credit report?</div>
+			<div class="sub-sub__section-inner" *ngIf="subsectionicreditreport">
+				<p>With TransUnion, you can request a letter to prove that you do not have a credit report with them. You can call TransUnion at their general support number listed on their website. Once connected on the phone, press “0” to speak to an agent. The agent will look up your credit report, and if they cannot find your report, they will send you a report saying you do not have any credit at this time. It takes 5-7 business days for them to process the report and mail it to you. You do not need to have a social security number to call them.</p>
+
+				<p>We are not familiar with the procedures with the other two credit agencies, but they may have similar procedures.</p>
+			</div>
+		</div>
+		<div class="form__check">
+			<div class="form__title">Does {{us.data.application.name || "Applicant" }} have a U.S. credit report?</div>
+			<label>
+				<input type="radio" name="creditreport_name" [value]="'yes'" [(ngModel)]="us.data.application.creditreport_name" (ngModelChange)="us.update();">
+				<span class="check">Yes</span>
+			</label>
+			<label>
+				<input type="radio" name="creditreport_name" [value]="'no'" [(ngModel)]="us.data.application.creditreport_name" (ngModelChange)="us.update();">
+				<span class="check">No</span>
+			</label>
+		</div>
+
+		<div class="form__check">
+			<div class="form__title">Does {{us.data.application.name || "Applicant" }} have a U.S. credit score?</div>
+			<label>
+				<input type="radio" name="creditreportus_name" [value]="'yes'" [(ngModel)]="us.data.application.creditreportus_name" (ngModelChange)="us.update();">
+				<span class="check">Yes</span>
+			</label>
+			<label>
+				<input type="radio" name="creditreportus_name" [value]="'no'" [(ngModel)]="us.data.application.creditreportus_name" (ngModelChange)="us.update();">
+				<span class="check">No</span>
+			</label>
+		</div>
+		<div *ngIf="us.data.application.creditreportus_name=='yes'">
+			<label class="label__inner">
+				<span class="form__title">Enter a credit score within the last 12 months:</span>
+				<input type="text" [(ngModel)]="us.data.application.creditscorewithin_name" (ngModelChange)="us.update();">
+			</label>
+		</div>
+		<div class="form__check">
+			<div class="form__title">Does {{us.data.application.name || "Applicant" }} have negative credit history or a low credit score in the U.S. reflected on {{us.data.application.name && us.data.application.name + "'s" || "Applicant's"}} credit report?</div>
+			<label>
+				<input type="radio" name="uscreditreport_name" [value]="'yes'" [(ngModel)]="us.data.application.uscreditreport_name" (ngModelChange)="us.update();">
+				<span class="check">Yes</span>
+			</label>
+			<label>
+				<input type="radio" name="uscreditreport_name" [value]="'no'" [(ngModel)]="us.data.application.uscreditreport_name" (ngModelChange)="us.update();">
+				<span class="check">No</span>
+			</label>
+		</div>
+		<div *ngIf="us.data.application.uscreditreport_name=='yes'">
+			<label class="label__inner">
+				<span class="form__title">Provide a brief explanation for the negative credit history/low credit score:</span>
+				<input type="text" [(ngModel)]="us.data.application.briefexplanation_name" (ngModelChange)="us.update();">
+			</label>
+		</div>
+		<div class="form__check">
+			<div class="form__title">Has {{us.data.application.name || "Applicant" }} EVER filed for bankruptcy, either in the United States or in a foreign country?</div>
+			<label>
+				<input type="radio" name="bankruptcyus_name" [value]="'yes'" [(ngModel)]="us.data.application.bankruptcyus_name" (ngModelChange)="us.update();">
+				<span class="check">Yes</span>
+			</label>
+			<label>
+				<input type="radio" name="bankruptcyus_name" [value]="'no'" [(ngModel)]="us.data.application.bankruptcyus_name" (ngModelChange)="us.update();">
+				<span class="check">No</span>
+			</label>
+		</div>
+		<div class="sub-sub__section" *ngIf="us.data.application.bankruptcyus_name=='yes'">
+			<span class="sub__section-title">Your Case Requires Additional Attention</span>
+			<p>Because the applicant is not going to file the most recent federal income tax return, there may be additional documents/forms you need to submit that are not covered by Greenbroad.</p>
+
+			<p>If you choose to proceed using Greenbroad, you can continue filling out all the questions asked in our software and preparing all the documents listed in our document checklist. At the end, we will generate for you all the forms and cover letters that we cover. <span class="sub__p">However, we strongly suggest you consult an <a class="sub__section-link" href="https://www.ailalawyer.com/">immigration lawyer</a> to prepare the additional documents/forms or your application may be rejected or denied.</span></p>
+
+			<p>If you have any questions or need a lawyer recommendation, do not hesitate to contact us.</p>
+		</div>
+		<div class="sub__discription">
+			Source: Sources for this page (unless otherwise cited above): USCIS Form <a href="https://www.uscis.gov/sites/default/files/document/forms/i-944-pc.pdf">I-944</a>
+		</div>
+		<div class="section__container-btn">
+			<a class="form__btn-back" (click)="section=9;us.top();"> < Back </a>
+			<a class="form__btn-continue" (click)="section=11;us.top();"> Continue ></a>
+		</div>
+	</div>
+</div>
+<div *ngIf="section==11">
+	<div class="section__inner">
+		<h1 class="section__title">
+			About {{us.data.application.name && us.data.application.name + "'s" || "Applicant's"}} health insurance
+		</h1>
+		<div class="form__check">
+			<div class="form__title">Does {{us.data.application.name || "Applicant" }} currently have health insurance?</div>
+			<label>
+				<input type="radio" name="doescurrently_name" [value]="'yes'" [(ngModel)]="us.data.application.doescurrently_name" (ngModelChange)="us.update();">
+				<span class="check">Yes</span>
+			</label>
+			<label>
+				<input type="radio" name="doescurrently_name" [value]="'no'" [(ngModel)]="us.data.application.doescurrently_name" (ngModelChange)="us.update();">
+				<span class="check">No</span>
+			</label>
+		</div>
+		<div *ngIf="us.data.application.doescurrently_name=='yes'">
+			<div class="form__check">
+				<div class="form__title">Did {{us.data.application.name || "Applicant" }} receive a Premium Tax Credit or Advanced Premium Tax Credit under the Affordable Care Act, for the health insurance?</div>
+				<label>
+					<input type="radio" name="taxcredit_name" [value]="'yes'" [(ngModel)]="us.data.application.taxcredity_name" (ngModelChange)="us.update();">
+					<span class="check">Yes</span>
+				</label>
+				<label>
+					<input type="radio" name="taxcredit_name" [value]="'no'" [(ngModel)]="us.data.application.taxcredit_name" (ngModelChange)="us.update();">
+					<span class="check">No</span>
+				</label>
+			</div>
+			<label class="label__inner">
+				<span class="form__title">What is {{us.data.application.name && us.data.application.name + "'s" || "Applicant's"}} total annual deductible or annual premium?</span>
+				<ng2-flatpickr placeholder="mm/dd/yyyy" [convertModelValue]="true" [setDate]="us.data.application.annualpremium_name" [(ngModel)]="us.data.application.annualpremium_name" (ngModelChange)="us.update();"></ng2-flatpickr>
+			</label>
+			<label class="label__inner">
+				<span class="form__title">When does {{us.data.application.name && us.data.application.name + "'s" || "Applicant's"}} health insurance terminate or date that it must be renewed?</span>
+				<input type="text" [(ngModel)]="us.data.application.insuranceterminate_name" (ngModelChange)="us.update();">
+			</label>
+		</div>
+		<div *ngIf="us.data.application.doescurrently_name=='no'">
+			<div class="sub-sub__section">
+				<span class="sub__section-title">Your Case Requires Additional Attention</span>
+				<p>Because the applicant is not going to file the most recent federal income tax return, there may be additional documents/forms you need to submit that are not covered by Greenbroad.</p>
+
+				<p>If you choose to proceed using Greenbroad, you can continue filling out all the questions asked in our software and preparing all the documents listed in our document checklist. At the end, we will generate for you all the forms and cover letters that we cover. <span class="sub__p">However, we strongly suggest you consult an <a class="sub__section-link" href="https://www.ailalawyer.com/">immigration lawyer</a> to prepare the additional documents/forms or your application may be rejected or denied.</span></p>
+
+				<p>If you have any questions or need a lawyer recommendation, do not hesitate to contact us.</p>
+			</div>
+		</div>
+		<label class="label__inner">
+			<span class="form__title">Has {{us.data.application.name || "Applicant" }} enrolled or will soon enroll in health insurance but {{us.data.application.name && us.data.application.name + "'s" || "Applicant's"}} health coverage has not started yet?</span>
+			<select [(ngModel)]="us.data.application.notstartedyet_name" (ngModelChange)="us.update();" >
+				<option value="">Yes, I am enrolled</option>
+				<option value="">I will soon enroll</option>
+				<option value="">No</option>
+			</select>
+		</label>
+		<label class="label__inner" *ngIf="us.data.application.doescurrently_name=='no'">
+			<span class="form__title">You may provide information on how {{us.data.application.name || "Applicant" }} plans to pay for reasonably anticipated medical costs in the space below:</span>
+			<textarea name="" id="" cols="30" rows="10" [(ngModel)]="us.data.application.insuranceterminate_name" (ngModelChange)="us.update();"></textarea>
+		</label>
+		<div class="sub__discription">
+			Source: Sources for this page (unless otherwise cited above): USCIS Form <a href="https://www.uscis.gov/sites/default/files/document/forms/i-944-pc.pdf">I-944</a>
+		</div>
+		<div class="section__container-btn">
+			<a class="form__btn-back" (click)="section=10;us.top();"> < Back </a>
+			<a class="form__btn-continue" (click)="section=12;us.top();"> Continue ></a>
+		</div>
+	</div>
+</div>
+<div *ngIf="section==12">
+	<div class="section__inner">
+		<h1 class="section__title">
+			About {{us.data.application.name && us.data.application.name + "'s" || "Applicant's"}} health insurance
+		</h1>
+		<div class="section__discription">
+			<span class="app__number">1</span>
+			Has {{us.data.application.name || "Applicant" }} <span class="text__discription">EVER</span> received, or is {{us.data.application.name || "Applicant" }} currently certified to receive in the future any of the following public benefits?.
+		</div>
+		<ol class="number__list">
+			<li>Any Federal, State, local, or tribal cash assistance for income maintenance</li>
+			<li>Supplemental Security Income (SSI)</li>
+			<li>Temporary Assistance for Needy Families (TANF)</li>
+			<li>General Assistance (GA)</li>
+			<li>Supplemental Nutrition Assistance Program (SNAP, or formerly called "Food Stamps")</li>
+			<li>Section 8 Housing Assistance under the Housing Choice Voucher Program</li>
+			<li>Section 8 Project-Based Rental Assistance (including Moderate Rehabilitation)</li>
+			<li>Public Housing under the Housing Act of 1937, 42 U.S.C. 1437 et seq.</li>
+			<li>Federal-funded Medicaid</li>
+			<li>Programs (including Medicaid) supporting aliens who are institutionalized for long-term care (for example, in a nursing home or mental health institution)</li>
+		</ol>
+		<div class="section__discription">
+			<span class="app__number">2</span>
+			Has {{us.data.application.name || "Applicant" }} <span class="text__discription">EVER</span> received, applied for, or been certified to receive federally-funded Medicaid in connection with any of the following?
+		</div>
+		<ol class="number__list" >
+			<li>An emergency medical condition</li>
+			<li>For a service under the Individuals with Disabilities Education Act (IDEA)</li>
+			<li>Other school-based benefits or services available up to the oldest age eligible for secondary education under State law</li>
+			<li>While {{us.data.application.name || "Applicant" }} was under the age of 21</li>
+			<li>While {{us.data.application.name || "Applicant" }} was pregnant or during the 60-day period following the last day of pregnancy</li>
+		</ol>
+		<div class="section__discription">
+			<span class="app__number">3</span>
+			Has {{us.data.application.name || "Applicant" }} <span class="text__discription">EVER</span> applied for any of the following public benefits, regardless of whether the application is currently pending, was withdrawn before being certified, or was denied?</div>
+			<ol class="number__list">
+				<li>Any Federal, State, local, or tribal cash assistance for income maintenance</li>
+				<li>Supplemental Security Income (SSI)</li>
+				<li>Temporary Assistance for Needy Families (TANF)</li>
+				<li>General Assistance (GA)</li>
+				<li>Supplemental Nutrition Assistance Program (SNAP, or formerly called "Food Stamps")</li>
+				<li>Section 8 Housing Assistance under the Housing Choice Voucher Program</li>
+				<li>Section 8 Project-Based Rental Assistance (including Moderate Rehabilitation)</li>
+				<li>Public Housing under the Housing Act of 1937, 42 U.S.C. 1437 et seq.</li>
+				<li>Federally-funded Medicaid</li>
+				<li>Programs (including Medicaid) supporting aliens who are institutionalized for long-term care (for example, in a nursing home or mental health institution)</li>
+			</ol>
+			<div class="section__discription">
+				<span class="app__number">4</span>
+				Has {{us.data.application.name || "Applicant" }} <span class="text__discription">EVER</span> applied for or received a fee waiver when applying for an immigration benefit from USCIS?
+			</div>
+			<div class="section__discription">
+				<span class="app__number">5</span>
+				Has {{us.data.application.name || "Applicant" }} or any of {{us.data.application.name && us.data.application.name + "'s" || "Applicant's"}} household members <span class="text__discription">EVER</span> received or earned income from an illegal activity or source (such as proceeds from illegal gambling or illegal drug sales)? This includes both income listed and not listed on {{us.data.application.name && us.data.application.name + "'s" || "Applicant's"}} or {{us.data.application.name && us.data.application.name + "'s" || "Applicant's"}} household members' federal tax return(s).
+			</div>
+			<div class="section__discription">
+				<span class="app__number">6</span>
+				Does any of the income from {{us.data.application.name || "Applicant" }} or {{us.data.application.name && us.data.application.name + "'s" || "Applicant's"}} household members' federal tax return(s) come from public benefits as listed in the list below?
+			</div>
+			<ol class="number__list">
+				<li>Any Federal, State, local, or tribal cash assistance for income maintenance;</li>
+				<li>Supplemental Security Income (SSI);</li>
+				<li>Temporary Assistance for Needy Families (TANF);</li>
+				<li>Federal, State or local cash benefit programs for income maintenance (often called "General Assistance" in the State context, but which may exist under other names);</li>
+				<li>Supplemental Nutrition Assistance Program (SNAP, or formerly called "Food Stamps");</li>
+				<li>Section 8 Housing Assistance under the Housing Choice Voucher Program;</li>
+				<li>Section 8 Project-Based Rental Assistance (including Moderate Rehabilitation);</li>
+				<li>Public Housing under the Housing Act of 1937, 42 U.S.C. 1437 et seq.;</li>
+				<li>Federally funded Medicaid; and</li>
+				<li>Programs (including Medicaid) supporting aliens who are institutionalized for long-term care (for example, in a nursing home or mental health institution)</li>
+			</ol>
+			<div class="form__check">
+				<div class="form__title">Is the answer to any of the above questions "Yes"?</div>
+				<label>
+					<input type="radio" name="abovequestions_name" [value]="'yes'" [(ngModel)]="us.data.application.abovequestions_name" (ngModelChange)="us.update();">
+					<span class="check">Yes</span>
+				</label>
+				<label>
+					<input type="radio" name="abovequestions_name" [value]="'no'" [(ngModel)]="us.data.application.abovequestions_name" (ngModelChange)="us.update();">
+					<span class="check">No</span>
+				</label>
+			</div>
+			<div *ngIf="us.data.application.abovequestions_name=='yes'">
+				<div class="sub-sub__section">
+					<span class="sub__section-title">Your Case Requires Additional Attention</span>
+					<p>Because the applicant is not going to file the most recent federal income tax return, there may be additional documents/forms you need to submit that are not covered by Greenbroad.</p>
+					<p>If you choose to proceed using Greenbroad, you can continue filling out all the questions asked in our software and preparing all the documents listed in our document checklist. At the end, we will generate for you all the forms and cover letters that we cover.
+						<span class="sub__p">However, we strongly suggest you consult an <a class="sub__section-link" href="https://www.ailalawyer.com/">immigration lawyer</a> to prepare the additional documents/forms or your application may be rejected or denied.
+						</span>
+					</p>
+
+					<p>If you have any questions or need a lawyer recommendation, do not hesitate to contact us.</p>
+				</div>
+			</div>
+			<div class="sub__discription">
+				Source: Sources for this page (unless otherwise cited above): USCIS Form <a href="https://www.uscis.gov/sites/default/files/document/forms/i-944-pc.pdf">I-944</a>, <a href="https://www.uscis.gov/sites/default/files/document/forms/i-944instr-pc.pdf">USCIS Form I-944 Instructions</a>,<a href="https://www.uscis.gov/policy-manual/volume-8-part-g-chapter-9">USCIS Policy Manual Chapter 9</a>
+			</div>
+			<div class="section__container-btn">
+				<a class="form__btn-back" (click)="section=11;us.top();"> < Back </a>
+				<a class="form__btn-continue" (click)="section=13;us.top();"> Continue ></a>
+			</div>
+		</div>
+	</div>
+	<div *ngIf="section==13">
+		<div class="section__inner">
+			<div class="section__sub-inner">
+				<h1 class="section__title">{{us.data.application.name && us.data.application.name + "'s" || "Applicant's"}}  Education and Skills</h1>
+				<img class="images" src="assets/star.png">
+			</div>
+			<span class="section__discription">
+				Education and skills are relevant to the public charge inadmissibility determinations because they affect the applicant’s ability to obtain and maintain stable employment.
+
+			</span>
+			<span class="section__discription">
+				In this Self-Sufficiency sub-section, we will collect information for Form I-944 regarding the Education and Skills category. USCIS uses this information, along with Forms I-485 and I-864, to determine if any of the following positive and negative factors apply to the applicant:
+			</span>
+			<div class="img__title">
+				<img class="title-img" src="assets/img-1.png" alt="">
+				<span>Positive Factors</span>
+			</div>
+			<ul>
+				<li>Attendance in elementary, middle, or high school</li>
+				<li>High School Diploma or GED or equivalent</li>
+				<li>Higher education such as Bachelor's Degree, Master's Degree, or Doctoral Degree</li>
+				<li>Skills and certifications relevant to employment</li>
+				<li>Basic English proficiency  </li>
+				<li>Primary Caregiver  </li>
+				<li>Other language skills in addition to English  </li>
+				<li>The applicant is currently attending a college or university to obtain a degree</li>
+			</ul>
+			<div class="img__title">
+				<img class="title-img" src="assets/img-2.png" alt="">
+				<span>Heavily Weighted Positive Factors</span>
+			</div>
+			<ul>
+				<li>
+					The applicant is authorized to work and is currently employed in a legal industry with an annual income, excluding any income from illegal activities, of at least 250 percent of the Federal Poverty Guidelines for the applicant’s household size
+				</li>
+
+			</ul>
+
+			<div class="img__title-red">
+				<img class="title-img" src="assets/img-3.png" alt="">
+				<span>Positive Factors</span>
+			</div>
+			<ul>
+				<li>No high school diploma or GED or equivalent</li>
+				<li>No work experience</li>
+				<li>No occupational skills</li>
+				<li>Limited to no English language proficiency </li>
+			</ul>
+
+			<div class="img__title-red">
+				<img class="title-img" src="assets/img-4.png" alt="">
+				<span>Heavily Weighted Negative Factors</span>
+			</div>
+			<ul>
+				<li>The applicant is not a full-time student and is authorized to work, but is unable to demonstrate current employment, recent employment history, or a reasonable prospect of future employment</li>
+			</ul>
+			<div class="sub__discription">
+				Sources for this page (unless otherwise cited above): <a href="https://www.uscis.gov/policy-manual/volume-8-part-g-chapter-11">USCIS Policy Manual Chapter 11</a>
+			</div>
+			<div class="section__container-btn">
+				<a class="form__btn-back" (click)="section=12;us.top();"> < Back </a>
+				<a class="form__btn-continue" (click)="section=14;us.top();"> Continue ></a>
+			</div>
+		</div>
+	</div>
+	<div *ngIf="section==14">
+		<div class="section__inner">
+			<h1 class="section__title">{{us.data.application.name && us.data.application.name + "'s" || "Applicant's"}}  Education and Skills</h1>
+			<div class="form__check">
+				<div class="form__title">Does {{us.data.application.name || "Applicant" }} have an approved Form I-140 as an alien worker</div>
+				<label>
+					<input type="radio" name="analienworker_name" [value]="'yes'" [(ngModel)]="us.data.application.analienworker_name" (ngModelChange)="us.update();">
+					<span class="check">Yes</span>
+				</label>
+				<label>
+					<input type="radio" name="analienworker_name" [value]="'no'" [(ngModel)]="us.data.application.analienworker_name" (ngModelChange)="us.update();">
+					<span class="check">No</span>
+				</label>
+			</div>
+			<div *ngIf="us.data.application.analienworker_name=='yes'">
+				<label class="label__inner">
+					<span class="form__title">Form I-140 Receipt Number</span>
+					<input type="text" [(ngModel)]="us.data.application.receiptnumber_name" (ngModelChange)="us.update();">
+				</label>
+			</div>
+			<div *ngIf="us.data.application.analienworker_name=='no'">
+				<div class="form__check">
+					<div class="form__title">Has {{us.data.application.name || "Applicant" }} graduated high school or earned a high school equivalent diploma</div>
+					<label>
+						<input type="radio" name="highschoolequivalent_name" [value]="'yes'" [(ngModel)]="us.data.application.highschoolequivalent_name" (ngModelChange)="us.update();">
+						<span class="check">Yes</span>
+					</label>
+					<label>
+						<input type="radio" name="highschoolequivalent_name" [value]="'no'" [(ngModel)]="us.data.application.highschoolequivalent_name" (ngModelChange)="us.update();">
+						<span class="check">No</span>
+					</label>
+				</div>
+				<div *ngIf="us.data.application.highschoolequivalent_name=='no'">
+					<div class="sub-sub__section">
+						<span class="sub__section-title">Your Case Requires Additional Attention</span>
+						<p>Because the applicant is not going to file the most recent federal income tax return, there may be additional documents/forms you need to submit that are not covered by Greenbroad.</p>
+
+						<p>If you choose to proceed using Greenbroad, you can continue filling out all the questions asked in our software and preparing all the documents listed in our document checklist. At the end, we will generate for you all the forms and cover letters that we cover. <span class="sub__p">However, we strongly suggest you consult an <a class="sub__section-link" href="https://www.ailalawyer.com/">immigration lawyer</a> to prepare the additional documents/forms or your application may be rejected or denied.</span></p>
+
+						<p>If you have any questions or need a lawyer recommendation, do not hesitate to contact us.</p>
+					</div>
+				</div>
+				<div *ngIf="us.data.application.highschoolequivalent_name=='yes'">
+					<div *ngFor="let name of us.data.application.educationalhistorybelow_names;index as i">
+						<div class="form__title">List {{us.data.application.name && us.data.application.name + "'s" || "Applicant's"}} educational history below. Include all degrees attained (high school diploma, college degrees or equivalent, etc.):</div>
+						<div class="add-form__inner">
+							<div class="container__title">
+								<div class="sub__title">EDUCATION {{i+1}}</div>
+								<button class="inner-title__btn" (click)="us.data.application.educationalhistorybelow_names.splice(i,1);us.update()">X</button>
+							</div>
+							<div class="form__inner">
+								<label class="label__inner">
+									<span class="form__title">Program/School Name</span>
+									<input type="text"  [(ngModel)]="name.schoolmane_name" (ngModelChange)="us.update();">
+								</label>
+								<label class="label__inner">
+									<span class="form__title">Degree/Certificate</span>
+									<input type="text"  [(ngModel)]="name.degreecertificate_name" (ngModelChange)="us.update();">
+								</label>
+								<label class="label__inner">
+									<span class="form__title">Field of Study (if applicable)</span>
+									<input type="text"  [(ngModel)]="name.studyapplicable_name" (ngModelChange)="us.update();">
+								</label>
+								<label class="label__inner">
+									<span class="form__title">Date Started </span>
+									<input type="text"  [(ngModel)]="name.datestarted_name" (ngModelChange)="us.update();">
+								</label>
+								<label class="label__inner">
+									<span class="form__title">Date Ended</span>
+									<ng2-flatpickr placeholder="mm/dd/yyyy" [setDate]="name.dateended_name" [(ngModel)]="name.dateended_name" (ngModelChange)="us.update();"></ng2-flatpickr>
+
+
+
+
+								</label>
+								<label class="label__inner">
+									<span class="form__title">Credit Hours/Hours of Study Completed (if no degree or certificate completed)</span>
+									<ng2-flatpickr placeholder="mm/dd/yyyy" [setDate]="name.credithours_name" [(ngModel)]="name.credithours_name" (ngModelChange)="us.update();"></ng2-flatpickr>
+								</label>
+							</div>
+						</div>
+						<div>
+							<button class="add-form__btn" (click)="educationalhistorybelowadd()">+ Add Education</button>
+						</div>
+					</div>
+				</div>
+				<div class="form__check">
+					<div class="form__title">Does {{us.data.application.name || "Applicant" }} have any occupational skills?</div>
+					<label>
+						<input type="radio" name="occupationalskills_name" [value]="'yes'" [(ngModel)]="us.data.application.occupationalskills_name" (ngModelChange)="us.update();">
+						<span class="check">Yes</span>
+					</label>
+					<label>
+						<input type="radio" name="occupationalskills_name" [value]="'no'" [(ngModel)]="us.data.application.occupationalskills_name" (ngModelChange)="us.update();">
+						<span class="check">No</span>
+					</label>
+				</div>
+				<div *ngIf="us.data.application.occupationalskills_name=='yes'">
+					<div *ngFor="let name of us.data.application.provideinformationabout_names;index as i">
+						<div class="form__title">Provide information about {{us.data.application.name && us.data.application.name + "'s" || "Applicant's"}} occupational skills below:</div>
+						<div class="add-form__inner">
+							<div class="container__title">
+								<div class="sub__title">SKILL {{i+1}}</div>
+								<button class="inner-title__btn" (click)="us.data.application.provideinformationabout_names.splice(i,1);us.update()">X</button>
+							</div>
+							<div class="form__inner">
+								<label class="label__inner">
+									<span class="form__title">Certification/License Type/Occupational Skill</span>
+									<input type="text"  [(ngModel)]="name.licensetype_name" (ngModelChange)="us.update();">
+								</label>
+								<label class="label__inner">
+									<span class="form__title">Date Obtained</span>
+									<ng2-flatpickr placeholder="mm/dd/yyyy" [setDate]="name.dateobtainedus_name" [(ngModel)]="name.dateobtainedus_name" (ngModelChange)="us.update();"></ng2-flatpickr>
+								</label>
+								<label class="label__inner">
+									<span class="form__title">Who issued your license or certification? (if any)</span>
+									<input type="text"  [(ngModel)]="name.certificationifany_name" (ngModelChange)="us.update();">
+								</label>
+								<label class="label__inner">
+									<span class="form__title">License Number (if any)</span>
+									<input type="text"  [(ngModel)]="name.licensenumberifany_name" (ngModelChange)="us.update();">
+								</label>
+								<label class="label__inner">
+									<span class="form__title">Expiration/Renewal Date (if any)</span>
+
+									<ng2-flatpickr placeholder="mm/dd/yyyy" [setDate]="name.usrenewaldate_name" [(ngModel)]="name.usrenewaldate_name" (ngModelChange)="us.update();"></ng2-flatpickr>
+								</label>
+							</div>
+						</div>
+						<div>
+							<button class="add-form__btn" (click)="provideinformationaboutadd()">+ Add Skill</button>
+						</div>
+					</div>
+				</div>
+				<div *ngIf="us.data.application.occupationalskills_name=='no'">
+					<div *ngFor="let name of us.data.application.anyotherlanguage_names;index as i">
+						<div class="form__title">Provide the following information about {{us.data.application.name && us.data.application.name + "'s" || "Applicant's"}} skill with English and any other language:</div>
+						<div class="add-form__inner">
+							<div class="container__title">
+								<div class="sub__title">LANGUAGE {{i+1}}</div>
+								<button class="inner-title__btn" (click)="us.data.application.anyotherlanguage_names.splice(i,1);us.update()">X</button>
+							</div>
+							<div class="form__inner">
+								<label class="label__inner">
+									<span class="form__title">Language</span>
+									<input type="text"  [(ngModel)]="name.uslanguage_name" (ngModelChange)="us.update();">
+								</label>
+								<label class="label__inner">
+									<span class="form__title">Certification/Courses Attended or Currently Attending (if any)</span>
+									<input type="text"  [(ngModel)]="name.attendedorcurremtlyus_name" (ngModelChange)="us.update();">
+								</label>
+								<label class="label__inner">
+									<span class="form__title">Date Certification Obtained or Date Course Completed</span>
+									<input type="text"  [(ngModel)]="name.certificationobtained_name" (ngModelChange)="us.update();">
+								</label>
+								<label class="label__inner">
+									<span class="form__title">Who issued the certification? (if any)</span>
+									<ng2-flatpickr placeholder="mm/dd/yyyy" [setDate]="name.issuedthecertification_name" [(ngModel)]="name.issuedthecertification_name" (ngModelChange)="us.update();"></ng2-flatpickr>
+
+
+
+
+								</label>
+								<label class="label__inner">
+									<span class="form__title">Expiration/Renewal Date (if any)</span>
+									<input type="text"  [(ngModel)]="name.expirationdateifany_name" (ngModelChange)="us.update();">
+								</label>
+							</div>
+						</div>
+						<div>
+							<button class="add-form__btn" (click)="anyotherlanguageadd()">+ Add Language</button>
+						</div>
+					</div>
+
+					<div class="form__check">
+						<div class="form__title">Is {{us.data.application.name || "Applicant" }} currently retired?</div>
+						<label>
+							<input type="radio" name="currentlyretiredus_name" [value]="'yes'" [(ngModel)]="us.data.application.currentlyretiredus_name" (ngModelChange)="us.update();">
+							<span class="check">Yes</span>
+						</label>
+						<label>
+							<input type="radio" name="currentlyretiredus_name" [value]="'no'" [(ngModel)]="us.data.application.currentlyretiredus_name" (ngModelChange)="us.update();">
+							<span class="check">No</span>
+						</label>
+					</div>
+					<div *ngIf="us.data.application.currentlyretiredus_name=='yes'">
+						<label class="label__inner">
+							<span class="form__title">Since when has {{us.data.application.name || "Applicant" }} been retired?</span>
+
+							<ng2-flatpickr placeholder="mm/dd/yyyy" [setDate]="us.data.application.sincewhenhas_name" [(ngModel)]="us.data.application.sincewhenhas_name" (ngModelChange)="us.update();"></ng2-flatpickr>
+						</label>
+					</div>
+					<div class="form__check">
+						<div class="form__title">Is {{us.data.application.name || "Applicant" }} the primary caregiver, who is over the age of 18, for a child, or an elderly, ill or disabled individual in {{us.data.application.name && us.data.application.name + "'s" || "Applicant's"}} household?</div>
+						<label>
+							<input type="radio" name="disabledindividualin_name" [value]="'yes'" [(ngModel)]="us.data.application.disabledindividualin_name" (ngModelChange)="us.update();">
+							<span class="check">Yes</span>
+						</label>
+						<label>
+							<input type="radio" name="disabledindividualin_name" [value]="'no'" [(ngModel)]="us.data.application.disabledindividualin_name" (ngModelChange)="us.update();">
+							<span class="check">No</span>
+						</label>
+					</div>
+					<div *ngIf="us.data.application.disabledindividualin_name=='yes'">
+						<label class="label__inner">
+							<div class="form__title">If {{us.data.application.name || "Applicant" }} is currently unemployed because {{us.data.application.name || "Applicant" }} is the primary caretaker of a child or elderly or disabled individual, which has limited {{us.data.application.name && us.data.application.name + "'s" || "Applicant's"}}  ability to work, provide a statement below:</div>
+							<textarea [(ngModel)]="us.data.application.disabledindividualin_name" (ngModelChange)="us.update();" id="" cols="30" rows="10"></textarea>
+						</label>
+					</div>
+				</div>
+				<div class="sub__discription">
+					Sources for this page (unless otherwise cited above):<a href="https://www.uscis.gov/sites/default/files/document/forms/i-944-pc.pdf">USCIS Form I-944 </a>
+				</div>
+				<div class="section__container-btn">
+					<a class="form__btn-back" (click)="section=12;us.top();"> < Back </a>
+					<a class="form__btn-continue" (click)="us.section='otherhistory';us.top();"> Continue ></a>
+				</div>
+			</div>
+		</div>
+

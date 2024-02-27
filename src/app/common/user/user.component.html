@@ -1,0 +1,276 @@
+<div class="topbar">
+  <div class="topbarlogo">
+    <a href="#"><img src="assets/topbar-logo.png" alt="logo" /></a>
+  </div>
+  <div class="navigation" routerLink="/homepage">
+    <input type="checkbox" class="toggle-memu" />
+    <div class="hamburger"></div>
+    <div class="menu__list">
+      <div class="list__inner">
+        <div
+          class="menu__link"
+          [class.active]="us.tab == 'application'"
+          (click)="us.tab = 'application'; us.section = 'home'"
+        >
+          Applicant info
+        </div>
+        <span> &#8250;</span>
+
+        <div
+          class="menu__link"
+          [class.active]="us.tab == 'sponsor'"
+          (click)="us.tab = 'sponsor'; us.section = 'home'"
+        >
+          Sponsor info
+        </div>
+
+        <span
+          *ngIf="us.data.cardholder == 'us' && us.data.location == 'inside'"
+        >
+          &#8250;</span
+        >
+
+        <div
+          class="menu__link"
+          *ngIf="us.data.cardholder == 'us' && us.data.location == 'inside'"
+          [class.active]="us.tab == 'collectdocuments'"
+          (click)="us.tab = 'collectdocuments'; us.section = 'home'"
+        >
+          Collect documents
+        </div>
+
+        <span
+          *ngIf="us.data.cardholder == 'us' && us.data.location == 'inside'"
+        >
+          &#8250;</span
+        >
+
+        <div
+          class="menu__link"
+          *ngIf="us.data.cardholder == 'us' && us.data.location == 'inside'"
+          [class.active]="us.tab == 'printform'"
+          (click)="us.tab = 'printform'; us.section = 'home'"
+        >
+          Print form
+        </div>
+
+        <span
+          *ngIf="us.data.cardholder == 'us' && us.data.location == 'inside'"
+        >
+          &#8250;</span
+        >
+
+        <div
+          class="menu__link"
+          *ngIf="us.data.cardholder == 'us' && us.data.location == 'inside'"
+          [class.active]="us.tab == 'submit'"
+          (click)="us.tab = 'submit'; us.section = 'home'"
+        >
+          Submit
+        </div>
+
+        <span
+          *ngIf="
+            us.data.cardholder == 'greencard' && us.data.location == 'inside'
+          "
+          >&#8250;</span
+        >
+        <span
+          *ngIf="
+            us.data.cardholder == 'greencard' && us.data.location == 'outside'
+          "
+        >
+          &#8250;</span
+        >
+        <span
+          *ngIf="us.data.cardholder == 'us' && us.data.location == 'outside'"
+          >&#8250;</span
+        >
+
+        <!-- greencard inside -->
+
+        <div
+          class="menu__link"
+          [class.active]="us.tab == 'submissionone'"
+          (click)="us.tab = 'submissionone'; us.section = 'submissionhome'"
+          *ngIf="
+            us.data.cardholder == 'greencard' && us.data.location == 'inside'
+          "
+        >
+          Collect Documents
+        </div>
+
+        <!-- greencard outside -->
+
+        <div
+          class="menu__link"
+          [class.active]="us.tab == 'submissionone'"
+          (click)="us.tab = 'submissionone'; us.section = 'submissionhome'"
+          *ngIf="
+            us.data.cardholder == 'greencard' && us.data.location == 'outside'
+          "
+        >
+          Collect Documents
+        </div>
+
+        <!-- us outside -->
+
+        <div
+          class="menu__link"
+          [class.active]="us.tab == 'submissionone'"
+          (click)="us.tab = 'submissionone'; us.section = 'submissionhome'"
+          *ngIf="us.data.cardholder == 'us' && us.data.location == 'outside'"
+        >
+          Collect Documents
+        </div>
+
+        <span
+          *ngIf="
+            us.data.cardholder == 'greencard' && us.data.location == 'inside'
+          "
+        >
+          &#8250;</span
+        >
+        <span
+          *ngIf="
+            us.data.cardholder == 'greencard' && us.data.location == 'outside'
+          "
+        >
+          &#8250;</span
+        >
+        <span
+          *ngIf="us.data.cardholder == 'us' && us.data.location == 'outside'"
+          >&#8250;</span
+        >
+
+        <!-- greencard inside -->
+
+        <div
+          class="menu__link"
+          [class.active]="us.tab == 'submissiontwo'"
+          (click)="us.tab = 'submissiontwo'; us.section = 'submissiontwohome'"
+          *ngIf="
+            us.data.cardholder == 'greencard' && us.data.location == 'inside'
+          "
+        >
+          Print Forms
+        </div>
+
+        <!-- greencard outside -->
+
+        <div
+          class="menu__link"
+          [class.active]="us.tab == 'submissiontwo'"
+          (click)="us.tab = 'submissiontwo'; us.section = 'submissiontwohome'"
+          *ngIf="
+            us.data.cardholder == 'greencard' && us.data.location == 'outside'
+          "
+        >
+          Print Forms
+        </div>
+
+        <!-- us outside -->
+
+        <div
+          class="menu__link"
+          [class.active]="us.tab == 'submissiontwo'"
+          (click)="us.tab = 'submissiontwo'; us.section = 'submissiontwohome'"
+          *ngIf="us.data.cardholder == 'us' && us.data.location == 'outside'"
+        >
+          Print Forms
+        </div>
+
+        <span
+          *ngIf="
+            us.data.cardholder == 'greencard' && us.data.location == 'inside'
+          "
+        >
+          &#8250;</span
+        >
+        <span
+          *ngIf="
+            us.data.cardholder == 'greencard' && us.data.location == 'outside'
+          "
+        >
+          &#8250;</span
+        >
+        <span
+          *ngIf="us.data.cardholder == 'us' && us.data.location == 'outside'"
+          >&#8250;</span
+        >
+
+        <!-- greencard inside -->
+
+        <div
+          class="menu__link"
+          [class.active]="us.tab == 'nextsteps'"
+          (click)="us.tab = 'nextsteps'; us.section = 'nextstepshome'"
+          *ngIf="
+            us.data.cardholder == 'greencard' && us.data.location == 'inside'
+          "
+        >
+          Submit
+        </div>
+
+        <!-- greencard outside -->
+
+        <div
+          class="menu__link"
+          [class.active]="us.tab == 'nextsteps'"
+          (click)="us.tab = 'nextsteps'; us.section = 'nextstepshome'"
+          *ngIf="
+            us.data.cardholder == 'greencard' && us.data.location == 'outside'
+          "
+        >
+          Submit
+        </div>
+
+        <!-- us outside -->
+
+        <div
+          class="menu__link"
+          [class.active]="us.tab == 'nextsteps'"
+          (click)="us.tab = 'nextsteps'; us.section = 'nextstepshome'"
+          *ngIf="us.data.cardholder == 'us' && us.data.location == 'outside'"
+        >
+          Submit
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="topbar-right">
+    <a class="admin" routerLink="/users" *ngIf="us.is?.admin"
+      ><img src="assets/admin.png" alt=""
+    /></a>
+    <a class="case-link" (click)="case = !case" (clickOutside)="case = null"
+      ><img src="assets/icon_case.png" alt=""
+    /></a>
+
+    <div class="case__container" *ngIf="case">
+      <a class="case__link" target="_blank" href="https://greenbroad.co/faqs/">
+        Green Card Process Overview
+      </a>
+      <a
+        class="case__link"
+        target="_blank"
+        href="https://egov.uscis.gov/processing-times/"
+        >Aplication Timeline
+      </a>
+    </div>
+    <a class="topbar__link _img" routerLink="/profile">
+      <img
+        class="profile-img"
+        *ngIf="us.avatarUrl"
+        alt=""
+        [src]="us.avatarUrl"
+      />
+      <img
+        class="profile-img"
+        *ngIf="!us.avatarUrl"
+        alt=""
+        src="assets/user.png"
+      />
+    </a>
+  </div>
+</div>
+<router-outlet></router-outlet>

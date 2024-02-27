@@ -1,0 +1,210 @@
+.errspan {
+	color: red;
+}
+
+.err {
+	border: 1px solid red;
+}
+
+.container__inner {
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+
+	.welcome__title {
+		color: #269F1A;
+		;
+	}
+
+	.welcome__question {
+		font-weight: 600;
+		font-size: 17px;
+	}
+
+	.welcome__img {
+		width: 100%;
+		max-width: 300px;
+	}
+
+	.sign-btn {
+		color: #1972F5;
+		font-size: 20px;
+		cursor: pointer;
+		margin: 25px 0 0 0;
+
+	}
+
+	.sign-btn:hover {
+
+		color: #1971f582;
+	}
+
+	.login__container-btn {
+		display: flex;
+		justify-content: center;
+		flex-direction: column;
+		padding: 30px 0 30px 0;
+		align-items: center;
+	}
+
+	.welcome__discription {
+		font-size: 17px;
+		color: rgba(0, 0, 0, .5);
+	}
+
+	.welcome__sub-discription {
+		font-size: 13px;
+		color: rgba(0, 0, 0, .5);
+	}
+
+	.welcome__inner {
+		width: 100%;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		padding-top: 15px;
+	}
+
+	.welcome__btn {
+		text-decoration: none;
+		border: solid 1px;
+		border-radius: 5px;
+		color: #fff;
+		background: #1972F5;
+		padding: 15px 30px;
+		cursor: pointer;
+		font-size: 20px;
+
+		&:disabled {
+			background-color: #929292;
+		}
+	}
+
+	.welcome__btn:hover {
+		background: #1971f582;
+	}
+
+	.welcome__inner input {
+		width: 100%;
+		margin-top: 10px;
+		padding: 10px;
+	}
+
+	.welcome__inner label {
+		width: 100%;
+
+	}
+
+	.welcome__btn-sign {
+		text-decoration: none;
+		// border: solid 1px #1972F5;
+		// border-radius: 5px;
+		color: #269F1A;
+		background: none;
+		padding: 15px 30px;
+		cursor: pointer;
+		font-size: 22px;
+
+	}
+}
+
+@media screen and (max-width: 768px) {
+	.container__inner {
+		width: 100%;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+
+
+		.welcome__title {
+			color: #1972F5;
+			text-align: center;
+			font-size: 22px;
+
+		}
+
+		.welcome__question {
+			font-weight: 600;
+			font-size: 17px;
+			text-align: center;
+		}
+
+		.welcome__img {
+			width: 100%;
+			max-width: 180px;
+		}
+
+		.welcome__discription {
+			font-size: 12px;
+			color: rgba(0, 0, 0, .5);
+			text-align: center;
+		}
+
+		.welcome__sub-discription {
+			padding-top: 10px;
+			font-size: 12px;
+			color: rgba(0, 0, 0, .5);
+			text-align: center;
+		}
+
+		.welcome__inner {
+			width: 100%;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			padding-top: 10px;
+		}
+
+
+		.welcome__btn {
+			text-decoration: none;
+			border: solid 1px;
+			border-radius: 5px;
+			color: #fff;
+			background: #1972F5;
+			padding: 12px 20px;
+			cursor: pointer;
+			margin-top: 20px;
+			font-size: 12px;
+
+			&:disabled {
+				background-color: #929292;
+			}
+		}
+
+
+
+		.welcome__btn:hover {
+			background: #4D10FC;
+		}
+
+		.login__container-btn {
+			width: 100%;
+			display: flex;
+			justify-content: center;
+			padding: 15px;
+		}
+
+		.welcome__btn:disabled {
+			background: gray;
+		}
+
+		.welcome__inner input {
+			width: 100%;
+			margin-top: 10px;
+			padding: 5px;
+		}
+
+		.welcome__btn-sign {
+			padding: 20px;
+			color: #1972F5;
+			font-size: 20px;
+			cursor: pointer;
+			font-family: 600px;
+
+		}
+	}
+
+
+}

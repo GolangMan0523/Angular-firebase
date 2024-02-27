@@ -1,0 +1,30 @@
+.add-inner{
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  input{
+padding: 10px;
+margin: 7px 0 0 0;
+
+  }
+}
+.add-btn{
+  margin: 25px 0 0 0;
+  display: flex;
+  justify-content: flex-end;
+
+}
+.btn-add{
+  margin-left: 25px;
+  padding: 10px;
+  background: #4D61FC;
+  border-radius: 5px;
+  text-decoration: none;
+  color: #fff;
+  cursor: pointer;
+  border: none;
+}
+.btn-add:hover{
+  background: #8290ff;
+  transition: 0.5s;
+}

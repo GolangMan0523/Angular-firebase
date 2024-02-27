@@ -1,0 +1,21 @@
+<div *ngIf="section==1">
+	<div class="section__inner">
+		<h1 class="section__title">Step 4 of 5 - Submission 2 (Immigrant Visa Application)</h1>
+		<img class="sub__img" src="assets/sub2.png" alt="">
+		<div class="section__container">
+			<span class="section__discription">Congratulations on advancing to Submission 2! In this submission, 0 will apply for an immigrant visa in order to travel to the U.S to receive a Green Card. Submission 2 will be handled by a new U.S. government agency called National Visa Center (NVC). It is part of the U.S. Department of State.</span>
+			<span class="form__title">Which forms does Greenbroad help you complete in Submission 2?</span>
+			<span class="section__discription">You will need to submit two forms for Submission 2. One of the two forms (DS-260) needs to be submitted directly through Department of State's online portal, and is therefore not covered by Greenbroad. The other form (I-864) will be submitted separately and Greenbroad will help you with completing Form I-864.</span>
+			<span class="section__discription">In addition to forms, you will need to submit two sets of documents (civil documents, and financial evidence) for Submission 2. Greenbroad will help you with collecting these documents.</span>
+			<span class="section__discription">At the end of this step, we will also explain how to submit Submission 2.</span>
+
+			<span class="sub-discription">
+				Sources for this page (unless otherwise cited above): <a href="">Bringing Spouses to Live in the United States as Permanent Residents,</a><a href="">Consular Processing, Immigrant Visa Process - After Your Petition is Approved, and Greenbroad suggestions</a>
+			</span>
+		</div>
+		<div class="section__container-btn">
+			<a class="form__btn-back" (click)="us.section='home';us.top();"> < Back </a>
+			<a class="form__btn-continue" (click)="us.section='collectdocument';us.top();"> Continue ></a>
+		</div>
+	</div>
+</div>

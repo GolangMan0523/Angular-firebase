@@ -1,0 +1,1849 @@
+<div>
+  <div *ngIf="us.pagesection == 1">
+    <div class="section__inner">
+      <h1 class="section-title">
+        Financial Support for {{ us.data.application.name || "Applicant" }}
+      </h1>
+      <div class="sub-section__inner">
+        <div class="img__inner">
+          <img class="finan__img" src="assets/star.png" alt="" />
+        </div>
+        <div class="section__container">
+          <span class="section__discription"
+            >In general, family-based adjustment applicants must submit an
+            <a
+              style="color: #4d61fc"
+              target="_blank"
+              href="https://www.uscis.gov/sites/default/files/document/forms/i-864.pdf"
+              >Affidavit of Support (Form I-864)</a
+            >
+            to show that they will be able to financially support themselves as
+            lawful permanent residents living indefinitely in the United States
+            and are not likely to become a public charge.</span
+          >
+          <span class="sub-discription">
+            Source:
+            <a
+              target="_blank"
+              href="https://www.uscis.gov/sites/default/files/document/forms/i-864instr.pdf"
+              >USCIS Form I-864 Instructions Pages 1</a
+            >
+            and
+            <a
+              target="_blank"
+              href="https://www.uscis.gov/green-card/green-card-processes-and-procedures/affidavit-of-support"
+              >Affidavit of Support</a
+            >
+          </span>
+          <span class="form__title">How to meet this requirement?</span>
+          <span class="section__discription"
+            >There are multiple ways to meet the financial support requirement.
+            Greenbroad supports the most common way: If
+            {{
+              (us.data.application.sponsorname &&
+                us.data.application.sponsorname + "'s") ||
+                "Sponsor's"
+            }}
+            (
+            {{
+              (us.data.application.name && us.data.application.name + "'s") ||
+                "Applicant's"
+            }}
+            spouse) can demonstrate that
+            {{
+              (us.data.application.sponsorname &&
+                us.data.application.sponsorname + "'s") ||
+                "Sponsor's"
+            }}
+            current individual annual income satisfies the USCIS minimum income
+            requirement (explained below), then
+            {{
+              (us.data.application.sponsorname &&
+                us.data.application.sponsorname) ||
+                "Sponsor's"
+            }}
+            can become
+            {{
+              (us.data.application.name && us.data.application.name + "'s") ||
+                "Applicant's"
+            }}
+            financial sponsor.
+          </span>
+          <span class="sub-discription">
+            Source:
+            <a
+              target="_blank"
+              href="https://www.uscis.gov/sites/default/files/document/forms/i-864instr.pdf"
+              >USCIS Form I-864 Instructions Page 8</a
+            >
+            and Greenbroad suggestion
+          </span>
+          <span class="form__title"
+            >Understand a sponsor's legal obligations</span
+          >
+          <span class="section__discription"
+            >If {{ us.data.application.sponsorname || "Sponsor" }} meets the
+            minimum income requirement and agrees to sponsor
+            {{ us.data.application.name || "Applicant" }}, 0 will be personally
+            obligated to use
+            {{
+              (us.data.application.sponsorname &&
+                us.data.application.sponsorname + "'s") ||
+                "Sponsor's"
+            }}
+            resources to support {{ us.data.application.name || "Applicant" }},
+            if it becomes necessary.</span
+          >
+          <span class="section__discription">
+            Form I-864 - Affidavit of Support is a contract between
+            {{ us.data.application.sponsorname || "Sponsor" }} and the U.S.
+            government regarding
+            {{
+              (us.data.application.sponsorname &&
+                us.data.application.sponsorname + "'s") ||
+                "Sponsor's"
+            }}
+            obligations as
+            {{
+              (us.data.application.name && us.data.application.name + "'s") ||
+                "Applicant's"
+            }}
+            sponsor. {{ us.data.application.sponsorname || "Sponsor" }} will
+            need to complete and sign Form I-864. (Don’t worry, Greenboard will
+            help you complete the form.) Please read the Sponsor’s Contract on
+            Form I-864 page 6 to understand the legal implications.</span
+          >
+          <span class="sub-discription">
+            Source:
+            <a
+              target="_blank"
+              href="https://www.uscis.gov/sites/default/files/document/forms/i-864instr.pdf"
+              >USCIS Form I-864 Instructions Page 8</a
+            >
+            and Greenbroad suggestion
+          </span>
+          <span class="form__title"
+            >How much is the minimum income requirement?</span
+          >
+          <span class="section__discription"
+            >The minimum income requirement is greater than or equal to 125
+            percent of the current Federal Poverty Guidelines for
+            {{
+              (us.data.application.sponsorname &&
+                us.data.application.sponsorname + "'s") ||
+                "Sponsor's"
+            }}
+            household size (only 100 percent of the Federal Poverty Guidelines
+            if {{ us.data.application.sponsorname || "Sponsor" }} is on active
+            duty in the U.S. Armed Forces or U.S. Coast Guard).</span
+          >
+          <span class="section__discription"
+            >In this section, we will help you determine if
+            {{ us.data.application.sponsorname || "Sponsor" }} can meet the
+            minimum income requirement.</span
+          >
+          <span class="sub-discription">
+            Source:
+            <a
+              target="_blank"
+              href="https://www.uscis.gov/sites/default/files/document/forms/i-864instr.pdf"
+              >USCIS Form I-864 Instructions Page 11</a
+            >
+          </span>
+          <span class="form__title"
+            >What if
+            {{
+              (us.data.application.sponsorname &&
+                us.data.application.sponsorname + "'s") ||
+                "Sponsor's"
+            }}
+            income cannot meet the minimum income requirement?</span
+          >
+          <span class="section__discription"
+            >Don't panic. There are other acceptable ways to meet the minimum
+            income requirement, such as adding income from other household
+            members, adding the applicant's own income, adding your assets, or
+            adding a joint sponsor.</span
+          >
+          <span class="section__discription"
+            >However, these options require additional paperwork that Greenbroad
+            currently does not support. If you choose to proceed using
+            Greenboard, here is how to complete your application:</span
+          >
+          <span class="section__discription"
+            >First, continue filling out all the questions asked in this section
+            of Greenbroad, and prepare all the documents listed in our Proof of
+            Financial Support document checklist. At the end, we will generate
+            for you all the forms and cover letters that we do cover.</span
+          >
+          <span class="section__discription"
+            >Then, make sure to prepare the additional financial support
+            paperwork on your own (or with the help of an immigration attorney),
+            by following the instructions from Form I-864 pages 12-13 (starting
+            from the title "What if I Cannot Meet the Income Requirements?"),
+            and the more detailed instructions on pages 8-10 (starting from the
+            title "Item Numbers 8. - 22. Current Annual Household Income."). If
+            you follow these instructions, the additional paperwork should not
+            be hard to complete.
+          </span>
+          <span class="section__discription"
+            >Make sure you submit these additional paperwork together with the
+            rest of your application. Otherwise, your application may be
+            rejected or denied. If you'd like, you can get an immigration lawyer
+            to help you with just the financial support part, which is not
+            expensive. If you want a lawyer recommendation, just let us know
+            :)</span
+          >
+          <span class="sub-discription">
+            Source:
+            <a
+              target="_blank"
+              href="https://www.uscis.gov/sites/default/files/document/forms/i-864instr.pdf"
+              >USCIS Form I-864 Instructions Pages 12 & 13</a
+            >
+            and Greenbroad Suggestion
+          </span>
+          <span class="sub-discription">
+            Sources for this page (unless otherwise cited above): USCIS Form
+            Instructions For
+            <a
+              target="_blank"
+              href="https://www.uscis.gov/sites/default/files/document/forms/i-864.pdf"
+              >I-864</a
+            >
+          </span>
+        </div>
+      </div>
+      <div class="section__container-btn">
+        <a
+          class="form__btn-back"
+          (click)="
+            us.section = 'sponsorplaceslived'; us.pagesection = 1; us.top()
+          "
+        >
+          < Back
+        </a>
+        <a class="form__btn-continue" (click)="us.pagesection = 2; us.top()">
+          Continue ></a
+        >
+      </div>
+    </div>
+  </div>
+</div>
+<div>
+  <div *ngIf="us.pagesection == 2">
+    <div class="section__inner">
+      <div class="sub-inner">
+        <h1 class="section__title">
+          First, let's check if {{ us.data.application.name || "Applicant" }} is
+          exempt from filing an Affidavit of Support
+        </h1>
+        <div class="section__container">
+          <span class="section__discription">
+            <p>
+              If {{ us.data.application.name || "Applicant" }} has earned or can
+              receive credit for 40
+              <a
+                style="color: #4d61fc"
+                target="_blank"
+                href="https://www.ssa.gov/OACT/COLA/QC.html"
+                >quarters of coverage</a
+              >
+              under the Social Security Act (SSA),
+              {{ us.data.application.name || "Applicant" }} is exempt from the
+              requirement to file Form I-864.
+            </p>
+
+            <p>
+              {{ us.data.application.name || "Applicant" }} can acquire 40
+              qualifying quarters in the following ways:
+            </p>
+            <ol>
+              <li>
+                Working in the United States for 40 quarters in which
+                {{ us.data.application.name || "Applicant" }} received the
+                minimum income established by the Social Security
+                Administration;
+              </li>
+              <li>
+                By being credited under the Immigration and Nationality Act
+                (INA) section 213A(a)(3)(B) with quarters worked by
+                {{
+                  (us.data.application.sponsorname &&
+                    us.data.application.sponsorname + "'s") ||
+                    "Sponsor's"
+                }}
+                spouse during the marriage or a parent during the time
+                {{ us.data.application.name || "Applicant" }} was under 18 years
+                of age; or
+              </li>
+              <li>A combination of the above.</li>
+            </ol>
+            <p>
+              The Social Security Administration (SSA) can provide information
+              on how to count quarters of work earned or credited and how to
+              provide evidence of such. See the
+              <a
+                style="color: #4d61fc"
+                target="_blank"
+                href="https://www.ssa.gov/myaccount/"
+              >
+                SSA website</a
+              >
+              for more information.
+            </p>
+          </span>
+          <span class="section__discription"
+            >The Social Security Administration (SSA) can provide information on
+            how to count quarters of work earned or credited and how to provide
+            evidence of such. See the
+            <a
+              style="color: #4d61fc"
+              target="_blank"
+              href="https://www.ssa.gov/myaccount/"
+            >
+              SSA website</a
+            >
+            for more information.</span
+          >
+
+          <span class="sub-discription">
+            Source:
+            <a
+              target="_blank"
+              href="https://www.uscis.gov/sites/default/files/document/forms/i-864winstr.pdf"
+              >USCIS Form I-864W Instructions page 1</a
+            >,<a
+              target="_blank"
+              href="https://www.uscis.gov/sites/default/files/document/forms/i-864instr.pdf"
+              >USCIS Form I-864W Instructions page 2</a
+            >,
+            <a
+              target="_blank"
+              href="https://faq.ssa.gov/en-us/Topic/article/KA-01741"
+              >Social Security Administration</a
+            >
+          </span>
+          <span class="form__title"
+            >Is {{ us.data.application.name || "Applicant" }} exempt from filing
+            Form I-864?</span
+          >
+          <div class="form__check">
+            <label>
+              <input
+                type="radio"
+                name="fin_name"
+                [value]="'yes'"
+                [(ngModel)]="us.data.application.fin_name"
+                [class.err]="err.choice"
+                (ngModelChange)="us.update(); err.choice = false"
+                (blur)="!us.data.application.fin_name && (err.choice = true)"
+              />
+              <span class="check">Yes</span>
+            </label>
+            <label>
+              <input
+                type="radio"
+                name="fin_name"
+                [value]="'no'"
+                [(ngModel)]="us.data.application.fin_name"
+                [class.err]="err.choice"
+                (ngModelChange)="us.update(); err.choice = false"
+                (blur)="!us.data.application.fin_name && (err.choice = true)"
+              />
+              <span class="check">No</span>
+            </label>
+          </div>
+          <span *ngIf="err.choice" class="errspan">This field is required</span>
+
+          <div
+            class="sub-form__container"
+            *ngIf="us.data.application.fin_name == 'yes'"
+          >
+            <span>Your Case Requires Additional Attention</span>
+            <p>
+              Because the applicant is exempt from filing an Affidavit of
+              Support, there may be additional documents/forms you need to
+              submit that are not covered by Greenbroad.
+            </p>
+            <p>
+              If you choose to proceed using Greenbroad, you can continue
+              filling out all the questions asked in our software and preparing
+              all the documents listed in our document checklist. At the end, we
+              will generate for you all the forms and cover letters that we
+              cover.
+              <span
+                >However, we strongly suggest you consult an
+                <a target="_blank" href="https://www.ailalawyer.com/"
+                  >immigration lawyer</a
+                >
+                to prepare the additional documents/forms or your application
+                may be rejected or denied.</span
+              >
+            </p>
+            <p>
+              If you have any questions or need a lawyer recommendation, do not
+              hesitate to contact us.
+            </p>
+          </div>
+          <div class="sub-discription">
+            <span
+              >Sources for this page (unless otherwise cited above): USCIS
+              Forms</span
+            >
+            <a
+              target="_blank"
+              href="https://www.uscis.gov/sites/default/files/document/forms/i-864instr.pdf"
+              >I-864</a
+            >
+          </div>
+        </div>
+        <div class="section__container-btn">
+          <a class="form__btn-back" (click)="us.pagesection = 1; us.top()">
+            < Back
+          </a>
+          <a class="form__btn-continue" (click)="ChangeTab2(3); us.top()">
+            Continue ></a
+          >
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div>
+  <div *ngIf="us.pagesection == 3">
+    <div class="section__inner">
+      <div class="sub-inner">
+        <h1 class="section__title">
+          Next, let's calculate
+          {{
+            (us.data.application.sponsorname &&
+              us.data.application.sponsorname + "'s") ||
+              "Sponsor's"
+          }}
+          household size
+        </h1>
+        <div class="section__container">
+          <span class="section__discription">
+            The minimum income requirement is determined based on the size of
+            {{
+              (us.data.application.sponsorname &&
+                us.data.application.sponsorname + "'s") ||
+                "Sponsor's"
+            }}
+            household.
+          </span>
+          <div class="check__inner">
+            <span class="form__title"
+              >Does {{ us.data.application.sponsorname || "Sponsor" }} have any
+              dependent children under 21 years of age?</span
+            >
+            <div class="form__check">
+              <label>
+                <input
+                  type="radio"
+                  name="haveanydependentchildren_name"
+                  [value]="'yes'"
+                  [(ngModel)]="
+                    us.data.application.haveanydependentchildren_name
+                  "
+                  (ngModelChange)="us.update()"
+                />
+                <span class="check">Yes</span>
+              </label>
+              <label>
+                <input
+                  type="radio"
+                  name="haveanydependentchildren_name"
+                  [value]="'no'"
+                  [(ngModel)]="
+                    us.data.application.haveanydependentchildren_name
+                  "
+                  (ngModelChange)="us.update()"
+                />
+                <span class="check">No</span>
+              </label>
+            </div>
+            <div
+              class="sub__form-inner"
+              *ngIf="us.data.application.haveanydependentchildren_name == 'yes'"
+            >
+              <label class="label__inner">
+                <span class="form__title">How many?</span>
+                <input
+                  type="text"
+                  oninput="this.value = this.value.replace(/[^0-9.]/g, ''); this.value = this.value.replace(/(\..*)\./g, '$1');"
+                  [class.err]="err.howMany"
+                  [(ngModel)]="us.data.application.howmanyus_name"
+                  (ngModelChange)="us.update(); err.howMany = false"
+                  (blur)="
+                    !us.data.application.howmanyus_name && (err.howMany = true)
+                  "
+                />
+              </label>
+            </div>
+            <span *ngIf="err.howMany" class="errspan"
+              >This field is required</span
+            >
+          </div>
+          <div class="check__inner">
+            <span class="form__title"
+              >Not counting {{ us.data.application.name || "Applicant" }} or any
+              children who have been counted in the previous question, does
+              {{ us.data.application.sponsorname || "Sponsor" }} have any other
+              dependents listed on
+              {{
+                (us.data.application.sponsorname &&
+                  us.data.application.sponsorname + "'s") ||
+                  "Sponsor's"
+              }}
+              most recent Federal income tax return?</span
+            >
+            <div class="form__check">
+              <label>
+                <input
+                  type="radio"
+                  name="usmostrecentfederal_name"
+                  [value]="'yes'"
+                  [(ngModel)]="us.data.application.usmostrecentfederal_name"
+                  (ngModelChange)="us.update()"
+                />
+                <span class="check">Yes</span>
+              </label>
+              <label>
+                <input
+                  type="radio"
+                  name="usmostrecentfederal_name"
+                  [value]="'no'"
+                  [(ngModel)]="us.data.application.usmostrecentfederal_name"
+                  (ngModelChange)="us.update()"
+                />
+                <span class="check">No</span>
+              </label>
+            </div>
+            <div
+              class="sub__form-inner"
+              *ngIf="us.data.application.usmostrecentfederal_name == 'yes'"
+            >
+              <label class="label__inner">
+                <span class="form__title">How many?</span>
+                <input
+                  type="text"
+                  oninput="this.value = this.value.replace(/[^0-9.]/g, ''); this.value = this.value.replace(/(\..*)\./g, '$1');"
+                  [class.err]="err.howMany1"
+                  [(ngModel)]="us.data.application.howmanyustaxreturn_name"
+                  (ngModelChange)="us.update(); err.howMany1 = false"
+                  (blur)="
+                    !us.data.application.howmanyustaxreturn_name &&
+                      (err.howMany1 = true)
+                  "
+                />
+              </label>
+              <span *ngIf="err.howMany1" class="errspan"
+                >This field is required</span
+              >
+
+              <div style="display: none">
+                <input
+                  type="text"
+                  [(ngModel)]="us.data.application.calcResult"
+                  (ngModelChange)="us.update()"
+                />
+              </div>
+            </div>
+          </div>
+          <div class="check__inner">
+            <span class="form__title"
+              >Not counting {{ us.data.application.name || "Applicant" }} or any
+              persons that have been counted in the previous two questions, is
+              {{ us.data.application.sponsorname || "Sponsor" }} currently
+              obligated to support any immigrants that
+              {{ us.data.application.sponsorname || "Sponsor" }} previously
+              sponsored with Form I-864 or Form I-864 EZ (Affidavit of Support
+              under Section 213A of the INA)? Count only those immigrants who
+              are now lawful permanent residents.
+            </span>
+            <div class="form__check">
+              <label>
+                <input
+                  type="radio"
+                  name="immigrantswhoarenowlawful_name"
+                  [value]="'yes'"
+                  [(ngModel)]="
+                    us.data.application.immigrantswhoarenowlawful_name
+                  "
+                  (ngModelChange)="us.update()"
+                />
+                <span class="check">Yes</span>
+              </label>
+              <label>
+                <input
+                  type="radio"
+                  name="immigrantswhoarenowlawful_name"
+                  [value]="'no'"
+                  [(ngModel)]="
+                    us.data.application.immigrantswhoarenowlawful_name
+                  "
+                  (ngModelChange)="us.update()"
+                />
+                <span class="check">No</span>
+              </label>
+            </div>
+            <div
+              class="sub__form-inner"
+              *ngIf="
+                us.data.application.immigrantswhoarenowlawful_name == 'yes'
+              "
+            >
+              <label class="label__inner">
+                <span class="form__title">How many?</span>
+                <input
+                  type="text"
+                  oninput="this.value = this.value.replace(/[^0-9.]/g, ''); this.value = this.value.replace(/(\..*)\./g, '$1');"
+                  [(ngModel)]="
+                    us.data.application.howmanyuspermanentresidents_name
+                  "
+                  (ngModelChange)="us.update(); err.howMany2 = false"
+                  (blur)="
+                    !us.data.application.howmanyuspermanentresidents_name &&
+                      (err.howMany2 = true)
+                  "
+                />
+              </label>
+              <span *ngIf="err.howMany2" class="errspan"
+                >This field is required</span
+              >
+
+              <!-- [class.error]="!us.data.application.howmanyuspermanentresidents_name" -->
+            </div>
+          </div>
+        </div>
+        <div style="padding-top: 25px" class="form__subdiscription">
+          <span
+            >Sources for this page (unless otherwise cited above): USCIS Form
+          </span>
+          <a
+            style="color: #4d61fc"
+            target="_blank"
+            href="https://www.uscis.gov/sites/default/files/document/forms/i-864.pdf"
+            >I-864</a
+          >
+        </div>
+        <div class="section__container-btn">
+          <a class="form__btn-back" (click)="us.pagesection = 2; us.top()">
+            < Back
+          </a>
+          <button
+            class="form__btn-continue"
+            (click)="us.pagesection = 4; us.top(); calcSponsors(); calc()"
+            [disabled]="
+              !us.data.application.haveanydependentchildren_name ||
+              !us.data.application.usmostrecentfederal_name ||
+              !us.data.application.immigrantswhoarenowlawful_name ||
+              (us.data.application.haveanydependentchildren_name == 'yes' &&
+                !us.data.application.howmanyus_name) ||
+              (us.data.application.usmostrecentfederal_name == 'yes' &&
+                !us.data.application.howmanyustaxreturn_name) ||
+              (us.data.application.immigrantswhoarenowlawful_name == 'yes' &&
+                !us.data.application.howmanyuspermanentresidents_name)
+            "
+          >
+            Continue >
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div>
+  <div *ngIf="us.pagesection == 4">
+    <div class="section__inner">
+      <div class="sub-inner">
+        <h1 class="section__title">
+          {{
+            (us.data.application.sponsorname &&
+              us.data.application.sponsorname + "'s") ||
+              "Sponsor's"
+          }}
+          minimum income requirement is ${{ result || "22,887" }}
+        </h1>
+
+        <div class="section__sub-inner">
+          <div class="form__title">
+            To meet this requirement,
+            {{
+              (us.data.application.sponsorname &&
+                us.data.application.sponsorname + "'s") ||
+                "Sponsor's"
+            }}
+            current individual annual income needs to be at least ${{
+              result || "22,887"
+            }}
+          </div>
+          <div class="section__discription">
+            Based on the information you have provided,
+            {{
+              (us.data.application.sponsorname &&
+                us.data.application.sponsorname + "'s") ||
+                "Sponsor's"
+            }}
+            household size is {{ counter || 0 }}, and USCIS requires
+            {{ us.data.application.sponsorname || "Sponsor" }} to have a current
+            individual annual income greater than or equal to ${{
+              result || "22,887"
+            }}
+            in order to meet the
+            <a
+              target="_blank"
+              style="color: #4d61fc"
+              href="https://www.uscis.gov/i-864p"
+              >minimum income requirement.</a
+            >.
+          </div>
+          <div class="sub-section__discription">
+            <p class="form__title">Get up-to-date minimum income requirement</p>
+
+            <p>
+              USCIS updates the minimum income requirement each year around
+              February and March. So if you are applying around that time of the
+              year, right before you mail your application, make sure to double
+              check with the
+              <a
+                target="_blank"
+                style="color: #4d61fc"
+                href="https://www.uscis.gov/i-864p"
+                >HHS Poverty Guidelines for Affidavit of Support</a
+              >
+              to ensure this amount is up-to-date. (We will remind you to do
+              this in the Submit Step)
+            </p>
+
+            <p>
+              If you are applying during other months, it is still a good idea
+              to double check with the
+              <a
+                target="_blank"
+                style="color: #4d61fc"
+                href="https://www.uscis.gov/i-864p"
+                >HHS Poverty Guidelines for Affidavit of Support</a
+              >
+              right before you submit to ensure this amount is up-to-date.
+            </p>
+          </div>
+          <div class="sub-section__discription">
+            <p class="form__title">How we arrived at this number?</p>
+            <p>
+              Because
+              {{
+                (us.data.application.sponsorname &&
+                  us.data.application.sponsorname + "'s") ||
+                  "Sponsor's"
+              }}
+              physical address and/or place of residence is outside the U.S, the
+              categories of U.S. states listed in the Poverty Guidelines do not
+              apply to {{ us.data.application.sponsorname || "Sponsor" }}. The
+              guidelines' instruction does not say which state's minimum income
+              {{ us.data.application.sponsorname || "Sponsor" }} should use.
+              Therefore, we are providing you with the highest minimum (from the
+              State of Alaska) to be safe.
+            </p>
+
+            <p>
+              If you have questions about which minimum to use, consider
+              consulting an immigration attorney.
+            </p>
+          </div>
+          <div class="sub-discription">
+            Source:
+            <a
+              target="_blank"
+              style="color: #4d61fc"
+              href="https://www.uscis.gov/i-864p"
+              >HHS Poverty Guidelines</a
+            >
+          </div>
+          <p class="form__title">
+            How to calculate
+            {{
+              (us.data.application.sponsorname &&
+                us.data.application.sponsorname + "'s") ||
+                "Sponsor's"
+            }}
+            current individual annual income?
+          </p>
+
+          <p>
+            {{
+              (us.data.application.sponsorname &&
+                us.data.application.sponsorname + "'s") ||
+                "Sponsor's"
+            }}
+            current individual annual income is the total income amount
+            {{ us.data.application.sponsorname || "Sponsor" }} expects to report
+            on
+            {{
+              (us.data.application.sponsorname &&
+                us.data.application.sponsorname + "'s") ||
+                "Sponsor's"
+            }}
+            U.S. Federal income tax return at the end of the current year. This
+            income is called "total income" on IRS Form 1040, or "adjusted gross
+            income" on IRS Form 1040EZ. Include only
+            {{
+              (us.data.application.sponsorname &&
+                us.data.application.sponsorname + "'s") ||
+                "Sponsor's"
+            }}
+            income, and exclude
+            {{
+              (us.data.application.name && us.data.application.name + "'s") ||
+                "Applicant's"
+            }}
+            income.
+          </p>
+          <div class="sub-discription">
+            Source: Code of Federal Regulations
+            <a
+              target="_blank"
+              style="color: #4d61fc"
+              href="https://www.govinfo.gov/content/pkg/CFR-2018-title8-vol1/pdf/CFR-2018-title8-vol1-part213a.pdf"
+              >8 CFR Section 213a.1</a
+            >
+            , definition of "income" and "household income"
+          </div>
+
+          <p class="form__title">
+            What if
+            {{
+              (us.data.application.sponsorname &&
+                us.data.application.sponsorname + "'s") ||
+                "Sponsor's"
+            }}
+            income from the previous tax year did not meet the minimum income
+            requirement?
+          </p>
+
+          <p>
+            If
+            {{
+              (us.data.application.sponsorname &&
+                us.data.application.sponsorname + "'s") ||
+                "Sponsor's"
+            }}
+            current individual annual income meets the minimum income
+            requirement, but
+            {{
+              (us.data.application.sponsorname &&
+                us.data.application.sponsorname + "'s") ||
+                "Sponsor's"
+            }}
+            income from the previous tax year did not, USCIS may treat your case
+            with extra scrutiny and may ask for additional financial support
+            such as a joint sponsor or assets. We strongly suggest consulting a
+            lawyer to make sure you prepare the necessary evidence for a strong
+            case. You can either have a quick lawyer consultation now, or have a
+            final lawyer review after finishing your application using
+            Greenbroad. Many applicants do this. Both of these two options are
+            affordable, and many lawyers provide remote services if you do not
+            want to visit their office. If you need a lawyer recommendation,
+            just let us know.
+          </p>
+          <div class="sub-discription">
+            Source: Greenbroad suggestion only, not from USCIS
+          </div>
+          <p class="form__title">
+            What if
+            {{
+              (us.data.application.sponsorname &&
+                us.data.application.sponsorname + "'s") ||
+                "Sponsor's"
+            }}
+            current individual annual income cannot meet the minimum income
+            requirement?
+          </p>
+
+          <p>
+            Don't panic. There are other acceptable ways to meet the minimum
+            income requirement, such as adding income from other household
+            members, adding the applicant's own income, adding your assets, or
+            adding a joint sponsor.
+          </p>
+
+          <p>
+            However, these options require additional paperwork that Greenbroad
+            currently does not support. If you choose to proceed using
+            Greenbroad, here is how to complete your application:
+          </p>
+
+          <p>
+            First, continue filling out all the questions asked in this section
+            of Greenbroad, and prepare all the documents listed in our Proof of
+            Financial Support document checklist. At the end, we will generate
+            for you all the forms and cover letters that we do cover.
+          </p>
+
+          <p>
+            Then, make sure to prepare the additional financial support
+            paperwork on your own (or with the help of an immigration attorney),
+            by following the instructions from
+            <a
+              style="color: #4d61fc"
+              href="https://www.uscis.gov/sites/default/files/document/forms/i-864instr.pdf"
+              >Form I-864 pages 12-13</a
+            >
+            (starting from the title "What if I Cannot Meet the Income
+            Requirements?"), and the more detailed instructions on pages 8-10
+            (starting from the title "Item Numbers 8. - 22. Current Annual
+            Household Income."). If you follow these instructions, the
+            additional paperwork should not be hard to complete.
+          </p>
+
+          <p>
+            Make sure you submit these additional paperwork together with the
+            rest of your application. Otherwise, your application may be
+            rejected or denied. If you'd like, you can get an immigration lawyer
+            to help you with just the financial support part, which is not
+            expensive. If you want a lawyer recommendation, just let us know :)
+          </p>
+
+          <div class="sub-discription">
+            Source:
+            <a
+              target="_blank"
+              style="color: #4d61fc"
+              href="https://www.uscis.gov/sites/default/files/document/forms/i-864instr.pdf"
+              >USCIS Form I-864 Instructions Pages 12 & 13</a
+            >
+            and Greenbroad Suggestion
+          </div>
+        </div>
+
+        <div class="form__check-inner">
+          <span class="form__title"
+            >Is
+            {{
+              (us.data.application.sponsorname &&
+                us.data.application.sponsorname + "'s") ||
+                "Sponsor's"
+            }}
+            current individual annual income greater than or equal to ${{
+              result || "22,887"
+            }}?</span
+          >
+          <div class="form__check">
+            <label>
+              <input
+                type="radio"
+                name="greaterthanorequal_name"
+                [value]="'yes'"
+                [(ngModel)]="us.data.application.greaterthanorequal_name"
+                (ngModelChange)="us.update(); err.invidualAnnual = false"
+                (blur)="
+                  !us.data.application.greaterthanorequal_name &&
+                    (err.invidualAnnual = true)
+                "
+              />
+              <span class="check">Yes</span>
+            </label>
+            <label>
+              <input
+                type="radio"
+                name="greaterthanorequal_name"
+                [value]="'no'"
+                [(ngModel)]="us.data.application.greaterthanorequal_name"
+                (ngModelChange)="us.update(); err.invidualAnnual = false"
+                (blur)="
+                  !us.data.application.greaterthanorequal_name &&
+                    (err.invidualAnnual = true)
+                "
+              />
+              <span class="check">No</span>
+            </label>
+          </div>
+          <span *ngIf="err.invidualAnnual" class="errspan"
+            >This field is required</span
+          >
+
+          <div *ngIf="us.data.application.greaterthanorequal_name == 'yes'">
+            <label class="label__inner">
+              <span class="form__title"
+                >Great! What's
+                {{
+                  (us.data.application.sponsorname &&
+                    us.data.application.sponsorname + "'s") ||
+                    "Sponsor's"
+                }}
+                current individual annual income?</span
+              >
+              <input
+                type="text"
+                oninput="this.value = this.value.replace(/[^0-9,.]/g, '');"
+                [class.err]="err.individualIncome"
+                [(ngModel)]="
+                  us.data.application.greatcurrentindividualannual_name
+                "
+                (ngModelChange)="convertToalIncome(us.data.application.greatcurrentindividualannual_name);
+                  us.update(); err.individualIncome = false"
+                (blur)="
+                  !us.data.application.greatcurrentindividualannual_name &&
+                    (err.individualIncome = true)
+                "
+              />
+            </label>
+          </div>
+          <span *ngIf="err.individualIncome" class="errspan"
+            >This field is required</span
+          >
+
+          <div *ngIf="us.data.application.greaterthanorequal_name == 'no'">
+            <div class="sub-form__container">
+              <p class="form__title">Your Case Requires Additional Attention</p>
+              <p>
+                Because the sponsor's annual income does not meet the HHS
+                Poverty Guidelines for Affidavit of Support, there may be
+                additional documents/forms you need to submit that are not
+                covered by Greenbroad
+              </p>
+
+              <p>
+                If you choose to proceed using Greenbroad, you can continue
+                filling out all the questions asked in our software and
+                preparing all the documents listed in our document checklist. At
+                the end, we will generate for you all the forms and cover
+                letters that we cover.
+                <span
+                  >However, we strongly suggest you consult an
+                  <a target="_blank" href="">immigration lawyer</a> to prepare
+                  the additional documents/forms or your application may be
+                  rejected or denied.</span
+                >
+              </p>
+
+              <p>
+                If you have any questions or need a lawyer recommendation, do
+                not hesitate to contact us.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="sub-discription">
+          Sources for this page (unless otherwise cited above): USCIS Form
+          <a
+            target="_blank"
+            href="https://www.uscis.gov/sites/default/files/document/forms/i-864.pdf"
+            >I-864</a
+          >
+        </div>
+        <div class="section__container-btn">
+          <a class="form__btn-back" (click)="us.pagesection = 3; us.top()">
+            < Back
+          </a>
+          <button class="form__btn-continue" (click)="ChangeTab4(5); us.top()">
+            Continue >
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div>
+  <div *ngIf="us.pagesection == 5">
+    <div class="section__inner">
+      <div class="sub-inner">
+        <h1 class="section__title">
+          Finally, about
+          {{
+            (us.data.application.sponsorname &&
+              us.data.application.sponsorname + "'s") ||
+              "Sponsor's"
+          }}
+          Federal income tax returns
+        </h1>
+        <div class="sub-sub-section__inner">
+          <div class="form__title">Most recent Federal income tax return</div>
+          <div class="form__check">
+            <label>
+              <input
+                type="checkbox"
+                name="themostrecenttax_name"
+                [(ngModel)]="us.data.application.themostrecenttax_name"
+                (ngModelChange)="us.update()"
+              />
+              <span class="check"
+                >{{ us.data.application.sponsorname || "Sponsor" }} did not file
+                a Federal income tax return for the most recent tax year.</span
+              >
+            </label>
+          </div>
+          <div class="section-sub__inner">
+            <label class="label__inner">
+              <span class="form__title">Tax year</span>
+              <input
+                type="text"
+                maxlength="4"
+                oninput="this.value = this.value.replace(/[^0-9.]/g, ''); this.value = this.value.replace(/(\..*)\./g, '$1');"
+                [class.err]="err.taxYear"
+                [(ngModel)]="us.data.application.ustexyear_name"
+                (ngModelChange)="us.update(); err.taxYear = false"
+                (blur)="
+                  !us.data.application.ustexyear_name && (err.taxYear = true)
+                "
+              />
+            </label>
+            <span *ngIf="err.taxYear" class="errspan"
+              >This field is required</span
+            >
+
+            <div *ngIf="!us.data.application.themostrecenttax_name">
+              <label class="label__inner">
+                <span class="form__title"
+                  >{{
+                    (us.data.application.sponsorname &&
+                      us.data.application.sponsorname + "'s") ||
+                      "Sponsor's"
+                  }}
+                  total income</span
+                >
+                <input
+                  type="text"
+                  placeholder="$"
+                  oninput="this.value = this.value.replace(/[^0-9,.]/g, '');"
+                  [(ngModel)]="us.data.application.ustotalincome_name"
+                  [class.err]="err.totalIncome"
+                  (input)="formatInput(us.data.application.ustotalincome_name);"
+                  (ngModelChange)="us.update(); err.totalIncome = false"
+                  (blur)="
+                    !us.data.application.ustotalincome_name &&
+                      (err.totalIncome = true)
+                  "
+                />
+              </label>
+              <span *ngIf="err.totalIncome" class="errspan"
+                >This field is required</span
+              >
+
+              <div class="form__check">
+                <div class="form__title">
+                  USCIS requires that
+                  {{ us.data.application.sponsorname || "Sponsor" }} provide
+                  documentation for the most recent tax year's Federal
+                  individual income tax return. Which type of documentation does
+                  {{ us.data.application.sponsorname || "Sponsor" }} choose to
+                  provide?
+                </div>
+                <label>
+                  <input
+                    type="radio"
+                    name="servicetranscript _name"
+                    [value]="'yes'"
+                    [(ngModel)]="us.data.application.servicetranscript_name"
+                    (ngModelChange)="us.update(); err.choice1 = false"
+                    (blur)="
+                      !us.data.application.servicetranscript_name &&
+                        (err.choice1 = true)
+                    "
+                  />
+                  <span class="check"
+                    >An Internal Revenue Service (IRS) transcript</span
+                  >
+                </label>
+                <label>
+                  <input
+                    type="radio"
+                    name="servicetranscript_name"
+                    [value]="'no'"
+                    [(ngModel)]="us.data.application.servicetranscript_name"
+                    (ngModelChange)="us.update(); err.choice1 = false"
+                    (blur)="
+                      !us.data.application.servicetranscript_name &&
+                        (err.choice1 = true)
+                    "
+                  />
+                  <span class="check"
+                    >A photocopy from
+                    {{
+                      (us.data.application.sponsorname &&
+                        us.data.application.sponsorname + "'s") ||
+                        "Sponsor's"
+                    }}
+                    own records of
+                    {{
+                      (us.data.application.sponsorname &&
+                        us.data.application.sponsorname + "'s") ||
+                        "Sponsor's"
+                    }}
+                    Federal individual income tax return</span
+                  >
+                </label>
+              </div>
+              <span *ngIf="err.choice1" class="errspan"
+                >This field is required</span
+              >
+
+              <div *ngIf="us.data.application.servicetranscript_name == 'yes'">
+                <div class="form__check">
+                  <div class="form__title">
+                    Did {{ us.data.application.sponsorname || "Sponsor" }} file
+                    a joint income tax return with
+                    {{ us.data.application.name || "Applicant" }} for the most
+                    recent tax year?
+                  </div>
+                  <label>
+                    <input
+                      type="radio"
+                      name="mostrecenttaxyearus_name"
+                      [value]="'yes'"
+                      [(ngModel)]="us.data.application.mostrecenttaxyearus_name"
+                      (ngModelChange)="us.update(); err.choice2 = false"
+                      (blur)="
+                        !us.data.application.mostrecenttaxyearus_name &&
+                          (err.choice2 = true)
+                      "
+                    />
+                    <span class="check">Yes</span>
+                  </label>
+                  <label>
+                    <input
+                      type="radio"
+                      name="mostrecenttaxyearus_name"
+                      [value]="'no'"
+                      [(ngModel)]="us.data.application.mostrecenttaxyearus_name"
+                      (ngModelChange)="us.update(); err.choice2 = false"
+                      (blur)="
+                        !us.data.application.mostrecenttaxyearus_name &&
+                          (err.choice2 = true)
+                      "
+                    />
+                    <span class="check">No</span>
+                  </label>
+                </div>
+                <span *ngIf="err.choice2" class="errspan"
+                  >This field is required</span
+                >
+              </div>
+            </div>
+            <div *ngIf="us.data.application.themostrecenttax_name">
+              <div class="form__check">
+                <div class="form__sub-title">
+                  What's the reason for not filing?
+                </div>
+                <label class="filing">
+                  <input
+                    type="radio"
+                    name="thereasonfornotfiling_name"
+                    [value]="'yes'"
+                    [(ngModel)]="us.data.application.thereasonfornotfiling_name"
+                    (ngModelChange)="us.update(); err.reason = false"
+                    (blur)="
+                      !us.data.application.thereasonfornotfiling_name &&
+                        (err.reason = true)
+                    "
+                  /><span class="check"
+                    >{{ us.data.application.sponsorname || "Sponsor" }} was not
+                    required to file a Federal income tax return under U.S. tax
+                    law because
+                    {{
+                      (us.data.application.sponsorname &&
+                        us.data.application.sponsorname + "'s") ||
+                        "Sponsor's"
+                    }}
+                    income was too low.</span
+                  >
+                </label>
+                <label class="filing">
+                  <input
+                    type="radio"
+                    name="thereasonfornotfiling_name"
+                    [value]="'no'"
+                    [(ngModel)]="us.data.application.thereasonfornotfiling_name"
+                    (ngModelChange)="us.update(); err.reason = false"
+                    (blur)="
+                      !us.data.application.thereasonfornotfiling_name &&
+                        (err.reason = true)
+                    "
+                  />
+                  <span class="check"
+                    >{{ us.data.application.sponsorname || "Sponsor" }} was not
+                    required to file a Federal income tax return under U.S. tax
+                    law for any other reason.</span
+                  >
+                </label>
+                <label class="filing">
+                  <input
+                    type="radio"
+                    name="thereasonfornotfiling_name"
+                    [value]="'nono'"
+                    [(ngModel)]="us.data.application.thereasonfornotfiling_name"
+                    (ngModelChange)="us.update(); err.reason = false"
+                    (blur)="
+                      !us.data.application.thereasonfornotfiling_name &&
+                        (err.reason = true)
+                    "
+                  />
+                  <span class="check"
+                    >{{ us.data.application.sponsorname || "Sponsor" }} was
+                    required to file a Federal income tax return for this year
+                    but did not do so.</span
+                  >
+                </label>
+                <div
+                  *ngIf="
+                    us.data.application.thereasonfornotfiling_name == 'nono'
+                  "
+                >
+                  <div class="sub-form__container">
+                    <div class="sub__form-title">
+                      Please fix this issue before completing the application
+                    </div>
+
+                    <p>
+                      If {{ us.data.application.sponsorname || "Sponsor" }} was
+                      required to file a Federal income tax return during any of
+                      the previous three tax years but did not do so,
+                    </p>
+                    <p>
+                      {{ us.data.application.sponsorname || "Sponsor" }} must
+                      file all late returns with the IRS. After
+                    </p>
+                    <p>
+                      {{ us.data.application.sponsorname || "Sponsor" }} has
+                      filed the late returns, uncheck the "did not file a
+                      Federal income tax return" box on this screen, and proceed
+                      with the application.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <span *ngIf="err.reason" class="errspan"
+              >This field is required</span
+            >
+          </div>
+          <div class="form__sub-title">
+            2nd most recent Federal income tax return
+          </div>
+          <div class="form__check">
+            <label>
+              <input
+                type="checkbox"
+                name="usthemostrecenttax_name"
+                [(ngModel)]="us.data.application.usthemostrecenttax_name"
+                (ngModelChange)="us.update()"
+              />
+              <span class="check"
+                >{{ us.data.application.sponsorname || "Sponsor" }} did not file
+                a Federal income tax return for the 2nd most recent tax
+                year.</span
+              >
+            </label>
+          </div>
+          <div class="section-sub__inner">
+            <label class="label__inner">
+              <span class="form__title">Tax year</span>
+              <input
+                type="text"
+                maxlength="4"
+                oninput="this.value = this.value.replace(/[^0-9.]/g, ''); this.value = this.value.replace(/(\..*)\./g, '$1');"
+                [class.err]="err.taxYear1"
+                [(ngModel)]="us.data.application.usustexyear_name"
+                (ngModelChange)="us.update(); err.taxYear1 = false"
+                (blur)="
+                  !us.data.application.usustexyear_name && (err.taxYear1 = true)
+                "
+              />
+            </label>
+            <span *ngIf="err.taxYear1" class="errspan"
+              >This field is required</span
+            >
+
+            <div *ngIf="!us.data.application.usthemostrecenttax_name">
+              <label class="label__inner">
+                <span class="form__title"
+                  >{{
+                    (us.data.application.sponsorname &&
+                      us.data.application.sponsorname + "'s") ||
+                      "Sponsor's"
+                  }}
+                  total income</span
+                >
+                <input
+                  type="text"
+                  placeholder="$"
+                  oninput="this.value = this.value.replace(/[^0-9,.]/g, '');"
+                  [class.err]="err.totalIncome1"
+                  [(ngModel)]="us.data.application.usustotalincome_name"
+                  (ngModelChange)="convertFormat(us.data.application.usustotalincome_name); us.update(); err.totalIncome1 = false"
+                  (blur)="
+                    !us.data.application.usustotalincome_name &&
+                      (err.totalIncome1 = true)
+                  "
+                />
+              </label>
+            </div>
+            <span *ngIf="err.totalIncome1" class="errspan"
+              >This field is required</span
+            >
+
+            <div *ngIf="us.data.application.usthemostrecenttax_name">
+              <div class="form__check">
+                <div class="form__title">What's the reason for not filing?</div>
+                <label class="filing">
+                  <input
+                    type="radio"
+                    name="usthereasonfornotfiling_name"
+                    [value]="'yes'"
+                    [(ngModel)]="
+                      us.data.application.usthereasonfornotfiling_name
+                    "
+                    (ngModelChange)="us.update(); err.reason1 = false"
+                    (blur)="
+                      !us.data.application.usthereasonfornotfiling_name &&
+                        (err.reason1 = true)
+                    "
+                  /><span class="check"
+                    >{{ us.data.application.sponsorname || "Sponsor" }} was not
+                    required to file a Federal income tax return under U.S. tax
+                    law because
+                    {{
+                      (us.data.application.sponsorname &&
+                        us.data.application.sponsorname + "'s") ||
+                        "Sponsor's"
+                    }}
+                    income was too low.</span
+                  >
+                </label>
+                <label class="filing">
+                  <input
+                    type="radio"
+                    name="usthereasonfornotfiling_name"
+                    [value]="'no'"
+                    [(ngModel)]="
+                      us.data.application.usthereasonfornotfiling_name
+                    "
+                    (ngModelChange)="us.update(); err.reason1 = false"
+                    (blur)="
+                      !us.data.application.usthereasonfornotfiling_name &&
+                        (err.reason1 = true)
+                    "
+                  />
+                  <span class="check"
+                    >{{ us.data.application.sponsorname || "Sponsor" }} was not
+                    required to file a Federal income tax return under U.S. tax
+                    law for any other reason.</span
+                  >
+                </label>
+                <label class="filing">
+                  <input
+                    type="radio"
+                    name="usthereasonfornotfiling_name"
+                    [value]="'nono'"
+                    [(ngModel)]="
+                      us.data.application.usthereasonfornotfiling_name
+                    "
+                    (ngModelChange)="us.update(); err.reason1 = false"
+                    (blur)="
+                      !us.data.application.usthereasonfornotfiling_name &&
+                        (err.reason1 = true)
+                    "
+                  />
+                  <span class="check"
+                    >{{ us.data.application.sponsorname || "Sponsor" }} was
+                    required to file a Federal income tax return for this year
+                    but did not do so.</span
+                  >
+                </label>
+                <div
+                  *ngIf="
+                    us.data.application.usthereasonfornotfiling_name == 'nono'
+                  "
+                >
+                  <div class="sub-form__container">
+                    <div class="sub__form-title">
+                      Please fix this issue before completing the application
+                    </div>
+
+                    <p>
+                      If {{ us.data.application.sponsorname || "Sponsor" }} was
+                      required to file a Federal income tax return during any of
+                      the previous three tax years but did not do so,
+                    </p>
+                    <p>
+                      {{ us.data.application.sponsorname || "Sponsor" }} must
+                      file all late returns with the IRS. After
+                    </p>
+                    <p>
+                      {{ us.data.application.sponsorname || "Sponsor" }} has
+                      filed the late returns, uncheck the "did not file a
+                      Federal income tax return" box on this screen, and proceed
+                      with the application.
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <span *ngIf="err.reason1" class="errspan"
+                >This field is required</span
+              >
+            </div>
+          </div>
+          <div class="form__sub-title">
+            3rd most recent Federal Income Tax return
+          </div>
+          <div class="form__check">
+            <label>
+              <input
+                type="checkbox"
+                name="usthemostrecenttaxus_name"
+                [(ngModel)]="us.data.application.usthemostrecenttaxus_name"
+                (ngModelChange)="us.update()"
+              />
+              <span class="check"
+                >{{ us.data.application.sponsorname || "Sponsor" }} did not file
+                a Federal income tax return for the 3rd most recent tax
+                year.</span
+              >
+            </label>
+          </div>
+          <div class="section-sub__inner">
+            <label class="label__inner">
+              <span class="form__title">Tax year</span>
+              <input
+                type="text"
+                maxlength="4"
+                oninput="this.value = this.value.replace(/[^0-9.]/g, ''); this.value = this.value.replace(/(\..*)\./g, '$1');"
+                [class.err]="err.taxYear2"
+                [(ngModel)]="us.data.application.usustexyearus_name"
+                (ngModelChange)="us.update(); err.taxYear2 = false"
+                (blur)="
+                  !us.data.application.usustexyearus_name &&
+                    (err.taxYear2 = true)
+                "
+              />
+            </label>
+            <span *ngIf="err.taxYear2" class="errspan"
+              >This field is required</span
+            >
+
+            <div *ngIf="!us.data.application.usthemostrecenttaxus_name">
+              <label class="label__inner">
+                <span class="form__title"
+                  >{{
+                    (us.data.application.sponsorname &&
+                      us.data.application.sponsorname + "'s") ||
+                      "Sponsor's"
+                  }}
+                  total income</span
+                >
+                <input
+                  type="text"
+                  placeholder="$"
+                  oninput="this.value = this.value.replace(/[^0-9,.]/g, '');"
+                  [class.err]="err.totalIncome2"
+                  [(ngModel)]="us.data.application.usustotalincomeus_name"
+                  (ngModelChange)="convertFormat3rd(us.data.application.usustotalincomeus_name); us.update(); err.totalIncome2 = false"
+                  (blur)="
+                    !us.data.application.usustotalincomeus_name &&
+                      (err.totalIncome2 = true)
+                  "
+                />
+              </label>
+            </div>
+            <span *ngIf="err.totalIncome2" class="errspan"
+              >This field is required</span
+            >
+
+            <div *ngIf="us.data.application.usthemostrecenttaxus_name">
+              <div class="form__check">
+                <div class="form__title">What's the reason for not filing?</div>
+                <label>
+                  <input
+                    type="radio"
+                    name="usthereasonfornotfilingus_name"
+                    [value]="'yes'"
+                    [(ngModel)]="
+                      us.data.application.usthereasonfornotfilingus_name
+                    "
+                    (ngModelChange)="us.update(); err.reason2 = false"
+                    (blur)="
+                      !us.data.application.usthereasonfornotfilingus_name &&
+                        (err.reason2 = true)
+                    "
+                  /><span class="check">
+                    {{ us.data.application.sponsorname || "Sponsor" }} was not
+                    required to file a Federal income tax return under U.S. tax
+                    law because
+                    {{
+                      (us.data.application.sponsorname &&
+                        us.data.application.sponsorname + "'s") ||
+                        "Sponsor's"
+                    }}income was too low.</span
+                  >
+                </label>
+                <label>
+                  <input
+                    type="radio"
+                    name="usthereasonfornotfilingus_name"
+                    [value]="'no'"
+                    [(ngModel)]="
+                      us.data.application.usthereasonfornotfilingus_name
+                    "
+                    (ngModelChange)="us.update(); err.reason2 = false"
+                    (blur)="
+                      !us.data.application.usthereasonfornotfilingus_name &&
+                        (err.reason2 = true)
+                    "
+                  />
+                  <span class="check"
+                    >{{ us.data.application.sponsorname || "Sponsor" }} was not
+                    required to file a Federal income tax return under U.S. tax
+                    law for any other reason.</span
+                  >
+                </label>
+                <label>
+                  <input
+                    type="radio"
+                    name="usthereasonfornotfilingus_name"
+                    [value]="'nono'"
+                    [(ngModel)]="
+                      us.data.application.usthereasonfornotfilingus_name
+                    "
+                    (ngModelChange)="us.update(); err.reason2 = false"
+                    (blur)="
+                      !us.data.application.usthereasonfornotfilingus_name &&
+                        (err.reason2 = true)
+                    "
+                  />
+                  <span class="check"
+                    >{{ us.data.application.sponsorname || "Sponsor" }} was
+                    required to file a Federal income tax return for this year
+                    but did not do so.</span
+                  >
+                </label>
+
+                <div
+                  *ngIf="
+                    us.data.application.usthereasonfornotfilingus_name == 'nono'
+                  "
+                >
+                  <div class="sub-form__container">
+                    <div class="sub__form-title">
+                      Please fix this issue before completing the application
+                    </div>
+
+                    <p>
+                      If {{ us.data.application.sponsorname || "Sponsor" }} was
+                      required to file a Federal income tax return during any of
+                      the previous three tax years but did not do so,
+                    </p>
+                    <p>
+                      {{ us.data.application.sponsorname || "Sponsor" }} must
+                      file all late returns with the IRS. After
+                    </p>
+                    <p>
+                      {{ us.data.application.sponsorname || "Sponsor" }} has
+                      filed the late returns, uncheck the "did not file a
+                      Federal income tax return" box on this screen, and proceed
+                      with the application.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <span *ngIf="err.reason2" class="errspan"
+              >This field is required</span
+            >
+          </div>
+          <div class="form__check">
+            <div class="form__title">
+              If {{ us.data.application.sponsorname || "Sponsor" }} believes
+              additional returns may help
+              {{ us.data.application.sponsorname || "Sponsor" }} establish
+              {{
+                (us.data.application.sponsorname &&
+                  us.data.application.sponsorname + "'s") ||
+                  "Sponsor's"
+              }}
+              ability to maintain sufficient income,
+              {{ us.data.application.sponsorname || "Sponsor" }} has the option
+              to submit documentations for the 2nd and 3rd most recent tax
+              years's Federal individual income tax returns. Does
+              {{ us.data.application.sponsorname || "Sponsor" }} want to do
+              this?
+            </div>
+            <label>
+              <input
+                type="radio"
+                name="abilitytomaintain_name"
+                [value]="'yes'"
+                [(ngModel)]="us.data.application.abilitytomaintain_name"
+                (ngModelChange)="us.update(); err.choice3 = false"
+                (blur)="
+                  !us.data.application.abilitytomaintain_name &&
+                    (err.choice3 = true)
+                "
+              />
+              <span class="check">Yes</span>
+            </label>
+            <label>
+              <input
+                type="radio"
+                name="abilitytomaintain_name"
+                [value]="'no'"
+                [(ngModel)]="us.data.application.abilitytomaintain_name"
+                (ngModelChange)="us.update(); err.choice3 = false"
+                (blur)="
+                  !us.data.application.abilitytomaintain_name &&
+                    (err.choice3 = true)
+                "
+              />
+              <span class="check">No</span>
+            </label>
+          </div>
+          <span *ngIf="err.choice3" class="errspan"
+            >This field is required</span
+          >
+
+          <div *ngIf="us.data.application.abilitytomaintain_name == 'yes'">
+            <div class="form__check">
+              <div class="form__title">
+                Which type of documentation will
+                {{ us.data.application.sponsorname || "Sponsor" }} submit for
+                the 2nd and 3rd most recent tax years?
+              </div>
+              <label>
+                <input
+                  type="radio"
+                  name="typeofdocumentationwill_name"
+                  [value]="'yes'"
+                  [(ngModel)]="us.data.application.typeofdocumentationwill_name"
+                  (ngModelChange)="us.update(); err.choice4 = false"
+                  (blur)="
+                    !us.data.application.typeofdocumentationwill_name &&
+                      (err.choice4 = true)
+                  "
+                />
+                <span class="check"
+                  >Internal Revenue Service (IRS) transcripts</span
+                >
+              </label>
+              <label>
+                <input
+                  type="radio"
+                  name="typeofdocumentationwill_name"
+                  [value]="'no'"
+                  [(ngModel)]="us.data.application.typeofdocumentationwill_name"
+                  (ngModelChange)="us.update(); err.choice4 = false"
+                  (blur)="
+                    !us.data.application.typeofdocumentationwill_name &&
+                      (err.choice4 = true)
+                  "
+                />
+                <span class="check"
+                  >Photocopies from
+                  {{
+                    (us.data.application.sponsorname &&
+                      us.data.application.sponsorname + "'s") ||
+                      "Sponsor's"
+                  }}
+                  own records of
+                  {{
+                    (us.data.application.sponsorname &&
+                      us.data.application.sponsorname + "'s") ||
+                      "Sponsor's"
+                  }}
+                  Federal individual income tax return</span
+                >
+              </label>
+            </div>
+            <span *ngIf="err.choice4" class="errspan"
+              >This field is required</span
+            >
+
+            <div
+              *ngIf="us.data.application.typeofdocumentationwill_name == 'yes'"
+            >
+              <div class="form__check">
+                <div class="form__title">
+                  For the 2nd most recent tax year, did
+                  {{ us.data.application.sponsorname || "Sponsor" }} file a
+                  joint income tax return with
+                  {{ us.data.application.name || "Applicant" }}?
+                </div>
+                <label>
+                  <input
+                    type="radio"
+                    name=" documentationwill_name"
+                    [value]="'yes'"
+                    [(ngModel)]="us.data.application.documentationwill_name"
+                    (ngModelChange)="us.update(); err.choice5 = false"
+                    (blur)="
+                      !us.data.application.documentationwill_name &&
+                        (err.choice5 = true)
+                    "
+                  />
+                  <span class="check">Yes</span>
+                </label>
+                <label>
+                  <input
+                    type="radio"
+                    name="documentationwill_name"
+                    [value]="'no'"
+                    [(ngModel)]="us.data.application.documentationwill_name"
+                    (ngModelChange)="us.update(); err.choice5 = false"
+                    (blur)="
+                      !us.data.application.documentationwill_name &&
+                        (err.choice5 = true)
+                    "
+                  />
+                  <span class="check">No</span>
+                </label>
+              </div>
+              <span *ngIf="err.choice5" class="errspan"
+                >This field is required</span
+              >
+
+              <!-- <div class="form__check">
+                <div class="form__title">For the 3nd most recent tax year, did {{us.data.application.sponsorname ||
+                  "Sponsor"}} file a joint income tax return with {{us.data.application.name || "Applicant"}}?</div>
+                <label>
+                  <input type="radio" name="forthetwo_name" [value]="'yes'"
+                    [(ngModel)]="us.data.application.forthetwo_name" (ngModelChange)="us.update(); err.choice6 = false"
+                    (blur)="!us.data.application.forthetwo_name && err.choice6 = true">
+                  <span class="check">Yes</span>
+                </label>
+                <label>
+                  <input type="radio" name="forthetwo_name" [value]="'no'"
+                    [(ngModel)]="us.data.application.forthetwo_name"
+                    (ngModelChange)="us.update(); err.choice6 = false"
+                    (blur)="!us.data.application.forthetwo_name && err.choice6 = true">
+                  <span class="check">No</span>
+                </label>
+              </div>
+              <span *ngIf="err.choice6" class="errspan">This field is required</span> -->
+            </div>
+          </div>
+          <div class="sub-discription">
+            Sources for this page (unless otherwise cited above): USCIS Form
+            <a
+              target="_blank"
+              href="https://www.uscis.gov/sites/default/files/document/forms/i-864.pdf"
+              >I-864</a
+            >
+          </div>
+          <div class="section__container-btn">
+            <a class="form__btn-back" (click)="us.pagesection = 4; us.top()">
+              < Back
+            </a>
+            <button
+              class="form__btn-continue"
+              (click)="
+                us.section = 'sponsorimmigration'; us.pagesection = 1; us.top()
+              "
+            >
+              Continue>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,42 @@
+<div *ngIf="section==1">
+	<div class="section__inner">
+		<h1 class="section__title">Print Forms
+		</h1>
+		<img class="section__img" src="assets/print_form.png">
+		<div class="section__discription">You've made awesome progress – we are almost done! Now it's time to review and print the filled-out forms 😊</div>
+		<div class="section__discription">
+		In this section, we will help you get the application forms ready. This includes:</div>
+		<div class="section__container">
+			<ul class="section__list" >
+				<li>Review, download and print Form I-864</li>
+				<li>Sign, date, and complete some manual parts</li>
+				<li>Go through a final check</li>
+			</ul>
+		</div>
+		<div class="section__discription">
+		Let's get started!</div>
+		<div class="section__container-btn">
+			<a class="form__btn-back" (click)="us.section='collectdocument';us.top();"> < Back </a>
+			<a class="form__btn-continue" (click)="section=2;us.top();"> Continue >  </a>
+		</div>
+	</div>
+
+</div>
+<div *ngIf="section==2">
+	<div class="section__inner">
+		<h1 class="section__title">Instant Download of All Forms and Cover Letters</h1>
+		<img class="print__img" src="assets/document.png" alt="">
+		<!-- <button class="print__btn" (click)="modal.show({component:'stripemodal'})">Proceed to Checkout</button> -->
+		<stripe-buy-button
+        buy-button-id="buy_btn_1NPWZ3DBW6vzTeKzsM0SVS9n"
+        publishable-key="pk_live_51IRTF6DBW6vzTeKz7SJzo2ku8Lds2B6SUtszzntTuWzyt5x8xPpoOgYY49urR3vxn73FwUFbLlNjhgtpJftEJmyg00Lz8XrNDe"
+      ></stripe-buy-button>
+		<a class="print__link" (click)="modal.show({component:'key'})">Already purchased?</a>
+		<div class="section__container-btn">
+			<a class="form__btn-back" (click)="section=1;us.top();"> < Back </a>
+			<a class="form__btn-continue" (click)="us.section='submitapp';us.top();"> Continue ></a>
+		</div>
+	</div>
+</div>
+
+

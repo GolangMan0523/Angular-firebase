@@ -1,0 +1,18 @@
+<div *ngIf="section==1">
+  <div class="section__inner">
+    <h1 class="section__title">Instant Access after Checkout</h1>
+    <div class="discription__inner">
+      <span class="discription__title">Organized Application</span>
+      <span>It is important to follow the USCIS filing instructions when submitting your application. Otherwise, it may
+        not get processed properly.</span>
+      <span>We will walk you through the correct filing process, step by step. So you can file with confidence 👍</span>
+    </div>
+    <!-- <button class="section__btn" (click)="modal.show({component: 'stripemodal'});"> Proceed to Checkout</button> -->
+    <stripe-buy-button
+    buy-button-id="buy_btn_1NPWZ3DBW6vzTeKzsM0SVS9n"
+    publishable-key="pk_live_51IRTF6DBW6vzTeKz7SJzo2ku8Lds2B6SUtszzntTuWzyt5x8xPpoOgYY49urR3vxn73FwUFbLlNjhgtpJftEJmyg00Lz8XrNDe"
+  ></stripe-buy-button>
+    <a class="section__link" (click)="modal.show({component: 'key'});" >Already purchased?</a>
+    <img class="section__img" src="assets/nextsteps.png" alt="">
+  </div>
+</div>

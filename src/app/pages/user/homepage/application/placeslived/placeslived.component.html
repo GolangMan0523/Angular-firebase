@@ -1,0 +1,2988 @@
+<div *ngIf="us.data.cardholder == 'us' && us.data.location == 'inside'">
+  <div *ngIf="us.pagesection == 1">
+    <div class="section__inner">
+      <h1 class="section__title">Let's keep it going!</h1>
+      <img cal src="assets/smile-four.png">
+      <div class="section__discription">Next, let's go over {{us.data.application.name && us.data.application.name ||
+        "Applicant"}} address history.
+      </div>
+      <div class="section__container-btn">
+        <a class="form__btn-back" (click)="us.section='employment'; us.pagesection=1; us.top();">
+          < Back </a>
+            <a class="form__btn-continue" (click)="us.pagesection=2; us.top();"> Continue ></a>
+      </div>
+    </div>
+  </div>
+</div>
+<div *ngIf="us.data.cardholder == 'us' && us.data.location == 'outside'">
+  <div *ngIf="us.pagesection == 1">
+    <div class="section__inner">
+      <h1 class="section__title">Let's keep it going!</h1>
+      <img cal src="assets/smile-four.png">
+      <div class="section__discription">Next, let's go over {{us.data.application.name && us.data.application.name +
+        "'s" || "Applicant's"}} let's go over address history
+      </div>
+      <div class="section__container-btn">
+        <a class="form__btn-back" (click)="us.section='employment'; us.pagesection=1; us.top();">
+          < Back </a>
+            <a class="form__btn-continue" (click)="us.pagesection=2; us.top();"> Continue ></a>
+      </div>
+    </div>
+  </div>
+</div>
+<div *ngIf="us.data.cardholder == 'greencard' && us.data.location == 'inside'">
+  <div *ngIf="us.pagesection == 1">
+    <div class="section__inner">
+      <h1 class="section__title">Let's keep it going!</h1>
+      <img cal src="assets/smile-four.png">
+      <div class="section__discription">Next, let's go over {{us.data.application.name && us.data.application.name +
+        "'s" || "Applicant's"}} let's go over address history
+      </div>
+      <div class="section__container-btn">
+        <a class="form__btn-back" (click)="us.section='employment'; us.pagesection=1; us.top();">
+          < Back </a>
+            <a class="form__btn-continue" (click)="us.pagesection=2; us.top();"> Continue ></a>
+      </div>
+    </div>
+  </div>
+</div>
+<div *ngIf="us.data.cardholder == 'greencard' && us.data.location == 'outside'">
+  <div *ngIf="us.pagesection == 1">
+    <div class="section__inner">
+      <h1 class="section__title">Let's keep it going!</h1>
+      <img cal src="assets/smile-four.png">
+      <div class="section__discription">Next, let's go over {{us.data.application.name && us.data.application.name ||
+        "Applicant"}} address history.
+      </div>
+      <div class="section__container-btn">
+        <a class="form__btn-back" (click)="us.section='employment'; us.pagesection=1; us.top();">
+          < Back </a>
+            <a class="form__btn-continue" (click)="us.pagesection=2; us.top();"> Continue ></a>
+      </div>
+    </div>
+  </div>
+</div>
+<div *ngIf="us.data.cardholder == 'greencard' && us.data.location == 'inside'">
+  <div *ngIf="us.pagesection == 2">
+    <div class="section-form__inner">
+      <div style="display: flex;
+      align-items: center;">
+      <h1 class="section__title">About {{us.data.application.name && us.data.application.name + "'s" || "Applicant's"}}
+        mailing address inside the U.S.</h1>
+        <button class="tooltip-btn" (click)="modal.show({component: 'impairments'});">i</button>
+      </div>
+      <span class="form__discription">Enter {{us.data.application.name && us.data.application.name + "'s" ||
+        "Applicant's"}} mailing address inside the U.S.:</span>
+      <div class="form__inner">
+        <label>
+          <div class="sub-inner">
+            <span class="form__title">In care of name (if any)</span>
+            <div class="tooltip-container">
+              <span class="tooltip__i">i</span>
+              <div class="tooltip">
+                <span>If your mail is sent to someone other than yourself, please include an “In Care Of Name” as part
+                  of your mailing address. If your U.S. mailing address is in a U.S. territory and it contains an
+                  urbanization name, list the urbanization name in the “In Care Of Name” space provided.</span>
+                <span class="tooltips__link">Source: <a target="_blank"
+                    href="https://www.uscis.gov/sites/default/files/document/forms/i-765instr.pdf">USCIS Form I-765
+                    Instructions Page
+                    21</a></span>
+              </div>
+            </div>
+          </div>
+          <input type="text" [(ngModel)]="us.data.application.mailing_name"
+          (ngModelChange)="us.data.application.mailing_name = us.data.application.mailing_name.toUpperCase();
+            us.update();">
+        </label>
+        <label>
+          <span class="form__title">Type of address</span>
+          <select name="" id="" [(ngModel)]="us.data.application.mailingaddress_name" (ngModelChange)="us.update();">
+            <option value="USA">U.S. address</option>
+            <option [disabled]="true" value="foreign-address">Foreign address</option>
+          </select>
+        </label>
+        <label>
+          <span class="form__title">Street number and name</span>
+          <input type="text" maxlength="25"
+            oninput="this.value = this.value.replace(/[^a-zA-Z0-9\s]/g, '');"
+            [(ngModel)]="us.data.application.mailingnumber_name"
+            (ngModelChange)="us.update(); validateLength25(us.data.application.mailingnumber_name)">
+        </label>
+        <div class="double__form">
+          <span class="form__title">Apt./Ste./Flr. Number (if any)</span>
+          <div>
+            <select name="" id="" [(ngModel)]="us.data.application.apt_name" (ngModelChange)="us.update();">
+              <option value="aptplase">Apt.</option>
+              <option value="steaplase">Ste.</option>
+              <option value="flrpalase">Flr.</option>
+            </select>
+            <input type="text" maxlength="4" placeholder="" [(ngModel)]="us.data.application.selectste_name"
+              (ngModelChange)="us.update();">
+          </div>
+        </div>
+        <div class="forms" *ngIf="us.data.application.mailingaddress_name=='USA'">
+          <label>
+            <span class="form__title">City or town</span>
+            <input type="text" maxlength="17"
+              oninput="this.value = this.value.replace(/[^a-zA-Z\s]/g, '');"
+              [(ngModel)]="us.data.application.mailingcity_name"
+              (ngModelChange)="us.update(); validateLength17(us.data.application.mailingcity_name)">
+          </label>
+          <label>
+            <span class="form__title">State</span>
+            <select name="" id="" [(ngModel)]="us.data.application.insidemailingprovince_name"
+              (ngModelChange)="us.update();">
+              <option>AL</option>
+              <option>AK</option>
+              <option>AZ</option>
+              <option>AR</option>
+              <option>CA</option>
+              <option>CO</option>
+              <option>CT</option>
+              <option>DE</option>
+              <option>DC</option>
+              <option>FL</option>
+              <option>GA</option>
+              <option>HI</option>
+              <option>ID</option>
+              <option>IL</option>
+              <option>IN</option>
+              <option>IA</option>
+              <option>KS</option>
+              <option>KY</option>
+              <option>LA</option>
+              <option>ME</option>
+              <option>MD</option>
+              <option>MA</option>
+              <option>MI</option>
+              <option>MN</option>
+              <option>MS</option>
+              <option>MO</option>
+              <option>MT</option>
+              <option>NE</option>
+              <option>NV</option>
+              <option>NH</option>
+              <option>NJ</option>
+              <option>NM</option>
+              <option>NY</option>
+              <option>NC</option>
+              <option>ND</option>
+              <option>OH</option>
+              <option>OK</option>
+              <option>OR</option>
+              <option>PA</option>
+              <option>RI</option>
+              <option>SC</option>
+              <option>SD</option>
+              <option>TN</option>
+              <option>TX</option>
+              <option>UT</option>
+              <option>VT</option>
+              <option>VA</option>
+              <option>WA</option>
+              <option>WV</option>
+              <option>WI</option>
+              <option>WY</option>
+            </select>
+          </label>
+          <label>
+            <div>
+              <span class="form__title">Zip code</span>
+              <div class="tooltip-container">
+                <span class="tooltip__i">i</span>
+                <div class="tooltip">
+                  <span>You can look up your USPS zip code at <a target="_blank"
+                      href="https://tools.usps.com/go/ZipLookupAction_input">tools.usps.com.</a> </span>
+                  <span class="tooltips__link">Source: <a target="_blank"
+                      href="https://www.uscis.gov/sites/default/files/document/forms/i-130.pdf">USCIS Form
+                      I-130</a></span>
+                </div>
+              </div>
+            </div>
+            <input type="text" maxlength="5"
+              oninput="this.value = this.value.replace(/[^0-9.]/g, ''); this.value = this.value.replace(/(\..*)\./g, '$1')"
+              [(ngModel)]="us.data.application.mailingpostalcode_name" (ngModelChange)="us.update();">
+          </label>
+        </div>
+        <div class="forms" *ngIf="us.data.application.mailingaddress_name=='foreign-address'">
+          <label>
+            <span class="form__title">City or town</span>
+            <input type="text" maxlength="17"
+              oninput="this.value = this.value.replace(/[^a-zA-Z]/g, '');"
+              [(ngModel)]="us.data.application.mailingcity_name"
+              (ngModelChange)="us.update(); validateLength17(us.data.application.mailingcity_name)">
+          </label>
+          <label>
+            <span class="form__title">Province</span>
+            <input type="text" maxlength="17"
+              oninput="this.value = this.value.replace(/[^a-zA-Z\s]/g, '');"
+              [(ngModel)]="us.data.application.mailingprovince_name"
+              (ngModelChange)="us.update(); validateLength17(us.data.application.mailingprovince_name)">
+          </label>
+          <label>
+            <div>
+              <span class="form__title">Postal code</span>
+              <div class="tooltip-container">
+                <span class="tooltip__i">i</span>
+                <div class="tooltip">
+                  <span>You can look up your USPS zip code at <a target="_blank"
+                      href="https://tools.usps.com/go/ZipLookupAction_input">tools.usps.com.</a> </span>
+                  <span class="tooltips__link">Source: <a target="_blank"
+                      href="https://www.uscis.gov/sites/default/files/document/forms/i-130.pdf">USCIS Form
+                      I-130</a></span>
+                </div>
+              </div>
+            </div>
+            <input maxlength="8" type="text"
+              oninput="this.value = this.value.replace(/[^a-zA-Z0-9]/g, '');"
+              [(ngModel)]="us.data.application.mailingpostalcodedsa_name"
+              (ngModelChange)="us.update(); validateLength8(us.data.application.mailingpostalcodedsa_name)">
+          </label>
+        </div>
+        <label *ngIf="us.data.application.mailingaddress_name=='foreign-address'">
+          <span class="form__title">Country</span>
+          <input type="text" maxlength="17"
+            oninput="this.value = this.value.replace(/[^a-zA-Z\s]/g, '');"
+            [(ngModel)]="us.data.application.mailingcountry_name"
+            (ngModelChange)="us.update(); validateLength17(us.data.application.mailingcountry_name)">
+        </label>
+      </div>
+      <span class="form__subdiscription">Sources for this page (unless otherwise cited above): USCIS Forms <a
+          target="_blank" href="https://www.uscis.gov/sites/default/files/document/forms/i-864.pdf">I-864,</a> <a
+          target="_blank" href="https://www.uscis.gov/sites/default/files/document/forms/i-485.pdf">I-485,</a> <a
+          target="_blank" href="https://www.uscis.gov/sites/default/files/document/forms/i-131.pdf">I-131,</a> <a
+          target="_blank" href="https://www.uscis.gov/sites/default/files/document/forms/i-765.pdf">I-765</a>
+      </span>
+      <div class="section__container-btn">
+        <a class="form__btn-back" (click)="us.pagesection=1;us.top();">
+          < Back </a>
+            <a class="form__btn-continue" (click)="us.pagesection=3;us.top();"> Continue ></a>
+      </div>
+    </div>
+  </div>
+</div>
+<div *ngIf="us.data.cardholder == 'greencard' && us.data.location == 'inside'">
+  <div *ngIf="us.pagesection==3">
+    <div class="section-form__inner">
+      <h1 class="section__title">About {{us.data.application.name && us.data.application.name + "'s" || "Applicant's"}}
+        physical address inside the U.S.</h1>
+      <span class="forms__title">Is {{us.data.application.name && us.data.application.name + "'s" || "Applicant's"}}
+        physical address inside the U.S. the same as {{us.data.application.name && us.data.application.name + "'s" ||
+        "Applicant's"}} mailing address?</span>
+      <div class="form__check">
+
+        <label>
+          <input type="radio" name="mailingaddressus_name" [value]="'yes'"
+            [(ngModel)]="us.data.application.mailingaddressus_name" (ngModelChange)="us.update();">
+          <span class="check">Yes</span>
+        </label>
+        <label>
+          <input type="radio" name="mailingaddressus_name_name" [value]="'no'"
+            [(ngModel)]="us.data.application.mailingaddressus_name" (ngModelChange)="us.update();">
+          <span class="check">No</span>
+        </label>
+      </div>
+      <div class="form__sub-inner" *ngIf="us.data.application.mailingaddressus_name=='yes'">
+        <span class="forms__title">Move in date of the current physical address</span>
+        <label>
+          <!-- <ng2-flatpickr placeholder="mm/dd/yyyy" [config]="pickerOptions" [setDate]="us.data.application.currentphysicaladdressus_name" [(ngModel)]="us.data.application.currentphysicaladdressus_name" (ngModelChange)="us.update();"></ng2-flatpickr> -->
+          <input type="date" placeholder="mm/dd/yyyy" [(ngModel)]="us.data.application.currentphysicaladdressus_name" (ngModelChange)="us.update();">
+          <!-- <input type="text" placeholder="mm/dd/yyyy" class="form-control" bsDatepicker
+          [(ngModel)]="us.data.application.currentphysicaladdressus_name" (ngModelChange)="us.update();"> -->
+
+          <my-date [date]="us.data.application.currentphysicaladdressus_name"
+            (update)="us.data.application.currentphysicaladdressus_name= $event; us.update()"></my-date>
+        </label>
+      </div>
+      <div *ngIf="us.data.application.mailingaddressus_name=='no'">
+        <div class="forms__title">Enter {{us.data.application.name && us.data.application.name + "'s" || "Applicant's"}}
+          physical address inside the U.S.:</div>
+        <div class="form__inner">
+          <label>
+            <span class="form__title">Type of address</span>
+            <select name="" id="" [(ngModel)]="us.data.application.insideusaddress_name" (ngModelChange)="us.update();">
+              <option value="USA">U.S. address</option>
+              <option [disabled]="true" value="usphsical">Foreign address</option>
+            </select>
+          </label>
+          <label>
+            <span class="form__title">Street number and name</span>
+            <input type="text" maxlength="25"
+              oninput="this.value = this.value.replace(/[^a-zA-Z0-9\s]/g, '');"
+              [(ngModel)]="us.data.application.insideusnumber_name"
+              (ngModelChange)="us.update(); validateLength25(us.data.application.insideusnumber_name)">
+          </label>
+          <div class="double__form">
+            <span class="form__title">Apt./Ste./Flr. Number (if any)</span>
+            <div>
+              <select name="" id="" [(ngModel)]="us.data.application.insideusifany_name" (ngModelChange)="us.update();">
+                <option value="Apt">Apt.</option>
+                <option value="Ste">Ste.</option>
+                <option value="Flr">Flr.</option>
+              </select>
+              <input type="text" placeholder="" maxlength="4" [(ngModel)]="us.data.application.usifanyselest_name"
+                (ngModelChange)="us.update();">
+            </div>
+          </div>
+          <div class="forms">
+            <label>
+              <span class="form__title">City or town</span>
+              <input type="text" maxlength="17"
+                oninput="this.value = this.value.replace(/[^a-zA-Z]/g, '');"
+                [(ngModel)]="us.data.application.insideusgcity_name"
+                (ngModelChange)="us.update(); validateLength17(us.data.application.insideusgcity_name)">
+            </label>
+            <label>
+              <span class="form__title">State</span>
+              <select [(ngModel)]="us.data.application.insideusstate_name" (ngModelChange)="us.update();" name="" id="">
+                <option>AL</option>
+                <option>AK</option>
+                <option>AZ</option>
+                <option>AR</option>
+                <option>CA</option>
+                <option>CO</option>
+                <option>CT</option>
+                <option>DE</option>
+                <option>DC</option>
+                <option>FL</option>
+                <option>GA</option>
+                <option>HI</option>
+                <option>ID</option>
+                <option>IL</option>
+                <option>IN</option>
+                <option>IA</option>
+                <option>KS</option>
+                <option>KY</option>
+                <option>LA</option>
+                <option>ME</option>
+                <option>MD</option>
+                <option>MA</option>
+                <option>MI</option>
+                <option>MN</option>
+                <option>MS</option>
+                <option>MO</option>
+                <option>MT</option>
+                <option>NE</option>
+                <option>NV</option>
+                <option>NH</option>
+                <option>NJ</option>
+                <option>NM</option>
+                <option>NY</option>
+                <option>NC</option>
+                <option>ND</option>
+                <option>OH</option>
+                <option>OK</option>
+                <option>OR</option>
+                <option>PA</option>
+                <option>RI</option>
+                <option>SC</option>
+                <option>SD</option>
+                <option>TN</option>
+                <option>TX</option>
+                <option>UT</option>
+                <option>VT</option>
+                <option>VA</option>
+                <option>WA</option>
+                <option>WV</option>
+                <option>WI</option>
+                <option>WY</option>
+              </select>
+            </label>
+            <label>
+              <span class="form__title">ZIP code</span>
+              <input type="text" maxlength="5"
+                oninput="this.value = this.value.replace(/[^0-9.]/g, ''); this.value = this.value.replace(/(\..*)\./g, '$1')"
+                [(ngModel)]="us.data.application.insideuscode_name" (ngModelChange)="us.update();">
+            </label>
+          </div>
+          <label>
+            <span class="form__title">Move in date</span>
+            <!-- <ng2-flatpickr placeholder="mm/dd/yyyy" [config]="pickerOptions" [setDate]="us.data.application.insideusdate_name" [(ngModel)]="us.data.application.insideusdate_name" (ngModelChange)="us.update();"></ng2-flatpickr> -->
+            <input type="date" placeholder="mm/dd/yyyy" [(ngModel)]="us.data.application.insideusdate_name" (ngModelChange)="us.update();">
+
+            <!-- <input type="text" placeholder="mm/dd/yyyy" class="form-control" bsDatepicker
+            [(ngModel)]="us.data.application.insideusdate_name" (ngModelChange)="us.update();"> -->
+            <my-date [date]="us.data.application.insideusdate_name"
+              (update)="us.data.application.insideusdate_name= $event; us.update()"></my-date>
+          </label>
+        </div>
+      </div>
+      <span class="form__subdiscription">Sources for this page (unless otherwise cited above): USCIS Forms\
+        <a target="_blank" href="https://www.uscis.gov/sites/default/files/document/forms/i-130.pdf">I-130,</a>
+        <a target="_blank" href="https://www.uscis.gov/sites/default/files/document/forms/i-130a.pdf">I-130А</a>
+        <a target="_blank" href="https://www.uscis.gov/sites/default/files/document/forms/i-485.pdf">I-485,</a>
+        <a target="_blank" href="https://www.uscis.gov/sites/default/files/document/forms/i-131.pdf">I-131,</a>
+        <a target="_blank" href="https://www.uscis.gov/sites/default/files/document/forms/i-765.pdf">I-765,</a>
+
+      </span>
+      <div class="section__container-btn">
+        <a class="form__btn-back" (click)="us.pagesection=2;us.top();">
+          < Back </a>
+            <a class="form__btn-continue" (click)="us.pagesection=4;us.top();"> Continue ></a>
+      </div>
+    </div>
+  </div>
+</div>
+<div *ngIf="us.data.cardholder == 'greencard' && us.data.location == 'inside'">
+  <div *ngIf="us.pagesection==4">
+    <div class="section-form__inner">
+      <h1 class="section__title">What was {{us.data.application.name && us.data.application.name + "'s" ||
+        "Applicant's"}} most recent address outside the U.S. where {{us.data.application.name &&
+        us.data.application.name || "Applicant"}} lived for more than one year?</h1>
+      <div class="form__inner">
+        <label>
+          <span class="form__title">Type of address</span>
+          <select class="add-forms__select" name="" id="" [(ngModel)]="us.data.application.recent_name"
+            (ngModelChange)="us.update();">
+            <option [disabled]="true" value="U.S. address">U.S. address</option>
+            <option value="Foreign address">Foreign address</option>
+          </select>
+        </label>
+        <label>
+          <span class="form__title">Street number and name</span>
+          <input type="text" maxlength="25"
+            oninput="this.value = this.value.replace(/[^a-zA-Z0-9\s]/g, '');"
+            [(ngModel)]="us.data.application.recentstreet_name"
+            (ngModelChange)="us.update(); validateLength25(us.data.application.recentstreet_name)">
+        </label>
+        <div class="double__form">
+          <span class="form__title">Apt./Ste./Flr. Number (if any)</span>
+          <div>
+            <select name="" id="" [(ngModel)]="us.data.application.recentapt_name" (ngModelChange)="us.update();">
+              <option value="12">Apt.</option>
+              <option value="13">Ste.</option>
+              <option value="14">Flr.</option>
+            </select>
+            <input type="text" placeholder="" maxlength="4" [(ngModel)]="us.data.application.recentste_name"
+              (ngModelChange)="us.update();">
+          </div>
+        </div>
+        <div class="forms" *ngIf="us.data.application.recent_name=='U.S. address'">
+          <label>
+            <span class="form__title">City or town</span>
+            <input type="text" maxlength="17"
+              oninput="this.value = this.value.replace(/[^a-zA-Z]/g, '');"
+              [(ngModel)]="us.data.application.recentcity_name"
+              (ngModelChange)="us.update(); validateLength17(us.data.application.recentcity_name)">
+          </label>
+          <label>
+            <span class="form__title">State</span>
+            <select [(ngModel)]="us.data.application.livedus_name" (ngModelChange)="us.update();" name="" id="">
+              <option>AL</option>
+              <option>AK</option>
+              <option>AZ</option>
+              <option>AR</option>
+              <option>CA</option>
+              <option>CO</option>
+              <option>CT</option>
+              <option>DE</option>
+              <option>DC</option>
+              <option>FL</option>
+              <option>GA</option>
+              <option>HI</option>
+              <option>ID</option>
+              <option>IL</option>
+              <option>IN</option>
+              <option>IA</option>
+              <option>KS</option>
+              <option>KY</option>
+              <option>LA</option>
+              <option>ME</option>
+              <option>MD</option>
+              <option>MA</option>
+              <option>MI</option>
+              <option>MN</option>
+              <option>MS</option>
+              <option>MO</option>
+              <option>MT</option>
+              <option>NE</option>
+              <option>NV</option>
+              <option>NH</option>
+              <option>NJ</option>
+              <option>NM</option>
+              <option>NY</option>
+              <option>NC</option>
+              <option>ND</option>
+              <option>OH</option>
+              <option>OK</option>
+              <option>OR</option>
+              <option>PA</option>
+              <option>RI</option>
+              <option>SC</option>
+              <option>SD</option>
+              <option>TN</option>
+              <option>TX</option>
+              <option>UT</option>
+              <option>VT</option>
+              <option>VA</option>
+              <option>WA</option>
+              <option>WV</option>
+              <option>WI</option>
+              <option>WY</option>
+            </select>
+          </label>
+          <label>
+            <span class="form__title">Zip code</span>
+            <input type="text" maxlength="5"
+              oninput="this.value = this.value.replace(/[^0-9.]/g, ''); this.value = this.value.replace(/(\..*)\./g, '$1')"
+              [(ngModel)]="us.data.application.recentpostal_name" (ngModelChange)="us.update();">
+          </label>
+        </div>
+        <div class="forms" *ngIf="us.data.application.recent_name=='Foreign address'">
+          <label>
+            <span class="form__title">City or town</span>
+            <input type="text" maxlength="17"
+              oninput="this.value = this.value.replace(/[^a-zA-Z]/g, '');"
+              [(ngModel)]="us.data.application.recentcity_name"
+              (ngModelChange)="us.update(); validateLength17(us.data.application.recentcity_name)">
+          </label>
+          <label>
+            <span class="form__title">Province</span>
+            <input type="text" maxlength="17"
+              oninput="this.value = this.value.replace(/[^a-zA-Z\s]/g, '');"
+              [(ngModel)]="us.data.application.recentprovince_name"
+              (ngModelChange)="us.update(); validateLength17(us.data.application.recentprovince_name)">
+          </label>
+          <label>
+            <span class="form__title">Postal code</span>
+            <input type="text" maxlength="8"
+              oninput="this.value = this.value.replace(/[^a-zA-Z0-9\s]/g, '');"
+              [(ngModel)]="us.data.application.recentpostal_name"
+              (ngModelChange)="us.update(); validateLength8(us.data.application.recentpostal_name)">
+          </label>
+        </div>
+        <label *ngIf="us.data.application.recent_name=='Foreign address'">
+          <span class="form__title">Country</span>
+          <input type="text" maxlength="17"
+            oninput="this.value = this.value.replace(/[^a-zA-Z\s]/g, '');"
+            [(ngModel)]="us.data.application.recentcountry_name"
+            (ngModelChange)="us.update(); validateLength17(us.data.application.recentcountry_name)">
+        </label>
+        <label>
+          <span class="form__title">Move in date </span>
+          <!-- <ng2-flatpickr placeholder="mm/dd/yyyy" [config]="pickerOptions" [setDate]="us.data.application.recenmoveint_name" [(ngModel)]="us.data.application.recenmoveint_name" (ngModelChange)="us.update();"></ng2-flatpickr> -->
+          <input type="date" placeholder="mm/dd/yyyy" [(ngModel)]="us.data.application.recenmoveint_name" (ngModelChange)="us.update();">
+
+          <!-- <input type="text" placeholder="mm/dd/yyyy" class="form-control" bsDatepicker
+          [(ngModel)]="us.data.application.recenmoveint_name" (ngModelChange)="us.update();"> -->
+
+          <my-date [date]="us.data.application.recenmoveint_name"
+            (update)="us.data.application.recenmoveint_name= $event; us.update()"></my-date>
+        </label>
+        <label>
+          <span class="form__title">Move out date</span>
+          <!-- <ng2-flatpickr placeholder="mm/dd/yyyy" [config]="pickerOptions" [setDate]="us.data.application.recentmoveout_name" [(ngModel)]="us.data.application.recentmoveout_name" (ngModelChange)="us.update();"></ng2-flatpickr> -->
+          <input type="date" placeholder="mm/dd/yyyy" [(ngModel)]="us.data.application.recentmoveout_name" (ngModelChange)="us.update();">
+
+          <!-- <input type="text" placeholder="mm/dd/yyyy" class="form-control" bsDatepicker
+          [(ngModel)]="us.data.application.recentmoveout_name" (ngModelChange)="us.update();"> -->
+
+
+          <my-date [date]="us.data.application.recentmoveout_name"
+            (update)="us.data.application.recentmoveout_name= $event; us.update()"></my-date>
+        </label>
+      </div>
+      <span class="form__subdiscription">Sources for this page (unless otherwise cited above): USCIS Forms <a
+          target="_blank" href="https://www.uscis.gov/sites/default/files/document/forms/i-130a.pdf">I-130A,</a> <a
+          target="_blank" href="https://www.uscis.gov/sites/default/files/document/forms/i-485.pdf">I-485</a>
+      </span>
+      <div class="section__container-btn">
+        <a class="form__btn-back" (click)="us.pagesection=3;us.top();">
+          < Back </a>
+            <a class="form__btn-continue" (click)="us.pagesection=5;us.top();"> Continue ></a>
+      </div>
+    </div>
+  </div>
+</div>
+<div *ngIf="us.data.cardholder == 'greencard' && us.data.location == 'inside'">
+  <div *ngIf="us.pagesection==5">
+    <div class="section-form__inner">
+      <h1 class="section__title">{{us.data.application.name && us.data.application.name + "'s" || "Applicant's"}}
+        previous physical addresses for the last five years</h1>
+      <span class="form__discription">Provide physical addresses for everywhere {{us.data.application.name ||
+        "Applicant"}} has lived during previous addresses last five years last five years, whether inside or outside the
+        United States.
+      </span>
+      <div class="">
+        <input type="checkbox" name="urrentaddressfiveyears_name"
+          [(ngModel)]="us.data.application.urrentaddressfiveyears_name" (ngModelChange)="us.update();">
+        <span class="check__discription">{{us.data.application.name && us.data.application.name || "Applicant"}} has
+          lived at the current address for the last five years.</span>
+      </div>
+      <div *ngIf="!us.data.application.urrentaddressfiveyears_name">
+        <div class="add-form__inner" *ngFor="let name of us.data.application.typeofaddress_names;index as i">
+          <div class="add-form__inner-title">
+            <span>PREVIOUS PHYSICAL ADDRESS {{i+1}}</span>
+            <button class="inner-title__btn"
+              (click)="us.data.application.typeofaddress_names.splice(i,1);us.update()">X</button>
+          </div>
+          <div class="form__inner">
+            <label>
+              <span class="form__title">Type of address</span>
+              <select class="add-forms__select" name="" id="" [(ngModel)]="name.previousaddress_name"
+                (ngModelChange)="us.update();">
+                <option value="USA">U.S. address</option>
+                <option value="Foreign address">Foreign address</option>
+              </select>
+            </label>
+            <label>
+              <span class="form__title">Street number and name</span>
+              <input type="text" maxlength="25"
+                oninput="this.value = this.value.replace(/[^a-zA-Z0-9\s]/g, '');"
+                [(ngModel)]="name.usplaces_name"
+                (ngModelChange)="us.update(); validateLength25(name.usplaces_name)">
+            </label>
+            <div class="double__form">
+              <span class="form__title">Apt./Ste./Flr. Number (if any)</span>
+              <div>
+                <select [(ngModel)]="name.numberaptste_name" (ngModelChange)="us.update();">
+                  <option value="Apt">Apt.</option>
+                  <option value="Ste">Ste.</option>
+                  <option value="Flr">Flr.</option>
+                </select>
+                <input type="text" placeholder="" maxlength="4" [(ngModel)]="name.stedf_name"
+                  (ngModelChange)="us.update();">
+              </div>
+            </div>
+            <label>
+              <span class="form__title">City or town</span>
+              <input type="text" maxlength="17"
+                oninput="this.value = this.value.replace(/[^a-zA-Z]/g, '');"
+                [(ngModel)]="name.previousfuturecityq_name"
+                (ngModelChange)="us.update(); validateLength17(name.previousfuturecityq_name)">
+            </label>
+            <div class="forms" *ngIf="name.previousaddress_name=='USA'">
+
+              <label>
+                <span class="form__title">State</span>
+                <select class="forms__select" name="" id="" [(ngModel)]="name.prweviousfuturestate_name"
+                  (ngModelChange)="us.update();">
+                  <option>AL</option>
+                  <option>AK</option>
+                  <option>AZ</option>
+                  <option>AR</option>
+                  <option>CA</option>
+                  <option>CO</option>
+                  <option>CT</option>
+                  <option>DE</option>
+                  <option>DC</option>
+                  <option>FL</option>
+                  <option>GA</option>
+                  <option>HI</option>
+                  <option>ID</option>
+                  <option>IL</option>
+                  <option>IN</option>
+                  <option>IA</option>
+                  <option>KS</option>
+                  <option>KY</option>
+                  <option>LA</option>
+                  <option>ME</option>
+                  <option>MD</option>
+                  <option>MA</option>
+                  <option>MI</option>
+                  <option>MN</option>
+                  <option>MS</option>
+                  <option>MO</option>
+                  <option>MT</option>
+                  <option>NE</option>
+                  <option>NV</option>
+                  <option>NH</option>
+                  <option>NJ</option>
+                  <option>NM</option>
+                  <option>NY</option>
+                  <option>NC</option>
+                  <option>ND</option>
+                  <option>OH</option>
+                  <option>OK</option>
+                  <option>OR</option>
+                  <option>PA</option>
+                  <option>RI</option>
+                  <option>SC</option>
+                  <option>SD</option>
+                  <option>TN</option>
+                  <option>TX</option>
+                  <option>UT</option>
+                  <option>VT</option>
+                  <option>VA</option>
+                  <option>WA</option>
+                  <option>WV</option>
+                  <option>WI</option>
+                  <option>WY</option>
+                </select>
+              </label>
+              <label>
+                <div> <span class="form__title">ZIP code</span>
+                  <div class="tooltip-container">
+                    <span class="tooltip__i">i</span>
+                    <div class="tooltip">
+                      <span>You can look up your USPS zip code at <a href="https://tools.usps.com/go/ZipLookupAction_input">tools.usps.com</a> </span>
+                      <span class="tooltips__link">Source: <a target="_blank"
+                          href="https://www.uscis.gov/sites/default/files/document/forms/i-130.pdf">USCIS Form
+                          I-130
+                          Instructions Page
+                          21</a></span>
+                    </div>
+                  </div>
+                </div>
+                <input type="text" maxlength="5"
+                  oninput="this.value = this.value.replace(/[^0-9.]/g, ''); this.value = this.value.replace(/(\..*)\./g, '$1')"
+                  [(ngModel)]="name.previousfuturewzyzip_name" (ngModelChange)="us.update();">
+              </label>
+            </div>
+
+            <!-- Move in date -->
+            <div class="forms" *ngIf="name.previousaddress_name=='Foreign address'">
+              <label>
+                <span class="form__title">Province</span>
+                <input type="text"  name="" id="" maxlength="17"
+                  oninput="this.value = this.value.replace(/[^a-zA-Z]/g, '');"
+                  [(ngModel)]="name.futurfuturestate_name"
+                  (ngModelChange)="us.update(); validateLength17(name.futurfuturestate_name)">
+              </label>
+              <label>
+                <span class="form__title">Postal code</span>
+                <input type="text" maxlength="8"
+                  oninput="this.value = this.value.replace(/[^a-zA-Z0-9.]/g, '');"
+                  [(ngModel)]="name.futurepreviousfutu_name"
+                  (ngModelChange)="us.update(); validateLength8(name.futurepreviousfutu_name)">
+              </label>
+            </div>
+            <label *ngIf="name.previousaddress_name=='Foreign address'">
+              <span class="form__title">Country</span>
+              <input type="text" maxlength="17"
+                oninput="this.value = this.value.replace(/[^a-zA-Z\s]/g, '');"
+                [(ngModel)]="name.recenstcountryfuture_name"
+                (ngModelChange)="us.update(); validateLength17(name.recenstcountryfuture_name)">
+            </label>
+            <label>
+              <div>
+                <span class="form__title">Move in date </span>
+                <button class="tooltip-btn" (click)="modal.show({component: 'usciss'});">i</button>
+              </div>
+              <span class="form__title">Move in date </span>
+              <!-- <ng2-flatpickr placeholder="mm/dd/yyyy" [config]="pickerOptions" [setDate]="name.previousmovein_name" [(ngModel)]="name.previousmovein_name" (ngModelChange)="us.update();"></ng2-flatpickr> -->
+              <input type="date" placeholder="mm/dd/yyyy" [(ngModel)]="name.previousmovein_name" (ngModelChange)="us.update();">
+              <!-- <input type="text" placeholder="mm/dd/yyyy" class="form-control" bsDatepicker
+              [(ngModel)]="name.previousmovein_name" (ngModelChange)="us.update();"> -->
+
+
+              <my-date [date]="name.previousmovein_name" (update)="name.previousmovein_name= $event; us.update()">
+              </my-date>
+            </label>
+            <label>
+              <span class="form__title">Move out date</span>
+              <!-- <ng2-flatpickr placeholder="mm/dd/yyyy" [config]="pickerOptions" [setDate]="name.previousmoveout_name" [(ngModel)]="name.previousmoveout_name" (ngModelChange)="us.update();"></ng2-flatpickr> -->
+              <input type="date" placeholder="mm/dd/yyyy" [(ngModel)]="name.previousmoveout_name" (ngModelChange)="us.update();">
+              <!-- <input type="text" placeholder="mm/dd/yyyy" class="form-control" bsDatepicker
+              [(ngModel)]="name.previousmoveout_name" (ngModelChange)="us.update();"> -->
+              <my-date [date]="name.previousmoveout_name" (update)="name.previousmoveout_name= $event; us.update()">
+              </my-date>
+            </label>
+          </div>
+        </div>
+        <div>
+          <button class="add-form__btn" (click)="typeofaddress()">Add address +</button>
+        </div>
+      </div>
+      <span class="form__subdiscription">Sources for this page (unless otherwise cited above): USCIS Form
+        <a target="_blank" href="https://www.uscis.gov/sites/default/files/document/forms/i-130.pdf">I-130,</a>
+        <a target="_blank" href="https://www.uscis.gov/sites/default/files/document/forms/i-485.pdf">I-485</a>
+      </span>
+      <div class="section__container-btn">
+        <a class="form__btn-back" (click)="us.pagesection=4;us.top();">
+          < Back </a>
+            <a class="form__btn-continue" (click)="us.pagesection=6;us.top();"> Continue ></a>
+      </div>
+    </div>
+  </div>
+</div>
+<div *ngIf="us.data.cardholder == 'greencard' && us.data.location == 'inside'">
+  <div *ngIf="us.pagesection==6">
+    <div class="section-form__inner">
+      <h1 class="section__title">What was {{us.data.application.name && us.data.application.name + "'s" ||
+        "Applicant's"}} most recent address outside the U.S. where {{us.data.application.name &&
+        us.data.application.name || "Applicant"}} lived for more than one year?</h1>
+      <div>
+        <div class="form__inner">
+          <label>
+            <span class="form__title">Type of address</span>
+            <select name="" id="" [(ngModel)]="us.data.application.usoneyearaddress_name"
+              (ngModelChange)="us.update();">
+              <option [disabled]="true" value="U.S. address">U.S. address</option>
+              <option value="Foreign address">Foreign address</option>
+            </select>
+          </label>
+          <label>
+            <span class="form__title">Street number and name</span>
+            <input type="text" maxlength="25"
+            oninput="this.value = this.value.replace(/[^a-zA-Z0-9\s]/g, '');"
+            [(ngModel)]="us.data.application.usoneyearnumber_name"
+            (ngModelChange)="us.update(); validateLength25(us.data.application.usoneyearnumber_name)">
+          </label>
+          <div class="double__form">
+            <span class="form__title">Apt./Ste./Flr. Number (if any)</span>
+            <div>
+              <select name="" id="" [(ngModel)]="us.data.application.usoneyearany_name" (ngModelChange)="us.update();">
+                <option value="Apt.">Apt.</option>
+                <option value="Ste.">Ste.</option>
+                <option value="Flr.">Flr.</option>
+              </select>
+              <input type="text" placeholder="" maxlength="4" [(ngModel)]="us.data.application.usoneyearflr_name"
+                (ngModelChange)="us.update();">
+            </div>
+          </div>
+          <div class="forms" *ngIf="us.data.application.usoneyearaddress_name=='Foreign address'">
+            <label>
+              <span class="form__title">City or town</span>
+              <input type="text" maxlength="17"
+                oninput="this.value = this.value.replace(/[^a-zA-Z]/g, '');"
+                [(ngModel)]="us.data.application.usoneyearcity_name"
+                (ngModelChange)="us.update(); validateLength17(us.data.application.usoneyearcity_name)">
+            </label>
+            <label>
+              <span class="form__title">Province</span>
+              <input type="text" maxlength="17"
+                oninput="this.value = this.value.replace(/[^a-zA-Z]/g, '');"
+                [(ngModel)]="us.data.application.usoneyearprovince_name"
+                (ngModelChange)="us.update(); validateLength17(us.data.application.usoneyearprovince_name)">
+            </label>
+            <label>
+              <span class="form__title">Postal code</span>
+              <input type="text" maxlength="8"
+                oninput="this.value = this.value.replace(/[^a-zA-Z0-9.]/g, '');"
+                [(ngModel)]="us.data.application.usoneyearcode_name"
+                (ngModelChange)="us.update(); validateLength8(us.data.application.usoneyearcode_name)">
+            </label>
+          </div>
+          <label>
+            <span class="form__title">Country</span>
+            <input type="text" maxlength="17"
+              oninput="this.value = this.value.replace(/[^a-zA-Z\s]/g, '');"
+              [(ngModel)]="us.data.application.usoneyearcountry_name"
+              (ngModelChange)="us.update(); validateLength17(us.data.application.usoneyearcountry_name)">
+          </label>
+          <label>
+            <span class="form__title">Move in date</span>
+            <!-- <ng2-flatpickr placeholder="mm/dd/yyyy" [config]="pickerOptions" [setDate]="us.data.application.usoneyearindate_name" [(ngModel)]="us.data.application.usoneyearindate_name" (ngModelChange)="us.update();"></ng2-flatpickr> -->
+            <input type="date" placeholder="mm/dd/yyyy" [(ngModel)]="us.data.application.usoneyearindate_name" (ngModelChange)="us.update();">
+
+
+            <!-- <input type="text" placeholder="mm/dd/yyyy" class="form-control" bsDatepicker
+            [(ngModel)]="us.data.application.usoneyearindate_name" (ngModelChange)="us.update();"> -->
+
+
+            <my-date [date]="us.data.application.usoneyearindate_name"
+              (update)="us.data.application.usoneyearindate_name= $event; us.update()"></my-date>
+          </label>
+          <label>
+            <span class="form__title">Move out date</span>
+            <!-- <ng2-flatpickr placeholder="mm/dd/yyyy" [config]="pickerOptions" [setDate]="us.data.application.usoneyearoutdate_name" [(ngModel)]="us.data.application.usoneyearoutdate_name" (ngModelChange)="us.update();"></ng2-flatpickr> -->
+            <input type="date" placeholder="mm/dd/yyyy" [(ngModel)]="us.data.application.usoneyearoutdate_name" (ngModelChange)="us.update();">
+
+
+            <input type="text" placeholder="mm/dd/yyyy" class="form-control" bsDatepicker
+            [(ngModel)]="us.data.application.usoneyearoutdate_name" (ngModelChange)="us.update();">
+
+
+            <my-date [date]="us.data.application.usoneyearoutdate_name"
+              (update)="us.data.application.usoneyearoutdate_name= $event; us.update()"></my-date>
+          </label>
+        </div>
+      </div>
+      <span class="form__subdiscription">Sources for this page (unless otherwise cited above): USCIS Forms <a
+          target="_blank" href="https://www.uscis.gov/sites/default/files/document/forms/i-130a.pdf">I-130A,</a> <a
+          target="_blank" href="https://www.uscis.gov/sites/default/files/document/forms/i-485.pdf">I-485</a>
+        <!-- <a
+          target="_blank" href="https://www.uscis.gov/sites/default/files/document/forms/i-864.pdf">I-864,</a> <a
+          target="_blank" href="https://www.uscis.gov/sites/default/files/document/forms/i-485.pdf">I-485,</a> <a
+          target="_blank" href="https://www.uscis.gov/sites/default/files/document/forms/i-131.pdf">I-131,</a> <a
+          target="_blank" href="https://www.uscis.gov/sites/default/files/document/forms/i-765.pdf">I-765</a> -->
+      </span>
+      <div class="section__container-btn">
+        <a class="form__btn-back" (click)="us.pagesection=2;us.top();">
+          < Back </a>
+            <a class="form__btn-continue" (click)="us.section='otherhistory';us.top();"> Continue ></a>
+      </div>
+    </div>
+  </div>
+</div>
+<div *ngIf="us.data.cardholder == 'greencard' && us.data.location == 'outside'">
+  <div *ngIf="us.pagesection==2">
+    <div class="section-form__inner">
+      <div style="display: flex;
+      align-items: center;">
+        <h1 class="section__title">About {{us.data.application.name && us.data.application.name + "'s" || "Applicant's"}}
+          mailing address inside the U.S.</h1>
+          <button class="tooltip-btn" (click)="modal.show({component: 'mailingaddress'});">i</button>
+        </div>
+      <span class="form__discription">Enter {{us.data.application.name && us.data.application.name + "'s" ||
+        "Applicant's"}} mailing address inside the U.S.:</span>
+      <div class="form__inner">
+        <label>
+          <div class="sub-inner">
+            <span class="form__title">In care of name (if any)</span>
+            <div class="tooltip-container">
+              <span class="tooltip__i">i</span>
+              <div class="tooltip">
+                <span>If your mail is sent to someone other than yourself, please include an “In Care Of Name” as part
+                  of your mailing address. If your U.S. mailing address is in a U.S. territory and it contains an
+                  urbanization name, list the urbanization name in the “In Care Of Name” space provided.</span>
+                <span class="tooltips__link">Source: <a target="_blank"
+                    href="https://www.uscis.gov/sites/default/files/document/forms/i-765instr.pdf">USCIS Form I-765
+                    Instructions Page
+                    21</a></span>
+              </div>
+            </div>
+          </div>
+          <input type="text"  [(ngModel)]="us.data.application.mailing_name"
+          (ngModelChange)="us.data.application.mailing_name = us.data.application.mailing_name.toUpperCase();
+            us.update();">
+        </label>
+        <label>
+          <span class="form__title">Type of address</span>
+          <select name="" id="" [(ngModel)]="us.data.application.mailingaddress_name" (ngModelChange)="us.update();">
+            <option value="USA">U.S. address</option>
+            <option [disabled]="true" value="foreign-address">Foreign address</option>
+          </select>
+        </label>
+        <label>
+          <span class="form__title">Street number and name</span>
+          <input type="text" maxlength="25"
+            oninput="this.value = this.value.replace(/[^a-zA-Z0-9\s]/g, '');"
+            [(ngModel)]="us.data.application.mailingnumber_name"
+            (ngModelChange)="us.update(); validateLength25(us.data.application.mailingnumber_name)">
+        </label>
+        <div class="double__form">
+          <span class="form__title">Apt./Ste./Flr. Number (if any)</span>
+          <div>
+            <select name="" id="" [(ngModel)]="us.data.application.apt_name" (ngModelChange)="us.update();">
+              <option value="aptplase">Apt.</option>
+              <option value="steaplase">Ste.</option>
+              <option value="flrpalase">Flr.</option>
+            </select>
+            <input type="text" maxlength="4" placeholder="" [(ngModel)]="us.data.application.selectste_name"
+              (ngModelChange)="us.update();">
+          </div>
+        </div>
+        <div class="forms" *ngIf="us.data.application.mailingaddress_name=='USA'">
+          <label>
+            <span class="form__title">City or town</span>
+            <input type="text"  maxlength="17"
+              oninput="this.value = this.value.replace(/[^a-zA-Z]/g, '');"
+              [(ngModel)]="us.data.application.mailingcity_name"
+              (ngModelChange)="us.update(); validateLength17(us.data.application.mailingcity_name)">
+          </label>
+          <label>
+            <span class="form__title">State</span>
+            <select name="" id="" [(ngModel)]="us.data.application.insidemailingprovince_name"
+              (ngModelChange)="us.update();">
+              <option>AL</option>
+              <option>AK</option>
+              <option>AZ</option>
+              <option>AR</option>
+              <option>CA</option>
+              <option>CO</option>
+              <option>CT</option>
+              <option>DE</option>
+              <option>DC</option>
+              <option>FL</option>
+              <option>GA</option>
+              <option>HI</option>
+              <option>ID</option>
+              <option>IL</option>
+              <option>IN</option>
+              <option>IA</option>
+              <option>KS</option>
+              <option>KY</option>
+              <option>LA</option>
+              <option>ME</option>
+              <option>MD</option>
+              <option>MA</option>
+              <option>MI</option>
+              <option>MN</option>
+              <option>MS</option>
+              <option>MO</option>
+              <option>MT</option>
+              <option>NE</option>
+              <option>NV</option>
+              <option>NH</option>
+              <option>NJ</option>
+              <option>NM</option>
+              <option>NY</option>
+              <option>NC</option>
+              <option>ND</option>
+              <option>OH</option>
+              <option>OK</option>
+              <option>OR</option>
+              <option>PA</option>
+              <option>RI</option>
+              <option>SC</option>
+              <option>SD</option>
+              <option>TN</option>
+              <option>TX</option>
+              <option>UT</option>
+              <option>VT</option>
+              <option>VA</option>
+              <option>WA</option>
+              <option>WV</option>
+              <option>WI</option>
+              <option>WY</option>
+            </select>
+          </label>
+          <label>
+            <div>
+              <span class="form__title">Zip code</span>
+              <div class="tooltip-container">
+                <span class="tooltip__i">i</span>
+                <div class="tooltip">
+                  <span>You can look up your USPS zip code at <a target="_blank"
+                      href="https://tools.usps.com/go/ZipLookupAction_input">tools.usps.com.</a> </span>
+                  <span class="tooltips__link">Source: <a target="_blank"
+                      href="https://www.uscis.gov/sites/default/files/document/forms/i-130.pdf">USCIS Form
+                      I-130</a></span>
+                </div>
+              </div>
+            </div>
+            <input type="text" maxlength="5"
+              oninput="this.value = this.value.replace(/[^0-9.]/g, ''); this.value = this.value.replace(/(\..*)\./g, '$1')"
+              [(ngModel)]="us.data.application.mailingpostalcode_name" (ngModelChange)="us.update();">
+          </label>
+        </div>
+        <div class="forms" *ngIf="us.data.application.mailingaddress_name=='foreign-address'">
+          <label>
+            <span class="form__title">City or town</span>
+            <input type="text" maxlength="17"
+              oninput="this.value = this.value.replace(/[^a-zA-Z]/g, '');"
+              [(ngModel)]="us.data.application.mailingcity_name"
+              (ngModelChange)="us.update(); validateLength17(us.data.application.mailingcity_name)">
+          </label>
+          <label>
+            <span class="form__title">Province</span>
+            <input type="text" maxlength="17"
+              oninput="this.value = this.value.replace(/[^a-zA-Z\s]/g, '');"
+              [(ngModel)]="us.data.application.mailingprovince_name"
+              (ngModelChange)="us.update(); validateLength17(us.data.application.mailingprovince_name)">
+          </label>
+          <label>
+            <div>
+              <span class="form__title">Postal code</span>
+              <div class="tooltip-container">
+                <span class="tooltip__i">i</span>
+                <div class="tooltip">
+                  <span>You can look up your USPS zip code at <a target="_blank"
+                      href="https://tools.usps.com/go/ZipLookupAction_input">tools.usps.com.</a> </span>
+                  <span class="tooltips__link">Source: <a target="_blank"
+                      href="https://www.uscis.gov/sites/default/files/document/forms/i-130.pdf">USCIS Form
+                      I-130</a></span>
+                </div>
+              </div>
+            </div>
+            <input type="text" maxlength="8"
+              oninput="this.value = this.value.replace(/[^a-zA-Z0-9.]/g, '');"
+              [(ngModel)]="us.data.application.mailingpostalcode_name"
+              (ngModelChange)="us.update(); validateLength8(us.data.application.mailingpostalcode_name)">
+          </label>
+        </div>
+        <label *ngIf="us.data.application.mailingaddress_name=='foreign-address'">
+          <span class="form__title">Country</span>
+          <input type="text" maxlength="17"
+            oninput="this.value = this.value.replace(/[^a-zA-Z\s]/g, '');"
+            [(ngModel)]="us.data.application.mailingcountry_name"
+            (ngModelChange)="us.update(); validateLength17(us.data.application.mailingcountry_name)">
+        </label>
+      </div>
+      <span class="form__subdiscription">Sources for this page (unless otherwise cited above): USCIS Forms <a
+          target="_blank" href="https://www.uscis.gov/sites/default/files/document/forms/i-864.pdf">I-864,</a> <a
+          target="_blank" href="https://www.uscis.gov/sites/default/files/document/forms/i-485.pdf">I-485,</a> <a
+          target="_blank" href="https://www.uscis.gov/sites/default/files/document/forms/i-131.pdf">I-131,</a> <a
+          target="_blank" href="https://www.uscis.gov/sites/default/files/document/forms/i-765.pdf">I-765</a>
+      </span>
+      <div class="section__container-btn">
+        <a class="form__btn-back" (click)="us.pagesection=1;us.top();">
+          < Back </a>
+            <a class="form__btn-continue" (click)="us.pagesection=3;us.top();"> Continue ></a>
+      </div>
+    </div>
+  </div>
+</div>
+<div *ngIf="us.data.cardholder == 'greencard' && us.data.location == 'outside'">
+  <div *ngIf="us.pagesection==3">
+    <div class="section-form__inner">
+      <h1 class="section__title">About {{us.data.application.name && us.data.application.name + "'s" || "Applicant's"}}
+        physical address</h1>
+      <span class="form__discription">Enter {{us.data.application.name && us.data.application.name + "'s" ||
+        "Applicant's"}} physical address (If the address does not have a street number or name, leave that field
+        blank):</span>
+      <div class="form__inner">
+        <label>
+          <span class="form__title">Type of address</span>
+          <select name="" id="" [(ngModel)]="us.data.application.physicaladdress_name" (ngModelChange)="us.update();">
+            <option value="addressus">U.S. address</option>
+            <option value="addressforeign">Foreign address</option>
+          </select>
+        </label>
+        <label>
+          <span class="form__title">Street number and name</span>
+          <input type="text" maxlength="25"
+            oninput="this.value = this.value.replace(/[^a-zA-Z0-9\s]/g, '');"
+            [(ngModel)]="us.data.application.physicalstreet_name"
+            (ngModelChange)="us.update(); validateLength25(us.data.application.physicalstreet_name)">
+        </label>
+        <div class="double__form">
+          <span class="form__title">Apt./Ste./Flr. Number (if any)</span>
+          <div>
+            <select name="" id="" [(ngModel)]="us.data.application.physicalapt_name" (ngModelChange)="us.update();">
+              <option value="">Apt.</option>
+              <option value="">Ste.</option>
+              <option value="">Flr.</option>
+            </select>
+            <input type="text" placeholder="" [(ngModel)]="us.data.application.physicalste_name"
+              (ngModelChange)="us.update();">
+          </div>
+        </div>
+        <div class="forms" *ngIf="us.data.application.physicaladdress_name=='addressus'">
+          <label>
+            <span class="form__title">City or town</span>
+            <input type="text" maxlength="17"
+              oninput="this.value = this.value.replace(/[^a-zA-Z]/g, '');"
+              [(ngModel)]="us.data.application.physicalcity_name"
+              (ngModelChange)="us.update(); validateLength17(us.data.application.physicalcity_name)">
+          </label>
+          <label>
+            <span class="form__title">State</span>
+            <select [(ngModel)]="us.data.application.physicalprovince_name" (ngModelChange)="us.update();" name=""
+              id="">
+              <option>AL</option>
+              <option>AK</option>
+              <option>AZ</option>
+              <option>AR</option>
+              <option>CA</option>
+              <option>CO</option>
+              <option>CT</option>
+              <option>DE</option>
+              <option>DC</option>
+              <option>FL</option>
+              <option>GA</option>
+              <option>HI</option>
+              <option>ID</option>
+              <option>IL</option>
+              <option>IN</option>
+              <option>IA</option>
+              <option>KS</option>
+              <option>KY</option>
+              <option>LA</option>
+              <option>ME</option>
+              <option>MD</option>
+              <option>MA</option>
+              <option>MI</option>
+              <option>MN</option>
+              <option>MS</option>
+              <option>MO</option>
+              <option>MT</option>
+              <option>NE</option>
+              <option>NV</option>
+              <option>NH</option>
+              <option>NJ</option>
+              <option>NM</option>
+              <option>NY</option>
+              <option>NC</option>
+              <option>ND</option>
+              <option>OH</option>
+              <option>OK</option>
+              <option>OR</option>
+              <option>PA</option>
+              <option>RI</option>
+              <option>SC</option>
+              <option>SD</option>
+              <option>TN</option>
+              <option>TX</option>
+              <option>UT</option>
+              <option>VT</option>
+              <option>VA</option>
+              <option>WA</option>
+              <option>WV</option>
+              <option>WI</option>
+              <option>WY</option>
+            </select>
+          </label>
+          <label>
+            <span class="form__title">ZIP code</span>
+            <input type="text" maxlength="5"
+              oninput="this.value = this.value.replace(/[^0-9.]/g, ''); this.value = this.value.replace(/(\..*)\./g, '$1')"
+              [(ngModel)]="us.data.application.physicalpostalcode_name" (ngModelChange)="us.update();">
+          </label>
+        </div>
+        <div class="forms" *ngIf="us.data.application.physicaladdress_name=='addressforeign'">
+          <label>
+            <span class="form__title">City or town</span>
+            <input type="text" maxlength="17"
+              oninput="this.value = this.value.replace(/[^a-zA-Z]/g, '');"
+              [(ngModel)]="us.data.application.physicalcity_name"
+              (ngModelChange)="us.update(); validateLength17(us.data.application.physicalcity_name)">
+          </label>
+          <label>
+            <span class="form__title">Province</span>
+            <input type="text" maxlength="17"
+              oninput="this.value = this.value.replace(/[^a-zA-Z\s]/g, '');"
+              [(ngModel)]="us.data.application.physicalprovince_name"
+              (ngModelChange)="us.update(); validateLength17(us.data.application.physicalprovince_name)">
+          </label>
+          <label>
+            <span class="form__title">Postal code</span>
+            <input type="text" maxlength="8"
+              oninput="this.value = this.value.replace(/[^a-zA-Z0-9.]/g, '');"
+              [(ngModel)]="us.data.application.physicalpostalcode_name"
+              (ngModelChange)="us.update(); validateLength8(us.data.application.physicalpostalcode_name)">
+          </label>
+        </div>
+        <label *ngIf="us.data.application.physicaladdress_name=='addressforeign'">
+          <span class="form__title">Country</span>
+          <input type="text" maxlength="17"
+            oninput="this.value = this.value.replace(/[^a-zA-Z\s]/g, '');"
+            [(ngModel)]="us.data.application.physicalcountry_name"
+            (ngModelChange)="us.update(); validateLength17(us.data.application.physicalcountry_name)">
+        </label>
+        <label>
+          <span class="form__title">Type of address</span>
+          <!-- <ng2-flatpickr placeholder="mm/dd/yyyy" [config]="pickerOptions" [setDate]="us.data.application.physicaltypeofaddress_name" [(ngModel)]="us.data.application.physicaltypeofaddress_name" (ngModelChange)="us.update();"></ng2-flatpickr> -->
+          <!-- <input type="date" placeholder="mm/dd/yyyy" [(ngModel)]="us.data.application.physicaltypeofaddress_name" (ngModelChange)="us.update();"> -->
+
+          <!-- <input type="text" placeholder="mm/dd/yyyy" class="form-control" bsDatepicker
+          [(ngModel)]="us.data.application.physicaltypeofaddress_name" (ngModelChange)="us.update();"> -->
+
+          <my-date [date]="us.data.application.physicaltypeofaddress_name"
+            (update)="us.data.application.physicaltypeofaddress_name= $event; us.update()"></my-date>
+        </label>
+      </div>
+      <div class="form__check">
+        <span>Does the above country's native written language use Roman letters?</span>
+        <label>
+          <input type="radio" name="other_name" [value]="'yes'" [(ngModel)]="us.data.application.country_name"
+            (ngModelChange)="us.update();">
+          <span class="check">Yes</span>
+        </label>
+        <label>
+          <input type="radio" name="other_name" [value]="'no'" [(ngModel)]="us.data.application.country_name"
+            (ngModelChange)="us.update();">
+          <span class="check">No</span>
+        </label>
+      </div>
+      <div class="sub__form-inner" *ngIf="us.data.application.country_name=='no'">
+        <span class="form__discription">Enter the above address in its native written language:</span>
+        <div class="form__inner">
+          <label>
+            <span class="subform__title">Type of address</span>
+            <select name="" id="" [(ngModel)]="us.data.application.subphysicaladdress_name"
+              (ngModelChange)="us.update();">
+              <option value="romanusaddress">U.S. address</option>
+              <option value="romanforeignaddress">Foreign address</option>
+            </select>
+          </label>
+          <label>
+            <span class="form__title">Street number and name</span>
+            <input type="text"
+              maxlength="25"
+              oninput="this.value = this.value.replace(/[^a-zA-Z0-9\s]/g, '');"
+              [(ngModel)]="us.data.application.subphysicalstreet_name"
+              (ngModelChange)="us.update(); validateLength25(us.data.application.subphysicalstreet_name)">
+          </label>
+          <div class="double__form">
+            <span class="form__title">Apt./Ste./Flr. Number (if any)</span>
+            <div>
+              <select name="" id="" [(ngModel)]="us.data.application.subphysicalapt_name"
+                (ngModelChange)="us.update();">
+                <option value="Apt.">Apt.</option>
+                <option value="Ste.">Ste.</option>
+                <option value="Flr.">Flr.</option>
+              </select>
+              <input type="text" placeholder="" [(ngModel)]="us.data.application.subphysicalste_name"
+                (ngModelChange)="us.update();">
+            </div>
+          </div>
+          <div class="forms" *ngIf="us.data.application.subphysicaladdress_name=='romanusaddress'">
+            <label>
+              <span class="form__title">City or town</span>
+              <input type="text" maxlength="17"
+                oninput="this.value = this.value.replace(/[^a-zA-Z]/g, '');"
+                [(ngModel)]="us.data.application.subphysicalcity_name"
+                (ngModelChange)="us.update(); validateLength17(us.data.application.subphysicalcity_name)">
+            </label>
+            <label>
+              <span class="form__title">State</span>
+              <select [(ngModel)]="us.data.application.subphysicalprovince_name" (ngModelChange)="us.update();"> >
+                <option>AL</option>
+                <option>AK</option>
+                <option>AZ</option>
+                <option>AR</option>
+                <option>CA</option>
+                <option>CO</option>
+                <option>CT</option>
+                <option>DE</option>
+                <option>DC</option>
+                <option>FL</option>
+                <option>GA</option>
+                <option>HI</option>
+                <option>ID</option>
+                <option>IL</option>
+                <option>IN</option>
+                <option>IA</option>
+                <option>KS</option>
+                <option>KY</option>
+                <option>LA</option>
+                <option>ME</option>
+                <option>MD</option>
+                <option>MA</option>
+                <option>MI</option>
+                <option>MN</option>
+                <option>MS</option>
+                <option>MO</option>
+                <option>MT</option>
+                <option>NE</option>
+                <option>NV</option>
+                <option>NH</option>
+                <option>NJ</option>
+                <option>NM</option>
+                <option>NY</option>
+                <option>NC</option>
+                <option>ND</option>
+                <option>OH</option>
+                <option>OK</option>
+                <option>OR</option>
+                <option>PA</option>
+                <option>RI</option>
+                <option>SC</option>
+                <option>SD</option>
+                <option>TN</option>
+                <option>TX</option>
+                <option>UT</option>
+                <option>VT</option>
+                <option>VA</option>
+                <option>WA</option>
+                <option>WV</option>
+                <option>WI</option>
+                <option>WY</option>
+              </select>
+            </label>
+            <label>
+              <span class="form__title">ZIP code</span>
+              <input type="text" maxlength="5"
+                oninput="this.value = this.value.replace(/[^0-9.]/g, ''); this.value = this.value.replace(/(\..*)\./g, '$1')"
+                [(ngModel)]="us.data.application.subphysicalpostalcode_name" (ngModelChange)="us.update();">
+            </label>
+          </div>
+          <div class="forms" *ngIf="us.data.application.subphysicaladdress_name=='romanforeignaddress'">
+            <label>
+              <span class="form__title">City or town</span>
+              <input type="text" maxlength="17"
+                oninput="this.value = this.value.replace(/[^a-zA-Z]/g, '');"
+                [(ngModel)]="us.data.application.subphysicalcity_name"
+                (ngModelChange)="us.update(); validateLength17(us.data.application.subphysicalcity_name)">
+            </label>
+            <label>
+              <span class="form__title">Province</span>
+              <input type="text" maxlength="17"
+                oninput="this.value = this.value.replace(/[^a-zA-Z\s]/g, '');"
+                [(ngModel)]="us.data.application.subphysicalprovince_name"
+                (ngModelChange)="us.update(); validateLength17(us.data.application.subphysicalprovince_name)">
+            </label>
+            <label>
+              <span class="form__title">Postal code</span>
+              <input type="text" maxlength="8"
+                oninput="this.value = this.value.replace(/[^a-zA-Z0-9.]/g, '');"
+                [(ngModel)]="us.data.application.subphysicalpostalcode_name"
+                (ngModelChange)="us.update(); validateLength8(us.data.application.subphysicalpostalcode_name)">
+            </label>
+          </div>
+          <label *ngIf="us.data.application.subphysicaladdress_name=='romanforeignaddress'">
+            <span class="form__title">Country</span>
+            <input type="text" maxlength="17"
+              oninput="this.value = this.value.replace(/[^a-zA-Z\s]/g, '');"
+              [(ngModel)]="us.data.application.subphysicalcountry_name"
+              (ngModelChange)="us.update(); validateLength17(us.data.application.subphysicalcountry_name)">
+          </label>
+        </div>
+      </div>
+      <span class="form__subdiscription">Sources for this page (unless otherwise cited above): USCIS Forms <a
+          target="_blank" href="https://www.uscis.gov/sites/default/files/document/forms/i-130.pdf">I-130</a>
+      </span>
+      <div class="section__container-btn">
+        <a class="form__btn-back" (click)="us.pagesection=2;us.top();">
+          < Back </a>
+            <a class="form__btn-continue" (click)="us.pagesection=4;us.top();"> Continue ></a>
+      </div>
+    </div>
+  </div>
+</div>
+<div *ngIf="us.data.cardholder == 'greencard' && us.data.location == 'outside'">
+  <div *ngIf="us.pagesection==4">
+    <div class="section-form__inner">
+      <h1 class="section__title">About {{us.data.application.name && us.data.application.name + "'s" || "Applicant's"}}
+        future address inside the U.S.</h1>
+      <span class="form__discription">Provide the address in the United States where {{us.data.application.name &&
+        us.data.application.name || "Applicant"}} intends to live:</span>
+      <div class="form__inner">
+        <label>
+          <span class="form__title">Type of address</span>
+          <select name="" id="" [(ngModel)]="us.data.application.futureaddress_name" (ngModelChange)="us.update();">
+            <option value="futureusaddress">U.S. address</option>
+            <option value="futureforeignaddress">Foreign address</option>
+          </select>
+        </label>
+        <label>
+          <span class="form__title">Street number and name</span>
+          <input type="text" maxlength="25"
+            oninput="this.value = this.value.replace(/[^a-zA-Z0-9\s]/g, '');"
+            [(ngModel)]="us.data.application.futurestreet_name"
+            (ngModelChange)="us.update(); validateLength25(us.data.application.futurestreet_name)">
+        </label>
+        <div class="double__form">
+          <span class="form__title">Apt./Ste./Flr. Number (if any)</span>
+          <div>
+            <select name="" id="" [(ngModel)]="us.data.application.futureapt_name" (ngModelChange)="us.update();">
+              <option value="">Apt.</option>
+              <option value="">Ste.</option>
+              <option value="">Flr.</option>
+            </select>
+            <input type="text" placeholder="" [(ngModel)]="us.data.application.futureste_name"
+              (ngModelChange)="us.update();">
+          </div>
+        </div>
+        <div class="forms" *ngIf="us.data.application.futureaddress_name=='futureusaddress'">
+          <label>
+            <span class="form__title">City or town</span>
+            <input type="text" maxlength="17"
+              oninput="this.value = this.value.replace(/[^a-zA-Z]/g, '');"
+              [(ngModel)]="us.data.application.futurecity_name"
+              (ngModelChange)="us.update(); validateLength17(us.data.application.futurecity_name)">
+          </label>
+          <label>
+            <span class="form__title">State</span>
+            <select class="forms__select" name="" id="" [(ngModel)]="us.data.application.futurestate_name"
+              (ngModelChange)="us.update();">
+              <option>AL</option>
+              <option>AK</option>
+              <option>AZ</option>
+              <option>AR</option>
+              <option>CA</option>
+              <option>CO</option>
+              <option>CT</option>
+              <option>DE</option>
+              <option>DC</option>
+              <option>FL</option>
+              <option>GA</option>
+              <option>HI</option>
+              <option>ID</option>
+              <option>IL</option>
+              <option>IN</option>
+              <option>IA</option>
+              <option>KS</option>
+              <option>KY</option>
+              <option>LA</option>
+              <option>ME</option>
+              <option>MD</option>
+              <option>MA</option>
+              <option>MI</option>
+              <option>MN</option>
+              <option>MS</option>
+              <option>MO</option>
+              <option>MT</option>
+              <option>NE</option>
+              <option>NV</option>
+              <option>NH</option>
+              <option>NJ</option>
+              <option>NM</option>
+              <option>NY</option>
+              <option>NC</option>
+              <option>ND</option>
+              <option>OH</option>
+              <option>OK</option>
+              <option>OR</option>
+              <option>PA</option>
+              <option>RI</option>
+              <option>SC</option>
+              <option>SD</option>
+              <option>TN</option>
+              <option>TX</option>
+              <option>UT</option>
+              <option>VT</option>
+              <option>VA</option>
+              <option>WA</option>
+              <option>WV</option>
+              <option>WI</option>
+              <option>WY</option>
+            </select>
+          </label>
+          <label>
+            <span class="form__title">ZIP code</span>
+            <input type="text" maxlength="5"
+              oninput="this.value = this.value.replace(/[^0-9.]/g, ''); this.value = this.value.replace(/(\..*)\./g, '$1')"
+              [(ngModel)]="us.data.application.futurezyzip_name" (ngModelChange)="us.update();">
+          </label>
+        </div>
+        <div class="forms" *ngIf="us.data.application.futureaddress_name=='futureforeignaddress'">
+          <label>
+            <span class="form__title">City or town</span>
+            <input type="text" maxlength="17"
+              oninput="this.value = this.value.replace(/[^a-zA-Z]/g, '');"
+              [(ngModel)]="us.data.application.futurefuturecity_name"
+              (ngModelChange)="us.update(); validateLength17(us.data.application.futurefuturecity_name)">
+          </label>
+          <label>
+            <span class="form__title">Province</span>
+            <input type="text"  name="" id="" maxlength="17"
+              oninput="this.value = this.value.replace(/[^a-zA-Z]/g, '');"
+              [(ngModel)]="us.data.application.futurefuturestate_name"
+              (ngModelChange)="us.update(); validateLength17(us.data.application.futurefuturestate_name)">
+          </label>
+          <label>
+            <span class="form__title">Postal code</span>
+            <input type="text" maxlength="8"
+              oninput="this.value = this.value.replace(/[^a-zA-Z0-9.]/g, '');"
+              [(ngModel)]="us.data.application.futurefuturezyzip_name"
+              (ngModelChange)="us.update(); validateLength8(us.data.application.futurefuturezyzip_name)">
+          </label>
+        </div>
+        <label *ngIf="us.data.application.futureaddress_name=='futureforeignaddress'">
+          <span class="form__title">Country</span>
+          <input type="text" maxlength="17"
+            oninput="this.value = this.value.replace(/[^a-zA-Z\s]/g, '');"
+            [(ngModel)]="us.data.application.recentcountryfuture_name"
+            (ngModelChange)="us.update(); validateLength17(us.data.application.recentcountryfuture_name)">
+        </label>
+      </div>
+      <span class="form__subdiscription">Sources for this page (unless otherwise cited above): USCIS Form <a
+          target="_blank" href="https://www.uscis.gov/sites/default/files/document/forms/i-130.pdf">I-130</a>
+      </span>
+      <div class="section__container-btn">
+        <a class="form__btn-back" (click)="us.pagesection=3;us.top();">
+          < Back </a>
+            <a class="form__btn-continue" (click)="us.pagesection=5;us.top();"> Continue ></a>
+      </div>
+    </div>
+  </div>
+</div>
+<div *ngIf="us.data.cardholder == 'greencard' && us.data.location == 'outside'">
+  <div *ngIf="us.pagesection==5">
+    <div class="section-form__inner">
+      <h1 class="section__title">{{us.data.application.name && us.data.application.name + "'s" || "Applicant's"}}
+        previous physical addresses for the last five years</h1>
+      <span class="form__discription">Provide physical addresses for everywhere {{us.data.application.name ||
+        "Applicant"}} has lived during the last five years, whether inside or outside the United States.
+      </span>
+
+      <div class="">
+        <input type="checkbox" name="urrentaddressfiveyears_name"
+          [(ngModel)]="us.data.application.urrentaddressfiveyears_name" (ngModelChange)="us.update();">
+        <span class="check__discription">{{us.data.application.name && us.data.application.name || "Applicant"}} has
+          lived at the current address for the last five years.</span>
+      </div>
+      <div *ngIf="!us.data.application.urrentaddressfiveyears_name">
+        <div class="add-form__inner" *ngFor="let name of us.data.application.typeofaddress_names;index as i">
+          <div class="add-form__inner-title">
+            <span>PREVIOUS PHYSICAL ADDRESS {{i+1}}</span>
+            <button class="inner-title__btn"
+              (click)="us.data.application.typeofaddress_names.splice(i,1);us.update()">X</button>
+          </div>
+          <div class="form__inner">
+            <label>
+              <span class="form__title">Type of address</span>
+              <select class="add-forms__select" name="" id="" [(ngModel)]="name.previousaddress_name"
+                (ngModelChange)="us.update();">
+                <option value="USA">U.S. address</option>
+                <option value="Foreign address">Foreign address</option>
+              </select>
+            </label>
+            <label>
+              <span class="form__title">Street number and name</span>
+              <input type="text" maxlength="25"
+                oninput="this.value = this.value.replace(/[^a-zA-Z0-9\s]/g, '');"
+                [(ngModel)]="name.usplaces_name"
+                (ngModelChange)="us.update(); validateLength25(name.usplaces_name)">
+            </label>
+            <div class="double__form">
+              <span class="form__title">Apt./Ste./Flr. Number (if any)</span>
+              <div>
+                <select [(ngModel)]="name.numberaptste_name" (ngModelChange)="us.update();">
+                  <option value="Apt">Apt.</option>
+                  <option value="Ste">Ste.</option>
+                  <option value="Flr">Flr.</option>
+                </select>
+                <input type="text" placeholder="" maxlength="4" [(ngModel)]="name.stedf_name"
+                  (ngModelChange)="us.update();">
+              </div>
+            </div>
+            <label>
+              <span class="form__title">City or town</span>
+              <input type="text" maxlength="17"
+                oninput="this.value = this.value.replace(/[^a-zA-Z]/g, '');"
+                [(ngModel)]="name.previousfuturecityq_name"
+                (ngModelChange)="us.update(); validateLength17(name.previousfuturecityq_name)">
+            </label>
+            <div class="forms" *ngIf="name.previousaddress_name=='USA'">
+
+              <label>
+                <span class="form__title">State</span>
+                <select class="forms__select" name="" id="" [(ngModel)]="name.prweviousfuturestate_name"
+                  (ngModelChange)="us.update();">
+                  <option>AL</option>
+                  <option>AK</option>
+                  <option>AZ</option>
+                  <option>AR</option>
+                  <option>CA</option>
+                  <option>CO</option>
+                  <option>CT</option>
+                  <option>DE</option>
+                  <option>DC</option>
+                  <option>FL</option>
+                  <option>GA</option>
+                  <option>HI</option>
+                  <option>ID</option>
+                  <option>IL</option>
+                  <option>IN</option>
+                  <option>IA</option>
+                  <option>KS</option>
+                  <option>KY</option>
+                  <option>LA</option>
+                  <option>ME</option>
+                  <option>MD</option>
+                  <option>MA</option>
+                  <option>MI</option>
+                  <option>MN</option>
+                  <option>MS</option>
+                  <option>MO</option>
+                  <option>MT</option>
+                  <option>NE</option>
+                  <option>NV</option>
+                  <option>NH</option>
+                  <option>NJ</option>
+                  <option>NM</option>
+                  <option>NY</option>
+                  <option>NC</option>
+                  <option>ND</option>
+                  <option>OH</option>
+                  <option>OK</option>
+                  <option>OR</option>
+                  <option>PA</option>
+                  <option>RI</option>
+                  <option>SC</option>
+                  <option>SD</option>
+                  <option>TN</option>
+                  <option>TX</option>
+                  <option>UT</option>
+                  <option>VT</option>
+                  <option>VA</option>
+                  <option>WA</option>
+                  <option>WV</option>
+                  <option>WI</option>
+                  <option>WY</option>
+                </select>
+              </label>
+              <label>
+                <div> <span class="form__title">ZIP code</span>
+                  <div class="tooltip-container">
+                    <span class="tooltip__i">i</span>
+                    <div class="tooltip">
+                      <span>You can look up your USPS zip code at <a href="https://tools.usps.com/go/ZipLookupAction_input">tools.usps.com</a></span>
+                      <span class="tooltips__link">Source: <a target="_blank"
+                          href="https://www.uscis.gov/sites/default/files/document/forms/i-130.pdf">USCIS Form
+                          I-130
+                          </a></span>
+                    </div>
+                  </div>
+                </div>
+                <input type="text" maxlength="5"
+                  oninput="this.value = this.value.replace(/[^0-9.]/g, ''); this.value = this.value.replace(/(\..*)\./g, '$1')"
+                  [(ngModel)]="name.previousfuturewzyzip_name" (ngModelChange)="us.update();">
+              </label>
+            </div>
+
+            <!-- Move in date -->
+            <div class="forms" *ngIf="name.previousaddress_name=='Foreign address'">
+              <label>
+                <span class="form__title">Province</span>
+                <input type="text"  name="" id="" maxlength="17"
+                  oninput="this.value = this.value.replace(/[^a-zA-Z\s]/g, '');"
+                  [(ngModel)]="name.futurfuturestate_name"
+                  (ngModelChange)="us.update(); validateLength17(name.futurfuturestate_name)">
+              </label>
+              <label>
+                <span class="form__title">Postal code</span>
+                <input type="text" maxlength="8"
+                  oninput="this.value = this.value.replace(/[^a-zA-Z0-9.]/g, '');"
+                  [(ngModel)]="name.futurepreviousfutu_name"
+                  (ngModelChange)="us.update(); validateLength8(name.futurepreviousfutu_name)">
+              </label>
+            </div>
+            <label *ngIf="name.previousaddress_name=='Foreign address'">
+              <span class="form__title">Country</span>
+              <input type="text" maxlength="17"
+                oninput="this.value = this.value.replace(/[^a-zA-Z\s]/g, '');"
+                [(ngModel)]="name.recenstcountryfuture_name"
+                (ngModelChange)="us.update(); validateLength17(name.recenstcountryfuture_name)">
+            </label>
+            <label>
+              <div>
+                <span class="form__title">Move in date </span>
+                <button class="tooltip-btn" (click)="modal.show({component: 'usciss'});">i</button>
+              </div>
+              <!-- <ng2-flatpickr placeholder="mm/dd/yyyy" [config]="pickerOptions" [setDate]="name.previousmovein_name" [(ngModel)]="name.previousmovein_name" (ngModelChange)="us.update();"></ng2-flatpickr> -->
+              <input type="date" placeholder="mm/dd/yyyy" [(ngModel)]="name.previousmovein_name" (ngModelChange)="us.update();">
+              <!-- <input type="text" placeholder="mm/dd/yyyy" class="form-control" bsDatepicker
+              [(ngModel)]="name.previousmovein_name" (ngModelChange)="us.update();"> -->
+
+
+              <my-date [date]="name.previousmovein_name" (update)="name.previousmovein_name= $event; us.update()">
+              </my-date>
+            </label>
+            <label>
+              <span class="form__title">Move out date</span>
+              <!-- <ng2-flatpickr placeholder="mm/dd/yyyy" [config]="pickerOptions" [setDate]="name.previousmoveout_name" [(ngModel)]="name.previousmoveout_name" (ngModelChange)="us.update();"></ng2-flatpickr> -->
+              <input type="date" placeholder="mm/dd/yyyy" [(ngModel)]="name.previousmoveout_name" (ngModelChange)="us.update();">
+              <!-- <input type="text" placeholder="mm/dd/yyyy" class="form-control" bsDatepicker
+              [(ngModel)]="name.previousmoveout_name" (ngModelChange)="us.update();"> -->
+              <my-date [date]="name.previousmoveout_name" (update)="name.previousmoveout_name= $event; us.update()">
+              </my-date>
+            </label>
+          </div>
+        </div>
+        <div>
+          <button class="add-form__btn" (click)="typeofaddress()">Add address +</button>
+        </div>
+      </div>
+      <span class="form__subdiscription">Sources for this page (unless otherwise cited above): USCIS Form <a
+          target="_blank" href="https://www.uscis.gov/sites/default/files/document/forms/i-130.pdf">I-130,</a>
+        <a target="_blank" href="https://www.uscis.gov/sites/default/files/document/forms/i-485.pdf">I-485</a>
+      </span>
+      <div class="section__container-btn">
+        <a class="form__btn-back" (click)="us.pagesection=4;us.top();">
+          < Back </a>
+            <a class="form__btn-continue" (click)="us.pagesection=6;us.top();"> Continue ></a>
+      </div>
+    </div>
+  </div>
+</div>
+<div *ngIf="us.data.cardholder == 'greencard' && us.data.location == 'outside'">
+  <div *ngIf="us.pagesection==6">
+    <div class="section-form__inner">
+      <h1 class="section__title">What was {{us.data.application.name && us.data.application.name + "'s" ||
+        "Applicant's"}} most recent address outside the U.S. where {{us.data.application.name &&
+        us.data.application.name || "Applicant"}} lived for more than one year?</h1>
+      <div>
+        <div class="form__inner">
+          <label>
+            <span class="form__title">Type of address</span>
+            <select name="" id="" [(ngModel)]="us.data.application.usoneyearaddress_name"
+              (ngModelChange)="us.update();">
+              <option [disabled]="true" value="U.S. address">U.S. address</option>
+              <option value="Foreign address">Foreign address</option>
+            </select>
+          </label>
+          <label>
+            <span class="form__title">Street number and name</span>
+            <input type="text" maxlength="25"
+              oninput="this.value = this.value.replace(/[^a-zA-Z0-9\s]/g, '');"
+              [(ngModel)]="us.data.application.usoneyearnumber_name"
+              (ngModelChange)="us.update(); validateLength25(us.data.application.usoneyearnumber_name)">
+          </label>
+          <div class="double__form">
+            <span class="form__title">Apt./Ste./Flr. Number (if any)</span>
+            <div>
+              <select name="" id="" [(ngModel)]="us.data.application.usoneyearany_name" (ngModelChange)="us.update();">
+                <option value="Apt.">Apt.</option>
+                <option value="Ste."></option>
+                <option value="Flr.">Flr.</option>
+              </select>
+              <input type="text" placeholder="" [(ngModel)]="us.data.application.usoneyearflr_name"
+                (ngModelChange)="us.update();">
+            </div>
+          </div>
+          <div class="forms" *ngIf="us.data.application.usoneyearaddress_name=='Foreign address'">
+            <label>
+              <span class="form__title">City or town</span>
+              <input type="text" maxlength="17"
+                oninput="this.value = this.value.replace(/[^a-zA-Z]/g, '');"
+                [(ngModel)]="us.data.application.usoneyearcity_name"
+                (ngModelChange)="us.update(); validateLength17(us.data.application.usoneyearcity_name)">
+            </label>
+            <label>
+              <span class="form__title">Province</span>
+              <input type="text" maxlength="17"
+                oninput="this.value = this.value.replace(/[^a-zA-Z\s]/g, '');"
+                [(ngModel)]="us.data.application.usoneyearprovince_name"
+                (ngModelChange)="us.update(); validateLength17(us.data.application.usoneyearprovince_name)">
+            </label>
+            <label>
+              <span class="form__title">Postal code</span>
+              <input type="text" maxlength="8"
+                oninput="this.value = this.value.replace(/[^a-zA-Z0-9.]/g, '');"
+                [(ngModel)]="us.data.application.usoneyearcode_name"
+                (ngModelChange)="us.update(); validateLength8(us.data.application.usoneyearcode_name)">
+            </label>
+          </div>
+          <label>
+            <span class="form__title">Country</span>
+            <input type="text" maxlength="17"
+              oninput="this.value = this.value.replace(/[^a-zA-Z\s]/g, '');"
+              [(ngModel)]="us.data.application.usoneyearcountry_name"
+              (ngModelChange)="us.update(); validateLength17(us.data.application.usoneyearcountry_name)">
+          </label>
+          <label>
+            <span class="form__title">Move in date</span>
+            <!-- <ng2-flatpickr placeholder="mm/dd/yyyy" [config]="pickerOptions" [setDate]="us.data.application.usoneyearindate_name" [(ngModel)]="us.data.application.usoneyearindate_name" (ngModelChange)="us.update();"></ng2-flatpickr> -->
+            <input type="date" placeholder="mm/dd/yyyy" [(ngModel)]="us.data.application.usoneyearindate_name" (ngModelChange)="us.update();">
+            <!-- <input type="text" placeholder="mm/dd/yyyy" class="form-control" bsDatepicker
+            [(ngModel)]="us.data.application.usoneyearindate_name" (ngModelChange)="us.update();"> -->
+
+            <my-date [date]="us.data.application.usoneyearindate_name"
+              (update)="us.data.application.usoneyearindate_name= $event; us.update()" [class]=""></my-date>
+          </label>
+          <label>
+            <span class="form__title">Move out date</span>
+            <!-- <ng2-flatpickr placeholder="mm/dd/yyyy" [config]="pickerOptions" [setDate]="us.data.application.usoneyearoutdate_name" [(ngModel)]="us.data.application.usoneyearoutdate_name" (ngModelChange)="us.update();"></ng2-flatpickr> -->
+            <input type="date" placeholder="mm/dd/yyyy" [(ngModel)]="us.data.application.usoneyearoutdate_name" (ngModelChange)="us.update();">
+            <!-- <input type="text" placeholder="mm/dd/yyyy" class="form-control" bsDatepicker
+            [(ngModel)]="us.data.application.usoneyearoutdate_name" (ngModelChange)="us.update();"> -->
+
+            <my-date [date]="us.data.application.usoneyearoutdate_name"
+              (update)="us.data.application.usoneyearoutdate_name= $event; us.update()"></my-date>
+          </label>
+        </div>
+      </div>
+      <span class="form__subdiscription">Sources for this page (unless otherwise cited above): USCIS Forms <a
+          target="_blank" href="https://www.uscis.gov/sites/default/files/document/forms/i-130a.pdf">I-130A,</a> <a
+          target="_blank" href="https://www.uscis.gov/sites/default/files/document/forms/i-485.pdf">I-485</a>
+        <!-- <a
+          target="_blank" href="https://www.uscis.gov/sites/default/files/document/forms/i-864.pdf">I-864,</a> <a
+          target="_blank" href="https://www.uscis.gov/sites/default/files/document/forms/i-485.pdf">I-485,</a> <a
+          target="_blank" href="https://www.uscis.gov/sites/default/files/document/forms/i-131.pdf">I-131,</a> <a
+          target="_blank" href="https://www.uscis.gov/sites/default/files/document/forms/i-765.pdf">I-765</a> -->
+      </span>
+      <div class="section__container-btn">
+        <a class="form__btn-back" (click)="us.pagesection=5;us.top();">
+          < Back </a>
+            <a class="form__btn-continue" (click)="us.section='summary';us.top();"> Continue ></a>
+      </div>
+    </div>
+  </div>
+</div>
+<div *ngIf="us.data.cardholder == 'us' && us.data.location == 'inside'">
+  <div *ngIf="us.pagesection==2">
+    <div class="section-form__inner">
+      <div style="display: flex;
+      align-items: center;">
+        <h1 class="section__title">About {{us.data.application.name && us.data.application.name + "'s" || "Applicant's"}}
+          mailing address inside the U.S.</h1>
+          <button class="tooltip-btn" (click)="modal.show({component: 'mailingaddress'});">i</button>
+        </div>
+      <span class="form__discription">Enter {{us.data.application.name && us.data.application.name + "'s" ||
+        "Applicant's"}} mailing address inside the U.S.:</span>
+      <div class="form__inner">
+        <label>
+          <div class="sub-inner">
+            <span class="form__title">In care of name (if any)</span>
+            <div class="tooltip-container">
+              <span class="tooltip__i">i</span>
+              <div class="tooltip">
+                <span>If your mail is sent to someone other than yourself, please include an “In Care Of Name” as part
+                  of your mailing address. If your U.S. mailing address is in a U.S. territory and it contains an
+                  urbanization name, list the urbanization name in the “In Care Of Name” space provided.</span>
+                <span class="tooltips__link">Source: <a target="_blank"
+                    href="https://www.uscis.gov/sites/default/files/document/forms/i-765instr.pdf">USCIS Form I-765
+                    </a></span>
+              </div>
+            </div>
+          </div>
+          <input type="text" maxlength="27"
+            [(ngModel)]="us.data.application.mailing_name"
+            oninput="this.value = this.value.replace(/[^a-zA-Z\s.]/g, '');"
+            (ngModelChange)="us.data.application.mailing_name = us.data.application.mailing_name.toUpperCase();
+              us.update(); validateLength27(us.data.application.mailing_name)">
+        </label>
+        <label>
+          <span class="form__title">Type of address</span>
+          <select name="" id="" [class.err]="err.adrType" [(ngModel)]="us.data.application.mailingaddress_name"
+            (ngModelChange)="us.data.application.mailingaddress_name = us.data.application.mailingaddress_name.toUpperCase();
+              us.update(); err.adrType = false"
+            (blur)="!us.data.application.mailingaddress_name && err.adrType = true">
+            <option value="USA">U.S. address</option>
+            <option [disabled]="true" value="foreign-address">Foreign address</option>
+          </select>
+        </label>
+        <span *ngIf="err.adrType" class="errspan">This field is required
+        </span>
+        <label>
+          <span class="form__title">Street number and name</span>
+          <input type="text" maxlength="25"
+            [class.err]="err.strName"
+            oninput="this.value = this.value.replace(/[^a-zA-Z0-9\s]/g, '');"
+            [(ngModel)]="us.data.application.mailingnumber_name"
+            (ngModelChange)="us.data.application.mailingnumber_name = us.data.application.mailingnumber_name.toUpperCase();
+              us.update(); err.strName = false; validateLength25(us.data.application.mailingnumber_name)"
+            (blur)="!us.data.application.mailingnumber_name && err.strName = true">
+        </label>
+        <span *ngIf="err.strName" class="errspan">This field is required
+        </span>
+        <div class="double__form">
+          <span class="form__title">Apt./Ste./Flr. Number (if any)</span>
+          <div>
+            <select name="" id="" [(ngModel)]="us.data.application.apt_name"
+            (ngModelChange)="us.update();">
+              <option value="Apt.">Apt.</option>
+              <option value="Ste.">Ste.</option>
+              <option value="Flr.">Flr.</option>
+            </select>
+            <input type="text" placeholder="" [(ngModel)]="us.data.application.ste_name"
+            (ngModelChange)="us.data.application.ste_name = us.data.application.ste_name.toUpperCase();
+              us.update();">
+          </div>
+        </div>
+        <div class="forms" *ngIf="us.data.application.mailingaddress_name=='USA'">
+          <label>
+            <span class="form__title">City or town</span>
+            <input type="text" maxlength="17"
+              oninput="this.value = this.value.replace(/[^a-zA-Z\s]/g, '');"
+              [class.err]="err.cityName" [(ngModel)]="us.data.application.mailingcity_name"
+              (ngModelChange)="us.data.application.mailingcity_name = us.data.application.mailingcity_name.toUpperCase();
+                us.update(); err.cityName = false; validateLength17(us.data.application.mailingcity_name)"
+              (blur)="!us.data.application.mailingcity_name && err.cityName = true">
+          </label>
+          <span *ngIf="err.cityName" class="errspan">This field is required
+          </span>
+          <label>
+            <span class="form__title">State</span>
+            <select name="" id="" [class.err]="err.stateName"
+              [(ngModel)]="us.data.application.insidemailingprovince_name"
+              (ngModelChange)="us.data.application.insidemailingprovince_name = us.data.application.insidemailingprovince_name.toUpperCase();
+                us.update(); err.stateName = false"
+              (blur)="!us.data.application.insidemailingprovince_name && err.stateName = true">
+              <option>AL</option>
+              <option>AK</option>
+              <option>AZ</option>
+              <option>AR</option>
+              <option>CA</option>
+              <option>CO</option>
+              <option>CT</option>
+              <option>DE</option>
+              <option>DC</option>
+              <option>FL</option>
+              <option>GA</option>
+              <option>HI</option>
+              <option>ID</option>
+              <option>IL</option>
+              <option>IN</option>
+              <option>IA</option>
+              <option>KS</option>
+              <option>KY</option>
+              <option>LA</option>
+              <option>ME</option>
+              <option>MD</option>
+              <option>MA</option>
+              <option>MI</option>
+              <option>MN</option>
+              <option>MS</option>
+              <option>MO</option>
+              <option>MT</option>
+              <option>NE</option>
+              <option>NV</option>
+              <option>NH</option>
+              <option>NJ</option>
+              <option>NM</option>
+              <option>NY</option>
+              <option>NC</option>
+              <option>ND</option>
+              <option>OH</option>
+              <option>OK</option>
+              <option>OR</option>
+              <option>PA</option>
+              <option>RI</option>
+              <option>SC</option>
+              <option>SD</option>
+              <option>TN</option>
+              <option>TX</option>
+              <option>UT</option>
+              <option>VT</option>
+              <option>VA</option>
+              <option>WA</option>
+              <option>WV</option>
+              <option>WI</option>
+              <option>WY</option>
+            </select>
+
+          </label>
+          <span *ngIf="err.stateName" class="errspan">This field is required
+          </span>
+          <label>
+            <div>
+              <span class="form__title">Zip code</span>
+              <div class="tooltip-container">
+                <span class="tooltip__i">i</span>
+                <div class="tooltip">
+                  <span>You can look up your USPS zip code at <a target="_blank"
+                      href="https://tools.usps.com/go/ZipLookupAction_input">tools.usps.com.</a> </span>
+                  <span class="tooltips__link">Source: <a target="_blank"
+                      href="https://www.uscis.gov/sites/default/files/document/forms/i-130.pdf">USCIS Form
+                      I-130</a></span>
+                </div>
+              </div>
+            </div>
+            <input type="text"
+              oninput="this.value = this.value.replace(/[^0-9.]/g, ''); this.value = this.value.replace(/(\..*)\./g, '$1')"
+              maxlength="5" [class.err]="err.zipName" [(ngModel)]="us.data.application.mailingpostalcode_name"
+              (ngModelChange)="us.update(); err.zipName = false"
+              (blur)="!us.data.application.mailingpostalcode_name && err.zipName = true">
+          </label>
+          <span *ngIf="err.zipName" class="errspan">This field is required
+          </span>
+        </div>
+        <div class="forms" *ngIf="us.data.application.mailingaddress_name=='foreign-address'">
+          <label>
+            <span class="form__title">City or town</span>
+            <input type="text" maxlength="17"
+              oninput="this.value = this.value.replace(/[^a-zA-Z\s]/g, '');"
+              [(ngModel)]="us.data.application.mailingcity_name"
+              (ngModelChange)="us.update(); validateLength17(us.data.application.mailingcity_name)">
+          </label>
+          <label>
+            <span class="form__title">Province</span>
+            <input type="text" maxlength="17"
+              oninput="this.value = this.value.replace(/[^a-zA-Z\s]/g, '');"
+              [(ngModel)]="us.data.application.mailingprovince_name"
+              (ngModelChange)="us.update(); validateLength17(us.data.application.mailingprovince_name)">
+          </label>
+          <label>
+            <div>
+              <span class="form__title">Postal code</span>
+              <div class="tooltip-container">
+                <span class="tooltip__i">i</span>
+                <div class="tooltip">
+                  <span>You can look up your USPS zip code at <a target="_blank"
+                      href="https://tools.usps.com/go/ZipLookupAction_input">tools.usps.com.</a> </span>
+                  <span class="tooltips__link">Source: <a target="_blank"
+                      href="https://www.uscis.gov/sites/default/files/document/forms/i-130.pdf">USCIS Form
+                      I-130</a></span>
+                </div>
+              </div>
+            </div>
+            <input type="text" maxlength="8"
+              oninput="this.value = this.value.replace(/[^a-zA-Z0-9.]/g, '');"
+              [(ngModel)]="us.data.application.mailingpostalcode_name"
+              (ngModelChange)="us.update(); validateLength8(us.data.application.mailingpostalcode_name)">
+          </label>
+        </div>
+        <label *ngIf="us.data.application.mailingaddress_name=='foreign-address'">
+          <span class="form__title">Country</span>
+          <input type="text" maxlength="17"
+            oninput="this.value = this.value.replace(/[^a-zA-Z\s]/g, '');"
+            [(ngModel)]="us.data.application.mailingcountry_name"
+            (ngModelChange)="us.update(); validateLength17(us.data.application.family_name)">
+        </label>
+      </div>
+      <span class="form__subdiscription">Sources for this page (unless otherwise cited above): USCIS Forms <a
+          target="_blank" href="https://www.uscis.gov/sites/default/files/document/forms/i-864.pdf">I-864,</a> <a
+          target="_blank" href="https://www.uscis.gov/sites/default/files/document/forms/i-485.pdf">I-485,</a> <a
+          target="_blank" href="https://www.uscis.gov/sites/default/files/document/forms/i-131.pdf">I-131,</a> <a
+          target="_blank" href="https://www.uscis.gov/sites/default/files/document/forms/i-765.pdf">I-765</a>
+      </span>
+      <div class="section__container-btn">
+        <a class="form__btn-back" (click)="us.pagesection=1;us.top();">
+          < Back </a>
+            <a class="form__btn-continue" (click)="ChangeTab2(3);us.top();"> Continue ></a>
+      </div>
+    </div>
+  </div>
+</div>
+<div *ngIf="us.data.cardholder == 'us' && us.data.location == 'inside'">
+  <div *ngIf="us.pagesection==3">
+    <div class="section-form__inner">
+      <h1 class="section__title">About {{us.data.application.name && us.data.application.name + "'s" || "Applicant's"}}
+        physical address inside the U.S.</h1>
+      <span class="forms__title">Is {{us.data.application.name && us.data.application.name + "'s" || "Applicant's"}}
+        physical address inside the U.S. the same as {{us.data.application.name && us.data.application.name + "'s" ||
+        "Applicant's"}} mailing address?</span>
+      <div class="form__check">
+        <label>
+          <input type="radio" name="mailingaddressus_name" [class.err]="err.choice" [value]="'yes'"
+            [(ngModel)]="us.data.application.mailingaddressus_name"
+            (ngModelChange)="us.update(); err.choice = false"
+            (blur)="!us.data.application.mailingaddressus_name && err.choice = true">
+          <span class="check">Yes</span>
+        </label>
+        <label>
+          <input type="radio" name="mailingaddressus_name" [class.err]="err.choice" [value]="'no'"
+            [(ngModel)]="us.data.application.mailingaddressus_name" (ngModelChange)="us.update();err.choice = false"
+            (blur)="!us.data.application.mailingaddressus_name && err.choice = true">
+          <span class="check">No</span>
+        </label>
+      </div>
+      <span *ngIf="err.choice" class="errspan">This field is required
+      </span>
+      <div class="form__sub-inner" *ngIf="us.data.application.mailingaddressus_name=='yes'">
+        <span class="forms__title">Move in date of the current physical address</span>
+        <label>
+          <!-- <ng2-flatpickr placeholder="mm/dd/yyyy" [config]="pickerOptions" [setDate]="us.data.application.currentphysicaladdressus_name" [(ngModel)]="us.data.application.currentphysicaladdressus_name" (ngModelChange)="us.update();"></ng2-flatpickr> -->
+          <input type="date" placeholder="mm/dd/yyyy" [(ngModel)]="us.data.application.currentphysicaladdressus_name" (ngModelChange)="us.update();">
+          <!-- <input type="text" placeholder="mm/dd/yyyy" class="form-control" bsDatepicker
+          [(ngModel)]="us.data.application.currentphysicaladdressus_name" (ngModelChange)="us.update();"> -->
+
+
+          <my-date [date]="us.data.application.currentphysicaladdressus_name" [class.err]="err.currData"
+            (update)="us.data.application.currentphysicaladdressus_name= $event; us.update(); err.currData = false"
+            (blur)="!us.data.application.currentphysicaladdressus_name && err.currData = true"></my-date>
+        </label>
+        <span *ngIf="err.currData" class="errspan">This field is required
+        </span>
+      </div>
+      <div *ngIf="us.data.application.mailingaddressus_name=='no'">
+        <div class="forms__title">Enter {{us.data.application.name && us.data.application.name + "'s" || "Applicant's"}}
+          physical address inside the U.S.:</div>
+        <div class="form__inner">
+          <label>
+            <span class="form__title">Type of address</span>
+            <select name="" id="" [class.err]="err.adrType1" [(ngModel)]="us.data.application.insideusaddress_name"
+              (ngModelChange)="us.update(); err.adrType1 = false"
+              (blur)="!us.data.application.insideusaddress_name && err.adrType1 = true">
+              <option value="USA">U.S. address</option>
+              <option [disabled]="true" value="usphsical">Foreign address</option>
+            </select>
+          </label>
+          <span *ngIf="err.adrType1" class="errspan">This field is required
+          </span>
+          <label>
+            <span class="form__title">Street number and name</span>
+            <input type="text" maxlength="25"
+              [class.err]="err.strName1" [(ngModel)]="us.data.application.insideusnumber_name"
+              oninput="this.value = this.value.replace(/[^a-zA-Z0-9\s]/g, '');"
+              (ngModelChange)="us.data.application.insideusnumber_name = us.data.application.insideusnumber_name.toUpperCase();
+                us.update(); err.strName1 = false; validateLength25(us.data.application.insideusnumber_name)"
+              (blur)="!us.data.application.insideusnumber_name && err.strName1 = true">
+          </label>
+          <span *ngIf="err.strName1" class="errspan">This field is required
+          </span>
+          <div class="double__form">
+            <span class="form__title">Apt./Ste./Flr. Number (if any)</span>
+            <div>
+              <select name="" id="" [(ngModel)]="us.data.application.insideusifany_name" (ngModelChange)="us.update();">
+                <option value="Apt">Apt.</option>
+                <option value="Ste">Ste.</option>
+                <option value="Flr">Flr.</option>
+              </select>
+              <input type="text" maxlength="5" placeholder="" [(ngModel)]="us.data.application.usifany_name"
+                (ngModelChange)="us.update();">
+            </div>
+          </div>
+          <div class="forms">
+            <label>
+              <span class="form__title">City or town</span>
+              <input type="text" maxlength="17"
+                oninput="this.value = this.value.replace(/[^a-zA-Z\s]/g, '');"
+                [class.err]="err.cityName1" [(ngModel)]="us.data.application.insideusgcity_name"
+                (ngModelChange)="us.data.application.insideusgcity_name = us.data.application.insideusgcity_name.toUpperCase();
+                  us.update(); err.cityName1 = false; validateLength17(us.data.application.insideusgcity_name)"
+                (blur)="!us.data.application.insideusgcity_name && err.cityName1 = true">
+            </label>
+            <span *ngIf="err.cityName1" class="errspan">This field is required</span>
+            <label>
+              <span class="form__title">State</span>
+              <select name="" [class.err]="err.stateName1" [(ngModel)]="us.data.application.insideusstate_name"
+                (ngModelChange)="us.update(); err.stateName1 = false"
+                (blur)="!us.data.application.insideusstate_name && err.stateName1 = true">
+                <option>AL</option>
+                <option>AK</option>
+                <option>AZ</option>
+                <option>AR</option>
+                <option>CA</option>
+                <option>CO</option>
+                <option>CT</option>
+                <option>DE</option>
+                <option>DC</option>
+                <option>FL</option>
+                <option>GA</option>
+                <option>HI</option>
+                <option>ID</option>
+                <option>IL</option>
+                <option>IN</option>
+                <option>IA</option>
+                <option>KS</option>
+                <option>KY</option>
+                <option>LA</option>
+                <option>ME</option>
+                <option>MD</option>
+                <option>MA</option>
+                <option>MI</option>
+                <option>MN</option>
+                <option>MS</option>
+                <option>MO</option>
+                <option>MT</option>
+                <option>NE</option>
+                <option>NV</option>
+                <option>NH</option>
+                <option>NJ</option>
+                <option>NM</option>
+                <option>NY</option>
+                <option>NC</option>
+                <option>ND</option>
+                <option>OH</option>
+                <option>OK</option>
+                <option>OR</option>
+                <option>PA</option>
+                <option>RI</option>
+                <option>SC</option>
+                <option>SD</option>
+                <option>TN</option>
+                <option>TX</option>
+                <option>UT</option>
+                <option>VT</option>
+                <option>VA</option>
+                <option>WA</option>
+                <option>WV</option>
+                <option>WI</option>
+                <option>WY</option>
+              </select>
+            </label>
+            <span *ngIf="err.stateName1" class="errspan">This field is required</span>
+
+            <label>
+              <span class="form__title">ZIP code </span>
+              <input type="text" maxlength="5" [class.err]="err.zipName1"
+                oninput="this.value = this.value.replace(/[^0-9.]/g, ''); this.value = this.value.replace(/(\..*)\./g, '$1')"
+                [(ngModel)]="us.data.application.insideuscode_name" (ngModelChange)="us.update(); err.zipName1 = false"
+                (blur)="!us.data.application.insideuscode_name && err.zipName1 = true">
+            </label>
+            <span *ngIf="err.zipName1" class="errspan">This field is required</span>
+
+          </div>
+          <label>
+            <span class="form__title">Move in date</span>
+            <!-- <ng2-flatpickr placeholder="mm/dd/yyyy" [config]="pickerOptions" [setDate]="us.data.application.insideusdate_name" [(ngModel)]="us.data.application.insideusdate_name" (ngModelChange)="us.update();"></ng2-flatpickr> -->
+            <input type="date" placeholder="mm/dd/yyyy" [(ngModel)]="us.data.application.insideusdate_name" (ngModelChange)="us.update();">
+            <!-- <input type="text" placeholder="mm/dd/yyyy" class="form-control" bsDatepicker
+            [(ngModel)]="us.data.application.insideusdate_name" (ngModelChange)="us.update();"> -->
+
+            <my-date [date]="us.data.application.insideusdate_name" [class.err]="err.moveDate"
+              (update)="us.data.application.insideusdate_name= $event; us.update(); err.moveDate = false"
+              (blur)="!us.data.application.insideusdate_name && err.moveDate = true"></my-date>
+          </label>
+          <span *ngIf="err.moveDate" class="errspan">This field is required</span>
+
+        </div>
+      </div>
+      <span class="form__subdiscription">Sources for this page (unless otherwise cited above): USCIS Forms
+        <a target="_blank" href="https://www.uscis.gov/sites/default/files/document/forms/i-130.pdf">I-130,</a>
+        <a target="_blank" href="https://www.uscis.gov/sites/default/files/document/forms/i-130a.pdf">I-130А</a>
+        <a target="_blank" href="https://www.uscis.gov/sites/default/files/document/forms/i-485.pdf">I-485,</a>
+        <a target="_blank" href="https://www.uscis.gov/sites/default/files/document/forms/i-131.pdf">I-131,</a>
+        <a target="_blank" href="https://www.uscis.gov/sites/default/files/document/forms/i-765.pdf">I-765,</a>
+      </span>
+      <div class="section__container-btn">
+        <a class="form__btn-back" (click)="us.pagesection=2;us.top();">
+          < Back </a>
+            <a class="form__btn-continue" (click)="ChangeTab3(4);us.top();"> Continue ></a>
+      </div>
+    </div>
+  </div>
+</div>
+<div *ngIf="us.data.cardholder == 'us' && us.data.location == 'inside'">
+  <div *ngIf="us.pagesection==4">
+    <div class="section-form__inner">
+      <h1 class="section__title">About {{us.data.application.name && us.data.application.name + "'s" || "Applicant's"}}
+        address outside the U.S.</h1>
+      <span class="form__discription">Enter {{us.data.application.name && us.data.application.name + "'s" ||
+        "Applicant's"}} address <span style="text-decoration: underline;">outside</span> the U.S.:</span>
+      <div class="form__inner">
+
+        <label>
+          <span class="form__title">Type of address</span>
+          <select name="" id="" [class.err]="err.adrType2" [(ngModel)]="us.data.application.physicaladdress_name"
+            (ngModelChange)="us.update(); err.adrType2 = false"
+            (blur)="!us.data.application.physicaladdress_name && err.adrType2 = true">
+            <option [disabled]="true" value="USA">U.S. address</option>
+            <option value="Foreign address">Foreign address</option>
+          </select>
+        </label>
+        <span *ngIf="err.adrType2" class="errspan">This field is required</span>
+
+        <label>
+          <span class="form__title">Street number and name</span>
+          <input type="text" maxlength="25"
+            [class.err]="err.strName2" [(ngModel)]="us.data.application.physicalstreet_name"
+            oninput="this.value = this.value.replace(/[^a-zA-Z0-9\s]/g, '');"
+            (ngModelChange)="us.data.application.physicalstreet_name = us.data.application.physicalstreet_name.toUpperCase();
+              us.update(); err.strName2 = false; validateLength25(us.data.application.physicalstreet_name)"
+            (blur)="!us.data.application.physicalstreet_name && err.strName2 = true">
+        </label>
+        <span *ngIf="err.strName2" class="errspan">This field is required</span>
+
+        <div class="double__form">
+          <span class="form__title">Apt./Ste./Flr. Number (if any)</span>
+          <div>
+            <select name="" id="" [(ngModel)]="us.data.application.physicalapt_name" (ngModelChange)="us.update();">
+              <option value="Apt.">Apt.</option>
+              <option value="Ste.">Ste.</option>
+              <option value="Flr.">Flr.</option>
+            </select>
+            <input type="text" placeholder="" [(ngModel)]="us.data.application.physicalste_name"
+              (ngModelChange)="us.update();">
+          </div>
+        </div>
+        <div class="forms" *ngIf="us.data.application.physicaladdress_name=='USA'">
+          <label>
+            <span class="form__title">City or town</span>
+            <input type="text" maxlength="17"
+              oninput="this.value = this.value.replace(/[^a-zA-Z\s]/g, '');"
+              [(ngModel)]="us.data.application.physicalcity_name"
+              (ngModelChange)="us.data.application.physicalcity_name = us.data.application.physicalcity_name.toUpperCase();
+                us.update(); validateLength17(us.data.application.physicalcity_name)">
+          </label>
+
+          <label>
+            <span class="form__title">State</span>
+            <select [(ngModel)]="us.data.application.physicalprovince_name" (ngModelChange)="us.update();" name=""
+              id="">
+              <option>AL</option>
+              <option>AK</option>
+              <option>AZ</option>
+              <option>AR</option>
+              <option>CA</option>
+              <option>CO</option>
+              <option>CT</option>
+              <option>DE</option>
+              <option>DC</option>
+              <option>FL</option>
+              <option>GA</option>
+              <option>HI</option>
+              <option>ID</option>
+              <option>IL</option>
+              <option>IN</option>
+              <option>IA</option>
+              <option>KS</option>
+              <option>KY</option>
+              <option>LA</option>
+              <option>ME</option>
+              <option>MD</option>
+              <option>MA</option>
+              <option>MI</option>
+              <option>MN</option>
+              <option>MS</option>
+              <option>MO</option>
+              <option>MT</option>
+              <option>NE</option>
+              <option>NV</option>
+              <option>NH</option>
+              <option>NJ</option>
+              <option>NM</option>
+              <option>NY</option>
+              <option>NC</option>
+              <option>ND</option>
+              <option>OH</option>
+              <option>OK</option>
+              <option>OR</option>
+              <option>PA</option>
+              <option>RI</option>
+              <option>SC</option>
+              <option>SD</option>
+              <option>TN</option>
+              <option>TX</option>
+              <option>UT</option>
+              <option>VT</option>
+              <option>VA</option>
+              <option>WA</option>
+              <option>WV</option>
+              <option>WI</option>
+              <option>WY</option>
+            </select>
+          </label>
+          <label>
+            <span class="form__title">ZIP code</span>
+            <input type="text" maxlength="5"
+              oninput="this.value = this.value.replace(/[^0-9.]/g, ''); this.value = this.value.replace(/(\..*)\./g, '$1')"
+              [(ngModel)]="us.data.application.physicalpostalcode_name"
+              (ngModelChange)="us.update();">
+          </label>
+        </div>
+        <div class="forms" *ngIf="us.data.application.physicaladdress_name=='Foreign address'">
+          <label>
+            <span class="form__title">City or town</span>
+            <input type="text" maxlength="17"
+              [class.err]="err.cityName2"
+              oninput="this.value = this.value.replace(/[^a-zA-Z\s]/g, '');"
+              [(ngModel)]="us.data.application.physicalcity_name"
+              (ngModelChange)="us.data.application.physicalcity_name = us.data.application.physicalcity_name.toUpperCase();
+                us.update(); err.cityName2 = false; validateLength17(us.data.application.physicalcity_name)"
+              (blur)="!us.data.application.physicalcity_name && err.cityName2 = true">
+          </label>
+          <span *ngIf="err.cityName2" class="errspan">This field is required</span>
+
+          <label>
+            <span class="form__title">Province</span>
+            <input type="text" maxlength="17"
+              [class.err]="err.provinceName2"
+              oninput="this.value = this.value.replace(/[^a-zA-Z\s]/g, '');"
+              [(ngModel)]="us.data.application.physicalprovince_name"
+              (ngModelChange)="us.data.application.physicalprovince_name = us.data.application.physicalprovince_name.toUpperCase();
+                us.update(); err.provinceName2 = false; validateLength17(us.data.application.physicalprovince_name)"
+              (blur)="!us.data.application.physicalprovince_name && err.provinceName2 = true">
+          </label>
+          <span *ngIf="err.provinceName2" class="errspan">This field is required</span>
+
+          <label>
+            <span class="form__title">Postal code</span>
+            <input type="text" maxlength="8"
+              [(ngModel)]="us.data.application.physicalpostalcode_name"
+              [class.err]="err.postalCodeName2"
+              oninput="this.value = this.value.replace(/[^a-zA-Z0-9.]/g, '');"
+              (ngModelChange)="us.data.application.physicalpostalcode_name = us.data.application.physicalpostalcode_name.toUpperCase();
+                us.update(); err.postalCodeName2 = false; validateLength8(us.data.application.physicalpostalcode_name)"
+              (blur)="!us.data.application.physicalpostalcode_name && err.postalCodeName2 = true">
+          </label>
+          <span *ngIf="err.postalCodeName2" class="errspan">This field is required</span>
+
+        </div>
+        <label *ngIf="us.data.application.physicaladdress_name=='Foreign address'">
+          <span class="form__title">Country</span>
+          <input type="text" maxlength="17"
+            [class.err]="err.countryName2" [(ngModel)]="us.data.application.physicalcountry_name"
+            oninput="this.value = this.value.replace(/[^a-zA-Z\s]/g, '');"
+            (ngModelChange)="us.data.application.physicalcountry_name = us.data.application.physicalcountry_name.toUpperCase();
+              us.update(); err.countryName2 = false; validateLength17(us.data.application.physicalcountry_name)"
+            (blur)="!us.data.application.physicalcountry_name && err.countryName2 = true">
+        </label>
+        <span *ngIf="err.countryName2" class="errspan">This field is required</span>
+
+        <!-- <label>
+					<span class="form__title">Type of address</span>
+					<ng2-flatpickr placeholder="mm/dd/yyyy" [config]="pickerOptions" [setDate]="us.data.application.physicaltypeofaddress_name" [(ngModel)]="us.data.application.physicaltypeofaddress_name" (ngModelChange)="us.update();"></ng2-flatpickr>
+          <input type="date" placeholder="mm/dd/yyyy" [(ngModel)]="us.data.application.physicaltypeofaddress_name" (ngModelChange)="us.update();">
+          <input type="text" placeholder="mm/dd/yyyy" class="form-control" bsDatepicker
+          [(ngModel)]="us.data.application.physicaltypeofaddress_name" (ngModelChange)="us.update();">
+
+          <my-date [date]="us.data.application.physicaltypeofaddress_name" (update)="us.data.application.physicaltypeofaddress_name= $event; us.update()"></my-date>
+				</label> -->
+      </div>
+      <div class="form__check">
+        <span>Does the above country's native written language use Roman letters?</span>
+        <label>
+          <input type="radio" name="other_name" [value]="'yes'" [(ngModel)]="us.data.application.country_name"
+            (ngModelChange)="us.update();err.choice2 = false"
+            (blur)="!us.data.application.country_name && err.choice2 = true">
+          <span class="check">Yes</span>
+        </label>
+        <label>
+          <input type="radio" name="other_name" [value]="'no'" [(ngModel)]="us.data.application.country_name"
+            (ngModelChange)="us.update(); err.choice2 = false"
+            (blur)="!us.data.application.country_name && err.choice2 = true">
+          <span class="check">No</span>
+        </label>
+      </div>
+      <span *ngIf="err.choice2" class="errspan">This field is required</span>
+
+      <div class="sub__form-inner" *ngIf="us.data.application.country_name=='no'">
+        <span class="form__discription">Enter the above address in its native written language:</span>
+        <div class="form__inner">
+          <label>
+            <span class="subform__title">Type of address</span>
+            <select name="" id="" [(ngModel)]="us.data.application.subphysicaladdress_name" [class.err]="err.adrType3"
+              (ngModelChange)="us.data.application.subphysicaladdress_name = us.data.application.subphysicaladdress_name.toUpperCase();
+                us.update(); err.adrType3 = false"
+              (blur)="!us.data.application.subphysicaladdress_name && err.adrType3 = true">
+              <option [disabled]="true" value="USA">U.S. address</option>
+              <option value="Foreign address">Foreign address</option>
+            </select>
+          </label>
+          <span *ngIf="err.adrType3" class="errspan">This field is required</span>
+
+          <label>
+            <span class="form__title">Street number and name</span>
+            <input type="text" maxlength="25"
+              oninput="this.value = this.value.replace(/[^a-zA-Z0-9\s]/g, '');"
+              [(ngModel)]="us.data.application.subphysicalstreet_name" [class.err]="err.strName3"
+              (ngModelChange)="us.data.application.subphysicalstreet_name = us.data.application.subphysicalstreet_name.toUpperCase();
+                us.update(); err.strName3 = false; validateLength25(us.data.application.subphysicalstreet_name)"
+              (blur)="!us.data.application.subphysicalstreet_name && err.strName3 = true">
+          </label>
+          <span *ngIf="err.strName3" class="errspan">This field is required</span>
+
+          <div class="double__form">
+            <span class="form__title">Apt./Ste./Flr. Number (if any)</span>
+            <div>
+              <select name="" id="" [(ngModel)]="us.data.application.subphysicalapt_name"
+                (ngModelChange)="us.update();">
+                <option value="Apt.">Apt.</option>
+                <option value="Ste.">Ste.</option>
+                <option value="Flr.">Flr.</option>
+              </select>
+              <input type="text" maxlength="5" placeholder="" [(ngModel)]="us.data.application.subphysicalste_name"
+                (ngModelChange)="us.data.application.subphysicalste_name = us.data.application.subphysicalste_name.toUpperCase();
+                  us.update();">
+            </div>
+          </div>
+          <div class="forms" *ngIf="us.data.application.subphysicaladdress_name=='USA'">
+            <label>
+              <span class="form__title">City or town</span>
+              <input type="text" maxlength="17"
+                oninput="this.value = this.value.replace(/[^a-zA-Z\s]/g, '');"
+                [(ngModel)]="us.data.application.subphysicalcity_name"
+                (ngModelChange)="us.data.application.subphysicalcity_name = us.data.application.subphysicalcity_name.toUpperCase();
+                  us.update(); validateLength17(us.data.application.subphysicalcity_name) ">
+            </label>
+
+            <label>
+              <span class="form__title">State</span>
+              <select [(ngModel)]="us.data.application.subphysicalprovince_name" (ngModelChange)="us.update();"> >
+                <option>AL</option>
+                <option>AK</option>
+                <option>AZ</option>
+                <option>AR</option>
+                <option>CA</option>
+                <option>CO</option>
+                <option>CT</option>
+                <option>DE</option>
+                <option>DC</option>
+                <option>FL</option>
+                <option>GA</option>
+                <option>HI</option>
+                <option>ID</option>
+                <option>IL</option>
+                <option>IN</option>
+                <option>IA</option>
+                <option>KS</option>
+                <option>KY</option>
+                <option>LA</option>
+                <option>ME</option>
+                <option>MD</option>
+                <option>MA</option>
+                <option>MI</option>
+                <option>MN</option>
+                <option>MS</option>
+                <option>MO</option>
+                <option>MT</option>
+                <option>NE</option>
+                <option>NV</option>
+                <option>NH</option>
+                <option>NJ</option>
+                <option>NM</option>
+                <option>NY</option>
+                <option>NC</option>
+                <option>ND</option>
+                <option>OH</option>
+                <option>OK</option>
+                <option>OR</option>
+                <option>PA</option>
+                <option>RI</option>
+                <option>SC</option>
+                <option>SD</option>
+                <option>TN</option>
+                <option>TX</option>
+                <option>UT</option>
+                <option>VT</option>
+                <option>VA</option>
+                <option>WA</option>
+                <option>WV</option>
+                <option>WI</option>
+                <option>WY</option>
+              </select>
+            </label>
+            <label>
+              <span class="form__title">ZIP code</span>
+              <input type="text" maxlength="5"
+                oninput="this.value = this.value.replace(/[^0-9.]/g, ''); this.value = this.value.replace(/(\..*)\./g, '$1')"
+                [class.err]="err.zipName3" [(ngModel)]="us.data.application.subphysicalpostalcode_name"
+                (ngModelChange)="us.update(); err.zipName3 = false"
+                (blur)="!us.data.application.subphysicalpostalcode_name && err.zipName3 = true">
+            </label>
+            <span *ngIf="err.zipName3" class="errspan">This field is required</span>
+
+          </div>
+          <div class="forms" *ngIf="us.data.application.subphysicaladdress_name=='Foreign address'">
+            <label>
+              <span class="form__title">City or town</span>
+              <input type="text" maxlength="17"
+                oninput="this.value = this.value.replace(/[^a-zA-Z\s]/g, '');"
+                [class.err]="err.cityName3" [(ngModel)]="us.data.application.subphysicalcity_name"
+                (ngModelChange)="us.data.application.subphysicalcity_name = us.data.application.subphysicalcity_name.toUpperCase();
+                  us.update();err.cityName3 = false; validateLength17(us.data.application.family_name)"
+                (blur)="!us.data.application.subphysicalcity_name && err.cityName3 = true">
+            </label>
+            <span *ngIf="err.cityName3" class="errspan">This field is required</span>
+
+            <label>
+              <span class="form__title">Province</span>
+              <input type="text" maxlength="17"
+                [class.err]="err.provinceName3" [(ngModel)]="us.data.application.salprovince_name"
+                oninput="this.value = this.value.replace(/[^a-zA-Z\s]/g, '');"
+                (ngModelChange)="us.data.application.salprovince_name = us.data.application.salprovince_name.toUpperCase();
+                  us.update(); err.provinceName3 = false; validateLength17(us.data.application.salprovince_name)"
+                (blur)="!us.data.application.salprovince_name && err.provinceName3 = true">
+            </label>
+            <span *ngIf="err.provinceName3" class="errspan">This field is required</span>
+
+            <label>
+              <span class="form__title">Postal code</span>
+              <input type="text" maxlength="8"
+                oninput="this.value = this.value.replace(/[^a-zA-Z0-9.]/g, '');"
+                [(ngModel)]="us.data.application.codecod_name"
+                [class.err]="err.postalCodeName3"
+                (ngModelChange)="us.data.application.codecod_name = us.data.application.codecod_name.toUpperCase();
+                  us.update(); err.postalCodeName3 = false; validateLength8(us.data.application.codecod_name)"
+                (blur)="!us.data.application.codecod_name && err.postalCodeName3 = true">
+            </label>
+            <span *ngIf="err.postalCodeName3" class="errspan">This field is required</span>
+
+          </div>
+          <label *ngIf="us.data.application.subphysicaladdress_name=='Foreign address'">
+            <span class="form__title">Country</span>
+            <input type="text" maxlength="17"
+              [class.err]="err.countryName3"
+              oninput="this.value = this.value.replace(/[^a-zA-Z\s]/g, '');"
+              [(ngModel)]="us.data.application.subphysicalcountry_name"
+              (ngModelChange)="us.update(); err.countryName3 = false; validateLength17(us.data.application.subphysicalcountry_name)"
+              (blur)="!us.data.application.subphysicalcountry_name && err.countryName3 = true">
+          </label>
+          <span *ngIf="err.countryName3" class="errspan">This field is required</span>
+
+        </div>
+      </div>
+      <span class="form__subdiscription">Sources for this page (unless otherwise cited above): USCIS Forms <a
+          target="_blank" href="https://www.uscis.gov/sites/default/files/document/forms/i-130.pdf">I-130</a>
+
+      </span>
+      <div class="section__container-btn">
+        <a class="form__btn-back" (click)="us.pagesection=3;us.top();">
+          < Back </a>
+            <a class="form__btn-continue" (click)="ChangeTab4(5);us.top();"> Continue ></a>
+      </div>
+    </div>
+  </div>
+</div>
+<div *ngIf="us.data.cardholder == 'us' && us.data.location == 'inside'">
+  <div *ngIf="us.pagesection==5">
+    <div class="section-form__inner">
+      <h1 class="section__title">{{us.data.application.name && us.data.application.name + "'s" || "Applicant's"}}
+        previous physical addresses for the last five years</h1>
+      <span class="form__discription">Provide physical addresses for everywhere {{us.data.application.name ||
+        "Applicant"}} has lived during the last five years, whether inside or outside the United States.
+      </span>
+      <div class="">
+        <input type="checkbox" name="urrentaddressfiveyears_name"
+          [(ngModel)]="us.data.application.urrentaddressfiveyears_name" (ngModelChange)="us.update();">
+        <span class="check__discription">{{us.data.application.name && us.data.application.name || "Applicant"}} has
+          lived at the current address for the last five years.</span>
+      </div>
+      <div *ngIf="!us.data.application.urrentaddressfiveyears_name">
+        <div class="add-form__inner" *ngFor="let name of us.data.application.typeofaddress_names;index as i">
+          <div class="add-form__inner-title">
+            <span>PREVIOUS PHYSICAL ADDRESS {{i+1}}</span>
+            <button class="inner-title__btn"
+              (click)="us.data.application.typeofaddress_names.splice(i,1);us.update()">X</button>
+          </div>
+          <div class="form__inner">
+            <label>
+              <span class="form__title">Type of address</span>
+              <select class="add-forms__select" name="" id="" [(ngModel)]="name.previousaddress_name"
+                (ngModelChange)="us.update();">
+                <option value="USA">U.S. address</option>
+                <option value="Foreign address">Foreign address</option>
+              </select>
+            </label>
+            <label>
+              <span class="form__title">Street number and name</span>
+              <input type="text" maxlength="25"
+                oninput="this.value = this.value.replace(/[^a-zA-Z0-9\s]/g, '');"
+                [(ngModel)]="name.usplaces_name"
+                (ngModelChange)="name.usplaces_name = name.usplaces_name.toUpperCase();
+                  us.update(); validateLength25(name.usplaces_name)">
+            </label>
+            <div class="double__form">
+              <span class="form__title">Apt./Ste./Flr. Number (if any)</span>
+              <div>
+                <select [(ngModel)]="name.numberaptste_name" (ngModelChange)="us.update();">
+                  <option value="Apt">Apt.</option>
+                  <option value="Ste">Ste.</option>
+                  <option value="Flr">Flr.</option>
+                </select>
+                <input type="text" placeholder="" maxlength="4" [(ngModel)]="name.stedf_name"
+                  (ngModelChange)="us.update();">
+              </div>
+            </div>
+            <label>
+              <span class="form__title">City or town</span>
+              <input type="text"
+                oninput="this.value = this.value.replace(/[^a-zA-Z\s]/g, '');"
+                [(ngModel)]="name.previousfuturecityq_name"
+                (ngModelChange)="name.previousfuturecityq_name = name.previousfuturecityq_name.toUpperCase();
+                  us.update(); validateLength17(name.previousfuturecityq_name)">
+            </label>
+            <div class="forms" *ngIf="name.previousaddress_name=='USA'">
+
+              <label>
+                <span class="form__title">State</span>
+                <select class="forms__select" name="" id="" [(ngModel)]="name.prweviousfuturestate_name"
+                  (ngModelChange)="us.update();">
+                  <option>AL</option>
+                  <option>AK</option>
+                  <option>AZ</option>
+                  <option>AR</option>
+                  <option>CA</option>
+                  <option>CO</option>
+                  <option>CT</option>
+                  <option>DE</option>
+                  <option>DC</option>
+                  <option>FL</option>
+                  <option>GA</option>
+                  <option>HI</option>
+                  <option>ID</option>
+                  <option>IL</option>
+                  <option>IN</option>
+                  <option>IA</option>
+                  <option>KS</option>
+                  <option>KY</option>
+                  <option>LA</option>
+                  <option>ME</option>
+                  <option>MD</option>
+                  <option>MA</option>
+                  <option>MI</option>
+                  <option>MN</option>
+                  <option>MS</option>
+                  <option>MO</option>
+                  <option>MT</option>
+                  <option>NE</option>
+                  <option>NV</option>
+                  <option>NH</option>
+                  <option>NJ</option>
+                  <option>NM</option>
+                  <option>NY</option>
+                  <option>NC</option>
+                  <option>ND</option>
+                  <option>OH</option>
+                  <option>OK</option>
+                  <option>OR</option>
+                  <option>PA</option>
+                  <option>RI</option>
+                  <option>SC</option>
+                  <option>SD</option>
+                  <option>TN</option>
+                  <option>TX</option>
+                  <option>UT</option>
+                  <option>VT</option>
+                  <option>VA</option>
+                  <option>WA</option>
+                  <option>WV</option>
+                  <option>WI</option>
+                  <option>WY</option>
+                </select>
+              </label>
+              <label>
+                <div> <span class="form__title">ZIP code</span>
+                  <div class="tooltip-container">
+                    <span class="tooltip__i">i</span>
+                    <div class="tooltip">
+                      <span>You can look up your USPS zip code at <a href="https://tools.usps.com/go/ZipLookupAction_input">tools.usps.com</a> </span>
+                      <span class="tooltips__link">Source: <a target="_blank"
+                          href="https://www.uscis.gov/sites/default/files/document/forms/i-130.pdf">USCIS Form
+                          I-130
+                          </a></span>
+                    </div>
+                  </div>
+                </div>
+
+                <input type="text" maxlength="5"
+                  oninput="this.value = this.value.replace(/[^0-9.]/g, ''); this.value = this.value.replace(/(\..*)\./g, '$1')"
+                  [(ngModel)]="name.previousfuturewzyzip_name" (ngModelChange)="us.update();">
+              </label>
+            </div>
+
+            <!-- Move in date -->
+            <div class="forms" *ngIf="name.previousaddress_name=='Foreign address'">
+              <label>
+                <span class="form__title">Province</span>
+                <input type="text"  name="" id="" maxlength="17"
+                  oninput="this.value = this.value.replace(/[^a-zA-Z\s]/g, '');"
+                  [(ngModel)]="name.futurfuturestate_name"
+                  (ngModelChange)="name.futurfuturestate_name = name.futurfuturestate_name.toUpperCase();
+                    us.update(); validateLength17(name.futurfuturestate_name)">
+              </label>
+              <label>
+                <span class="form__title">Postal code</span>
+                <input type="text" maxlength="8"
+                oninput="this.value = this.value.replace(/[^a-zA-Z0-9.]/g, '');"
+                  [(ngModel)]="name.futurepreviousfutu_name"
+                  (ngModelChange)="name.futurepreviousfutu_name = name.futurepreviousfutu_name.toUpperCase();
+                    us.update(); validateLength8(name.futurepreviousfutu_name)">
+              </label>
+            </div>
+            <label *ngIf="name.previousaddress_name=='Foreign address'">
+              <span class="form__title">Country</span>
+              <input type="text" maxlength="17"
+                oninput="this.value = this.value.replace(/[^a-zA-Z\s]/g, '');"
+                [(ngModel)]="name.recenstcountryfuture_name"
+                (ngModelChange)="us.update(); validateLength17(name.recenstcountryfuture_name)">
+            </label>
+            <label>
+              <div>
+                <span class="form__title">Move in date </span>
+                <button class="tooltip-btn" (click)="modal.show({component: 'usciss'});">i</button>
+              </div>
+              <!-- <ng2-flatpickr placeholder="mm/dd/yyyy" [config]="pickerOptions" [setDate]="name.previousmovein_name" [(ngModel)]="name.previousmovein_name" (ngModelChange)="us.update();"></ng2-flatpickr> -->
+              <input type="date" placeholder="mm/dd/yyyy" [(ngModel)]="name.previousmovein_name" (ngModelChange)="us.update();">
+              <!-- <input type="text" placeholder="mm/dd/yyyy" class="form-control" bsDatepicker
+              [(ngModel)]="name.previousmovein_name" (ngModelChange)="us.update();"> -->
+
+
+              <my-date [date]="name.previousmovein_name" (update)="name.previousmovein_name= $event; us.update()">
+              </my-date>
+            </label>
+            <label>
+              <span class="form__title">Move out date</span>
+              <!-- <ng2-flatpickr placeholder="mm/dd/yyyy" [config]="pickerOptions" [setDate]="name.previousmoveout_name" [(ngModel)]="name.previousmoveout_name" (ngModelChange)="us.update();"></ng2-flatpickr> -->
+              <input type="date" placeholder="mm/dd/yyyy" [(ngModel)]="name.previousmoveout_name" (ngModelChange)="us.update();">
+              <!-- <input type="text" placeholder="mm/dd/yyyy" class="form-control" bsDatepicker
+              [(ngModel)]="name.previousmoveout_name" (ngModelChange)="us.update();"> -->
+              <my-date [date]="name.previousmoveout_name" (update)="name.previousmoveout_name= $event; us.update()">
+              </my-date>
+            </label>
+          </div>
+        </div>
+        <div>
+          <button class="add-form__btn" (click)="typeofaddress()">Add address +</button>
+        </div>
+      </div>
+      <span class="form__subdiscription">Sources for this page (unless otherwise cited above): USCIS Form <a
+          target="_blank" href="https://www.uscis.gov/sites/default/files/document/forms/i-130a.pdf">I-130A,</a>
+        <a target="_blank" href="https://www.uscis.gov/sites/default/files/document/forms/i-485.pdf">I-485</a>
+      </span>
+      <div class="section__container-btn">
+        <a class="form__btn-back" (click)="us.pagesection=4;us.top();">
+          < Back </a>
+            <a class="form__btn-continue" (click)="ChangeTab5(6);us.top();"> Continue ></a>
+      </div>
+    </div>
+  </div>
+</div>
+<div *ngIf="us.data.cardholder == 'us' && us.data.location == 'inside'">
+  <div *ngIf="us.pagesection==6">
+    <div class="section-form__inner">
+      <h1 class="section__title">What was {{us.data.application.name && us.data.application.name + "'s" ||
+        "Applicant's"}} most recent address outside the U.S. where {{us.data.application.name &&
+        us.data.application.name || "Applicant"}} lived for more than one year?</h1>
+      <div>
+        <div class="form__inner">
+          <label>
+            <span class="form__title">Type of address</span>
+            <select name="" id="" [class.err]="err.adrType6" [(ngModel)]="us.data.application.usoneyearaddress_name"
+              (ngModelChange)="us.update(); err.adrType6 = false"
+              (blur)="!us.data.application.usoneyearaddress_name && err.adrType6 = true">
+              <option [disabled]="true" value="U.S. address">U.S. address</option>
+              <option value="Foreign address">Foreign address</option>
+            </select>
+          </label>
+          <span *ngIf="err.adrType6" class="errspan">This field is required</span>
+
+          <label>
+            <span class="form__title">Street number and name</span>
+            <input type="text" maxlength="25"
+              [class.err]="err.strName6" [(ngModel)]="us.data.application.usoneyearnumber_name"
+              oninput="this.value = this.value.replace(/[^a-zA-Z0-9\s]/g, '');"
+              (ngModelChange)="us.data.application.usoneyearnumber_name = us.data.application.usoneyearnumber_name.toUpperCase();
+                us.update(); err.strName6 = false; validateLength25(us.data.application.usoneyearnumber_name)"
+              (blur)="!us.data.application.usoneyearnumber_name && err.strName6 = true">
+          </label>
+          <span *ngIf="err.strName6" class="errspan">This field is required</span>
+
+          <div class="double__form">
+            <span class="form__title">Apt./Ste./Flr. Number (if any)</span>
+            <div>
+              <select name="" id="" [(ngModel)]="us.data.application.usoneyearany_name" (ngModelChange)="us.update();">
+                <option value="Apt.">Apt.</option>
+                <option value="Ste.">Ste.</option>
+                <option value="Flr.">Flr.</option>
+              </select>
+              <input type="text" placeholder="" [(ngModel)]="us.data.application.usoneyearflr_name"
+                (ngModelChange)="us.data.application.usoneyearflr_name = us.data.application.usoneyearflr_name.toUpperCase();
+                  us.update();">
+            </div>
+          </div>
+          <div class="forms" *ngIf="us.data.application.usoneyearaddress_name=='Foreign address'">
+            <label>
+              <span class="form__title">City or town</span>
+              <input type="text" maxlength="17" [class.err]="err.cityName6"
+                [(ngModel)]="us.data.application.usoneyearcity_name"
+                oninput="this.value = this.value.replace(/[^a-zA-Z0-9\s]/g, '');"
+                (ngModelChange)="us.data.application.usoneyearcity_name = us.data.application.usoneyearcity_name.toUpperCase();
+                  us.update(); err.cityName6 = false; validateLength17(us.data.application.usoneyearcity_name)"
+                (blur)="!us.data.application.usoneyearcity_name && err.cityName6 = true;">
+            </label>
+            <span *ngIf="err.cityName6" class="errspan">This field is required</span>
+
+            <label>
+              <span class="form__title">Province</span>
+              <input type="text" maxlength="17"
+                [class.err]="err.province6" [(ngModel)]="us.data.application.usoneyearprovince_name"
+                oninput="this.value = this.value.replace(/[^a-zA-Z0-9\s]/g, '');"
+                (ngModelChange)="us.data.application.usoneyearprovince_name = us.data.application.usoneyearprovince_name.toUpperCase();
+                  us.update(); err.province6 = false; validateLength17(us.data.application.usoneyearprovince_name)"
+                (blur)="!us.data.application.usoneyearprovince_name && err.province6 = true">
+            </label>
+            <span *ngIf="err.province6" class="errspan">This field is required</span>
+
+            <label>
+              <span class="form__title">Postal code</span>
+              <input type="text" maxlength="8" [class.err]="err.postalCode6"
+                oninput="this.value = this.value.replace(/[^a-zA-Z0-9.]/g, '');"
+                [(ngModel)]="us.data.application.usoneyearcode_name"
+                (ngModelChange)="us.data.application.usoneyearcode_name = us.data.application.usoneyearcode_name.toUpperCase();
+                  us.update(); err.postalCode6 = false; validateLength8(us.data.application.usoneyearcode_name)"
+                (blur)="!us.data.application.usoneyearcode_name && err.postalCode6 = true">
+            </label>
+            <span *ngIf="err.postalCode6" class="errspan">This field is required</span>
+
+          </div>
+          <label>
+            <span class="form__title">Country</span>
+            <input type="text" [class.err]="err.countryName6" maxlength="17"
+              oninput="this.value = this.value.replace(/[^a-zA-Z\s]/g, '');"
+              [(ngModel)]="us.data.application.usoneyearcountry_name"
+              (ngModelChange)="us.data.application.usoneyearcountry_name = us.data.application.usoneyearcountry_name.toUpperCase();
+                us.update(); err.countryName6 = false; validateLength17(us.data.application.usoneyearcountry_name)"
+              (blur)="!us.data.application.usoneyearcountry_name && err.countryName6 = true">
+          </label>
+          <span *ngIf="err.countryName6" class="errspan">This field is required</span>
+
+          <label>
+            <span class="form__title">Move in date</span>
+            <!-- <ng2-flatpickr placeholder="mm/dd/yyyy" [config]="pickerOptions" [setDate]="us.data.application.usoneyearindate_name" [(ngModel)]="us.data.application.usoneyearindate_name" (ngModelChange)="us.update();"></ng2-flatpickr> -->
+            <input type="date" placeholder="mm/dd/yyyy" [(ngModel)]="us.data.application.usoneyearindate_name" (ngModelChange)="us.update();">
+            <my-date [class.err]="err.moveInDate6" [date]="us.data.application.usoneyearindate_name"
+              (update)="us.data.application.usoneyearindate_name= $event; us.update(); err.moveInDate6 = false"
+              (blur)="!us.data.application.usoneyearindate_name && err.moveInDate6 = true"></my-date>
+          </label>
+          <span *ngIf="err.moveInDate6" class="errspan">This field is required</span>
+
+          <label>
+            <span class="form__title">Move out date</span>
+            <!-- <ng2-flatpickr placeholder="mm/dd/yyyy" [config]="pickerOptions" [setDate]="us.data.application.usoneyearoutdate_name" [(ngModel)]="us.data.application.usoneyearoutdate_name" (ngModelChange)="us.update();"></ng2-flatpickr> -->
+            <input type="date" placeholder="mm/dd/yyyy" [(ngModel)]="us.data.application.usoneyearoutdate_name" (ngModelChange)="us.update();">
+            <my-date [date]="us.data.application.usoneyearoutdate_name"
+              (update)="us.data.application.usoneyearoutdate_name= $event; us.update(); err.moveOutDate6 = false"
+              [class.err]="err.moveOutDate6"
+              (blur)="!us.data.application.usoneyearoutdate_name && err.moveOutDate6 = true"></my-date>
+          </label>
+          <span *ngIf="err.moveOutDate6" class="errspan">This field is required</span>
+
+        </div>
+      </div>
+      <span class="form__subdiscription">Sources for this page (unless otherwise cited above): USCIS Forms <a
+          target="_blank" href="https://www.uscis.gov/sites/default/files/document/forms/i-130a.pdf">I-130A,</a> <a
+          target="_blank" href="https://www.uscis.gov/sites/default/files/document/forms/i-485.pdf">I-485</a>
+        <!-- <a
+          target="_blank" href="https://www.uscis.gov/sites/default/files/document/forms/i-864.pdf">I-864,</a>
+        <a target="_blank" href="https://www.uscis.gov/sites/default/files/document/forms/i-485.pdf">I-485,</a>
+        <a target="_blank" href="https://www.uscis.gov/sites/default/files/document/forms/i-131.pdf">I-131,</a>
+        <a target="_blank" href="https://www.uscis.gov/sites/default/files/document/forms/i-765.pdf">I-765</a> -->
+      </span>
+      <div class="section__container-btn">
+        <a class="form__btn-back" (click)="us.pagesection=5;us.top();">
+          < Back </a>
+            <a class="form__btn-continue" (click)="ChangeTab6(us.section = 'public'); us.pagesection=1; ;us.top();"> Continue ></a>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,131 @@
+.greenboardsupport__inner{
+	max-width: 700px;
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.greenboardsupport__title{
+	color: #1972F5;
+	padding-top: 45px;
+	text-align: center;
+	font-size: 29px;
+}
+
+.greenboardsupport__discription{
+	font-size: 18px;
+	text-align: center;
+	color: rgba(0, 0, 0, 0.5);
+	padding-top: 20px;
+}
+
+.greenboardsupport__cardholder{
+	display: flex;
+	padding-top: 25px;
+	justify-content: center;
+	width: 100%;
+	flex-wrap: wrap;
+}
+
+.greenboardsupport__cardholder input{
+	width: 100%;
+	max-width: 500px;
+	padding: 10px;
+
+}
+.greenboardsupport__btn{
+	padding-top: 50px;
+	text-decoration: none;
+	font-size:22px;
+	color: #1972F5;
+	cursor: pointer;
+}
+.container__btn{
+	display: felx;
+	justify-content: center;
+	margin-top: 120px;
+	padding: 30px;
+
+}
+
+
+@media screen and (max-width: 768px){
+	.greenboardsupport__cardholder{
+		display: flex;
+		width: 100%;
+		flex-wrap: wrap;
+		margin-top: 25px;
+	}
+
+	.greenboardsupport__link{
+		margin-top: 25px;
+		width: 150px;
+		height: 115px;
+		border: solid 1px #1972F5;
+		padding: 35px;
+		text-decoration: none;
+		color: #1972F5;
+		font-size: 15px;
+		border-radius: 5px;
+		text-align: center;
+		cursor: pointer;
+	}
+	.greenboardsupport__title{
+		color: #1972F5;
+		padding-top: 25px;
+		text-align: center;
+		font-size: 20px;
+	}
+	.greenboardsupport__discription{
+		font-size: 14px;
+		text-align: center;
+		color: rgba(0, 0, 0, 0.5);
+		padding-top: 20px;
+	}
+	.greenboardsupport__link:hover{
+		border: solid 1px #1972F5;
+		padding: 35px;
+		text-decoration: none;
+		border-radius: 5px;
+		color: #fff;
+		font-size:15px;
+		background-color: #1972F5;
+
+	}
+	.greenboardsupport__btn{
+		margin-top: 25px;
+		text-decoration: none;
+		font-size: 15px;
+		color: #1972F5;
+		cursor: pointer;
+	}
+	.greenboardsupport__cardholder input{
+		width: 100%;
+		max-width: 225px;
+		padding: 6px;
+	}
+	.container__btn{
+		display: flex;
+		justify-content: center;
+		padding: 21px;
+		margin-top: 0;
+	}
+}
+.greenboardsupport__email-btn{
+	padding: 4px 10px 5px 10px;
+	color: #ff6f09;
+	font-size: 20px;
+	cursor: pointer;
+
+}
+
+.alert{
+	color: red;
+  position: absolute;
+    left: 20px;
+    bottom: 0px;
+
+}
+
+

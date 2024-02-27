@@ -1,0 +1,1690 @@
+<div *ngIf="us.pagesection == 1">
+  <div class="section__inner">
+    <h1 class="section__title">Almost there!</h1>
+    <img src="assets/cool.png" />
+    <div class="section__sub-discription">
+      We're almost done – just a few other items here.
+    </div>
+    <div class="section__container-btn">
+      <a
+        class="form__btn-back"
+        (click)="us.section = 'public'; us.pagesection = 1; us.top()"
+      >
+        < Back
+      </a>
+      <a class="form__btn-continue" (click)="us.pagesection = 2; us.top()">
+        Continue >
+      </a>
+    </div>
+  </div>
+</div>
+<div *ngIf="us.pagesection == 2">
+  <div class="section__inner">
+    <div class="sub__section-inner">
+      <h1 class="section__title">
+        About organizations that
+        {{ us.data.application.name || "Applicant" }} has been part of
+      </h1>
+      <div class="form__check">
+        <div class="form__title">
+          Has {{ us.data.application.name || "Applicant" }} EVER been a member
+          of, involved in, or in any way associated with any organization,
+          association, fund, foundation, party, club, society, or similar group
+          in the United States or in any other location in the world including
+          any military service?
+        </div>
+        <label>
+          <input
+            type="radio"
+            name="anymilitaryservice_name"
+            [value]="'yes'"
+            [(ngModel)]="us.data.application.anymilitaryservice_name"
+            (ngModelChange)="us.update(); err.choice = false"
+            (blur)="
+              !us.data.application.anymilitaryservice_name &&
+                (err.choice = true)
+            "
+          />
+          <span class="check">Yes</span>
+        </label>
+        <label>
+          <input
+            type="radio"
+            name="anymilitaryservice_name"
+            [value]="'no'"
+            [(ngModel)]="us.data.application.anymilitaryservice_name"
+            (ngModelChange)="us.update(); err.choice = false"
+            (blur)="
+              !us.data.application.anymilitaryservice_name &&
+                (err.choice = true)
+            "
+          />
+          <span class="check">No</span>
+        </label>
+      </div>
+      <span *ngIf="err.choice" class="errspan">This field is required </span>
+      <div *ngIf="us.data.application.anymilitaryservice_name == 'yes'">
+        <div
+          *ngFor="
+            let name of us.data.application.theseorganizations_names;
+            index as i
+          "
+        >
+          <div class="form__title">
+            Enter information about these organizations:
+          </div>
+          <div class="add-form__inner">
+            <div class="container__title">
+              <div class="sub__title">ORGANIZATION {{ i + 1 }}</div>
+              <button
+                class="inner-title__btn"
+                (click)="
+                  us.data.application.theseorganizations_names.splice(i, 1);
+                  us.update()
+                "
+              >
+                X
+              </button>
+            </div>
+            <div class="form__inner">
+              <label class="label__inner">
+                <span class="form__title">Name of organization</span>
+                <input
+                  type="text"
+                  maxlength="25"
+                  oninput="this.value = this.value.replace(/[^a-zA-Z\s]/g, '');"
+                  [class.err]="err.orgName"
+                  [(ngModel)]="name.nameorganization_name"
+                  (ngModelChange)="name.nameorganization_name = name.nameorganization_name.toUpperCase();
+                    us.update(); err.orgName = false; validateLength25(name.nameorganization_name)"
+                  (blur)="!name.nameorganization_name && (err.orgName = true)"
+                />
+              </label>
+              <span *ngIf="err.orgName" class="errspan"
+                >This field is required</span
+              >
+              <div class="form__title">Location</div>
+              <div class="form__sub-sub-inner">
+                <label class="label__inner">
+                  <span class="form__title">City or town</span>
+                  <input
+                    type="text"
+                    maxlength="25"
+                    [class.err]="err.orgCity"
+                    oninput="this.value = this.value.replace(/[^a-zA-Z\s]/g, '');"
+                    [(ngModel)]="name.locationcityortawn_name"
+                    (ngModelChange)="name.locationcityortawn_name = name.locationcityortawn_name.toUpperCase();
+                      us.update(); err.orgCity = false; validateLength25(name.locationcityortawn_name)"
+                    (blur)="
+                      !name.locationcityortawn_name && (err.orgCity = true)
+                    "
+                  />
+                </label>
+                <span *ngIf="err.orgCity" class="errspan"
+                  >This field is required</span
+                >
+
+                <label class="label__inner">
+                  <span class="form__title">State or province</span>
+                  <input
+                    type="text"
+                    maxlength="25"
+                    [class.err]="err.orgState"
+                    oninput="this.value = this.value.replace(/[^a-zA-Z\s]/g, '');"
+                    [(ngModel)]="name.locationstateor_name"
+                    (ngModelChange)="name.locationstateor_name = name.locationstateor_name.toUpperCase();
+                      us.update(); err.orgState = false; validateLength25(name.locationstateor_name)"
+                    (blur)="!name.locationstateor_name && (err.orgState = true)"
+                  />
+                </label>
+                <span *ngIf="err.orgState" class="errspan"
+                  >This field is required</span
+                >
+
+                <label class="label__inner">
+                  <span class="form__title">Country</span>
+                  <input
+                    type="text"
+                    maxlength="25"
+                    oninput="this.value = this.value.replace(/[^a-zA-Z\s]/g, '');"
+                    [class.err]="err.orgCountry"
+                    [(ngModel)]="name.locationcountryus_name"
+                    (ngModelChange)="name.locationcountryus_name = name.locationcountryus_name.toUpperCase();
+                      us.update(); err.orgCountry = false; validateLength25(name.locationcountryus_name)"
+                    (blur)="
+                      !name.locationcountryus_name && (err.orgCountry = true)
+                    "
+                  />
+                </label>
+                <span *ngIf="err.orgCountry" class="errspan"
+                  >This field is required</span
+                >
+              </div>
+              <label class="label__inner">
+                <span class="form__title">Nature of group</span>
+                <input
+                  type="text"
+                  maxlength="25"
+                  oninput="this.value = this.value.replace(/[^a-zA-Z\s]/g, '');"
+                  [class.err]="err.orgNature"
+                  [(ngModel)]="name.natureofdroup_name"
+                  (ngModelChange)="name.natureofdroup_name = name.natureofdroup_name.toUpperCase();
+                    us.update(); err.orgNature = false; validateLength25(name.natureofdroup_name)"
+                  (blur)="!name.natureofdroup_name && (err.orgNature = true)"
+                />
+              </label>
+              <span *ngIf="err.orgNature" class="errspan"
+                >This field is required</span
+              >
+
+              <label class="label__inner">
+                <span class="form__title"
+                  >Membership or involvement start date</span
+                >
+                <!-- <ng2-flatpickr placeholder="mm/dd/yyyy" [config]="pickerOptions" [setDate]="name.certificationifanyus_name" [(ngModel)]="name.certificationifanyus_name" (ngModelChange)="us.update();"></ng2-flatpickr> -->
+                <input type="date" placeholder="mm/dd/yyyy" [(ngModel)]="name.certificationifanyus_name" (ngModelChange)="us.update();">
+<!--
+                <input type="text" placeholder="mm/dd/yyyy" class="form-control" bsDatepicker
+                [(ngModel)]="name.certificationifanyus_name" (ngModelChange)="us.update();"> -->
+
+                <my-date
+                  [class.err]="err.orgStartDate"
+                  [date]="name.certificationifanyus_name"
+                  (update)="
+                    name.certificationifanyus_name = $event;
+                    us.update();
+                    err.orgStartDate = false
+                  "
+                  (blur)="
+                    !name.certificationifanyus_name && (err.orgStartDate = true)
+                  "
+                ></my-date>
+              </label>
+              <span *ngIf="err.orgStartDate" class="errspan"
+                >This field is required</span
+              >
+
+              <div class="check__container">
+                <input
+                  type="checkbox"
+                  name="involvementend_name"
+                  [(ngModel)]="name.involvementend_name"
+                  (ngModelChange)="us.update()"
+                />
+                <span class="check__discription"
+                  >Currently a member or currently involved</span
+                >
+              </div>
+              <label class="label__inner" *ngIf="!name.involvementend_name">
+                <span class="form__title"
+                  >Membership or involvement end date</span
+                >
+                <!-- <ng2-flatpickr placeholder="mm/dd/yyyy" [config]="pickerOptions" [setDate]="name.certificationifany_name" [(ngModel)]="name.certificationifany_name" (ngModelChange)="us.update();"></ng2-flatpickr> -->
+                <input type="date" placeholder="mm/dd/yyyy" [(ngModel)]="name.certificationifany_name" (ngModelChange)="us.update();">
+
+                <!-- <input type="text" placeholder="mm/dd/yyyy" class="form-control" bsDatepicker
+                [(ngModel)]="name.certificationifany_name" (ngModelChange)="us.update();"> -->
+
+                <my-date
+                  [class.err]="err.orgEndDate"
+                  [date]="name.certificationifany_name"
+                  (update)="
+                    name.certificationifany_name = $event;
+                    us.update();
+                    err.orgEndDate = false
+                  "
+                  (blur)="
+                    !name.certificationifany_name && (err.orgEndDate = true)
+                  "
+                ></my-date>
+              </label>
+              <span *ngIf="err.orgEndDate" class="errspan"
+                >This field is required</span
+              >
+            </div>
+          </div>
+        </div>
+        <div>
+          <button class="add-form__btn" (click)="theseorganizationsadd()">
+            + Add organization
+          </button>
+        </div>
+      </div>
+      <div *ngIf="us.data.application.anymilitaryservice_name == 'no'">
+        <label>
+          <div class="form__title">
+            If you answered "No", but are unsure of your answer, provide an
+            explanation of the events and circumstances in the space below:
+          </div>
+          <textarea
+            [class.err]="err.text5"
+            [(ngModel)]="us.data.application.torequestextt_name"
+            (ngModelChange)="us.update(); err.text5 = false"
+            (blur)="
+              !us.data.application.torequestextt_name && (err.text5 = true)
+            "
+            cols="30"
+            rows="10"
+          ></textarea>
+        </label>
+        <span *ngIf="err.text5" class="errspan">This field is required</span>
+      </div>
+      <div class="sub__discription">
+        Sources for this page (unless otherwise cited above): USCIS Form
+        <a
+          target="_blank"
+          href="https://www.uscis.gov/sites/default/files/document/forms/i-485.pdf"
+          >I-485</a
+        >
+      </div>
+      <div class="section__container-btn">
+        <a class="form__btn-back" (click)="us.pagesection = 1; us.top()">
+          < Back
+        </a>
+        <a class="form__btn-continue" (click)="ChangeTab2(3); us.top()">
+          Continue >
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+<div *ngIf="us.pagesection == 3">
+  <div class="section__inner">
+    <div class="sub__section-inner">
+      <h1 class="section__title">
+        Does {{ us.data.application.name || "Applicant" }} want to request an
+        accommodation because of
+        {{
+          (us.data.application.name && us.data.application.name + "'s") ||
+            "Applicant's"
+        }}
+        disabilities and/or impairments?<button
+          class="tooltip-btn"
+          (click)="modal.show({ component: 'impairments' })"
+        >
+          i
+        </button>
+      </h1>
+
+      <div class="form__check">
+        <label>
+          <input
+            type="radio"
+            name="orimpairments_name"
+            [value]="'yes'"
+            [(ngModel)]="us.data.application.orimpairments_name"
+            (ngModelChange)="us.update(); err.choice1 = false"
+            (blur)="
+              !us.data.application.orimpairments_name && (err.choice1 = true)
+            "
+          />
+          <span class="check">Yes</span>
+        </label>
+        <label>
+          <input
+            type="radio"
+            name="orimpairments_name"
+            [value]="'no'"
+            [(ngModel)]="us.data.application.orimpairments_name"
+            (ngModelChange)="us.update(); err.choice1 = false"
+            (blur)="
+              !us.data.application.orimpairments_name && (err.choice1 = true)
+            "
+          />
+          <span class="check">No</span>
+        </label>
+      </div>
+      <span *ngIf="err.choice1" class="errspan">This field is required</span>
+
+      <div *ngIf="us.data.application.orimpairments_name == 'yes'">
+        <div class="form__title">
+          What disability(ies)/impairment(s) applies to
+          {{
+            (us.data.application.name && us.data.application.name) ||
+              "Applicant"
+          }}?
+        </div>
+        <div class="form__check">
+          <label>
+            <input
+              type="checkbox"
+              name="ofhearing_name"
+              [(ngModel)]="us.data.application.ofhearing_name"
+              (ngModelChange)="us.update(); err.choose1 = false"
+              (blur)="
+                !us.data.application.ofhearing_name && (err.choose1 = true)
+              "
+            />
+            <span class="check">Deaf or hard of hearing</span>
+          </label>
+          <label>
+            <input
+              type="checkbox"
+              name="lowvision_name"
+              [(ngModel)]="us.data.application.lowvision_name"
+              (ngModelChange)="us.update(); err.choose1 = false"
+              (blur)="
+                !us.data.application.lowvision_name && (err.choose1 = true)
+              "
+            />
+            <span class="check">Blind or has low vision</span>
+          </label>
+          <label>
+            <input
+              type="checkbox"
+              name="anothertypeofdisability_name"
+              [(ngModel)]="us.data.application.anothertypeofdisability_name"
+              (ngModelChange)="us.update(); err.choose1 = false"
+              (blur)="
+                !us.data.application.anothertypeofdisability_name &&
+                  (err.choose1 = true)
+              "
+            />
+            <span class="check"
+              >Another type of disability and/or impairment</span
+            >
+          </label>
+        </div>
+        <span *ngIf="err.choose1" class="errspan"
+          >At least one disability selection is required</span
+        >
+
+        <div *ngIf="us.data.application.ofhearing_name">
+          <label>
+            <div class="form__title">What accommodation to request?</div>
+            <textarea
+              [class.err]="err.text1"
+              [(ngModel)]="us.data.application.torequestext_name"
+              (ngModelChange)="us.update(); err.text1 = false"
+              (blur)="
+                !us.data.application.torequestext_name && (err.text1 = true)
+              "
+              cols="30"
+              rows="10"
+            ></textarea>
+            <span
+              >If
+              {{
+                (us.data.application.name && us.data.application.name) ||
+                  "Applicant"
+              }}
+              is requesting a sign-language interpreter, indicate for which
+              language (for example, American Sign Language).</span
+            >
+          </label>
+
+          <span *ngIf="err.text1" class="errspan">This field is required</span>
+        </div>
+        <div *ngIf="us.data.application.lowvision_name">
+          <label>
+            <div class="form__title">What accommodation to request?</div>
+            <textarea
+              [class.err]="err.text2"
+              [(ngModel)]="us.data.application.accommodationtorequest_name"
+              (ngModelChange)="us.update(); err.text2 = false"
+              (blur)="
+                !us.data.application.accommodationtorequest_name &&
+                  (err.text2 = true)
+              "
+              cols="30"
+              rows="10"
+            ></textarea>
+          </label>
+          <span *ngIf="err.text2" class="errspan">This field is required</span>
+        </div>
+        <div *ngIf="us.data.application.anothertypeofdisability_name">
+          <label>
+            <div class="form__title">
+              Describe the nature of the disability and/or impairment
+            </div>
+            <textarea
+              [class.err]="err.text3"
+              [(ngModel)]="us.data.application.ofthedisabilityand_name"
+              (ngModelChange)="us.update(); err.text3 = false"
+              (blur)="
+                !us.data.application.ofthedisabilityand_name &&
+                  (err.text3 = true)
+              "
+              cols="30"
+              rows="10"
+            ></textarea>
+          </label>
+          <span *ngIf="err.text3" class="errspan">This field is required</span>
+
+          <label>
+            <div class="form__title">What accommodation to request?</div>
+            <textarea
+              [class.err]="err.text4"
+              [(ngModel)]="us.data.application.whataccommodation_name"
+              (ngModelChange)="us.update(); err.text4 = false"
+              (blur)="
+                !us.data.application.whataccommodation_name &&
+                  (err.text4 = true)
+              "
+              cols="30"
+              rows="10"
+            ></textarea>
+          </label>
+          <span *ngIf="err.text4" class="errspan">This field is required</span>
+        </div>
+      </div>
+      <div class="sub__discription">
+        Sources for this page (unless otherwise cited above): USCIS Form
+        <a
+          target="_blank"
+          href="https://www.uscis.gov/sites/default/files/document/forms/i-485.pdf"
+          >I-485</a
+        >
+      </div>
+      <div class="section__container-btn">
+        <a class="form__btn-back" (click)="us.pagesection = 2; us.top()">
+          < Back
+        </a>
+        <a class="form__btn-continue" (click)="ChangeTab3(4); us.top()">
+          Continue >
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+<div *ngIf="us.pagesection == 4">
+  <div class="section__inner">
+    <h1 class="section__title">Grab yourself a cup of coffee...</h1>
+    <img src="assets/scared.png" />
+    <div class="section__sub-discription">
+      <span
+        >Now, we are about to meet the world-famous "general eligibility and
+        inadmissibility grounds" questions from Form I-485 😱</span
+      >
+
+      <span>In total, it has 6 parts containing 66 questions.</span>
+
+      <span
+        >Yeah, I know what you're thinking: That's a lot of questions! BUT, we
+        know you can conquer it 💪</span
+      >
+      <span>Let's get started, warrior!</span>
+    </div>
+    <div class="section__container-btn">
+      <a class="form__btn-back" (click)="us.pagesection = 3"> < Back </a>
+      <a class="form__btn-continue" (click)="us.pagesection = 5">
+        Continue >
+      </a>
+    </div>
+  </div>
+</div>
+<div *ngIf="us.pagesection == 5">
+  <div class="section__inner">
+    <div class="section__sub-title">Part 1 of 5 - Immigration History</div>
+    <h1 class="section__title">
+      Is the answer to any of the following questions "Yes"? Scroll to the
+      bottom to answer.
+    </h1>
+    <div class="section__discription">
+      <div class="app__number">1</div>
+      <p>
+        Has {{ us.data.application.name || "Applicant" }}
+        <span class="text__item">EVER</span> been denied admission to the United
+        States?
+      </p>
+    </div>
+    <div class="section__discription">
+      <div class="app__number">2</div>
+      <p>
+        Has {{ us.data.application.name || "Applicant" }} EVER been denied a
+        visa to the United States?
+      </p>
+    </div>
+    <div class="section__discription">
+      <div class="app__number">3</div>
+      <p>
+        Has {{ us.data.application.name || "Applicant" }} EVER worked in the
+        United States without authorization?
+      </p>
+    </div>
+    <div class="section__discription">
+      <div class="app__number">4</div>
+      <p>
+        Has {{ us.data.application.name || "Applicant" }} EVER violated the
+        terms or conditions of {{ us.data.application.name || "Applicant" }}'s
+        nonimmigrant status?
+      </p>
+    </div>
+    <div class="section__discription">
+      <div class="app__number">5</div>
+      <p>
+        Is {{ us.data.application.name || "Applicant" }} presently or has
+        {{ us.data.application.name || "Applicant" }} EVER been in removal,
+        exclusion, rescission, or deportation proceedings?
+      </p>
+    </div>
+    <div class="section__discription">
+      <div class="app__number">7</div>
+      <p>
+        Has {{ us.data.application.name || "Applicant" }} EVER been issued a
+        final order of exclusion, deportation, or removal?
+      </p>
+    </div>
+    <div class="section__discription">
+      <div class="app__number">7</div>
+      <p>
+        Has {{ us.data.application.name || "Applicant" }} EVER had a prior final
+        order of exclusion, deportation, or removal reinstated?
+      </p>
+    </div>
+    <div class="section__discription">
+      <div class="app__number">8</div>
+      <p>
+        Has {{ us.data.application.name || "Applicant" }} EVER held lawful
+        permanent resident status which was later rescinded?
+      </p>
+    </div>
+    <div class="section__discription">
+      <div class="app__number">9</div>
+      <p>
+        Has {{ us.data.application.name || "Applicant" }} EVER been granted
+        voluntary departure by an immigration officer or an immigration judge
+        but failed to depart within the allotted time?
+      </p>
+    </div>
+    <div class="section__discription">
+      <div class="app__number">10</div>
+      <p>
+        Has {{ us.data.application.name || "Applicant" }} EVER applied for any
+        kind of relief or protection from removal, exclusion, or deportation?
+      </p>
+    </div>
+    <div class="form__inner-check">
+      <div class="form__check">
+        <div class="form__title">
+          Is the answer to any of the above questions "Yes"?
+        </div>
+        <label>
+          <input
+            type="radio"
+            name="answertoanyoftheabovequestions_name"
+            [value]="'yes'"
+            [(ngModel)]="
+              us.data.application.answertoanyoftheabovequestions_name
+            "
+            (ngModelChange)="us.update()"
+          />
+          <span class="check">Yes</span>
+        </label>
+        <label>
+          <input
+            type="radio"
+            name="answertoanyoftheabovequestions_name"
+            [value]="'no'"
+            [(ngModel)]="
+              us.data.application.answertoanyoftheabovequestions_name
+            "
+            (ngModelChange)="us.update()"
+          />
+          <span class="check">No</span>
+        </label>
+      </div>
+    </div>
+    <div
+      *ngIf="us.data.application.answertoanyoftheabovequestions_name == 'yes'"
+    >
+      <div class="sub-sub__section">
+        <span class="sub__section-title"
+          >Your Case Requires Additional Attention</span
+        >
+        <p>
+          Because the applicant answered "yes" to one or more of the questions
+          above, there may be additional documents/forms you need to submit that
+          are not covered by Greenbroad.
+        </p>
+
+        <p>
+          If you choose to proceed using Greenbroad, you can continue filling
+          out all the questions asked in our software and preparing all the
+          documents listed in our document checklist. At the end, we will
+          generate for you all the forms and cover letters that we cover.<strong>
+            However, we strongly suggest you consult an immigration lawyer to
+            prepare the additional documents/forms, or your application may be
+            rejected or denied. </strong
+          >If you need a lawyer recommendation,
+          <a class="sub__section-link" target="_blank"
+            >here is the contact information</a
+          >
+          of an immigration lawyer we work with.
+        </p>
+
+        <p>If you have any questions, please don't hesitate to contact us.</p>
+      </div>
+    </div>
+    <div class="sub__discription">
+      Sources for this page (unless otherwise cited above): USCIS Form
+      <a
+        target="_blank"
+        href="https://www.uscis.gov/sites/default/files/document/forms/i-485.pdf"
+        >I-485</a
+      >
+    </div>
+    <div class="section__container-btn">
+      <a class="form__btn-back" (click)="us.pagesection = 4; us.top()">
+        < Back
+      </a>
+      <a class="form__btn-continue" (click)="us.pagesection = 6; us.top()">
+        Continue ></a
+      >
+    </div>
+  </div>
+</div>
+<div *ngIf="us.pagesection == 6">
+  <div class="section__inner">
+    <div class="section__sub-title">
+      Part 2 of 5 - Criminal Acts and Violations
+    </div>
+    <h1 class="section__title">
+      Is the answer to any of the following questions "Yes"? Scroll to the
+      bottom to answer.
+    </h1>
+
+    <p>
+      For Item Numbers 11. – 31.,
+      {{ us.data.application.name || "Applicant" }} must answer "Yes" to any
+      question that applies to {{ us.data.application.name || "Applicant" }},
+      even if
+      {{
+        (us.data.application.name && us.data.application.name + "'s") ||
+          "Applicant's"
+      }}
+      records were sealed or otherwise cleared, or even if anyone, including a
+      judge, law enforcement officer, or attorney, told
+      {{ us.data.application.name || "Applicant" }} that
+      {{ us.data.application.name || "Applicant" }} no longer has a record.
+      {{ us.data.application.name || "Applicant" }} must also answer "Yes" to
+      the following questions whether the action or offense occurred here in the
+      United States or anywhere else in the world.
+    </p>
+    <div
+      class="sub__section-btn"
+      (click)="subsection = !subsection"
+      (clickOutside)="subsection = null"
+    >
+      <span class="sub__section-icon" [class._active]="subsection">&#8250;</span
+      >Show more info
+    </div>
+    <div class="sub-sub__section-inner" *ngIf="subsection">
+      <p>
+        {{ us.data.application.name || "Applicant" }} must disclose all arrests
+        and charges, even if the arrest occurred when
+        {{ us.data.application.name || "Applicant" }} was a minor. An
+        adjudication of juvenile delinquency is not a “conviction” under U.S.
+        immigration law, but a juvenile can be charged as an adult for an
+        offense committed while a juvenile. If
+        {{ us.data.application.name || "Applicant" }} was convicted as an adult,
+        there is a conviction, regardless of whether
+        {{ us.data.application.name || "Applicant" }} was tried before a
+        criminal court or a juvenile court. An adjudication of juvenile
+        delinquency could also be relevant to the exercise of discretion. If
+        {{ us.data.application.name || "Applicant" }} claims that an arrest
+        resulted in adjudication of delinquency, and not in a conviction,
+        {{ us.data.application.name || "Applicant" }} must submit a copy of the
+        court document that establishes this fact.
+      </p>
+
+      <p>
+        In general, {{ us.data.application.name || "Applicant" }} does not need
+        to submit documentation relating to traffic fines and incidents that did
+        not involve an actual physical arrest if the penalty was only a fine of
+        less than $500 or points on 1’s driver’s license. However, 1 must submit
+        such documentation if the traffic incident resulted in criminal charges
+        or involved alcohol, drugs, or injury to a person or property.
+      </p>
+    </div>
+    <div class="section__discription">
+      <div class="app__number">11</div>
+      <p>
+        Has {{ us.data.application.name || "Applicant" }} EVER been arrested,
+        cited, charged, or detained for any reason by any law enforcement
+        official (including but not limited to any U.S. immigration official or
+        any official of the U.S. armed forces or U.S. Coast Guard)?
+      </p>
+    </div>
+    <div class="section__discription">
+      <div class="app__number">12</div>
+      <p>
+        Has {{ us.data.application.name || "Applicant" }} EVER committed a crime
+        of any kind (even if {{ us.data.application.name || "Applicant" }} was
+        not arrested, cited, charged with, or tried for that crime)?
+      </p>
+    </div>
+    <div class="section__discription">
+      <div class="app__number">13</div>
+      <p>
+        Has {{ us.data.application.name || "Applicant" }} EVER pled guilty to or
+        been convicted of a crime or offense (even if the violation was
+        subsequently expunged or sealed by a court, or if
+        {{ us.data.application.name || "Applicant" }} was granted a pardon,
+        amnesty, a rehabilitation decree, or other act of clemency)?
+      </p>
+    </div>
+    <div class="section__discription">
+      <div class="app__number">14</div>
+      <p>
+        Has {{ us.data.application.name || "Applicant" }} EVER violated the
+        terms or conditions of {{ us.data.application.name || "Applicant" }}'s
+        nonimmigrant status?
+      </p>
+      <p>
+        If {{ us.data.application.name || "Applicant" }} was the beneficiary of
+        a pardon, amnesty, a rehabilitation decree, or other act of clemency,
+        provide documentation of that post-conviction action.
+      </p>
+    </div>
+    <div class="section__discription">
+      <div class="app__number">15</div>
+      <p>
+        Has {{ us.data.application.name || "Applicant" }} EVER been ordered
+        punished by a judge or had conditions imposed on
+        {{ us.data.application.name || "Applicant" }} that restrained
+        {{ us.data.application.name || "Applicant" }}'s liberty (such as a
+        prison sentence, suspended sentence, house arrest, parole, alternative
+        sentencing, drug or alcohol treatment, rehabilitative programs or
+        classes, probation, or community service)?
+      </p>
+    </div>
+    <div class="section__discription">
+      <div class="app__number">16</div>
+      <p>
+        Has {{ us.data.application.name || "Applicant" }} EVER been a defendant
+        or the accused in a criminal proceeding (including pre-trial diversion,
+        deferred prosecution, deferred adjudication, or any withheld
+        adjudication)?
+      </p>
+    </div>
+    <div class="section__discription">
+      <div class="app__number">17</div>
+      <p>
+        Has {{ us.data.application.name || "Applicant" }} EVER violated (or
+        attempted or conspired to violate) any controlled substance law or
+        regulation of a state, the United States, or a foreign country??
+      </p>
+    </div>
+    <div class="section__discription">
+      <div class="app__number">18</div>
+      <p>
+        Has {{ us.data.application.name || "Applicant" }} EVER illicitly
+        (illegally) trafficked or benefited from the trafficking of any
+        controlled substances, such as chemicals, illegal drugs, or narcotics?
+      </p>
+    </div>
+    <div class="section__discription">
+      <div class="app__number">19</div>
+      <p>
+        Has {{ us.data.application.name || "Applicant" }} EVER knowingly aided,
+        abetted, assisted, conspired, or colluded in the illicit trafficking of
+        any illegal narcotic or other controlled substances?
+      </p>
+    </div>
+    <div class="section__discription">
+      <div class="app__number">20</div>
+      <p>
+        Is {{ us.data.application.name || "Applicant" }} the spouse, son, or
+        daughter of a foreign national who illicitly trafficked or aided (or
+        otherwise abetted, assisted, conspired, or colluded) in the illicit
+        trafficking of a controlled substance, such as chemicals, illegal drugs,
+        or narcotics and {{ us.data.application.name || "Applicant" }} obtained,
+        within the last five years, any financial or other benefit from the
+        illegal activity of {{ us.data.application.name || "Applicant" }}'s
+        spouse or parent, although
+        {{ us.data.application.name || "Applicant" }} knew or reasonably should
+        have known that the financial or other benefit resulted from the illicit
+        activity of {{ us.data.application.name || "Applicant" }}'s spouse or
+        parent?
+      </p>
+    </div>
+    <div class="section__discription">
+      <div class="app__number">21</div>
+      <p>
+        Has {{ us.data.application.name || "Applicant" }} EVER engaged in
+        prostitution or is {{ us.data.application.name || "Applicant" }} coming
+        to the United States to engage in prostitution?
+      </p>
+    </div>
+    <div class="section__discription">
+      <div class="app__number">22</div>
+      <p>
+        Has {{ us.data.application.name || "Applicant" }} EVER directly or
+        indirectly procured (or attempted to procure) or imported prostitutes or
+        persons for the purpose of prostitution?
+      </p>
+    </div>
+    <div class="section__discription">
+      <div class="app__number">23</div>
+      <p>
+        Has {{ us.data.application.name || "Applicant" }} EVER received any
+        proceeds or money from prostitution?
+      </p>
+    </div>
+    <div class="section__discription">
+      <div class="app__number">24</div>
+      <p>
+        Does {{ us.data.application.name || "Applicant" }} intend to engage in
+        illegal gambling or any other form of commercialized vice, such as
+        prostitution, bootlegging, or the sale of child pornography, while in
+        the United States?
+      </p>
+    </div>
+    <div class="section__discription">
+      <div class="app__number">25</div>
+      <p>
+        Has {{ us.data.application.name || "Applicant" }} EVER exercised
+        immunity (diplomatic or otherwise) to avoid being prosecuted for a
+        criminal offense in the United States?
+      </p>
+    </div>
+    <div class="section__discription">
+      <div class="app__number">26</div>
+      <p>
+        Has {{ us.data.application.name || "Applicant" }} EVER, while serving as
+        a foreign government official, been responsible for or directly carried
+        out violations of religious freedoms?
+      </p>
+    </div>
+    <div class="section__discription">
+      <div class="app__number">27</div>
+      <p>
+        Has {{ us.data.application.name || "Applicant" }} EVER induced by force,
+        fraud, or coercion (or otherwise been involved in) the trafficking of
+        persons for commercial sex acts?
+      </p>
+    </div>
+    <div class="section__discription">
+      <div class="app__number">28</div>
+      <p>
+        Has {{ us.data.application.name || "Applicant" }} EVER trafficked a
+        person into involuntary servitude, peonage, debt bondage, or slavery?
+        Trafficking includes recruiting, harboring, transporting, providing, or
+        obtaining a person for labor or services through the use of force,
+        fraud, or coercion.
+      </p>
+    </div>
+    <div class="section__discription">
+      <div class="app__number">29</div>
+      <p>
+        Has {{ us.data.application.name || "Applicant" }} EVER knowingly aided,
+        abetted, assisted, conspired, or colluded with others in trafficking
+        persons for commercial sex acts or involuntary servitude, peonage, debt
+        bondage, or slavery?
+      </p>
+    </div>
+    <div class="section__discription">
+      <div class="app__number">30</div>
+      <p>
+        Is {{ us.data.application.name || "Applicant" }} the spouse, son or
+        daughter of a foreign national who engaged in the trafficking of persons
+        and have received or obtained, within the last five years, any financial
+        or other benefits from the illicit activity of
+        {{ us.data.application.name || "Applicant" }}'s spouse or
+        {{ us.data.application.name || "Applicant" }}'s parent, although
+        {{ us.data.application.name || "Applicant" }}
+        knew or reasonably should have known that this benefit resulted from the
+        illicit activity of
+        {{ us.data.application.name || "Applicant" }}'s spouse or parent?
+      </p>
+    </div>
+    <div class="section__discription">
+      <div class="app__number">31</div>
+      <p>
+        Has {{ us.data.application.name || "Applicant" }} EVER engaged in money
+        laundering or has {{ us.data.application.name || "Applicant" }} EVER
+        knowingly aided, assisted, conspired, or colluded with others in money
+        laundering or does {{ us.data.application.name || "Applicant" }} seek to
+        enter the United States to engage in such activity?
+      </p>
+    </div>
+    <div class="form__inner-check">
+      <div class="form__check">
+        <div class="form__title">
+          Is the answer to any of the above questions "Yes"?
+        </div>
+        <label>
+          <input
+            type="radio"
+            name="toanyoftheabovequestions_name"
+            [value]="'yes'"
+            [(ngModel)]="us.data.application.toanyoftheabovequestions_name"
+            (ngModelChange)="us.update()"
+          />
+          <span class="check">Yes</span>
+        </label>
+        <label>
+          <input
+            type="radio"
+            name="toanyoftheabovequestions_name"
+            [value]="'no'"
+            [(ngModel)]="us.data.application.toanyoftheabovequestions_name"
+            (ngModelChange)="us.update()"
+          />
+          <span class="check">No</span>
+        </label>
+      </div>
+    </div>
+    <div *ngIf="us.data.application.toanyoftheabovequestions_name == 'yes'">
+      <div class="sub-sub__section">
+        <span class="sub__section-title"
+          >Your Case Requires Additional Attention</span
+        >
+        <p>
+          Because the applicant answered "yes" to one or more of the questions
+          above, there may be additional documents/forms you need to submit that
+          are not covered by Greenbroad.
+        </p>
+
+        <p>
+          If you choose to proceed using Greenbroad, you can continue filling
+          out all the questions asked in our software and preparing all the
+          documents listed in our document checklist. At the end, we will
+          generate for you all the forms and cover letters that we cover.<strong>
+            However, we strongly suggest you consult an immigration lawyer to
+            prepare the additional documents/forms, or your application may be
+            rejected or denied. </strong
+          >If you need a lawyer recommendation,
+          <a class="sub__section-link" target="_blank"
+            >here is the contact information</a
+          >
+          of an immigration lawyer we work with.
+        </p>
+
+        <p>If you have any questions, please don't hesitate to contact us.</p>
+      </div>
+    </div>
+    <div class="sub__discription">
+      Sources for this page (unless otherwise cited above): USCIS Form
+      <a
+        target="_blank"
+        href="https://www.uscis.gov/sites/default/files/document/forms/i-485.pdf"
+        >I-485</a
+      >
+      `
+    </div>
+    <div class="section__container-btn">
+      <a class="form__btn-back" (click)="us.pagesection = 5; us.top()">
+        < Back
+      </a>
+      <a class="form__btn-continue" (click)="us.pagesection = 7; us.top()">
+        Continue ></a
+      >
+    </div>
+  </div>
+</div>
+<div *ngIf="us.pagesection == 7">
+  <div class="section__inner">
+    <div class="section__sub-title">Part 3 of 5 - Security and Related</div>
+    <h1 class="section__title">
+      Is the answer to any of the following questions "Yes"? Scroll to the
+      bottom to answer.
+    </h1>
+
+    <div class="form__title">
+      Does {{ us.data.application.name || "Applicant" }} intend to:
+    </div>
+    <div class="section__discription">
+      <div class="app__number">32.a</div>
+      <p>
+        Engage in any activity that violates or evades any law relating to
+        espionage (including spying) or sabotage in the United States?
+      </p>
+    </div>
+    <div class="section__discription">
+      <div class="app__number">32.b</div>
+      <p>
+        Engage in any activity in the United States that violates or evades any
+        law prohibiting the export from the United States of goods, technology,
+        or sensitive information?
+      </p>
+    </div>
+    <div class="section__discription">
+      <div class="app__number">32.e</div>
+      <p>
+        Engage in any activity whose purpose includes opposing, controlling, or
+        overthrowing the U.S. Government by force, violence, or other unlawful
+        means while in the United States??
+      </p>
+    </div>
+    <div class="section__discription">
+      <div class="app__number">32.d</div>
+      <p>
+        Engage in any activity that could endanger the welfare, safety, or
+        security of the United States?
+      </p>
+    </div>
+    <div class="section__discription">
+      <div class="app__number">32.e</div>
+      <p>Engage in any other unlawful activity?</p>
+    </div>
+    <div class="section__discription">
+      <div class="app__number">33</div>
+      <p>
+        Is {{ us.data.application.name || "Applicant" }} engaged in or, upon
+        {{
+          (us.data.application.name && us.data.application.name + "'s") ||
+            "Applicant's"
+        }}
+        entry into the United States, does
+        {{ us.data.application.name || "Applicant" }} intend to engage in any
+        activity that could have potentially serious adverse foreign policy
+        consequences for the United States?
+      </p>
+    </div>
+    <div class="form__title">
+      Has {{ us.data.application.name || "Applicant" }} EVER::
+    </div>
+    <div class="section__discription">
+      <div class="app__number">34.a</div>
+      <p>
+        Committed, threatened to commit, attempted to commit, conspired to
+        commit, incited, endorsed, advocated, planned, or prepared any of the
+        following: hijacking, sabotage, kidnapping, political assassination, or
+        use of a weapon or explosive to harm another individual or cause
+        substantial damage to property?
+      </p>
+    </div>
+    <div class="section__discription">
+      <div class="app__number">34.b</div>
+      <p>
+        Participated in, or been a member of, a group or organization that did
+        any of the activities described in Item Number 34.a.?
+      </p>
+    </div>
+    <div class="section__discription">
+      <div class="app__number">34.c</div>
+      <p>
+        Participated in, or been a member of, a group or organization that did
+        any of the activities described in Item Number 34.a.?
+      </p>
+    </div>
+    <div class="section__discription">
+      <div class="app__number">34.d</div>
+      <p>
+        Provided money, a thing of value, services or labor, or any other
+        assistance or support for any of the activities described in Item Number
+        34.a.?
+      </p>
+    </div>
+    <div class="section__discription">
+      <div class="app__number">34.e</div>
+      <p>
+        Provided money, a thing of value, services or labor, or any other
+        assistance or support for an individual, group, or organization who did
+        any of the activities described in Item Number 34.a.?
+      </p>
+    </div>
+    <div class="section__discription">
+      <div class="app__number">35</div>
+      <p>
+        Has {{ us.data.application.name || "Applicant" }} EVER committed a crime
+        of any kind (even if {{ us.data.application.name || "Applicant" }} was
+        not arrested, cited, charged with, or tried for that crime)?
+      </p>
+    </div>
+    <div class="section__discription">
+      <div class="app__number">36</div>
+      <p>
+        Has {{ us.data.application.name || "Applicant" }} EVER pled guilty to or
+        been convicted of a crime or offense (even if the violation was
+        subsequently expunged or sealed by a court, or if
+        {{ us.data.application.name || "Applicant" }} was granted a pardon,
+        amnesty, a rehabilitation decree, or other act of clemency)?
+      </p>
+    </div>
+    <div class="form__title">
+      Is {{ us.data.application.name || "Applicant" }} the spouse or child of an
+      individual who EVER:
+    </div>
+
+    <div class="section__discription">
+      <div class="app__number">37.a</div>
+      <p>
+        Has {{ us.data.application.name || "Applicant" }} EVER violated the
+        terms or conditions of {{ us.data.application.name || "Applicant" }}'s
+        nonimmigrant status?
+      </p>
+      <p>
+        If {{ us.data.application.name || "Applicant" }} was the beneficiary of
+        a pardon, amnesty, a rehabilitation decree, or other act of clemency,
+        provide documentation of that post-conviction action.
+      </p>
+    </div>
+    <div class="section__discription">
+      <div class="app__number">37.a</div>
+      <p>
+        Committed, threatened to commit, attempted to commit, conspired to
+        commit, incited, endorsed, advocated, planned, or prepared any of the
+        following: hijacking, sabotage, kidnapping, political assassination, or
+        use of a weapon or explosive to harm another individual or cause
+        substantial damage to property?
+      </p>
+    </div>
+    <div class="section__discription">
+      <div class="app__number">37.b</div>
+      <p>
+        Participated in, or been a member or a representative of a group or
+        organization that did any of the activities described in Item Number
+        37.a.?
+      </p>
+    </div>
+    <div class="section__discription">
+      <div class="app__number">37.c</div>
+      <p>
+        Recruited members, or asked for money or things of value, for a group or
+        organization that did any of the activities described in Item Number
+        37.a.?
+      </p>
+    </div>
+    <div class="section__discription">
+      <div class="app__number">37.d</div>
+      <p>
+        Provided money, a thing of value, services or labor, or any other
+        assistance or support for any of the activities described in Item Number
+        37.a.?
+      </p>
+    </div>
+    <div class="section__discription">
+      <div class="app__number">37.e</div>
+      <p>
+        Provided money, a thing of value, services or labor, or any other
+        assistance or support to an individual, group, or organization who did
+        any of the activities described in Item Number 37.a.??
+      </p>
+    </div>
+    <div class="section__discription">
+      <div class="app__number">37.f</div>
+      <p>
+        Received any type of military, paramilitary, or weapons training from a
+        group or organization that did any of the activities described in Item
+        Number 37.a.?
+      </p>
+    </div>
+    <div class="section__discription">
+      <div class="app__number">38</div>
+      <p>
+        Has {{ us.data.application.name || "Applicant" }} EVER assisted or
+        participated in selling, providing, or transporting weapons to any
+        person who, to
+        {{
+          (us.data.application.name && us.data.application.name + "'s") ||
+            "Applicant's"
+        }}
+        knowledge, used them against another person?
+      </p>
+    </div>
+    <div class="section__discription">
+      <div class="app__number">39</div>
+      <p>
+        Has {{ us.data.application.name || "Applicant" }} EVER worked,
+        volunteered, or otherwise served in any prison, jail, prison camp,
+        detention facility, labor camp, or any other situation that involved
+        detaining persons?
+      </p>
+    </div>
+    <div class="section__discription">
+      <div class="app__number">40</div>
+      <p>
+        Has {{ us.data.application.name || "Applicant" }} EVER been a member of,
+        assisted, or participated in any group, unit, or organization of any
+        kind in which {{ us.data.application.name || "Applicant" }} or other
+        persons used any type of weapon against any person or threatened to do
+        so?
+      </p>
+    </div>
+    <div class="section__discription">
+      <div class="app__number">41</div>
+      <p>
+        Has {{ us.data.application.name || "Applicant" }} EVER served in, been a
+        member of, assisted, or participated in any military unit, paramilitary
+        unit, police unit, self-defense unit, vigilante unit, rebel group,
+        guerilla group, militia, insurgent organization, or any other armed
+        group?
+      </p>
+    </div>
+    <div class="section__discription">
+      <div class="app__number">42</div>
+      <p>
+        Has {{ us.data.application.name || "Applicant" }} EVER been a member of,
+        or in any way affiliated with, the Communist Party or any other
+        totalitarian party (in the United States or abroad)?
+      </p>
+    </div>
+    <div class="section__discription">
+      <div class="app__number">43</div>
+      <p>
+        During the period from March 23, 1933 to May 8, 1945, did
+        {{ us.data.application.name || "Applicant" }} ever order, incite,
+        assist, or otherwise participate in the persecution of any person
+        because of race, religion, national origin, or political opinion, in
+        association with either the Nazi government of Germany or any
+        organization or government associated or allied with the Nazi government
+        of Germany?
+      </p>
+    </div>
+    <div class="form__title">
+      Has {{ us.data.application.name || "Applicant" }} EVER ordered, incited,
+      called for, committed, assisted, helped with, or otherwise participated in
+      any of the following:
+    </div>
+    <div class="section__discription">
+      <div class="app__number">44.a</div>
+      <p>Acts involving torture or genocide?</p>
+    </div>
+    <div class="section__discription">
+      <div class="app__number">44.b</div>
+      <p>Killing any person?</p>
+    </div>
+    <div class="section__discription">
+      <div class="app__number">44.c</div>
+      <p>Intentionally and severely injuring any person?</p>
+    </div>
+    <div class="section__discription">
+      <div class="app__number">44.d</div>
+      <p>
+        Engaging in any kind of sexual contact or relations with any person who
+        did not consent or was unable to consent, or was being forced or
+        threatened?
+      </p>
+    </div>
+    <div class="section__discription">
+      <div class="app__number">44.e</div>
+      <p>
+        Limiting or denying any person's ability to exercise religious beliefs?
+      </p>
+    </div>
+    <div class="section__discription">
+      <div class="app__number">45</div>
+      <p>
+        Has {{ us.data.application.name || "Applicant" }} EVER recruited,
+        enlisted, conscripted, or used any person under 15 years of age to serve
+        in or help an armed force or group?
+      </p>
+    </div>
+    <div class="section__discription">
+      <div class="app__number">46</div>
+      <p>
+        Has {{ us.data.application.name || "Applicant" }} EVER used any person
+        under 15 years of age to take part in hostilities, or to help or provide
+        services to people in combat?
+      </p>
+    </div>
+
+    <div class="form__inner-check">
+      <div class="form__check">
+        <div class="form__title">
+          Is the answer to any of the above questions "Yes"?
+        </div>
+        <label>
+          <input
+            type="radio"
+            name="toanyoftheabovequestionsss_name"
+            [value]="'yes'"
+            [(ngModel)]="us.data.application.toanyoftheabovequestionsss_name"
+            (ngModelChange)="us.update()"
+          />
+          <span class="check">Yes</span>
+        </label>
+        <label>
+          <input
+            type="radio"
+            name="toanyoftheabovequestionsss_name"
+            [value]="'no'"
+            [(ngModel)]="us.data.application.toanyoftheabovequestionsss_name"
+            (ngModelChange)="us.update()"
+          />
+          <span class="check">No</span>
+        </label>
+      </div>
+    </div>
+    <div *ngIf="us.data.application.toanyoftheabovequestionsss_name == 'yes'">
+      <div class="sub-sub__section">
+        <span class="sub__section-title"
+          >Your Case Requires Additional Attention</span
+        >
+        <p>
+          Because the applicant answered "yes" to one or more of the questions
+          above, there may be additional documents/forms you need to submit that
+          are not covered by Greenbroad.
+        </p>
+
+        <p>
+          If you choose to proceed using Greenbroad, you can continue filling
+          out all the questions asked in our software and preparing all the
+          documents listed in our document checklist. At the end, we will
+          generate for you all the forms and cover letters that we cover.<strong>
+            However, we strongly suggest you consult an immigration lawyer to
+            prepare the additional documents/forms, or your application may be
+            rejected or denied. </strong
+          >If you need a lawyer recommendation,
+          <a class="sub__section-link" target="_blank"
+            >here is the contact information</a
+          >
+          of an immigration lawyer we work with.
+        </p>
+
+        <p>If you have any questions, please don't hesitate to contact us.</p>
+      </div>
+    </div>
+    <div class="sub__discription">
+      Sources for this page (unless otherwise cited above): USCIS Form
+      <a
+        target="_blank"
+        href="https://www.uscis.gov/sites/default/files/document/forms/i-485.pdf"
+        >I-485</a
+      >
+      `
+    </div>
+    <div class="section__container-btn">
+      <a class="form__btn-back" (click)="us.pagesection = 6; us.top()">
+        < Back
+      </a>
+      <a class="form__btn-continue" (click)="us.pagesection = 9; us.top()">
+        Continue ></a
+      >
+    </div>
+  </div>
+</div>
+<div *ngIf="us.pagesection == 9">
+  <div class="section__inner">
+    <div class="section__sub-title">
+      Part 4 of 5 - Removal, Unlawful Presence, or Illegal Reentry After
+      Previous Immigration Violations
+    </div>
+    <h1 class="section__title">
+      Is the answer to any of the following questions "Yes"? Scroll to the
+      bottom to answer.
+    </h1>
+    <div class="section__discription">
+      <div class="app__number">49</div>
+      <p>
+        Has {{ us.data.application.name || "Applicant" }} EVER failed or refused
+        to attend or to remain in attendance at any removal proceeding filed
+        against {{ us.data.application.name || "Applicant" }} on or after April
+        1, 1997?
+      </p>
+    </div>
+    <div class="section__discription">
+      <div class="app__number">50</div>
+      <p>
+        Has {{ us.data.application.name || "Applicant" }} EVER submitted
+        fraudulent or counterfeit documentation to any U.S. Government official
+        to obtain or attempt to obtain any immigration benefit, including a visa
+        or entry into the United States?
+      </p>
+    </div>
+    <div class="section__discription">
+      <div class="app__number">51</div>
+      <p>
+        Has {{ us.data.application.name || "Applicant" }} EVER lied about,
+        concealed, or misrepresented any information on an application or
+        petition to obtain a visa, other documentation required for entry into
+        the United States, admission to the United States, or any other kind of
+        immigration benefit?
+      </p>
+    </div>
+    <div class="section__discription">
+      <div class="app__number">52</div>
+      <p>
+        Has {{ us.data.application.name || "Applicant" }} EVER falsely claimed
+        to be a U.S. citizen (in writing or any other way)?
+      </p>
+    </div>
+    <div class="section__discription">
+      <div class="app__number">53</div>
+      <p>
+        Has {{ us.data.application.name || "Applicant" }} EVER been a stowaway
+        on a vessel or aircraft arriving in the United States?
+      </p>
+    </div>
+    <div class="section__discription">
+      <div class="app__number">54</div>
+      <p>
+        Has {{ us.data.application.name || "Applicant" }} EVER knowingly
+        encouraged, induced, assisted, abetted, or aided any foreign national to
+        enter or to try to enter the United States illegally (alien smuggling)?
+      </p>
+    </div>
+    <div class="section__discription">
+      <div class="app__number">55</div>
+      <p>
+        Is {{ us.data.application.name || "Applicant" }} under a final order of
+        civil penalty for violating INA section 274C for use of fraudulent
+        documents?
+      </p>
+    </div>
+
+    <div class="form__inner-check">
+      <div class="form__check">
+        <div class="form__title">
+          Is the answer to any of the above questions "Yes"?
+        </div>
+        <label>
+          <input
+            type="radio"
+            name="answertoanyoftheabovequestions_name"
+            [value]="'yes'"
+            [(ngModel)]="
+              us.data.application.answertoanyoftheabovequestions_name
+            "
+            (ngModelChange)="us.update()"
+          />
+          <span class="check">Yes</span>
+        </label>
+        <label>
+          <input
+            type="radio"
+            name="answertoanyoftheabovequestions_name"
+            [value]="'no'"
+            [(ngModel)]="
+              us.data.application.answertoanyoftheabovequestions_name
+            "
+            (ngModelChange)="us.update()"
+          />
+          <span class="check">No</span>
+        </label>
+      </div>
+    </div>
+    <div
+      *ngIf="us.data.application.answertoanyoftheabovequestions_name == 'yes'"
+    >
+      <div class="sub-sub__section">
+        <span class="sub__section-title"
+          >Your Case Requires Additional Attention</span
+        >
+        <p>
+          Because the applicant answered "yes" to one or more of the questions
+          above, there may be additional documents/forms you need to submit that
+          are not covered by Greenbroad.
+        </p>
+
+        <p>
+          If you choose to proceed using Greenbroad, you can continue filling
+          out all the questions asked in our software and preparing all the
+          documents listed in our document checklist. At the end, we will
+          generate for you all the forms and cover letters that we cover.<strong>
+            However, we strongly suggest you consult an immigration lawyer to
+            prepare the additional documents/forms, or your application may be
+            rejected or denied. </strong
+          >If you need a lawyer recommendation,
+          <a class="sub__section-link" target="_blank"
+            >here is the contact information</a
+          >
+          of an immigration lawyer we work with.
+        </p>
+
+        <p>If you have any questions, please don't hesitate to contact us.</p>
+      </div>
+    </div>
+    <div class="sub__discription">
+      Sources for this page (unless otherwise cited above): USCIS Form
+      <a
+        target="_blank"
+        href="https://www.uscis.gov/sites/default/files/document/forms/i-485.pdf"
+        >I-485</a
+      >
+    </div>
+    <div class="section__container-btn">
+      <a class="form__btn-back" (click)="us.pagesection = 8; us.top()">
+        < Back
+      </a>
+      <a class="form__btn-continue" (click)="us.pagesection = 10; us.top()">
+        Continue ></a
+      >
+    </div>
+  </div>
+</div>
+<div *ngIf="us.pagesection == 10">
+  <div class="section__inner">
+    <div class="section__sub-title">Part 5 of 5 - Miscellameous Conduct</div>
+    <h1 class="section__title">
+      Is the answer to any of the following questions "Yes"? Scroll to the
+      bottom to answer.
+    </h1>
+    <div class="section__discription">
+      <div class="app__number">56</div>
+      <p>
+        Has {{ us.data.application.name || "Applicant" }} EVER failed or refused
+        to attend or to remain in attendance at any removal proceeding filed
+        against {{ us.data.application.name || "Applicant" }} on or after April
+        1, 1997?
+      </p>
+    </div>
+    <div class="section__discription">
+      <div class="app__number">57</div>
+      <p>
+        Has {{ us.data.application.name || "Applicant" }} EVER submitted
+        fraudulent or counterfeit documentation to any U.S. Government official
+        to obtain or attempt to obtain any immigration benefit, including a visa
+        or entry into the United States?
+      </p>
+    </div>
+    <div class="section__discription">
+      <div class="app__number">58</div>
+      <p>
+        Has {{ us.data.application.name || "Applicant" }} EVER lied about,
+        concealed, or misrepresented any information on an application or
+        petition to obtain a visa, other documentation required for entry into
+        the United States, admission to the United States, or any other kind of
+        immigration benefit?
+      </p>
+    </div>
+    <div class="form__title">
+      Since April 1, 1997, has
+      {{ us.data.application.name || "Applicant" }} been unlawfully present in
+      the United States:
+    </div>
+
+    <div class="section__discription">
+      <div class="app__number">58.a</div>
+      <p>
+        For more than 180 days but less than a year, and then departed the
+        United States?
+      </p>
+    </div>
+    <div class="section__discription">
+      <div class="app__number">58.b</div>
+      <p>For one year or more and then departed the United States?</p>
+      <p>
+        NOTE: You were unlawfully present in the United States if you entered
+        the United States without being inspected and admitted or inspected and
+        paroled, or if you legally entered the United States but you stayed
+        longer than permitted.
+      </p>
+    </div>
+    <div class="form__title">
+      Since April 1, 1997, has
+      {{ us.data.application.name || "Applicant" }} EVER reentered or attempted
+      to reenter the United States without being inspected and admitted or
+      paroled after:
+    </div>
+    <div class="section__discription">
+      <div class="app__number">59.a</div>
+      <p>
+        Having been unlawfully present in the United States for more than one
+        year in the aggregate?
+      </p>
+    </div>
+    <div class="section__discription">
+      <div class="app__number">59.b</div>
+      <p>Having been deported, excluded, or removed from the United States?</p>
+    </div>
+    <div class="form__inner-check">
+      <div class="form__check">
+        <div class="form__title">
+          Is the answer to any of the above questions "Yes"?
+        </div>
+        <label>
+          <input
+            type="radio"
+            name="aheabovequestions_name"
+            [value]="'yes'"
+            [(ngModel)]="us.data.application.aheabovequestions_name"
+            (ngModelChange)="us.update()"
+          />
+          <span class="check">Yes</span>
+        </label>
+        <label>
+          <input
+            type="radio"
+            name="aheabovequestions_name"
+            [value]="'no'"
+            [(ngModel)]="us.data.application.aheabovequestions_name"
+            (ngModelChange)="us.update()"
+          />
+          <span class="check">No</span>
+        </label>
+      </div>
+    </div>
+    <div *ngIf="us.data.application.aheabovequestions_name == 'yes'">
+      <div class="sub-sub__section">
+        <span class="sub__section-title"
+          >Your Case Requires Additional Attention</span
+        >
+        <p>
+          Because the applicant answered "yes" to one or more of the questions
+          above, there may be additional documents/forms you need to submit that
+          are not covered by Greenbroad.
+        </p>
+
+        <p>
+          If you choose to proceed using Greenbroad, you can continue filling
+          out all the questions asked in our software and preparing all the
+          documents listed in our document checklist. At the end, we will
+          generate for you all the forms and cover letters that we cover.<strong>
+            However, we strongly suggest you consult an immigration lawyer to
+            prepare the additional documents/forms, or your application may be
+            rejected or denied. </strong
+          >If you need a lawyer recommendation,
+          <a class="sub__section-link" target="_blank"
+            >here is the contact information</a
+          >
+          of an immigration lawyer we work with.
+        </p>
+
+        <p>If you have any questions, please don't hesitate to contact us.</p>
+      </div>
+    </div>
+    <div class="sub__discription">
+      Sources for this page (unless otherwise cited above): USCIS Form
+      <a
+        target="_blank"
+        href="https://www.uscis.gov/sites/default/files/document/forms/i-485.pdf"
+        >I-485</a
+      >
+    </div>
+    <div class="section__container-btn">
+      <a class="form__btn-back" (click)="us.pagesection = 9; us.top()">
+        < Back
+      </a>
+      <a
+        class="form__btn-continue"
+        (click)="us.section = 'authorizations'; us.pagesection = 1; us.top()"
+      >
+        Continue ></a
+      >
+    </div>
+  </div>
+</div>

@@ -1,0 +1,131 @@
+html,
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+* {
+  outline: 0;
+}
+
+html,
+body {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+
+  input[type="checkbox"] {
+    cursor: pointer;
+  }
+
+  input[type="radio"] {
+    cursor: pointer;
+  }
+}
+
+html {
+  font-size: $fs;
+  height: 100vh;
+
+}
+
+body {
+  cursor: default;
+  /* default font settings */
+  font-family: $ff-base;
+  color: $text;
+  line-height: 1.4;
+  /* break words without spacing */
+  word-wrap: break-word;
+  position: relative;
+  height: 100vh;
+  font-family: 'Open Sans', sans-serif;
+
+}
+
+img {
+  display: inline-block;
+  width: 145px;
+}
+
+.flatpickr-input {
+  cursor: pointer;
+  width: 97%;
+}
+
+.app-root {
+  height: 100vh;
+
+  display: flex;
+  flex-direction: column;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  cursor: pointer;
+
+  &:visited {
+    color: inherit;
+  }
+
+}
+
+.router-outlet {
+  flex-grow: 1;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+
+
+}
+
+.page-wrapper {
+  height: calc(100vh - 50px);
+
+  @include bp-max(sm) {
+    overflow-y: auto;
+  }
+
+}
+
+.right-col {
+  height: calc(100vh - 50px);
+  overflow-y: auto;
+
+  @include bp-max(sm) {
+    height: auto;
+  }
+}
+
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+/* Track */
+// ::-webkit-scrollbar-track {
+// 	box-shadow: inset 0 0 10px grey;
+
+// }
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #1972F5;
+  cursor: pointer;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #1972F5;
+}
+label{
+  width: 100%;
+}
+input[type=text], select {
+  width: 100%;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}

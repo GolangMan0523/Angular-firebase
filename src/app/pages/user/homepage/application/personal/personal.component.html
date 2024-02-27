@@ -1,0 +1,1494 @@
+<div *ngIf="us.pagesection == 1">
+  <div class="section__inner">
+    <h1 class="section__title">
+      What's
+      {{
+        (us.data.application.name && us.data.application.name + "'s") ||
+          "Applicant's"
+      }}
+      full legal name?
+    </h1>
+    <span class="section__discription"
+      >Provide
+      {{
+        (us.data.application.name && us.data.application.name + "'s") ||
+          "Applicant's"
+      }}
+      full legal name as shown on
+      {{
+        (us.data.application.name && us.data.application.name + "'s") ||
+          "Applicant's"
+      }}
+      birth certificate or legal change of name document. Do not provide a
+      nickname.</span
+    >
+    <div
+      class="sub__section-btn"
+      (click)="subsection = !subsection"
+      (clickOutside)="subsection = null"
+    >
+      <span class="sub__section-icon" [class._active]="subsection">&#8250;</span
+      >What if I have changed my last name after getting married?
+    </div>
+    <div class="sub-sub__section-inner" *ngIf="subsection">
+      <p>
+        If you have legally changed your last name after getting married, you
+        can use your new last name for this legal name question. On the next
+        page of our software, we will ask you to enter any previous name(s) you
+        have used and you can enter your old name(s) there. When you prepare the
+        supporting documents later, if a document you provide shows a name that
+        is different from your current legal name, you should provide along with
+        that document a copy of a legal document reflecting the name change. As
+        to what is considered a legal change of name document, USCIS
+        <a
+          style="color: #1972f5"
+          target="_blank"
+          href="https://www.uscis.gov/sites/default/files/document/forms/i-130instr.pdf"
+          >Form I-130 Instructions</a
+        >
+        Page 8 says "copies of the legal documents reflecting the name change,
+        such as a marriage certificate, adoption decree, or court order." That
+        list does include the marriage certificate.
+      </p>
+
+      <p>Source: Greenbroad suggestion only, not form USCIS</p>
+    </div>
+    <din class="section__sub-container">
+      <label>
+        <span class="form__title">Given name (first name) *</span>
+        <input
+          type="text"
+          maxlength="27"
+          [class.err]="err.gName"
+          [(ngModel)]="us.data.application.name"
+          oninput="this.value = this.value.replace(/[^a-zA-Z\s.]/g, '');"
+          (ngModelChange)="
+            us.data.application.name = us.data.application.name.toUpperCase();
+            us.update();
+            validateLength(us.data.application.name)
+          "
+          (blur)="!us.data.application.name && (err.gName = true)"
+        />
+        <span *ngIf="err.gName" class="errspan">This field is required </span>
+      </label>
+      <label>
+        <span class="form__title">Middle name</span>
+        <input
+          type="text"
+          maxlength="27"
+          [(ngModel)]="us.data.application.middle_name"
+          oninput="this.value = this.value.replace(/[^a-zA-Z\s.]/g, '');"
+          (ngModelChange)="
+            us.data.application.middle_name =
+              us.data.application.middle_name.toUpperCase();
+            us.update();
+            validateLength(us.data.application.middle_name)
+          "
+        />
+      </label>
+    </din>
+    <div class="section__container">
+      <label>
+        <span class="form__title">Family name (last name)</span>
+        <input
+          class="section__npt"
+          type="text"
+          maxlength="27"
+          [class.err]="err.fName"
+          [(ngModel)]="us.data.application.family_name"
+          oninput="this.value = this.value.replace(/[^a-zA-Z\s.]/g, '');"
+          (ngModelChange)="
+            us.data.application.family_name =
+              us.data.application.family_name.toUpperCase();
+            us.update();
+            err.fName = false;
+            validateLength(us.data.application.family_name)
+          "
+          (blur)="!us.data.application.family_name && (err.fName = true)"
+        />
+        <span *ngIf="err.fName" class="errspan">This field is required</span>
+      </label>
+    </div>
+    <div class="sub-discription">
+      Sources for this page (unless otherwise cited above): USCIS Forms
+      <a
+        target="_blank"
+        href="https://www.uscis.gov/sites/default/files/document/forms/i-130.pdf"
+        >I-130,</a
+      >
+      <a
+        target="_blank"
+        href="https://www.uscis.gov/sites/default/files/document/forms/i-130a.pdf"
+        >I-130A,</a
+      >
+      <a
+        target="_blank"
+        href="https://www.uscis.gov/sites/default/files/document/forms/i-864.pdf"
+        >I-864,</a
+      >
+      <a
+        target="_blank"
+        href="https://www.uscis.gov/sites/default/files/document/forms/i-485.pdf"
+        >I-485,</a
+      >
+      <a
+        target="_blank"
+        href="https://www.uscis.gov/sites/default/files/document/forms/i-131.pdf"
+        >I-131,</a
+      >
+      <a
+        target="_blank"
+        href="https://www.uscis.gov/sites/default/files/document/forms/i-765.pdf"
+        >I-765,</a
+      >
+      <a
+        target="_blank"
+        href="https://www.uscis.gov/sites/default/files/document/forms/i-765instr.pdf"
+        >I-765 Instructions Page 21</a
+      >
+    </div>
+    <div class="section__container-btn">
+      <a class="form__btn-back" (click)="us.section = 'home'; us.top()">
+        < Back
+      </a>
+      <a
+        class="form__btn-continue"
+        (click)="ChangeTab(2); us.top()"
+        [disabled]="!us.data.application.name"
+      >
+        Continue ></a
+      >
+    </div>
+  </div>
+</div>
+<div *ngIf="us.pagesection == 2">
+  <div class="section__inner">
+    <h1 class="section__title">
+      Has {{ us.data.application.name || "Applicant" }} ever used names other
+      than "{{ us.data.application.name || "Applicant" }}
+      {{ us.data.application.middle_name }}
+      {{ us.data.application.family_name }}
+      " since birth?
+    </h1>
+    <div class="section__discription">
+      Provide all other names {{ us.data.application.name || "Applicant" }} has
+      ever used, including the family name at birth, names by previous
+      marriages, maiden name, other legal names, nicknames, aliases, and assumed
+      names.
+    </div>
+    <div class="form__check">
+      <label>
+        <input
+          type="radio"
+          name="other_name"
+          [value]="'yes'"
+          [(ngModel)]="us.data.application.other_name"
+          (ngModelChange)="us.update()"
+        />
+        <span class="check">Yes</span>
+      </label>
+      <label>
+        <input
+          type="radio"
+          name="other_name"
+          [value]="'no'"
+          [(ngModel)]="us.data.application.other_name"
+          (ngModelChange)="us.update()"
+        />
+        <span class="check">No</span>
+      </label>
+    </div>
+    <div class="sub__section" *ngIf="us.data.application.other_name == 'yes'">
+      <span class="sub__section-title">Enter other names used below:</span>
+      <div
+        class="sub__section-forms"
+        *ngFor="let name of us.data.application.other_names; index as i"
+      >
+        <div class="section__sub-title">
+          <span>OTHER NAME {{ i + 1 }}</span>
+          <button
+            class="personal-name__btn"
+            (click)="us.data.application.other_names.splice(i, 1); us.update()"
+          >
+            X
+          </button>
+        </div>
+        <div class="sub__section-forms-inner">
+          <label>
+            <span class="form__title">Given name (first name)</span>
+            <input
+              maxlength="27"
+              [class.err]="err.othergName"
+              [(ngModel)]="name.subfirstname_name"
+              (ngModelChange)="
+                name.subfirstname_name = name.subfirstname_name.toUpperCase();
+                us.update();
+                validateLength(name.subfirstname_name)
+              "
+              oninput="this.value = this.value.replace(/[^a-zA-Z\s.]/g, '');"
+              (blur)="!name.subfirstname_name && (err.othergName = true)"
+            />
+            <span *ngIf="err.othergName" class="errspan"
+              >This field is required</span
+            >
+          </label>
+          <label>
+            <span class="form__title">Middle name</span>
+            <input
+              maxlength="27"
+              [(ngModel)]="name.submiddlename_name"
+              oninput="this.value = this.value.replace(/[^a-zA-Z\s.]/g, '');"
+              (ngModelChange)="
+                name.submiddlename_name = name.submiddlename_name.toUpperCase();
+                us.update();
+                validateLength(name.submiddlename_name)
+              "
+            />
+          </label>
+          <label>
+            <span class="form__title">Family name (last name)</span>
+            <input
+              maxlength="27"
+              [class.err]="err.otherfName"
+              [(ngModel)]="name.sublastname_name"
+              (ngModelChange)="
+                name.sublastname_name = name.sublastname_name.toUpperCase();
+                us.update();
+                validateLength(name.sublastname_name)
+              "
+              oninput="this.value = this.value.replace(/[^a-zA-Z\s.]/g, '');"
+              (blur)="!name.sublastname_name && (err.otherfName = true)"
+            />
+            <span *ngIf="err.otherfName" class="errspan"
+              >This field is required</span
+            >
+          </label>
+        </div>
+      </div>
+      <div class="sub-section__btn">
+        <button class="sub__section-add" (click)="add()">
+          + Add Another Name
+        </button>
+      </div>
+    </div>
+    <div class="sub-discription">
+      Sources for this page (unless otherwise cited above): USCIS Forms
+      <a
+        target="_blank"
+        href="https://www.uscis.gov/sites/default/files/document/forms/i-130.pdf"
+        >I-130,</a
+      >
+      <a
+        target="_blank"
+        href="https://www.uscis.gov/sites/default/files/document/forms/i-485.pdf"
+        >I-485,</a
+      >
+      <a
+        target="_blank"
+        href="https://www.uscis.gov/sites/default/files/document/forms/i-765.pdf"
+        >I-765</a
+      >
+    </div>
+    <div class="section__container-btn">
+      <a class="form__btn-back" (click)="us.pagesection = 1; us.top()">
+        < Back
+      </a>
+      <a class="form__btn-continue" (click)="us.pagesection = 3; us.top()">
+        Continue >
+      </a>
+    </div>
+  </div>
+</div>
+<div *ngIf="us.pagesection == 3">
+  <div class="section__inner">
+    <h1 class="section__title">
+      Does
+      {{
+        (us.data.application.name && us.data.application.name + "'s") ||
+          "Applicant's"
+      }}
+      native written language use Roman letters?
+    </h1>
+    <div class="section__discription">
+      Example languages that do not use Roman letters are Chinese, Japanese and
+      Korean.
+    </div>
+    <div class="form__check">
+      <label>
+        <input
+          type="radio"
+          name="examplelanguages_name"
+          [value]="'yes'"
+          [(ngModel)]="us.data.application.examplelanguages_name"
+          (ngModelChange)="us.update()"
+        />
+        <span class="check">Yes</span>
+      </label>
+      <label>
+        <input
+          type="radio"
+          name="examplelanguages_name"
+          [value]="'no'"
+          [(ngModel)]="us.data.application.examplelanguages_name"
+        />
+        <span class="check">No</span>
+      </label>
+      <div
+        class="sub-sub__section"
+        *ngIf="us.data.application.examplelanguages_name == 'no'"
+      >
+        <span class="sub-sub__section-title"
+          >Enter
+          {{
+            (us.data.application.name && us.data.application.name + "'s") ||
+              "Applicant's"
+          }}
+          legal name in
+          {{
+            (us.data.application.name && us.data.application.name + "'s") ||
+              "Applicant's"
+          }}
+          native written language:</span
+        >
+        <div class="sub-sub__section-forms">
+          <div class="sub-sub__section-forms-inner">
+            <label>
+              <span class="form__title">Given name (first name)</span>
+              <input
+                type="text"
+                maxlength="27"
+                [class.err]="err.languagegname"
+                [(ngModel)]="us.data.application.subfirstnames_name"
+                (ngModelChange)="
+                  us.data.application.subfirstnames_name =
+                    us.data.application.subfirstnames_name.toUpperCase();
+                  us.update();
+                  validateLength(us.data.application.subfirstnames_name)
+                "
+                oninput="this.value = this.value.replace(/[^a-zA-Z\s.]/g, '');"
+                (blur)="
+                  !us.data.application.subfirstnames_name &&
+                    (err.languagegname = true)
+                "
+              />
+              <span *ngIf="err.languagegname" class="errspan"
+                >This field is required</span
+              >
+            </label>
+            <label>
+              <span class="form__title">Middle name</span>
+              <input
+                type="text"
+                maxlength="27"
+                [(ngModel)]="us.data.application.subsubmiddlenames_name"
+                oninput="this.value = this.value.replace(/[^a-zA-Z\s.]/g, '');"
+                (ngModelChange)="
+                  us.data.application.subsubmiddlenames_name =
+                    us.data.application.subsubmiddlenames_name.toUpperCase();
+                  us.update();
+                  validateLength(us.data.application.subsubmiddlenames_name)
+                "
+              />
+            </label>
+            <label>
+              <span class="form__title">Family name (last name)</span>
+              <input
+                type="text"
+                maxlength="27"
+                [class.err]="err.languagefname"
+                [(ngModel)]="us.data.application.subsublastnames_name"
+                oninput="this.value = this.value.replace(/[^a-zA-Z\s.]/g, '');"
+                (ngModelChange)="
+                  us.data.application.subsublastnames_name =
+                    us.data.application.subsublastnames_name.toUpperCase();
+                  us.update();
+                  validateLength(us.data.application.subsublastnames_name)
+                "
+                (blur)="
+                  !us.data.application.subsublastnames_name &&
+                    (err.languagefname = true)
+                "
+              />
+              <span *ngIf="err.languagefname" class="errspan"
+                >This field is required</span
+              >
+            </label>
+          </div>
+        </div>
+        <div
+          class="sub__section-btn"
+          (click)="subsectionus = !subsectionus"
+          (clickOutside)="subsectionus = null"
+        >
+          <span class="sub__section-icon" [class._active]="subsectiontwo"
+            >&#8250;</span
+          >What if my computer cannot type this language?
+        </div>
+        <div class="sub-sub__section-inner" *ngIf="subsectionus">
+          <p>
+            There are easy ways to work around this. Let's use Chinese as an
+            example (other languages work the same way)
+          </p>
+
+          <p>
+            If your computer can at least display Chinese, you can type Chinese
+            using an online Chinese keyboard. For example this one at
+            <a
+              class="sub__section-link"
+              target="_blank"
+              href="https://www.lexilogos.com/keyboard/"
+              >lexilogos.com</a
+            >
+            . Then, you can copy and paste the characters here.
+          </p>
+
+          <p>
+            Alternatively, you can have a Chinese speaker email you the
+            characters, and then copy and paste them here.
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="sub-discription">
+      Sources for this page (unless otherwise cited above): USCIS Form
+      <a
+        target="_blank"
+        href="https://www.uscis.gov/sites/default/files/document/forms/i-130.pdf"
+        >I-130</a
+      >
+    </div>
+    <div class="section__container-btn">
+      <a class="form__btn-back" (click)="us.pagesection = 2; us.top()">
+        < Back
+      </a>
+      <a class="form__btn-continue" (click)="us.pagesection = 4; us.top()">
+        Continue >
+      </a>
+    </div>
+  </div>
+</div>
+<div *ngIf="us.pagesection == 4">
+  <div class="section-form__inner">
+    <h1 class="section__title">
+      Some basic info about {{ us.data.application.name || "Applicant" }}
+    </h1>
+    <div class="form__check">
+      <span class="form__title">Sex</span>
+      <label>
+        <input
+          type="radio"
+          name="basicinfo_name"
+          [value]="'Male'"
+          [(ngModel)]="us.data.application.basicinfo_name"
+          (ngModelChange)="us.update(); err.sex = false"
+          (blur)="!us.data.application.basicinfo_name && (err.sex = true)"
+        />
+        <span class="check">Male</span>
+      </label>
+      <label>
+        <input
+          type="radio"
+          name="basicinfo_name"
+          [value]="'Female'"
+          [(ngModel)]="us.data.application.basicinfo_name"
+          (ngModelChange)="us.update(); err.sex = false"
+          (blur)="!us.data.application.basicinfo_name && (err.sex = true)"
+        />
+        <span class="check">Female</span>
+      </label>
+    </div>
+    <span *ngIf="err.sex" class="errspan">This field is required </span>
+    <div class="form__inner">
+      <div>
+        <label>
+          <div class="form__title">
+            <span>Country of citizenship or nationality </span>
+            <div class="tooltip-container">
+              <span class="tooltip__i">i</span>
+
+              <div class="tooltip">
+                <span class="tooltips__title"
+                  >Country or Countries of Citizenship or Nationality
+                </span>
+                <span
+                  >List all countries where you are currently a citizen or
+                  national.</span
+                >
+                <span
+                  >If you are stateless, type or print the name of the country
+                  where you were last a citizen or national.</span
+                >
+                <span class="tooltip__link"
+                  >Source:
+                  <a
+                    target="_blank"
+                    href="https://www.uscis.gov/sites/default/files/document/forms/i-765.pdf"
+                    >USCIS Form I-765 Page 2</a
+                  >,
+                  <a
+                    target="_blank"
+                    href="https://www.uscis.gov/sites/default/files/document/forms/i-765instr.pdf"
+                    >Form I-765 Instructions Page 22</a
+                  ></span
+                >
+              </div>
+            </div>
+          </div>
+          <div
+            class="sub-form__container"
+            *ngFor="let name of us.data.application.country_names"
+          >
+            <input
+              type="text"
+              maxlength="17"
+              [(ngModel)]="name.country_name"
+              [class.err]="err.basicInfoName"
+              (ngModelChange)="
+                name.country_name = name.country_name.toUpperCase();
+                us.update();
+                err.basicInfoName = false
+              "
+              (blur)="!name.country_name && (err.basicInfoName = true)"
+            />
+            <button
+              class="country-name__btn"
+              (click)="
+                us.data.application.country_names.splice(i, 1); us.update()
+              "
+            >
+              X
+            </button>
+          </div>
+          <span *ngIf="err.basicInfoName" class="errspan"
+            >This field is required
+          </span>
+        </label>
+      </div>
+      <div class="add-country-btn__container">
+        <button class="add-country__btn" (click)="addCountry()">
+          + Add Country of Citizenship or Nationality
+        </button>
+      </div>
+      <label>
+        <span class="form__title">Date of birth</span>
+        <!-- <ng2-flatpickr placeholder="mm/dd/yyyy"  [setDate]="us.data.application.citizenship_name" [dateFormat]="dateFormat"
+          [(ngModel)]="us.data.application.citizenship_name" [config]="pickerOptions" (ngModelChange)="us.update();"></ng2-flatpickr> -->
+        <input
+          type="date"
+          placeholder="mm/dd/yyyy"
+          [(ngModel)]="us.data.application.citizenship_name"
+          (ngModelChange)="us.update()"
+        />
+        <!-- <input  type="text"
+        placeholder="mm/dd/yyyy"
+        class="form-control"
+        bsDatepicker [(ngModel)]="us.data.application.citizenship_name" (ngModelChange)="us.update();"> -->
+
+        <my-date
+          [date]="us.data.application.citizenship_name"
+          [class.err]="err.mydate"
+          (update)="
+            us.data.application.citizenship_name = $event;
+            us.update();
+            err.mydate = false
+          "
+          (blur)="!us.data.application.citizenship_name && (err.mydate = true)"
+        ></my-date>
+        <span *ngIf="err.mydate" class="errspan">This field is required</span>
+      </label>
+    </div>
+    <div class="form__check">
+      <div class="form__title">
+        <span
+          >Has {{ us.data.application.name || "Applicant" }} ever used any other
+          date of birth?</span
+        >
+        <div class="tooltip-container">
+          <span class="tooltip__i">i</span>
+          <div class="tooltip">
+            <span
+              >In addition to providing your actual date of birth, include any
+              other dates of birth you have used in connection with any legal
+              names or non-legal names.</span
+            >
+
+            <span class="tooltip__link"
+              >Source:
+              <a
+                target="_blank"
+                href="https://www.uscis.gov/sites/default/files/document/forms/i-485-pc.pdf"
+                >USCIS Form I-485 Page 1</a
+              ></span
+            >
+          </div>
+        </div>
+      </div>
+      <label>
+        <input
+          type="radio"
+          name="dateofbirth_name"
+          [value]="'yes'"
+          [(ngModel)]="us.data.application.dateofbirth_name"
+          (ngModelChange)="
+            us.update();
+            err.anotherDate = false;
+            validateLength17(us.data.application.dateofbirth_name)
+          "
+          (blur)="
+            !us.data.application.dateofbirth_name && (err.anotherDate = true)
+          "
+        />
+        <span class="check">Yes</span>
+      </label>
+      <label>
+        <input
+          type="radio"
+          name="dateofbirth_name"
+          [value]="'no'"
+          [(ngModel)]="us.data.application.dateofbirth_name"
+          (ngModelChange)="us.update(); err.anotherDate = false"
+          (blur)="
+            !us.data.application.dateofbirth_name && (err.anotherDate = true)
+          "
+        />
+        <span class="check">No</span>
+      </label>
+      <span *ngIf="err.anotherDate" class="errspan"
+        >This field is required
+      </span>
+    </div>
+    <div
+      class="sub-section__date-of-birth"
+      *ngIf="us.data.application.dateofbirth_name == 'yes'"
+    >
+      <div
+        *ngFor="
+          let name of us.data.application.appdateofbirthrepeat_names;
+          index as i
+        "
+      >
+        <div class="date-of-birth__inner">
+          <span class="form__title">Enter other birth date(s) used</span>
+          <div class="sub-inner">
+            <label>
+              <!-- <ng2-flatpickr placeholder="mm/dd/yyyy" [config]="pickerOptions" [setDate]="name.appdateofbirth_name"
+                [(ngModel)]="name.appdateofbirth_name" (ngModelChange)="us.update();"></ng2-flatpickr> -->
+              <input
+                type="date"
+                placeholder="mm/dd/yyyy"
+                [(ngModel)]="name.appdateofbirth_name"
+                (ngModelChange)="us.update()"
+              />
+              <!-- <input  type="text"
+              placeholder="mm/dd/yyyy"
+              class="form-control"
+              bsDatepicker  [(ngModel)]="name.appdateofbirth_name" (ngModelChange)="us.update();"> -->
+
+              <my-date
+                [date]="name.appdateofbirth_name"
+                (update)="
+                  name.appdateofbirth_name = $event;
+                  us.update();
+                  err.anotherDate = false
+                "
+                (blur)="!name.appdateofbirth_name && (err.anotherDate = true)"
+              ></my-date>
+              <button
+                class="dateofbirth__btn"
+                (click)="
+                  us.data.application.appdateofbirthrepeat_names.splice(i, 1);
+                  us.update()
+                "
+              >
+                X
+              </button>
+            </label>
+          </div>
+        </div>
+      </div>
+      <div>
+        <button class="date-of-birth__add-btn" (click)="birthrepeat()">
+          + Birth date
+        </button>
+      </div>
+    </div>
+    <div class="form__inner">
+      <span class="form__title">Place of birth</span>
+      <div class="container__forms">
+        <label>
+          <div class="form__title">
+            <span>Country of birth</span>
+            <div class="tooltip-container">
+              <span class="tooltip__i">i</span>
+              <div class="tooltip">
+                <span
+                  >Type or print the name of the country as it was named when
+                  you were born, even if the country’s name has changed or the
+                  country no longer exists.</span
+                >
+
+                <span class="tooltip__link"
+                  >Source:
+                  <a
+                    target="_blank"
+                    href="https://www.uscis.gov/sites/default/files/document/forms/i-765instr.pdf"
+                    >USCIS Form I-765 Instructions Page 22</a
+                  ></span
+                >
+              </div>
+            </div>
+          </div>
+          <input
+            type="text"
+            maxlength="17"
+            [(ngModel)]="us.data.application.birth_name"
+            [class.err]="err.birthCountry"
+            oninput="this.value = this.value.replace(/[^a-zA-Z\s.]/g, '');"
+            (ngModelChange)="
+              us.data.application.birth_name =
+                us.data.application.birth_name.toUpperCase();
+              us.update();
+              err.birthCountry = false;
+              validateLength17(us.data.application.birth_name)
+            "
+            (blur)="
+              !us.data.application.birth_name && (err.birthCountry = true)
+            "
+          />
+          <span *ngIf="err.birthCountry" class="errspan"
+            >This field is required
+          </span>
+        </label>
+        <label>
+          <span class="form__title">State or province of birth </span>
+          <input
+            type="text"
+            maxlength="17"
+            [(ngModel)]="us.data.application.state_name"
+            [class.err]="err.birthState"
+            oninput="this.value = this.value.replace(/[^a-zA-Z.]/g, '');"
+            (ngModelChange)="
+              us.data.application.state_name =
+                us.data.application.state_name.toUpperCase();
+              us.update();
+              err.birthState = false;
+              validateLength17(us.data.application.state_name)
+            "
+            (blur)="!us.data.application.state_name && (err.birthState = true)"
+          />
+          <span *ngIf="err.birthState" class="errspan"
+            >This field is required
+          </span>
+        </label>
+        <label>
+          <span class="form__title">City or town of birth</span>
+          <input
+            type="text"
+            maxlength="17"
+            [(ngModel)]="us.data.application.city_name"
+            [class.err]="err.birthCity"
+            oninput="this.value = this.value.replace(/[^a-zA-Z\s.]/g, '');"
+            (ngModelChange)="
+              us.data.application.city_name =
+                us.data.application.city_name.toUpperCase();
+              us.update();
+              err.birthCity = false;
+              validateLength17(us.data.application.city_name)
+            "
+            (blur)="!us.data.application.city_name && (err.birthCity = true)"
+          />
+          <span *ngIf="err.birthCity" class="errspan"
+            >This field is required
+          </span>
+        </label>
+      </div>
+    </div>
+    <div class="form__check">
+      <div class="form__title">
+        <span
+          >Has the Social Security Administration (SSA) ever officially issued a
+          Social Security card to
+          {{ us.data.application.name || "Applicant" }}?</span
+        >
+        <div class="tooltip-container">
+          <span class="tooltip__i">i</span>
+          <div class="tooltip">
+            <span
+              >If the Social Security Administration ever issued a Social
+              Security card to you in your name or a previously used name such
+              as your maiden name, then you must enter the SSN from your
+              card.</span
+            >
+
+            <span class="tooltip__link"
+              >Source:
+              <a
+                target="_blank"
+                href="https://www.uscis.gov/sites/default/files/document/forms/i-765instr.pdf"
+                >USCIS Form I-765 Instructions Page 22</a
+              ></span
+            >
+          </div>
+        </div>
+      </div>
+      <label>
+        <input
+          type="radio"
+          name="administration_name"
+          [value]="'yes'"
+          [(ngModel)]="us.data.application.administration_name"
+          (ngModelChange)="us.update(); err.cardSecur = false"
+        />
+        <span class="check">Yes</span>
+      </label>
+      <label>
+        <input
+          type="radio"
+          name="administration_name"
+          [value]="'no'"
+          [(ngModel)]="us.data.application.administration_name"
+          (ngModelChange)="us.update(); err.cardSecur = false"
+        />
+        <span class="check">No</span>
+      </label>
+      <span *ngIf="err.cardSecur" class="errspan">This field is required </span>
+      <div
+        class="sub-section__administration"
+        *ngIf="us.data.application.administration_name == 'yes'"
+      >
+        <div class="form__title">Applicant's U.S. social security number</div>
+        <label>
+          <div class="security-number__container">
+            <input
+              style="width: 75px"
+              placeholder="xxx"
+              oninput="this.value = this.value.replace(/[^0-9.]/g, ''); this.value = this.value.replace(/(\..*)\./g, '$1');"
+              type="text"
+              maxlength="3"
+              [(ngModel)]="us.data.application.securitynumberone_name"
+              [class.err]="err.ssn"
+              (ngModelChange)="us.update(); err.ssn = false"
+              (blur)="
+                !us.data.application.securitynumberone_name && (err.ssn = true)
+              "
+              (ngModelChange)="us.update()"
+            />
+            <span>-</span>
+            <input
+              style="width: 75px"
+              placeholder="xx"
+              oninput="this.value = this.value.replace(/[^0-9.]/g, ''); this.value = this.value.replace(/(\..*)\./g, '$1');"
+              type="text"
+              maxlength="2"
+              [(ngModel)]="us.data.application.securitynumbertwo_name"
+              [class.err]="err.ssn"
+              (ngModelChange)="us.update(); err.ssn = false"
+              (blur)="
+                !us.data.application.securitynumberone_name && (err.ssn = true)
+              "
+              (ngModelChange)="us.update()"
+            />
+            <span>-</span>
+            <input
+              style="width: 75px"
+              placeholder="xxхх"
+              oninput="this.value = this.value.replace(/[^0-9.]/g, ''); this.value = this.value.replace(/(\..*)\./g, '$1');"
+              type="text"
+              maxlength="4"
+              [(ngModel)]="us.data.application.securitynumberthree_name"
+              [class.err]="err.ssn"
+              (ngModelChange)="us.update(); err.ssn = false"
+              (blur)="
+                !us.data.application.securitynumberone_name && (err.ssn = true)
+              "
+              (ngModelChange)="us.update()"
+            />
+          </div>
+          <span *ngIf="err.ssn" class="errspan"
+            >Social security number is required</span
+          >
+        </label>
+      </div>
+    </div>
+    <div class="form__check">
+      <div class="form__title">
+        <span
+          >Does {{ us.data.application.name || "Applicant" }} want the Social
+          Security Administration (SSA) to issue
+          {{ us.data.application.name || "Applicant" }} a Social Security
+          card?</span
+        >
+      </div>
+      <label>
+        <input
+          type="radio"
+          name="administrationoo_name"
+          [value]="'yes'"
+          [(ngModel)]="us.data.application.administrationoo_name"
+          (ngModelChange)="us.update(); err.cardSecur = false"
+        />
+        <span class="check">Yes</span>
+      </label>
+      <label>
+        <input
+          type="radio"
+          name="administrationoo_name"
+          [value]="'no'"
+          [(ngModel)]="us.data.application.administrationoo_name"
+          (ngModelChange)="us.update(); err.cardSecur = false"
+        />
+        <span class="check">No</span>
+      </label>
+      <span *ngIf="err.cardSecur" class="errspan">This field is required </span>
+      <div
+        class="form__check"
+        *ngIf="us.data.application.administrationoo_name == 'yes'"
+      >
+        <div class="form__title">
+          <span
+            >Consent for Disclosure: Does
+            {{ us.data.application.name || "Applicant" }} authorize disclosure
+            of information from this application to the SSA as required for the
+            purpose of assigning
+            {{ us.data.application.name || "Applicant" }} an SSN and issuing
+            {{ us.data.application.name || "Applicant" }} a Social Security
+            card?</span
+          >
+        </div>
+        <div class="form__title">
+          <span
+            >If you answered "Yes" to the previous question, you must also
+            answer "Yes" to this question to receive a card.</span
+          >
+        </div>
+        <label>
+          <input
+            type="radio"
+            name="aadministrationoo_name"
+            [value]="'yes'"
+            [(ngModel)]="us.data.application.aadministrationoo_name"
+            (ngModelChange)="us.update(); err.cardSecur = false"
+          />
+          <span class="check">Yes</span>
+        </label>
+        <label>
+          <input
+            type="radio"
+            name="aadministrationoo_name"
+            [value]="'no'"
+            [(ngModel)]="us.data.application.aadministrationoo_name"
+            (ngModelChange)="us.update(); err.cardSecur = false"
+          />
+          <span class="check">No</span>
+        </label>
+        <span *ngIf="err.cardSecur" class="errspan"
+          >This field is required
+        </span>
+      </div>
+      <div
+        class="sub-form__containerr"
+        *ngIf="us.data.application.aadministrationoo_name == 'no'"
+      >
+        <span>Your Case Requires Additional Attention</span>
+        <p>
+          Because you answered "yes" to the previous question, but did not
+          answer "yes" to this question, there may be additional documents/forms
+          you need to submit that are not covered by Greenbroad.
+        </p>
+
+        <p>
+          If you choose to proceed using Greenbroad, you can continue filling
+          out all the questions asked in our software and preparing all the
+          documents listed in our document checklist. At the end, we will
+          generate for you all the forms and cover letters that we cover.
+          <span
+            >However, we strongly suggest you consult an immigration lawyer to
+            prepare the additional documents/forms, or your application may be
+            rejected or denied.</span
+          >
+          If you need a lawyer recommendation,
+          <a href="" style="color: #1972f5" target="_blank"
+            >here is the contact information</a
+          >
+          of an immigration lawyer we work with.
+        </p>
+
+        <p>If you have any questions, please don't hesitate to contact us.</p>
+      </div>
+    </div>
+
+    <div class="form__inner">
+      <span class="form__title">Contact Information</span>
+      <div class="container__forms">
+        <label>
+          <span class="form__title">Daytime phone number</span>
+          <input
+            type="text"
+            maxlength="10"
+            oninput="this.value = this.value.replace(/[^0-9\s.]/g, ''); this.value = this.value.replace(/(\..*)\./g, '$1');"
+            [(ngModel)]="us.data.application.phonenumber_name"
+            [class.err]="err.phoneNumb"
+            (ngModelChange)="us.update(); err.phoneNumb = false"
+            (blur)="
+              !us.data.application.phonenumber_name && (err.phoneNumb = true)
+            "
+          />
+          <span *ngIf="err.phoneNumb" class="errspan"
+            >This field is required</span
+          >
+        </label>
+        <label>
+          <span class="form__title">Mobile phone number (if any)</span>
+          <input
+            type="text"
+            maxlength="10"
+            oninput="this.value = this.value.replace(/[^0-9\s.]/g, ''); this.value = this.value.replace(/(\..*)\./g, '$1');"
+            [(ngModel)]="us.data.application.mobile_name"
+            (ngModelChange)="us.update()"
+          />
+        </label>
+        <label>
+          <span class="form__title">Email address (if any)</span>
+          <input
+            type="text"
+            [(ngModel)]="us.data.application.register_name"
+            (ngModelChange)="us.update()"
+          />
+        </label>
+      </div>
+    </div>
+    <div class="sub-discription">
+      Sources for this page (unless otherwise cited above): USCIS Forms
+      <a
+        target="_blank"
+        href="https://www.uscis.gov/sites/default/files/document/forms/i-130.pdf"
+        >I-130</a
+      >,<a
+        target="_blank"
+        href="https://www.uscis.gov/sites/default/files/document/forms/i-864.pdf"
+        >I-864</a
+      >,<a
+        target="_blank"
+        href="https://www.uscis.gov/sites/default/files/document/forms/i-485.pdf"
+        >I-485</a
+      >,<a
+        target="_blank"
+        href="https://www.uscis.gov/sites/default/files/document/forms/i-131.pdf"
+        >I-131</a
+      >,<a
+        target="_blank"
+        href="https://www.uscis.gov/sites/default/files/document/forms/i-765.pdf"
+        >I-765</a
+      >
+    </div>
+    <div class="section__container-btn">
+      <a class="form__btn-back" (click)="us.pagesection = 3"> < Back </a>
+      <a class="form__btn-continue" (click)="ChangeTab1(5); us.top()">
+        Continue >
+      </a>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="us.pagesection == 5">
+  <div class="section__inner">
+    <h1 class="section__title">
+      {{
+        (us.data.application.name && us.data.application.name + "'s") ||
+          "Applicant's"
+      }}
+      biographic info
+    </h1>
+    <div class="form__check">
+      <div class="form__title">
+        <span>Ethnicity</span>
+        <div class="tooltip-container">
+          <span class="tooltip__i">i</span>
+          <div class="tooltip">
+            <span class="tooltips__title"
+              >Definition for Hispanic or Latino</span
+            >
+            <span
+              >A person of Cuban, Mexican, Puerto Rican, South or Central
+              American, or other Spanish culture or origin, regardless of
+              race.</span
+            >
+            <span class="tooltip__link"
+              >Source:
+              <a
+                target="_blank"
+                href="https://www.uscis.gov/sites/default/files/document/forms/i-485instr-pc.pdf"
+                >USCIS Form I-485 Instructions Page 7</a
+              >,
+              <a
+                target="_blank"
+                href="https://www.uscis.gov/sites/default/files/document/forms/i-130instr.pdf"
+                >USCIS Form I-130 Instructions Page 4</a
+              >
+            </span>
+          </div>
+        </div>
+      </div>
+      <label>
+        <input
+          type="radio"
+          name="ethnicity_name"
+          [value]="'Hispanic or Latino'"
+          [(ngModel)]="us.data.application.ethnicity_name"
+          (ngModelChange)="us.update(); err.ethnicity = false"
+        />
+        <span class="check">Hispanic or Latino</span>
+      </label>
+      <label>
+        <input
+          type="radio"
+          name="ethnicity_name"
+          [value]="'Not Hispanic or Latino'"
+          [(ngModel)]="us.data.application.ethnicity_name"
+          (ngModelChange)="us.update(); err.ethnicity = false"
+        />
+        <span class="check">Not Hispanic or Latino</span>
+      </label>
+      <span *ngIf="err.ethnicity" class="errspan">This field is required</span>
+    </div>
+    <div class="form__check">
+      <span class="form__title">Race (select all applicable boxes)</span>
+      <label>
+        <input
+          type="checkbox"
+          name="rasewhite_name"
+          [(ngModel)]="us.data.application.rasewhite_name"
+          (ngModelChange)="us.update(); err.race = false"
+          (blur)="!us.data.application.rasewhite_name && (err.race = true)"
+        />
+        <span class="check">White</span>
+      </label>
+      <label>
+        <input
+          type="checkbox"
+          name="raseasian_name"
+          [(ngModel)]="us.data.application.raseasian_name"
+          (ngModelChange)="us.update(); err.race = false"
+          (blur)="!us.data.application.raseasian_name && (err.race = true)"
+        />
+        <span class="check">Asian</span>
+      </label>
+      <label>
+        <input
+          type="checkbox"
+          name="raseblack_name"
+          [(ngModel)]="us.data.application.raseblack_name"
+          (ngModelChange)="us.update(); err.race = false"
+          (blur)="!us.data.application.raseblack_name && (err.race = true)"
+        />
+        <span class="check">Black or African American</span>
+      </label>
+      <!-- <label>
+					<input type="checkbox" name="raselatino_name" [(ngModel)]="us.data.application.raselatino_name" (ngModelChange)="us.update();">
+					<span class="check">Not Hispanic or Latino</span>
+				</label> -->
+      <label>
+        <input
+          type="checkbox"
+          name="rasenative_name"
+          [(ngModel)]="us.data.application.rasenative_name"
+          (ngModelChange)="us.update(); err.race = false"
+          (blur)="!us.data.application.rasenative_name && (err.race = true)"
+        />
+        <span class="check">American Indian or Alaska Native</span>
+      </label>
+      <label>
+        <input
+          type="checkbox"
+          name="rasehawaiian_name"
+          [(ngModel)]="us.data.application.rasehawaiian_name"
+          (ngModelChange)="us.update(); err.race = false"
+          (blur)="!us.data.application.rasehawaiian_name && (err.race = true)"
+        />
+        <span class="check">Native Hawaiian or Other Pacific Islander</span>
+      </label>
+      <span *ngIf="err.race" class="errspan">This field is required</span>
+    </div>
+    <div class="form__check">
+      <span class="form__title">Eye color</span>
+      <label>
+        <input
+          type="radio"
+          name="eyecolor_name"
+          [value]="'black'"
+          [(ngModel)]="us.data.application.eyecolor_name"
+          (ngModelChange)="us.update(); err.eyeColor = false"
+        />
+        <span class="check">Black</span>
+      </label>
+      <label>
+        <input
+          type="radio"
+          name="eyecolor_name"
+          [value]="'gray'"
+          [(ngModel)]="us.data.application.eyecolor_name"
+          (ngModelChange)="us.update(); err.eyeColor = false"
+        />
+        <span class="check">Gray</span>
+      </label>
+      <label>
+        <input
+          type="radio"
+          name="eyecolor_name"
+          [value]="'maroon'"
+          [(ngModel)]="us.data.application.eyecolor_name"
+          (ngModelChange)="us.update(); err.eyeColor = false"
+        />
+        <span class="check">Maroon</span>
+      </label>
+      <label>
+        <input
+          type="radio"
+          name="eyecolor_name"
+          [value]="'blue'"
+          [(ngModel)]="us.data.application.eyecolor_name"
+          (ngModelChange)="us.update(); err.eyeColor = false"
+        />
+        <span class="check">Blue</span>
+      </label>
+      <label>
+        <input
+          type="radio"
+          name="eyecolor_name"
+          [value]="'green'"
+          [(ngModel)]="us.data.application.eyecolor_name"
+          (ngModelChange)="us.update(); err.eyeColor = false"
+        />
+        <span class="check">Green</span>
+      </label>
+      <label>
+        <input
+          type="radio"
+          name="eyecolor_name"
+          [value]="'pink'"
+          [(ngModel)]="us.data.application.eyecolor_name"
+          (ngModelChange)="us.update(); err.eyeColor = false"
+        />
+        <span class="check">Pink</span>
+      </label>
+      <label>
+        <input
+          type="radio"
+          name="eyecolor_name"
+          [value]="'brown'"
+          [(ngModel)]="us.data.application.eyecolor_name"
+          (ngModelChange)="us.update(); err.eyeColor = false"
+        />
+        <span class="check">Brown</span>
+      </label>
+      <label>
+        <input
+          type="radio"
+          name="eyecolor_name"
+          [value]="'hazel'"
+          [(ngModel)]="us.data.application.eyecolor_name"
+          (ngModelChange)="us.update(); err.eyeColor = false"
+        />
+        <span class="check">Hazel</span>
+      </label>
+      <label>
+        <input
+          type="radio"
+          name="eyecolor_name"
+          [value]="'unknown'"
+          [(ngModel)]="us.data.application.eyecolor_name"
+          (ngModelChange)="us.update(); err.eyeColor = false"
+        />
+        <span class="check">Unknown/Other</span>
+      </label>
+      <span *ngIf="err.eyeColor" class="errspan">This field is required</span>
+    </div>
+    <div class="form__check">
+      <span class="form__title">Hair color</span>
+      <label>
+        <input
+          type="radio"
+          name="colorhair_name"
+          [value]="'black'"
+          [(ngModel)]="us.data.application.colorhair_name"
+          (ngModelChange)="us.update(); err.hairColor = false"
+        />
+        <span class="check">Black</span>
+      </label>
+      <label>
+        <input
+          type="radio"
+          name="colorhair_name"
+          [value]="'brown'"
+          [(ngModel)]="us.data.application.colorhair_name"
+          (ngModelChange)="us.update(); err.hairColor = false"
+        />
+        <span class="check">Brown</span>
+      </label>
+      <label>
+        <input
+          type="radio"
+          name="colorhair_name"
+          [value]="'sandy'"
+          [(ngModel)]="us.data.application.colorhair_name"
+          (ngModelChange)="us.update(); err.hairColor = false"
+        />
+        <span class="check">Sandy</span>
+      </label>
+      <label>
+        <input
+          type="radio"
+          name="colorhair_name"
+          [value]="'blond'"
+          [(ngModel)]="us.data.application.colorhair_name"
+          (ngModelChange)="us.update(); err.hairColor = false"
+        />
+        <span class="check">Blond</span>
+      </label>
+      <label>
+        <input
+          type="radio"
+          name="colorhair_name"
+          [value]="'gray'"
+          [(ngModel)]="us.data.application.colorhair_name"
+          (ngModelChange)="us.update(); err.hairColor = false"
+        />
+        <span class="check">Gray</span>
+      </label>
+      <label>
+        <input
+          type="radio"
+          name="colorhair_name"
+          [value]="'white'"
+          [(ngModel)]="us.data.application.colorhair_name"
+          (ngModelChange)="us.update(); err.hairColor = false"
+        />
+        <span class="check">White</span>
+      </label>
+      <label>
+        <input
+          type="radio"
+          name="colorhair_name"
+          [value]="'bald'"
+          [(ngModel)]="us.data.application.colorhair_name"
+          (ngModelChange)="us.update(); err.hairColor = false"
+        />
+        <span class="check">Bald (No hair)</span>
+      </label>
+      <label>
+        <input
+          type="radio"
+          name="colorhair_name"
+          [value]="'red'"
+          [(ngModel)]="us.data.application.colorhair_name"
+          (ngModelChange)="us.update(); err.hairColor = false"
+        />
+        <span class="check">Red</span>
+      </label>
+      <label>
+        <input
+          type="radio"
+          name="colorhair_name"
+          [value]="'unknown'"
+          [(ngModel)]="us.data.application.colorhair_name"
+          (ngModelChange)="us.update(); err.hairColor = false"
+        />
+        <span class="check">Unknown/Other</span>
+      </label>
+      <span *ngIf="err.hairColor" class="errspan">This field is required</span>
+    </div>
+    <div class="forms__inner">
+      <span class="form__title">Weight</span>
+      <label>
+        <input
+          class="weigh"
+          maxlength="1"
+          type="text"
+          oninput="this.value = this.value.replace(/[^0-9.]/g, ''); this.value = this.value.replace(/(\..*)\./g, '$1');"
+          [(ngModel)]="us.data.application.uspounds_name"
+          [class.err]="err.weight"
+          (ngModelChange)="us.update(); err.weight = false"
+        />
+
+        <input
+          class="weigh"
+          maxlength="1"
+          type="text"
+          oninput="this.value = this.value.replace(/[^0-9.]/g, ''); this.value = this.value.replace(/(\..*)\./g, '$1');"
+          [(ngModel)]="us.data.application.uspoundsa_name"
+          (ngModelChange)="us.update(); err.weight = false"
+        />
+
+        <input
+          class="weigh"
+          maxlength="1"
+          type="text"
+          oninput="this.value = this.value.replace(/[^0-9.]/g, ''); this.value = this.value.replace(/(\..*)\./g, '$1');"
+          [(ngModel)]="us.data.application.uspoundss_name"
+          (ngModelChange)="us.update(); err.weight = false"
+        /><span class="sticker">Pounds</span>
+      </label>
+      <span *ngIf="err.weight" class="errspan">This field is required</span>
+    </div>
+    <div class="forms__sub-inner">
+      <span class="form__title">Height</span>
+      <label>
+        <select
+          class="top"
+          [class.err]="err.heightFeet"
+          [(ngModel)]="us.data.application.usfeet_name"
+          (ngModelChange)="us.update(); err.heightFeet = false"
+        >
+          <option>2</option>
+          <option>3</option>
+          <option>4</option>
+          <option>5</option>
+          <option>6</option>
+          <option>7</option>
+          <option>8</option></select
+        ><span class="sticker">Feet</span>
+      </label>
+      <span *ngIf="err.heightFeet" class="errspan">Feets is required</span>
+      <label>
+        <select
+          class="top"
+          [class.err]="err.heightInches"
+          [(ngModel)]="us.data.application.usinches_name"
+          (ngModelChange)="us.update(); err.heightInches = false"
+        >
+          <option>1</option>
+          <option>2</option>
+          <option>3</option>
+          <option>4</option>
+          <option>5</option>
+          <option>6</option>
+          <option>7</option>
+          <option>8</option>
+          <option>9</option>
+          <option>10</option>
+          <option>11</option></select
+        ><span class="sticker">Inches</span>
+      </label>
+      <span *ngIf="err.heightInches" class="errspan">Inches is required</span>
+    </div>
+    <div class="sub-discription">
+      Sources for this page (unless otherwise cited above): USCIS Form
+      <a
+        target="_blank"
+        href="https://www.uscis.gov/sites/default/files/document/forms/i-485.pdf"
+        >I-485</a
+      >
+    </div>
+    <div class="section__container-btn">
+      <a class="form__btn-back" (click)="us.pagesection = 4; us.top()">
+        < Back
+      </a>
+      <a
+        class="form__btn-continue"
+        (click)="us.section = 'immigration'; us.pagesection = 1; us.top()"
+      >
+        Continue ></a
+      >
+    </div>
+  </div>
+</div>

@@ -1,0 +1,8 @@
+<div class="add-inner">
+    <span>Item Name</span>
+    <input [(ngModel)]="us.data.application.addpass_name"
+    (ngModelChange)="us.update();" type="text">
+    <div class="add-btn">
+      <button class="btn-add" (click)="additempass(); close()">add</button>
+    </div>
+  </div>
